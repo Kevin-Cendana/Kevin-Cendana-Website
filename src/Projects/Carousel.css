@@ -44,12 +44,12 @@
 	top: 0.625rem;
 	border: 0.125rem solid;
 	transition: transform 1s, opacity 1s;
-    margin: 0 paddingValue; /* Adjust the margin if needed */
+
 }
 
 /* Styles for the image in each slide. */
 .carousel__slide img {
-    border: 2px solid rgb(158, 32, 255);
+    border: 2px solid black;
 	width: 100%; /* Resizes only the image, not container. will poke through */
 	height: 100%;
 	display: block;
@@ -107,12 +107,18 @@
 /* Wide screens */
 @media (min-width: 1600px) {
     .carousel {
-        --carousel-scale: 2.5;
+        --carousel-scale: 2.45;
         --carousel-left-margin: 160px;
     }
 }
 
 /* Standard tablet */
+@media (max-width: 1100px) {
+	.carousel {
+        --carousel-scale: 1.85;
+		--carousel-left-margin: 70px;
+    }
+}
 @media (max-width: 1050px) or (max-height: 864px) {
     .carousel {
         --carousel-scale: 1.25;

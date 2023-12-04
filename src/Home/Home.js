@@ -19,13 +19,15 @@ function Home() {
         <div className = "home " id = "home">
             <div className="home__left">
             <div className="home__text-container">
-                <h1 className="home__text-name">Kevin Cendana</h1>
-                <p className="home__text-alias">
-                    <ReactRotatingText items={[
-                        'Computer Science Student', 
-                        'Web Developer', 
-                        'Enthusiastic Programmer']} />
-                </p>
+                <div className="block-wrapper">
+                    <h1 className="home__text-name">Kevin Cendana</h1>
+                    <p className="home__text-alias">
+                        <ReactRotatingText items={[
+                            'Computer Science Student',
+                            'Web Developer',
+                            'Enthusiastic Programmer']} />
+                    </p>
+                </div>
             </div>
             </div>
             <div className="home__right">

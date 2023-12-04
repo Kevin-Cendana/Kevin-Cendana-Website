@@ -84,7 +84,7 @@
 .home__left {
     display: flex;
     height: 100%;
-    width: 70%;
+    width: 75%;
     min-width: 330px;
 }
 
@@ -96,24 +96,29 @@
     transform: translate(var(--home-move-text));
     display: flex;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     flex-direction: column;
-    /* Prevent words from stacking in a column if there's no space */
-    white-space: nowrap;
+    white-space: nowrap; /* Prevent words from stacking in a column if there's no space */
 }
+/* Text wrapper to keep a block shape */
+.block-wrapper { 
 
-/* Text name (Kevin Cendana) and title (Computer Science Student, etc)*/
+}
+/* Text name (Kevin Cendana) */
 .home__text-name {
+    position: relative;
     font-family: 'Avenir Next', sans-serif;
     font-weight: 650;
     font-size: var(--home-font-size-name);
     margin-top: 2vh;
     margin-bottom: 1vh;
 }
+/* Text alias (CS Student, etc etc) */
 .home__text-alias {
     font-size: var(--home-alias-font-size);
     align-items: flex-start;
     margin-left: 4px;
+    display: flex;
 }
 
 /* Animations */

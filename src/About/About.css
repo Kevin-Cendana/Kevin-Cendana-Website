@@ -28,7 +28,7 @@
 
 /* variables for entire about section*/
 .about {
-    visibility: hidden; /*todo finish about */
+/*todo finish about */
     --about-font-size-name: 1.8rem;
     --about-alias-font-size: 1.2rem;
     --about-speech-bubble-font-size: 1.5rem;
@@ -45,6 +45,11 @@
 
     border-radius: var(--base-border-radius);
     background-color: var(--about-background-color);
+}
+
+/* todo finish about */
+.about__left, .about__right {
+    visibility: hidden;
 }
 
 /* style the left side of the about page */

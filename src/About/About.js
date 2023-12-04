@@ -14,6 +14,7 @@ import '../normalize.css';
 function About() {
     return (
         <div className="about">
+            About (Work in Progress!)
             <section className="about__left animated">
                 <div className="about__left-image-container"> </div>
                 <div className="about__text-container">

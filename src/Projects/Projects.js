@@ -12,8 +12,6 @@ import personal_project3 from '../images/slideshow_images/bullseye.png';
 import hackathon1 from '../images/slideshow_images/lyric_link.gif';
 import hackathon2 from '../images/slideshow_images/att_empowher.png';
 import hackathon3 from '../images/slideshow_images/datafest.png';
-import coursework_project3 from '../images/slideshow_images/turing_machines.png';
-import coursework_project1 from '../images/slideshow_images/data_visualization.png';
 import './Projects.css';
 
 // Array of slides to use for slideshow pictures
@@ -23,48 +21,43 @@ const project_data = [
         title: "Lyric Link",
         description: "Lyric Link",
         captions: [
-            { text: 'SacHacks', style: { } },
             { text: 'React', style: { backgroundColor: 'blue'} },
             { text: 'Django', style: { backgroundColor: 'blue'} }
         ]
     },
     { 
     image: hackathon2,
-    title: "Project 1", 
+    title: "AT&T: EmpowHer", 
     description: "2lyric link test filler test test beep boop bert bert bert",
     captions: [
-        { text: 'AT&T: EmpowHer', style: { backgroundColor: ''} },
-        { text: 'HTML', style: { backgroundColor: 'green'} },
+        { text: 'HTML', style: { backgroundColor: 'green'}},
         { text: 'CSS', style: { backgroundColor: 'green'} },
     ]
 
     },
     { 
     image: hackathon3, 
-    title: "Project 1",
+    title: "DataFest 2023",
     description: "3lyric link test filler test test beep boop bert bert bert",
     captions: [
-        { text: 'Datafest', style: { } },
         { text: 'Pandas', style: { backgroundColor: 'blue'} },
         { text: 'Python', style: { backgroundColor: 'green'} }
     ]
     },
     { 
     image: personal_project1, 
-    title: "Project 1",
+    title: "Maplestory Animations",
     description: "4lyric link test filler test test beep boop bert bert bert",
     captions: [
-        { text: 'Maplestory', style: { } },
         { text: 'Flutter', style: { backgroundColor: 'blue'} },
         { text: 'Dart', style: { backgroundColor: 'green'} }
     ] 
     },
     { 
     image: personal_project2, caption: 'Invaded Space',
-    title: "Project 1",
+    title: "Invaded Space",
     description: "5lyric link test filler test test beep boop bert bert bert",
     captions: [
-        { text: 'Game Jam', style: { } },
         { text: 'Unity', style: { backgroundColor: 'blue'} },
         { text: 'C#', style: { backgroundColor: 'green'} }
     ]  
@@ -81,10 +74,23 @@ const project_data = [
     },
 ];
 
+// Function to add padding to each caption
+const addPaddingToCaptions = (projects) => {
+    return projects.map(project => ({
+        ...project,
+        captions: project.captions.map(caption => ({
+            ...caption,
+            style: { ...caption.style, margin: '0px 4px', padding: '8px 5px' }
+        }))
+    }));
+};
+
+const updatedProjectData = addPaddingToCaptions(project_data);
+
 function Projects() {
     const [currentDescription, setCurrentDescription] = useState('');
     const [currentTitle, setCurrentTitle] = useState('');
-    const [currentCaptions, setCurrentCaptions] = useState('');
+    const [currentCaptions, setCurrentCaptions] = useState([]);
     const carouselRef = useRef(null);
 
     useEffect(() => {
@@ -92,14 +98,14 @@ function Projects() {
         const descriptionUpdater = () => {
             const currentIndex = carouselRef.current?.getSelectedIndex();
             if (currentIndex !== undefined) {
-                const project = project_data[currentIndex];
+                const project = updatedProjectData[currentIndex];
                 setCurrentDescription(project.description);
                 setCurrentTitle(project.title);
-                setCurrentCaptions(project.captions);
-                console.log("Projects.js: Slide Index: " + currentIndex);
-                console.log("Projects.js: Slide Title: " + project.title); 
-                console.log("Projects.js: Slide Desc: " + project.description); 
-                console.log("Projects.js: Slide Captions: " + project.captions);
+                setCurrentCaptions(Array.isArray(project.captions) ? project.captions : []);
+                // console.log("Projects.js: Slide Index: " + currentIndex);
+                // console.log("Projects.js: Slide Title: " + project.title); 
+                // console.log("Projects.js: Slide Desc: " + project.description); 
+                // console.log("Projects.js: Slide Captions: " + project.captions);
             }
         };
 
@@ -111,7 +117,7 @@ function Projects() {
     }, [currentDescription]);
     
     // Mapping data to carousel items for Carousel.tsx
-    const carouselItems = project_data.map((project, index) => ({
+    const carouselItems = updatedProjectData.map((project, index) => ({
         image: project.image,
         content: (
         <div key={index}>
@@ -133,9 +139,17 @@ function Projects() {
             <div className="projects__section">
                 <Carousel ref={carouselRef} items={carouselItems} /* other props */ />
                 <div className="projects__text-container">
-                    <div className="projects__title">{currentTitle}</div>
+                    <div className="row-wrapper">
+                        <h2 className="projects__title">{currentTitle}</h2>
+                        <div className="projects__captions">
+                        {currentCaptions.map((caption, index) => (
+                            <span key={index} style={caption.style}>
+                                {caption.text}
+                            </span>
+                        ))}
+                        </div>
+                    </div>
                     <div className="projects__description">{currentDescription}</div>
-                    
                 </div>
             </div>
         </div>

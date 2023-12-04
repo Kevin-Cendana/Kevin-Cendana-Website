@@ -53,177 +53,163 @@ export type CarouselRef = Readonly<{
 }>;
 
 // The main Carousel component
-export const Carousel: FC<CarouselProps> = forwardRef(
-	(
-		{
-			items,
-			itemWidth = 250,
-			showControls = true,
-			slideOnClick = false,
-			classNamePrefix = 'carousel',
-			prevButtonContent = 'Previous',
-			nextButtonContent = 'Next'
-		}: CarouselProps,
-		CarouselRef
-	) => {
-		const data: DecoratedCarouselItem[] = useMemo(
-			() =>
-				items.map(item => ({
-					...item,
-					...((item as unknown as DecoratedCarouselItem).id
-						? ({} as unknown as DecoratedCarouselItem)
-						: { id: uuid() })
-				})),
-			[items]
-		);
+export const Carousel: FC<CarouselProps> = forwardRef((
+    {
+        items,
+        itemWidth = 250,
+        showControls = true,
+        slideOnClick = false,
+        classNamePrefix = 'carousel',
+        prevButtonContent = 'Previous',
+        nextButtonContent = 'Next'
+    }: CarouselProps,
+    CarouselRef
+) => {
 
+	
+    // Refs and state initialization
+    const ref = useRef<HTMLDivElement>(null);
+    const [selectedIndex, setSelectedIndex] = useState(0);
+	
+    // State and effect for handling window resize
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+    useEffect(() => {
+        const handleResize = () => setWindowWidth(window.innerWidth);
+        window.addEventListener('resize', handleResize);
+        return () => window.removeEventListener('resize', handleResize);
+    }, []);
 
-        // Padding adjustment
-        // Change to add more space between slides (combo w/ angle)
-        const padding = 0;
+    // Function to determine padding based on screen width
+    const getPaddingBasedOnWidth = (width: number) => {
+        switch (true) {
+            case (width > 1400):
+                return -22; // Large screens
+			case (width > 1000):
+				return -24; // Medium screens
+            case (width > 768):
+                return -26; // Medium screens
+            case (width > 600):
+                return -32; // Small screens
+            default:
+                return -38; // Extra small screens
+        }
+    };	
 
-        // Angle adjustment for previous and next slides 
-        // Higher = Tilt further away from center
-        const additionalAngle = -3; 
+    // Enhancing carousel items with unique IDs and memorizing the calculation
+    const data: DecoratedCarouselItem[] = useMemo(
+        () => items.map((item: CarouselItem) => ({
+            ...item,
+            id: (item as DecoratedCarouselItem).id || uuid()
+        })),
+        [items]
+    );
+    // Carousel geometry calculations
+    const len = useMemo(() => data.length, [data.length]);
+    const theta = useMemo(() => 360 / len, [len]);
+    const padding = getPaddingBasedOnWidth(windowWidth); // Less padding for smaller screens
+    const radius = useMemo(
+        () => Math.round((itemWidth + padding) / 2 / Math.tan(Math.PI / len)),
+        [itemWidth, len, padding]
+    );
 
-        const [targetIndex, setTargetIndex] = useState(null);
+    // Function for corrected selected index
+    const getCorrectedIndex = useCallback(() => {
+        if (selectedIndex < 0) {
+            return ((selectedIndex % len) + len) % len;
+        }
+        return selectedIndex % len;
+    }, [selectedIndex, len]);
 
-        const [isGoingForward, setIsGoingForward] = useState(true);
-		const len = useMemo(() => data.length, [data.length]);
-		const theta = useMemo(() => 360 / len, [len]);
-        const radius = useMemo(
-            () => Math.round((itemWidth + padding) / 2 / Math.tan(Math.PI / len)),
-            [itemWidth, len, padding] 
-        );
-        
+    // Style calculation for slides and carousel container
+    const getSlideStyle = useCallback(
+        (index: number): CSSProperties => {
+            const correctedIndex = getCorrectedIndex();
+            const isCurrentSlide = correctedIndex === index;
+            const cellAngle = theta * index;
 
-		const ref = useRef<HTMLDivElement>(null);
-		const [selectedIndex, setSelectedIndex] = useState(0);
+            return {
+                opacity: isCurrentSlide ? 1 : 0.5,
+                transform: `rotateY(${cellAngle}deg) translateZ(${radius}px)`
+            };
+        },
+        [getCorrectedIndex, theta, radius]
+    );
 
-        const getSlideStyle = useCallback(
-			(index: number): CSSProperties => {
-				const style: CSSProperties = {};
+    const getItemStyle = useCallback((): CSSProperties => {
+        const angle = theta * selectedIndex * -1;
+        return {
+            transform: `translateZ(${-1 * radius}px) rotateY(${angle}deg)`
+        };
+    }, [radius, selectedIndex, theta]);
 
-				if (index < len) {
-					const cellAngle = theta * index;
+    // Helper function for className generation
+    const getClassName = useCallback(
+        (parts: string | string[]) =>
+            Array.isArray(parts)
+                ? parts.map(part => `${classNamePrefix}${part}`).join(' ')
+                : `${classNamePrefix}${parts}`,
+        [classNamePrefix]
+    );
 
-					style.opacity = 1;
-					style.transform = `rotateY(${cellAngle}deg) translateZ(${radius}px)`;
-				} else {
-					style.opacity = 0;
-					style.transform = 'none';
-				}
+    // Functions for navigating slides
+    const prev = useCallback(
+        () => setSelectedIndex(selectedIndex - 1),
+        [selectedIndex]
+    );
 
-				return style;
-			},
-			[len, radius, theta]
-		);
-        
-        
-        
+    const next = useCallback(
+        () => setSelectedIndex(selectedIndex + 1),
+        [selectedIndex]
+    );
 
-		const getItemStyle = useCallback((): CSSProperties => {
-        console.log("Carousel.tsx: getItemStyle() called");
-			const angle = theta * selectedIndex * -1;
+    // Adding and removing touch gestures and swipe event listeners
+    useEffect(() => {
+        const area = ref?.current;
+        const touchsweep = new TouchSweep(area ?? undefined);
 
-			return {
-				transform: `translateZ(${-1 * radius}px) rotateY(${angle}deg)`
-			};
-		}, [radius, selectedIndex, theta]);
+        area?.addEventListener('swipeleft', next);
+        area?.addEventListener('swiperight', prev);
 
-		const getClassName = useCallback(
-			(parts: string | string[]) =>
-				Array.isArray(parts)
-					? parts
-							.map((part: string) => `${classNamePrefix}${part}`)
-							.join(' ')
-					: `${classNamePrefix}${parts}`,
-			[classNamePrefix]
-		);
+        return () => {
+            touchsweep.unbind();
+            area?.removeEventListener('swipeleft', next);
+            area?.removeEventListener('swiperight', prev);
+        };
+    }, [next, prev]);
 
-		const prev = useCallback(
-			() => setSelectedIndex(selectedIndex - 1),
-			[selectedIndex]
-		);
+    // Exposing methods to parent component via ref
+    useImperativeHandle(
+        CarouselRef,
+        (): CarouselRef => ({
+            next,
+            prev,
+            getItems: () => data,
+            getSelectedIndex: () => getCorrectedIndex(),
+            setSelectedIndex: (index: number) => setSelectedIndex(index)
+        }),
+        [next, prev, data, getCorrectedIndex, setSelectedIndex]
+    );
 
-		const next = useCallback(
-			() => setSelectedIndex(selectedIndex + 1),
-			[selectedIndex]
-		);
-
-
-		useEffect(() => {
-            console.log("Carousel.tsx: useEffect() called");
-			const area = ref?.current;
-			const touchsweep = new TouchSweep(area ?? undefined);
-
-			area?.addEventListener('swipeleft', next);
-			area?.addEventListener('swiperight', prev);
-
-			return () => {
-				touchsweep.unbind();
-
-				area?.removeEventListener('swipeleft', next);
-				area?.removeEventListener('swiperight', prev);
-			};
-		});
-
-		useImperativeHandle(
-			CarouselRef,
-			(): CarouselRef => ({
-				next,
-				prev,
-				getItems: () => data,
-                getSelectedIndex: () => {
-                    console.log("getSelectedIndex called, current index: ", selectedIndex % len);
-                    return selectedIndex % len;
-                  },
-                  setSelectedIndex: (index: number) => {
-                    console.log("setSelectedIndex called, setting index: ", index);
-                    setSelectedIndex(index);
-                  }
-                
-			}),
-            
-            //[selectedIndex, data]
-		);
-        
-        // Main code
-		return (
-			<>
-                    <div className={getClassName('')} ref={ref}>
-                        <div
-                            className={getClassName('__container')}
-                            style={getItemStyle()}
-                        >
-                            {data.map(
-                                (item: DecoratedCarouselItem, index: number) => (
-                                    <div
-                                        key={item.id}
-                                        style={getSlideStyle(index)}
-                                        onClick={() => {
-                                            if (item.onClick) item.onClick();
-                                            if (slideOnClick)
-                                                setSelectedIndex(index);
-                                        }}
-                                        className={getClassName('__slide')}
-                                    >
-                                        <img src={item.image} alt={item.alt} />
-                                        <div
-                                            className={getClassName(
-                                                '__slide-overlay'
-                                            )}
-                                        >
-                                            {item.content}
-                                        </div>
-                                    </div>
-                                )
-                            )}
+    // Rendering the carousel
+    return (
+        <>
+            <div className={getClassName('')} ref={ref}>
+                <div className={getClassName('__container')} style={getItemStyle()}>
+                    {data.map((item: DecoratedCarouselItem, index: number) => (
+                        <div key={item.id} style={getSlideStyle(index)} onClick={() => {
+                            if (item.onClick) item.onClick();
+                            if (slideOnClick) setSelectedIndex(index);
+                        }} className={getClassName('__slide')}>
+                            <img src={item.image} alt={item.alt} />
+                            <div className={getClassName('__slide-overlay')}>
+                                {item.content}
+                            </div>
                         </div>
-                    </div>
-			</>
-		);
-	}
-);
+                    ))}
+                </div>
+            </div>
+        </>
+    );
+});
 
 export default Carousel;
