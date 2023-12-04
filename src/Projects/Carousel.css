@@ -1,0 +1,137 @@
+/*--------------------------------------------------------------------------------------//
+//                                     Carousel.css                                     //
+//--------------------------------------------------------------------------------------*/
+
+/* Root variables. I would normally put these in .carousel, but I need them in projects.css. */
+:root {
+    --carousel-scale: 2;
+    --carousel-base-width: 13.125rem;
+    --carousel-left-margin: 110px;
+}
+
+
+/* Overall container of the carousel. Sets width, height, and perspective. */
+.carousel {
+    /* --carousel-background-color: blue; */
+    background-color: var(--carousel-background-color);
+    position: absolute;
+    left: var(--carousel-left-margin); /* Entire carousel is always 110px from left side of screen. */
+    display: flex;
+    transform: scale(var(--carousel-scale));
+	width: var(--carousel-base-width); /* Increases width of container, not slides. */
+	height: 13.125rem; /* Increases height of container, not slides. */
+	position: relative;
+	perspective: 62.5rem; /* Increasing makes the carousel fan out more. */
+    
+}
+
+/* The container that holds the individual slides. */
+.carousel__container {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	transform-style: preserve-3d;
+	transition: transform 1s;
+    /* margin-right: var(--projects-slideshow-margin-right); */
+}
+
+/* Style for each slide in the carousel. */
+.carousel__slide {
+	position: absolute;
+	width: 11.875rem; /* Increases width of each slide, but not container. */
+	height: 11.875rem;  /* Increases width of each slide, but not container. */
+	left: 0.625rem;
+	top: 0.625rem;
+	border: 0.125rem solid;
+	transition: transform 1s, opacity 1s;
+    margin: 0 paddingValue; /* Adjust the margin if needed */
+}
+
+/* Styles for the image in each slide. */
+.carousel__slide img {
+    border: 2px solid rgb(158, 32, 255);
+	width: 100%; /* Resizes only the image, not container. will poke through */
+	height: 100%;
+	display: block;
+}
+
+/* Overlay style for each slide, typically for captions or additional content. */
+.carousel__slide-overlay {
+	color: #fff;
+	text-align: center;
+	display: flex;
+	flex-flow: row wrap;
+	align-items: center;
+	justify-content: center;
+	align-content: center;
+	position: absolute;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	opacity: 0;
+	transition: opacity 0.35s ease-in-out;
+	background-color: rgba(0, 0, 0, 0.7);
+	user-select: none;
+}
+
+/* Style for text elements inside the overlay. */
+.carousel__slide-overlay span,
+.carousel__slide-overlay strong {
+	display: block;
+	flex: 0 0 100%;
+}
+
+/* Changes the overlay opacity on hover. */
+.carousel__slide:hover .carousel__slide-overlay {
+	opacity: 1;
+}
+
+
+/* Style for the previous button's arrow. */
+.carousel__control--prev::after {
+	transform: rotate(45deg);
+}
+
+.carousel__description {
+    min-width: 300px;
+    height: 200px;
+}
+
+/* Media Queries:
+/  By default w/o queries, I assume an average window size on desktop (~1400x900 px).
+/  Queries are used for: wide screens, standard tablets & phones, & small phones.
+/  Note: I change the background color just to debug; makes it easier to see what query is being applied.*/
+
+
+/* Wide screens */
+@media (min-width: 1600px) {
+    .carousel {
+        --carousel-scale: 2.5;
+        --carousel-left-margin: 160px;
+    }
+}
+
+/* Standard tablet */
+@media (max-width: 1050px) or (max-height: 864px) {
+    .carousel {
+        --carousel-scale: 1.25;
+        --carousel-left-margin: 18px;
+    }
+}
+
+/* Standard smart phones */
+@media (max-width: 720px) {
+    .carousel {
+        --carousel-scale: 1;
+        --carousel-left-margin: -5px;
+    }
+}
+
+/* Small smart phones */
+@media (max-width: 560px) {
+    .carousel {
+        --carousel-scale: .87;
+        --carousel-left-margin: -22px;
+    }
+}

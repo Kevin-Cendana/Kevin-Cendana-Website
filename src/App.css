@@ -1,0 +1,76 @@
+/*--------------------------------------------------------------------------------------//
+//                                       App.css                                        //
+//--------------------------------------------------------------------------------------*/
+
+/* fonts */
+@font-face {
+  font-family: 'Thasadith';
+  src: url('fonts/Thasadith.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* style ALL elements */
+*, *:before, *:after {
+  transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
+  box-sizing: border-box;
+  color: black;
+  padding: 0;
+  margin: 0;
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+  box-sizing: border-box;         /* Opera/IE 8+ */
+  overflow: hidden;
+}
+*.dark-mode, *.dark-mode:before, *.dark-mode:after {
+  transition: background-color 03.s ease, color 0.5s ease, border-color 0.5s ease;
+  color: white;
+}
+html {
+  font-size: clamp(14px, 4vw, 18px); 
+  scroll-behavior: smooth;
+}
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+
+/* style the main content in the middle of the page*/
+/* put stuff here to apply to the main body of all pages */
+.main-content {
+
+  width: 100%;
+  height: 100%;  /* !note: don't forget to include the nav bar in calculations*/
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  background-color: white;
+}
+
+/* animation makes element move left->right */
+@keyframes slide-in {©
+  0% {
+    /* starting position (left edge) */
+    left: -7%;
+  }
+  100% {
+    /* ending position (right edge) */
+    left: 0%;
+    transform: translateX(-0%);
+  }
+}
+/* animation makes element fade in*/
+.fade-in {
+  animation: fade-in 3s;
+}
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}

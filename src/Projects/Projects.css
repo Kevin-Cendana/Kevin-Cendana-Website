@@ -1,0 +1,112 @@
+/*--------------------------------------------------------------------------------------//
+//                                      Projects.css                                    //
+//--------------------------------------------------------------------------------------*/
+
+
+
+/* All */
+* {
+    color: black;
+}
+*.dark-mode {
+    color: white;
+}
+
+/* Projects */
+.projects {
+    --projects-title-font-size: 3.6rem;
+    --projects-desc-font-size: 2.3rem;
+    --projects-height: 60vh;
+    --projects-min-height: 1000px;
+    --projects-background-color: white;
+    /* Carousel total space is hard to calc: base width * scale + text left padding */
+    --projects-text-padding-left: -5px;
+    --projects-extra-carousel-right-space: calc(var(--carousel-base-width) * var(--carousel-scale) + var(--projects-text-padding-left));
+    --projects-text-container-width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: var(--projects-height);
+    width: 100%;
+    background-color: var(--projects-background-color);
+}
+
+/* Project section including slideshow, text */
+.projects__section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+}
+
+
+
+/* Text container w/ individual slide titles, descriptions */
+.projects__text-container {
+    font-size: var(--projects-desc-font-size);
+    padding-left: var(--projects-extra-carousel-right-space);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    width: auto;
+}
+.projects__title {
+    font-size: var(--projects-title-font-size);  
+    font-style: bold;
+    color: black;
+}
+.projects__description {
+    font-size: var(--projects-desc-font-size);
+    color: black;
+}
+
+/* Media Queries:
+/  By default w/o queries, I assume an average window size on desktop (~1400x900 px).
+/  Queries are used for: wide screens, standard tablets & phones, & small phones.
+/  Note: I change the background color just to debug; makes it easier to see what query is being applied.*/
+
+
+/* Wide screens */
+@media (min-width: 1600px) {
+    .projects {
+        --projects-background-color: red;
+        --projects-height: 70vh;
+        --projects-text-padding-left: 200px;
+        --projects-title-font-size: 4.3rem;
+        --projects-desc-font-size: 2.9rem;
+    }
+}
+
+/* Standard tablet */
+@media (max-width: 1050px) {
+    .projects {
+        --projects-background-color: orange;
+        --projects-height: 52vh;
+        --projects-text-padding-left: -290px;
+        --projects-title-font-size: 2.9rem;
+        --projects-desc-font-size: 2.2rem;
+    }
+}
+
+/* Standard smart phones */
+@media (max-width: 720px) {
+    .projects {
+        --projects-background-color: yellow;
+        --projects-height: 45vh;
+        --projects-text-padding-left: -362px;
+        --projects-title-font-size: 2.3rem;
+        --projects-desc-font-size: 1.4rem;
+    }
+}
+
+/* Small smart phones */
+@media (max-width: 560px) {
+    .projects {
+        --projects-background-color: green;
+        --projects-height: 43vh;
+        --projects-text-padding-left: -412px;
+        --projects-title-font-size: 1.9rem;
+        --projects-desc-font-size: 1rem;
+    }
+}

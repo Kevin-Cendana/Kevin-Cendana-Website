@@ -1,0 +1,112 @@
+/*--------------------------------------------------------------------------------------//
+//                                NavigationBar.css                                    //
+//--------------------------------------------------------------------------------------*/
+
+/* Main container for the navigation bar */
+.navbar { 
+    display: flex;
+    background-color: black;
+    height: 5%;
+    min-height: 48px;
+    width: 100%;
+    border-bottom: 1px solid black;
+    text-decoration: none;
+    position: fixed; /* Make navbar fixed */
+    top: 0;          /* Stick to the top */
+    z-index: 1000;   /* Ensure it stays on top of other elements */
+
+}
+
+.navbar a {
+    color: white; /* Override text color specifically for navbar */
+}
+
+/* Wrapper for the entire navigation bar except the light/dark switch */
+/* Used to change the overall width of the navbar to make space for switch */
+.navbar__list-wrapper {
+    width: 90%; /* 90% of the navbar width, make space for switch */
+}
+
+/* The entire navigation bar except the light/dark switch */
+.navbar__list {
+    display: flex;
+    align-items: center; /* Align list items vertically */
+    flex: 1;
+    height: 100%;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Style for each Link component, acting as a navigation item */
+.navbar__list a { /* Adjust this selector based on how you've implemented the Link component */
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    text-decoration: none; /* Remove underline from links */
+}
+
+/* Each item (tab) in the navigation bar */
+.navbar__list li {
+    cursor: pointer;
+    width: 100%; /* Ensure the list item takes up full width */
+    height: 100%; /* Ensure the list item takes up full height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none; /* Remove underline */
+    color: white;
+}
+
+
+/* Each active item (tab) in the navigation bar */
+.navbar__link-active {
+    background-color: gray;
+    text-decoration: none; /* remove underline */
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    color: white; 
+}
+.navbar__link-active.clicked {
+    color: red; /* Change to your desired click color */
+}
+
+
+/* Wrapper for all items in the top right corner of the navigation bar */
+.top-right-items {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: auto; /* Fill up the rest of the navbar space */
+    height: 100%;
+
+}
+
+
+/* Container for GitHub Logo */
+/* ::before and :active cause logo to turn gray when clicked */
+.github-logo-link {
+    content: 'GitHub'; /* Text to show on hover */
+    align-self: center;
+    aspect-ratio: 1/1;
+    height: 32px;
+    background-image: url('../images/github_logo.png');
+    border: 1.5px solid white;
+    border-radius: 50%;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+/* Container for the dark mode toggle switch */
+.toggle__container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-left: 10px;
+    margin-right: 10px;
+    align-items: center;
+    width: 100%; /* Fill up the rest of the navbar space */
+}

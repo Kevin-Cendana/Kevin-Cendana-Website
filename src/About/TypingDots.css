@@ -1,0 +1,161 @@
+/*--------------------------------------------------------------------------------------//
+//                                Typing Dots Animation                                 //
+//--------------------------------------------------------------------------------------*/
+
+:root {
+    --window-width: 100vw;  /* 100% of viewport width */
+    --window-height: 100vh; /* 100% of viewport height */
+    --secondDotColor: rgb(84, 84, 84);
+    --speechBubbleColor: #f0f0f0;
+  }
+
+* {
+  overflow: visible; /* so the speech bubble 'tail' can be seen */
+}
+
+.typingDots {
+    box-sizing: content-box;
+    visibility: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;        /*Vertically center dots*/
+    justify-content: center;    /*Horizontally center dots*/
+    width: 1.8em;
+    height: 1.35em;
+    margin-top: 12px;
+    padding: .5rem .9rem; /* h/w gap b/t edge and outside container */
+    background-color: var(--speechBubbleColor);
+    border-radius: 50px;
+    transition: opacity .3s, visibility .3s .3s;   
+    z-index: 2;
+}
+
+  /* The bottom circle for the speech bubble 'tail' */
+.typingDots::before {
+    opacity: 1;
+    content: "";
+    position: absolute;
+    bottom: -7px; /* position circle below the container */
+    left: -10px; /* position circle to the left */
+    width: 0.35em;
+    height: 0.35em;
+    background-color: var(--speechBubbleColor);
+    border-radius: 50%;
+    z-index: 1; /* send circle behind the main container */
+    animation: beforeDotAnimation 1.0s infinite;
+}
+
+  /* The upper circle for the speech bubble 'tail' */
+.typingDots::after {
+    opacity: 1;
+    content: "";
+    position: absolute;
+    bottom: -0.5px; /* position circle further below */
+    left: -3px; /* position circle to the left */
+    width: 0.725em;
+    height: 0.725em;
+    background-color: var(--speechBubbleColor);
+    border-radius: 50%;
+    animation: afterDotAnimation 1.0s infinite;
+    z-index: 1;
+  }
+  
+  .dot {
+    width: .85em;
+    height: 0.60em;
+    border-radius: 80%;
+    background-color: #B3B3B3; /* Lighter grey by default */
+    margin: 0 2.2px; /* gap b/t dots */
+    transform: scale(1); /* Default size */
+  }
+
+  /* Keyframes for first dot */
+@keyframes colorChange1 {
+    0%, 100% {
+    background-color: var(--secondDotColor);
+      transform: scale(1); 
+    }
+    20%, 25% {
+      background-color: #9c9c9c;
+      transform: scale(1.05); 
+    }
+  }
+  
+  /* Keyframes for second dot */
+  @keyframes colorChange2 {
+    0%, 100% {
+      background-color: var(--secondDotColor);
+      transform: scale(1); 
+    }
+    50%, 55% {
+      background-color: #8a8a8a;
+      transform: scale(1.05); 
+    }
+  }
+  
+  /* Keyframes for third dot */
+  @keyframes colorChange3 {
+    0%, 100% {
+      background-color: var(--secondDotColor);
+      transform: scale(1); 
+    }
+    80%, 85% {
+      background-color: #8a8a8a;
+      transform: scale(1.05); 
+    }
+  }
+  
+  .dot:nth-child(1) {
+    animation: colorChange1 1.0s infinite;
+  }
+  
+  .dot:nth-child(2) {
+    animation: colorChange2 1.0s infinite;
+  }
+  
+  .dot:nth-child(3) {
+    animation: colorChange3 1.0s infinite;
+  }
+  @keyframes fadeInSlideUpAnimation {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .fadeInSlideUp {
+    animation: fadeInSlideUpAnimation 0.7s forwards;
+  }
+
+  .typingDotsVisible { /* When the typing dots are visible */
+    visibility: visible;
+}
+
+/*--------------------------------------------------------------------------------------//
+//                        FIX (old speech bubble code)                                    //
+//--------------------------------------------------------------------------------------*/
+
+  
+  .speechBubble { /* Speech Bubbles */
+    position: relative;
+    margin: .7rem 0 0 0; /* gap b/t edge and outside container */
+    border-radius: 1.5rem;
+    background-color: var(--speechBubbleColor);
+    justify-content: flex-end;
+    color: black;
+    align-self: flex-start;
+    display: inline-block;
+  }
+
+  .speechBubble1 {
+    visibility: hidden;
+  }
+  
+  .speechBubble p {
+    padding: .5rem 1.3rem; /* gap b/t text and edge of speech bubble */
+    color: black;
+  }
