@@ -14,60 +14,92 @@
 
 /* Projects */
 .projects {
-    --projects-title-font-size: 2rem;
+    --projects-title-font-size: 2.2rem;
     --projects-desc-font-size: 1.6rem;
     --projects-height: 60vh;
     --projects-min-height: 1000px;
-    --projects-background-color: white;
+    --projects-background-color: var(--offwhite);
     --projects-text-container-width: 50%;
+    --projects-text-container-max-width: 600px;
+    --projects-section-flex-direction: row;
     /* Carousel total space is pretty hard to calc: [base width * scale] + text left space - title padding */
+    --projects-text-spacer-up: 0px;
     --projects-text-spacer-left: -5px;
     --projects-title-padding: 16px;
-    --projects-extra-carousel-right-space: 
+    /* --projects-extra-carousel-right-space: 
     calc(
         var(--carousel-base-width) * 
         var(--carousel-scale) + 
         var(--projects-text-spacer-left) -
-        var(--projects-title-padding));
-
+        var(--projects-title-padding)); */
     display: flex;
+    position: relative;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     height: var(--projects-height);
     width: 100%;
-    background-color: var(--projects-background-color);
+    background-color: white;
+    /*! For debugging */
+    /* background-color: var(--projects-background-color);  */
+    background-color: var(--offwhite);
+}
+.projects.dark-mode {
+    background-color: black;
 }
 
 /* Project section including slideshow, text */
 .projects__section {
     position: relative;
     display: flex;
-    flex-direction: row;
+    flex-direction: var(--projects-section-flex-direction);
+    justify-content: flex-start;
     align-items: center;
     width: 100%;
 }
 
+/* Carousel container */
+.projects__carousel-wrapper {
+    min-width: 50%;
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
 
 /* Text container w/ individual slide titles, descriptions */
 .projects__text-container {
-    background-color: white;
+    position: relative;
+    background-color: rgb(250, 250, 250);
     font-size: var(--projects-desc-font-size);
     margin-left: var(--projects-extra-carousel-right-space);
     display: flex;
     align-self: flex-start;
     flex-direction: column;
     align-items: flex-start;
-    width: auto;
+    width: 50%;
+    max-width: var(--projects-text-container-max-width);
+    margin-top: var(--projects-text-spacer-up);
     margin-right: 1%;
+    /* border-radius: 1rem; */
+    box-shadow: 12px 10px 10px rgba(0,0,0,0.5); /* horizontal, vertical, blur, spread */
+    border: 1px solid black;
 }
+.projects__text-container:hover {
+    transform: scale(1.04);
+    transition: transform .5s ease-in-out;
+}
+
 .projects__title {
-    background-color: black;
     font-size: var(--projects-title-font-size);  
     font-family: 'Avenir Next', sans-serif;
     font-weight: bold;
-    color: white;
+    color: black;
     padding: var(--projects-title-padding);
+    margin: 0px;
+    text-wrap: nowrap;
+    /* border-top-left-radius: 1rem; */
+    /* border-radius: 1rem; */
 }
 .projects__title.dark-mode {
     background-color: white;
@@ -79,13 +111,38 @@
     color: black;
 }
 .projects__captions {
-    font-size: var(--projects-desc-font-size);
+    font-size: calc(var(--projects-desc-font-size) * 1.1);
+    justify-self: flex-start;
+    font-weight: 900;
+    color:black;
+    /* Change font color in the js file, not here. */
 }
 .row-wrapper {
+    margin-bottom: -2.2%;
     display: flex;
     flex-direction: row;
     align-items: center;
+    
 }
+
+/* Applies to all backgrounds based on Carousel Slide */
+.projects__background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    transition: background-image .5s ease-in-out;
+}
+
+a {
+    font-weight: bold;
+    /* color: rgb(0, 119, 255); */
+}
+
+
+
 
 /* Media Queries:
 /  By default w/o queries, I assume an average window size on desktop (~1400x900 px).
@@ -98,28 +155,72 @@
         --projects-background-color: red;
         --projects-height: 70vh;
         --projects-text-spacer-left: 200px;
-        --projects-title-font-size: 2.7rem;
-        --projects-desc-font-size: 2.08rem;
+        --projects-title-font-size: 2.5rem;
+        --projects-desc-font-size: 1.9rem;
         --projects-title-padding: 18px;
+        --projects-text-container-max-width: 770px;
+        --projects-section-flex-direction: row;
+    }
+}
+@media (min-width: 1800px) {
+    .projects {
+        --projects-background-color: darkred;
+        --projects-text-container-max-width: 900px;
     }
 }
 
 /* Standard tablet */
-@media (max-width: 1050px) {
+@media (max-width: 1350px) {
+    .projects {
+        --projects-background-color: darkorange;
+        --projects-text-container-max-width: 542px;
+    }
+}
+@media (max-width: 1200px) {
     .projects {
         --projects-background-color: orange;
-        --projects-height: 38vh;
-        --projects-text-spacer-left: -290px;
+        --projects-text-container-max-width: 500px;
         --projects-title-font-size: 1.55rem;
         --projects-desc-font-size: 1.3rem;
         --projects-title-padding: 12px;
+    }
+}
+@media (max-width: 1050px) {
+    .projects {
+        --projects-background-color: gold;
+        --projects-height: 60vh;
+        --projects-text-spacer-left: 0px;
+        --projects-title-font-size: 1.55rem;
+        --projects-desc-font-size: 1.3rem;
+        --projects-title-padding: 12px;
+        --projects-text-container-max-width: ;
+        --projects-text-spacer-up: 12%;
+        --projects-extra-carousel-right-space: 0;
+    }
+    /* Once the screen is too thin, desc goes below carousel */
+    .projects__section {
+        justify-content: center;
+        align-items: center;
+        flex-direction: column; 
+    }
+    .projects__carousel-wrapper {
+        /* background-color: black; */
+        display: flex;
+        justify-content: center;
+        height: 100%;
+        width: 100%;
+        min-width: 100%;
+    }
+    .projects__text-container {
+        max-width: 90%;
+        align-self: center;
     }
 }
 
 /* Standard smart phones */
 @media (max-width: 720px) {
     .projects {
-        --projects-background-color: yellow;
+        /* --projects-background-color: yellow; */
         --projects-height: 45vh;
         --projects-text-spacer-left: -362px;
         --projects-title-font-size: 1rem;
@@ -131,7 +232,7 @@
 /* Small smart phones */
 @media (max-width: 560px) {
     .projects {
-        --projects-background-color: green;
+        /* --projects-background-color: green; */
         --projects-height: 43vh;
         --projects-text-spacer-left: -412px;
         --projects-title-font-size: .9rem;

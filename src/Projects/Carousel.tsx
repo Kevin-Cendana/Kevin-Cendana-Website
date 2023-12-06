@@ -1,8 +1,10 @@
 //--------------------------------------------------------------------------------------//
 //                                     Carousel.tsx                                     //
+//          Credit: Large chunk of code from React Round Carousel by scriptex:          //
+//                  https://github.com/scriptex/react-round-carousel                    //
 //--------------------------------------------------------------------------------------//
 
-// Credit: Chunk of code from React Round Carousel by scriptex: https://github.com/scriptex/react-round-carousel
+
 
 
 import TouchSweep from 'touchsweep'; // For touch gestures.
@@ -202,7 +204,7 @@ export const Carousel: FC<CarouselProps> = forwardRef((
                         }} className={getClassName('__slide')}>
                             <img src={item.image} alt={item.alt} />
                             <div className={getClassName('__slide-overlay')}>
-                                {item.content}
+                                {/* {item.content} */}
                             </div>
                         </div>
                     ))}

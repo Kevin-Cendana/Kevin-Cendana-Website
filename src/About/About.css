@@ -32,24 +32,25 @@
     --about-font-size-name: 1.8rem;
     --about-alias-font-size: 1.2rem;
     --about-speech-bubble-font-size: 1.5rem;
-    --about-image-dimensions: 200px;
     --about-element-margin: 0px;
-    /* --about-background-color: rgb(201, 239, 254); */
-    --about-background-color: rgb(148, 148, 148);
+    --about-background-color: var(--offwhite);
     display: flex;
     flex-direction: column;
     height: 340px;
     width: 100%;
     margin-bottom: var(--base-margin);
     flex-direction: row;
-
     border-radius: var(--base-border-radius);
-    background-color: var(--about-background-color);
+    overflow: visible;
+    background-color: var(--about-background-color); 
+    /* border-top: .7rem solid white;
+    border-bottom: .7rem solid white; */
+    z-index: 1; /* Avoid covering polaroids w/ bg color */
 }
 
 /* todo finish about */
 .about__left, .about__right {
-    visibility: hidden;
+
 }
 
 /* style the left side of the about page */
@@ -64,16 +65,20 @@
     align-self: center;
 }
 
+.about__polaroid-wrapper {
+    width: 50%;
+    height: 50%;
+    margin-bottom: 25px;
+}
+
 .about__left-image-container {
-    width: var(--about-image-dimensions);
-    min-width: var(--about-image-dimensions);
-    height: var(--about-image-dimensions);
-    min-height: var(--about-image-dimensions);
+    height: 100%;
+    width: 100%;
     border: 1px solid black;
     display: flex;
     justify-content: center;
     box-shadow: 5px 5px 10px grey; /*vertical, horizontal, blur radius */
-    background-image: url('../images/polaroid.png');
+    background-image: url('../images/self-headshot.png');
     background-color: white;
     background-size: cover;
     background-repeat: no-repeat;
@@ -125,32 +130,6 @@
     width: calc(90% + var(--about-element-margin));
 }
 
-@keyframes pop-in {
-    0% {
-      transform: scale(0); /* Start from nothing */
-      opacity: 0; /* Start from fully transparent */
-    }
-    70% {
-      transform: scale(1.03); /* Grow past the final size */
-      opacity: 1; /* Fully visible */
-    }
-    90% {
-    }
-    100% {
-      transform: scale(1); /* Shrink back to the final size */
-    }
-}
-
-.about__feature-container {
-    height: 100%;
-    width: 100%;
-    
-    display: flex;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-}
 
 /* Media Queries:
     By default, I code considering an average window size on desktop (~1400x900 px).
@@ -160,41 +139,26 @@
 /* very wide screens */
 @media (min-width: 1600px) {
     :root {
-        --about-font-size-name: 1.9rem;
-        --about-alias-font-size: 1.25rem;
-        --about-speech-bubble-font-size: 1.7rem;
-        --about-image-dimensions: 220px;
-        --about-background-color: blue;
+
     }
 }
 
 /* standard tablet */
 @media (max-width: 1050px) {
     :root {
-        --about-font-size-name: 1.6rem;
-        --about-alias-font-size: 1.05rem;
-        --about-speech-bubble-font-size: 1.3rem;
-        --about-image-dimensions: 180px;
-        --about-element-margin: 1%;
-        --about-background-color: red;
+
     }
 }
 
 /* standard smart phones */
 @media (max-width: 767px) {
     :root {
-        --about-font-size-name: 1.2rem;
-        --about-alias-font-size: .8rem;
-        --about-speech-bubble-font-size: 0.9rem;
-        --about-image-dimensions: 130px;
-        --about-element-margin: 3%;
-        --about-background-color: orange;
+
     }
 }
 
 /* very tiny screens */
 @media (max-width: 767px) and (max-height: 700px) {
     :root {
-        --about-background-color: yellow;
     }
 }

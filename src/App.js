@@ -11,7 +11,7 @@ import './normalize.css';
 import Home from './Home/Home';
 
 import About from './About/About';
-import Contact from './Contact/Contact';
+import ResumeContact from './ResumeContact/ResumeContact';
 import Projects from './Projects/Projects';
 import DarkModeToggle from './NavigationBar/DarkModeToggle';
 import NavigationBar from './NavigationBar/NavigationBar';
@@ -19,12 +19,12 @@ import NavigationBar from './NavigationBar/NavigationBar';
 function App() {
   return (
     <Router>
-        <div className="main-content">
-          <NavigationBar />
+        <NavigationBar />
+        <div className="main-content">    
           <Home />
           <About />
           <Projects />
-          <Contact />
+          <ResumeContact />
         </div>
         <footer></footer>
     </Router>

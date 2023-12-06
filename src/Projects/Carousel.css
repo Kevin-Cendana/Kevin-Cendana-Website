@@ -7,22 +7,22 @@
     --carousel-scale: 2;
     --carousel-base-width: 13.125rem;
     --carousel-left-margin: 110px;
+	--carousel-bottom-margin: 0px;
 }
 
 
 /* Overall container of the carousel. Sets width, height, and perspective. */
 .carousel {
-    /* --carousel-background-color: blue; */
-    background-color: var(--carousel-background-color);
-    position: absolute;
+    background-color: var(--carousel-background-color); /* For debugging */
     left: var(--carousel-left-margin); /* Entire carousel is always 110px from left side of screen. */
-    display: flex;
+    bottom: var(--carousel-bottom-margin);
+	display: flex;
     transform: scale(var(--carousel-scale));
+	transform-origin: center;
 	width: var(--carousel-base-width); /* Increases width of container, not slides. */
 	height: 13.125rem; /* Increases height of container, not slides. */
 	position: relative;
 	perspective: 62.5rem; /* Increasing makes the carousel fan out more. */
-    
 }
 
 /* The container that holds the individual slides. */
@@ -42,14 +42,13 @@
 	height: 11.875rem;  /* Increases width of each slide, but not container. */
 	left: 0.625rem;
 	top: 0.625rem;
-	border: 0.125rem solid;
+	border: 0.1rem solid;
 	transition: transform 1s, opacity 1s;
 
 }
 
 /* Styles for the image in each slide. */
 .carousel__slide img {
-    border: 2px solid black;
 	width: 100%; /* Resizes only the image, not container. will poke through */
 	height: 100%;
 	display: block;
@@ -70,8 +69,8 @@
 	bottom: 0;
 	left: 0;
 	opacity: 0;
-	transition: opacity 0.35s ease-in-out;
-	background-color: rgba(0, 0, 0, 0.7);
+	/* transition: opacity 0.35s ease-in-out; */
+	/* background-color: rgba(0, 0, 0, 0.7); */
 	user-select: none;
 }
 
@@ -112,32 +111,51 @@
     }
 }
 
-/* Standard tablet */
-@media (max-width: 1100px) {
+/* Standard tablet (a lot of measurements here to be really precise) */
+@media (max-width: 1350px) {
 	.carousel {
-        --carousel-scale: 1.85;
-		--carousel-left-margin: 70px;
+		/* border: 50px solid red; */
+        --carousel-scale: 1.8;
+		--carousel-left-margin: 82px;
+		--carousel-bottom-margin: 0px;
     }
 }
+@media (max-width: 1200px) {
+	.carousel {
+		/* border: 50px solid orange; */
+        --carousel-scale: 1.72;
+		--carousel-left-margin: 74px;
+    }
+}
+@media (max-width: 1100px) {
+	.carousel {
+		/* border: 50px solid yellow; */
+        --carousel-scale: 1.6;
+		--carousel-left-margin: 60px;
+    }
+}
+
 @media (max-width: 1050px) or (max-height: 864px) {
     .carousel {
-        --carousel-scale: 1.25;
-        --carousel-left-margin: 18px;
+		/* border: 50px solid green; */
+        --carousel-scale: 1.6;
+		--carousel-left-margin: 0px;
+		position: relative;
+		display: flex;
+		align-self: center;
     }
 }
 
 /* Standard smart phones */
 @media (max-width: 720px) {
     .carousel {
-        --carousel-scale: 1;
-        --carousel-left-margin: -5px;
+        --carousel-scale: 1.2;
     }
 }
 
 /* Small smart phones */
 @media (max-width: 560px) {
     .carousel {
-        --carousel-scale: .87;
-        --carousel-left-margin: -22px;
+        --carousel-scale: 1.15;
     }
 }

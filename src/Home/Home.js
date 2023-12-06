@@ -4,6 +4,7 @@
 // Credit for rotating text animation: https://www.npmjs.com/package/react-rotating-text?activeTab=readme
 import ReactRotatingText from './RotatingText';
 import React, { useState, useEffect } from 'react';
+import './StarsBackground.scss';
 import './Home.css';
 import '../normalize.css';
 
@@ -17,6 +18,9 @@ function Home() {
     
     return (
         <div className = "home " id = "home">
+            <div id="stars"></div>
+            <div id="stars2"></div>
+            <div id="stars3"></div>
             <div className="home__left">
             <div className="home__text-container">
                 <div className="block-wrapper">
@@ -25,7 +29,7 @@ function Home() {
                         <ReactRotatingText items={[
                             'Computer Science Student',
                             'Web Developer',
-                            'Enthusiastic Programmer']} />
+                            'Software Engineer']} />
                     </p>
                 </div>
             </div>

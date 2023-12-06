@@ -29,7 +29,10 @@ function NavigationBar() {
                     <Link className={getActiveClass('projects')} to="projects" offset={-150} spy={true}>
                         <li>Projects</li>
                     </Link>
-                    <Link className={getActiveClass('contact')} to="contact" spy={true}>
+                    <Link className={getActiveClass('resume-contact')} to="resume-contact" spy={true}>
+                        <li>Resume</li>
+                    </Link>
+                    <Link className={getActiveClass('resume-contact')} to="resume-contact" spy={true}>
                         <li>Contact</li>
                     </Link>
                 </ul>
