@@ -10,29 +10,48 @@
   font-style: normal;
 }
 
-:root {
-  --offwhite: rgb(251, 251, 251);
+@font-face {
+  font-family: "F21";
+  src: url('fonts/F21.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
 }
 
-/* style ALL elements */
+:root {
+  --app-light-mode-color: rgb(245, 245, 245); /* Old: 251 */
+  --app-dark-mode-color: rgb(0, 0, 0);
+  --navbar-height: 2.3rem;
+  --section-margin: clamp(1rem, 2vw, .2rem) clamp(0.6rem, 2vw, 10.2rem); /* top/bottom, left/right */
+}
+:root.dark-mode{
+  background-color: var(--app-dark-mode-color);
+}
+
+
+/* Styling all elements */
 *, *:before, *:after {
-  transition: background-color 0.5s ease, color 0.5s ease, border-color 0.5s ease;
   box-sizing: border-box;
-  color: black;
   padding: 0;
   margin: 0;
   -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
   -moz-box-sizing: border-box;    /* Firefox, other Gecko */
   box-sizing: border-box;         /* Opera/IE 8+ */
   overflow: hidden;
+  transition: background-color 0.7s ease;
+  /* z-index: 0; */
 }
-*.dark-mode, *.dark-mode:before, *.dark-mode:after {
-  transition: background-color 03.s ease, color 0.5s ease, border-color 0.5s ease;
-  color: white;
+*.dark-mode {
+  transition: background-color 0.7s ease;
 }
+
+html.dark-mode, body.dark-mode {
+  background-color: (--app-dark-mode-color);
+}
+
 html {
   font-size: clamp(14px, 4vw, 18px); 
   scroll-behavior: smooth;
+  background-color: rgb(255, 255, 255);
 }
 body, html {
   margin: 0;
@@ -41,39 +60,73 @@ body, html {
   width: 100%;
 }
 
-
-/* style the main content in the middle of the page*/
-/* put stuff here to apply to the main body of all pages */
-.main-content {
-  width: 100%;
-  height: 100%;  /* !note: don't forget to include the nav bar in calculations*/
+.app {
   display: flex;
   flex-direction: column;
-  margin: 0;
-  background-color: var(-offwhite);
+  width: 100%;
+  height: 100%;
 }
 
-/* animation makes element move left->right */
-@keyframes slide-in {©
-  0% {
-    /* starting position (left edge) */
-    left: -7%;
+/* Container for all content except nav bar */
+.app-main-content {
+  width: 100%;
+  height: 100%; 
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(-app-light-mode-color);
+}
+.app__main-content.dark-mode {
+  background-color: var(--app-dark-mode-color);
+  /* background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%); */
+}
+
+/* Applies to all sections: Home, Skills, About, Projects, Resume, Contact */
+section {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  margin: var(--section-margin);
+  border: .05rem solid black;
+  box-shadow: .8rem .65rem .4rem rgba(0,0,0,0.5); /*  horizontal, vertical, blur, spread */
+}
+section.dark-mode {
+  border: .05rem solid white;
+  /* box-shadow: .8rem .65rem .4rem rgba(158, 158, 158, 0.5); */
+}
+
+footer {
+  display: flex;
+  flex-direction: row;
+  height: 3rem;
+  width: 100vw;
+  color: white;
+  background-color: black;
+}
+.footer-left, .footer-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+  height: 100%;
+}
+.footer-left {
+  align-items: flex-start;
+  padding-left: 1rem;
+}
+.footer-right {
+  align-items: flex-end;
+  padding-right: 1rem;
+}
+/* Animations */
+@keyframes baseFadeInSlideRight {
+  from {
+      opacity: 0;
+      transform: translateX(-2%); /* Start from the original position */
   }
-  100% {
-    /* ending position (right edge) */
-    left: 0%;
-    transform: translateX(-0%);
+  to {
+      opacity: 1;
+      transform: translateX(0%); /* End 1% to the right */
   }
 }
-/* animation makes element fade in*/
-.fade-in {
-  animation: fade-in 3s;
-}
-@keyframes fade-in {
-  0% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
+

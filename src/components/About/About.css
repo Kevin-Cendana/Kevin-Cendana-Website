@@ -1,0 +1,136 @@
+/*--------------------------------------------------------------------------------------//
+//                                      About.css                                        //
+//--------------------------------------------------------------------------------------*/
+
+/* Fonts */ 
+@font-face {
+    font-family: 'Avenir Next', sans-serif;
+    src: url('../../fonts/Avenir-Next.otf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Avenir Next', sans-serif;
+    src: url('../../fonts/Avenir-Next-Bold.otf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+}
+
+/* All elements */
+*, *:before, *:after {
+    box-sizing: border-box;
+    font-family: 'Thasadith', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* About Section */
+.about {
+    --about-height: clamp(50vw, 68vh, 59vw);
+    --about-speech-bubble-font-size: clamp(0.8rem, 2.5vw, 1.7rem);
+    --about-background-color: var(--app-light-mode-color);
+    --about-image-dimensions: clamp(190px, 30vw, 370px);
+    --about-speech-bubble-max-width: clamp(230px, 50vw, 600px);
+    --about-image-margin-left: auto;
+    display: flex;
+
+    align-items: center;
+    justify-content: center; 
+    height: var(--about-height);
+    min-height: 420px; /* lol nice */
+    max-height: 700px;
+    flex-direction: column;
+    background-color: var(--app-light-mode-color);
+    /* For easy debugging with media queries: Turn on background color & change w/ window size*/
+    /* background-color: var(--about-background-color);  */
+}
+.about.dark-mode {
+    background-color: var(--app-dark-mode-color);
+}
+
+/* Header at the top of the section */
+.about__header {
+    padding: 0;
+    height: clamp(1.3rem, 8vw, 6rem);
+    font-size: clamp(1.65rem, 4.8vw, 3rem);
+    font-family: 'Avenir Next', sans-serif;
+    font-weight: 400;
+    display: flex;
+    align-items: center;
+}
+
+/* Wrapper for the left and right sides of the about page */
+.about__wrapper {
+    display: flex;
+    flex-direction: row;
+    padding-top: clamp(1rem, 1vw, 2rem);
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 78%;
+    transform: translateX(1.2rem);
+}
+
+/* Left side of the about page w/ picture of me, title */
+.about__left {
+    display: flex;
+    height: 100%;
+    width: 40%;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-end;
+    z-index: 0;
+}
+
+/* Wrapper for the polaroid wireframe in PolaroidStack.css */
+.about__polaroid-wrapper {
+    display: flex;
+    /* transform: translateY(5%);  */
+    aspect-ratio: 1/1.1;
+    min-width: var(--about-image-dimensions);
+}
+
+/* Container for image of me */
+.about-image-container {
+    height: 100%;
+    width: 107%;
+    display: flex;
+    box-shadow: 5px 5px 10px grey; /*vertical, horizontal, blur radius */
+    background-image: url('../../images/kevin_and_emma.png');
+    background-size: cover;
+    transform: translateX(-5%);
+    animation: pop-in 0.52s cubic-bezier(0, 1.05, 0.3, 1) forwards;
+        /* 1st argument: how fast animation starts (0 = instant, 1 = slow)
+            2nd argument: intensity of initial animation 
+            3rd argument: how fast animation ends
+            4th argument: intensity of final part of animation */
+}
+
+/* Right side of the about page with the text bubbles */
+.about__right {
+    display: flex;
+    aspect-ratio: 1/1;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100%;
+    width: 60%; 
+    font-size: var(--about-speech-bubble-font-size);
+
+    display: flex;
+    height: 100%;
+    z-index: 0;
+}
+
+/* Container for the text bubbles */
+.about__typing-dots-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    transform: translateY(-3%);
+
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    max-width: var(--about-speech-bubble-max-width);
+}

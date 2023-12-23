@@ -1,0 +1,258 @@
+/*--------------------------------------------------------------------------------------//
+//                                   ResumeContact.css                                   //
+//                Both in one file since they are both small components.                //
+//--------------------------------------------------------------------------------------*/
+
+/* Resume Contact Section */
+.resume-contact {
+    height: 51vh;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    padding-bottom: 2.8rem;
+    --input-gap: clamp(0.2rem, 1vw, 1.25rem);
+    --input-padding: clamp(0.25rem, 1vw, 0.5rem); 
+    --button-width: clamp(1rem, 4.2vw, 1.5rem); 
+    --resume-contact-header-font-size: clamp(1rem, 6vw, 2.2rem);;
+    --resume-icon-width: calc(var(--resume-contact-header-font-size) * 0.5);
+}
+/* Styles for both */
+.resume, .contact {
+    background-color: var(--app-light-mode-color);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 1.5rem;
+}
+.resume-contact.dark-mode, .resume.dark-mode, .contact.dark-mode {
+    background-color: var(--app-dark-mode-color);
+    color: white;
+}
+.resume-contact h2 {
+    font-family: 'Avenir Next', sans-serif;
+    font-weight: 400;
+    margin-bottom: 1rem;
+    display: flex;
+
+    /* Dynamic font-size using clamp */
+    font-size: var(--resume-contact-header-font-size);
+}
+
+
+
+/* Resume */
+.resume {
+    display: flex;
+    flex-direction: column;
+    width: 668px;
+    min-width: 668px;
+}
+/* Resume container for header: title + buttons */
+.resume-header {
+    display: flex;
+    flex-direction: row;
+    align-self: center;
+
+    margin-bottom: 1rem;
+    width: auto;
+    height: var(--resume-contact-header-font-size); /* Height = header font size */
+}
+.resume-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+.resume__image__container {
+    display:f lex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: 0px;
+    padding: 0px;
+}
+/* The actual image */
+.resume__image__container img {
+    aspect-ratio: 1/1.2;
+    width: 270px;
+    border: 1px solid black;
+    background-color: black;
+}
+/* Size of both the image and the slide out with all the skills. */
+.resume__image__container img, .resume-slide-out {
+    aspect-ratio: 1/1.2;
+    width: 270px;
+    box-shadow: .4rem .4rem .5rem rgba(0,0,0,0.5);
+}
+/* Slide out with all the skills */
+.resume-slide-out {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 1rem;
+    margin-left: 1.5rem;
+    margin-top: -5px;
+    height: 324px;
+    border: 1px solid black;
+    background-color: white;
+}
+/* Magnifying glass icon */
+.resume__image__magnifying-icon {
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    width: clamp(1.9rem, 5vw, 2rem); 
+    aspect-ratio: 1/1;
+    pointer-events: none; /* Prevents the icon from being clicked, so you can click the image behind it */
+    background-image: url('../../images/magnifying_glass_icon.png');
+    background-repeat: no-repeat;
+    background-size: contain;
+    animation: bounceAndPause 4s linear infinite; /* Total duration includes bounces and pauses */
+}
+/* Resume buttons for download + open in new window */
+.resume-button {
+    position: absolute;
+    display: flex;
+    bottom: 0;
+    left: 0;
+    aspect-ratio: 1/1;
+    width: var(--button-width);
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-color: white;
+    border: none;
+}
+
+.download {
+    background-image: url('../../images/download_icon.png');
+    margin: 0 0 .7rem .5rem;
+}
+
+.new-window {
+    background-image: url('../../images/new_window_icon.png');
+    margin: 0 0 .7rem 2.7rem;
+}
+
+.download.dark-mode, .new-window.dark-mode {
+    filter: invert(100);
+    
+}
+
+/* Magnifying glass animation: Bounce up and down twice with the second bounce shorter, then repeat. */
+@keyframes bounceAndPause {
+    0%, 10%, 20%, 50%, 60%, 90%, 100% { transform: translateY(0); } /* Starting, ending, and pause positions */
+    5% { transform: translateY(-4px); } /* Peak of the first bounce */
+    10% { transform: translateY(4px); } /* Bottom of the first bounce */
+    15% { transform: translateY(-1.5px); } /* Peak of the second bounce, made shorter */
+    20%, 90% { transform: translateY(0); } /* End of the second bounce and start of the second pause */
+}
+
+
+/* list */
+.attributes-list {
+    display: none; /* Initially hide all lists */
+    list-style: none; /* Removes bullet points from lists */
+}
+
+.attribute {
+    margin-bottom: 1rem;
+    opacity: 1;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    transform: translateX(0);
+}
+
+.attribute-text {
+    font-size: 1.4rem;
+}
+
+.fa-svg-icon {
+    font-size: 1.5em; 
+    color: #333; 
+    margin-right: 5rem; 
+    transition: color 0.3s; 
+}
+
+.hide {
+    transform: translateX(120px); /* Slide right */
+    opacity: 0; /* Fade out */
+}
+
+
+
+/*--------------------------------------------------------------------------------------//
+//                                       Contact                                        //
+//--------------------------------------------------------------------------------------*/
+
+.contact {
+    display: flex;
+    flex-direction: column;
+    width: fill-available;
+}
+
+/* Contact header */
+.contact-header {
+    display: flex;
+    flex-direction: row;
+    /* align-self: center; */
+}
+
+.contact-container {
+    color: black;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+
+.contact-info {
+    margin-bottom: 1rem;
+}
+
+.contact-form {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group {
+    height: 2.2rem;
+    color: black;
+    display: flex;
+    gap: var(--input-gap);
+    margin-bottom: 1rem;
+}
+
+.input-group input,
+.contact-form textarea {
+    padding: var(--input-padding);
+}
+
+.contact-form textarea {
+    height: 150px; /* Consider making this responsive as well */
+    resize: none;
+}
+
+/* Contact Form Send Button */
+.contact-submit-button {
+    /* background-color: var(app-light-mode-color); */
+    background-color: rgb(216, 216, 216);
+    border-color: white;
+    color: #000;
+    border: none;
+    padding: 0.5rem;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background-color 0.3s ease;
+}
+
+.contact-submit-button:hover {
+    background-color: #414141;
+    color: #fff;
+}
+
+
