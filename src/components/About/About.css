@@ -2,135 +2,218 @@
 //                                      About.css                                        //
 //--------------------------------------------------------------------------------------*/
 
-/* Fonts */ 
-@font-face {
-    font-family: 'Avenir Next', sans-serif;
-    src: url('../../fonts/Avenir-Next.otf') format('truetype');
-    font-weight: 400;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'Avenir Next', sans-serif;
-    src: url('../../fonts/Avenir-Next-Bold.otf') format('truetype');
-    font-weight: 700;
-    font-style: normal;
-}
-
-/* All elements */
-*, *:before, *:after {
-    box-sizing: border-box;
-    font-family: 'Thasadith', sans-serif;
-    margin: 0;
-    padding: 0;
-}
-
-/* About Section */
+/* About Section - Main container for the about section */
 .about {
-    --about-height: clamp(50vw, 68vh, 59vw);
-    --about-speech-bubble-font-size: clamp(0.8rem, 2.5vw, 1.7rem);
-    --about-background-color: var(--app-light-mode-color);
-    --about-image-dimensions: clamp(190px, 30vw, 370px);
-    --about-speech-bubble-max-width: clamp(230px, 50vw, 600px);
-    --about-image-margin-left: auto;
     display: flex;
-
     align-items: center;
-    justify-content: center; 
-    height: var(--about-height);
-    min-height: 420px; /* lol nice */
-    max-height: 700px;
+    justify-content: center;
     flex-direction: column;
+    height: clamp(50vw, 57vw, 59vw);
+    min-height: 350px;
+    max-height: 700px;
     background-color: var(--app-light-mode-color);
-    /* For easy debugging with media queries: Turn on background color & change w/ window size*/
-    /* background-color: var(--about-background-color);  */
 }
+
+/* Dark Mode - Applies dark mode styling to about section */
 .about.dark-mode {
     background-color: var(--app-dark-mode-color);
 }
 
-/* Header at the top of the section */
+/* Header - Title for About section */
 .about__header {
-    padding: 0;
-    height: clamp(1.3rem, 8vw, 6rem);
-    font-size: clamp(1.65rem, 4.8vw, 3rem);
-    font-family: 'Avenir Next', sans-serif;
-    font-weight: 400;
     display: flex;
     align-items: center;
+    height: clamp(1.3rem, 8vw, 6rem);
+    padding: 0;
+    opacity: 0;
+
+    font-size: clamp(1.65rem, 4.8vw, 3rem);
+    font-weight: 400;
 }
 
-/* Wrapper for the left and right sides of the about page */
+/* Dark Mode - Applies dark mode styling to about section header */
+.about__header.dark-mode {
+    color: white;
+}
+
+/* Wrapper - Wrapper for left and right sides of the about page */
 .about__wrapper {
     display: flex;
     flex-direction: row;
-    padding-top: clamp(1rem, 1vw, 2rem);
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 78%;
+    height: 78%; /* Increases this moves the pic + speech bubbles down */
+    padding-top: clamp(1rem, 1vw, 2rem);
     transform: translateX(1.2rem);
 }
 
-/* Left side of the about page w/ picture of me, title */
+/* Left Side - Left part of the about page with picture and title */
 .about__left {
     display: flex;
-    height: 100%;
-    width: 40%;
     flex-direction: column;
-    justify-content: flex-start;
     align-items: flex-end;
+    justify-content: flex-start;
+    width: 40%;
+    height: 100%;
     z-index: 0;
 }
 
-/* Wrapper for the polaroid wireframe in PolaroidStack.css */
+/* Polaroid Wrapper - Wrapper for polaroid wireframe */
 .about__polaroid-wrapper {
     display: flex;
-    /* transform: translateY(5%);  */
     aspect-ratio: 1/1.1;
-    min-width: var(--about-image-dimensions);
+	margin-right: 1.6vw;
+    min-width: clamp(174px, 30vw, 370px);
+    opacity: 0; /* Hide until animation */
+}
+.about__polaroid-wrapper.animate-polaroid-wrapper {
+    animation: baseFadeInSlideRight 0.85s ease-out forwards;
 }
 
-/* Container for image of me */
+/* Image Container - Contains the image in the about section */
 .about-image-container {
+    display: flex;
     height: 100%;
     width: 107%;
-    display: flex;
-    box-shadow: 5px 5px 10px grey; /*vertical, horizontal, blur radius */
+    transform: translateX(-5%);
+
+    box-shadow: 5px 5px 10px grey; /* Vertical, horizontal, blur radius */
     background-image: url('../../images/kevin_and_emma.png');
     background-size: cover;
-    transform: translateX(-5%);
     animation: pop-in 0.52s cubic-bezier(0, 1.05, 0.3, 1) forwards;
-        /* 1st argument: how fast animation starts (0 = instant, 1 = slow)
-            2nd argument: intensity of initial animation 
-            3rd argument: how fast animation ends
-            4th argument: intensity of final part of animation */
 }
 
-/* Right side of the about page with the text bubbles */
+/* Right Side - Right side of the about page with text bubbles */
 .about__right {
     display: flex;
-    aspect-ratio: 1/1;
     flex-direction: column;
-    justify-content: center;
     align-items: flex-start;
+    justify-content: center;
     height: 100%;
-    width: 60%; 
-    font-size: var(--about-speech-bubble-font-size);
+    width: 60%;
+    aspect-ratio: 1/1;
 
-    display: flex;
-    height: 100%;
+    font-size: clamp(0.7rem, 2.3vw, 1.7rem);
+
     z-index: 0;
 }
 
-/* Container for the text bubbles */
+/* Typing Dots Wrapper - Container for text bubbles */
 .about__typing-dots-wrapper {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     transform: translateY(-3%);
-
     height: 100%;
     width: 100%;
     margin: 0;
-    max-width: var(--about-speech-bubble-max-width);
+    max-width: clamp(230px, 50vw, 600px);
 }
+
+/*--------------------------------------------------------------------------------------//
+//                                   .Polaroid Code                                     //    
+//                      Credit: https://codepen.io/havardob/pen/jOwrXaJ                 //
+//--------------------------------------------------------------------------------------*/
+
+/* Custom Font - Polaroid Font */
+@font-face {
+    font-family: 'sam', sans-serif;
+    src: url('../../fonts/Sam.otf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* Stack - Container for polaroid cards */
+.polaroid__stack {
+	background-color: orange;
+	width: 85%;
+	max-width: 400px;
+	transition: .25s ease;
+	&:hover {			
+		transform: rotate(6deg);
+		.card:before {
+			transform: translatey(-4%) rotate(-8deg);
+		}	
+		.card:after {
+			transform: translatey(4%) rotate(8deg);
+		}
+	}
+}
+
+/* Card - Individual polaroid card */
+.polaroid__card {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	padding: 5% 5% 5% 5%;
+	border: 2.5px solid black;
+	background-color: white;
+	transition: .15s ease;
+	z-index: auto;
+	
+    /* Extra polaroid cards behind the main one */
+	&:before, &:after {
+		position: absolute;
+		display: block;
+		content: "";
+		height: 100%;
+		width: 100%;
+		background-color: white;
+		border: 2.5px solid;
+		transform-origin: center center;
+		transition: .15s ease;
+		top: 0;
+		left: 0;
+		z-index: -1;
+	}
+	&:before {
+		transform: translatey(-2%) rotate(-6deg);
+		z-index: -1;
+	}
+	&:after {
+		transform: translatey(2%) rotate(6deg);
+		z-index: -2;
+	}
+}
+/* Card Dark Mode - Styling for dark mode */
+.polaroid__card.dark-mode  {
+	background-color: var(--app-dark-mode-color);
+	border: 2.5px solid white;
+	&:before, &:after {
+		background-color: black;
+		border: 2.5px solid white;
+	}
+}
+
+/* Image - Polaroid image styling */
+.polaroid__image {
+	position: relative;
+	width: 100%;
+	height: 100%;
+	border: 2.5px solid black;
+	overflow: hidden;
+	background: url('../../images/snowflake_animation.gif') center/cover no-repeat, 
+	linear-gradient(to bottom, #c6efff, #ffffff);
+	background-size: cover;
+}
+.polaroid__image.dark-mode {
+	background: url('../../images/snowflake_animation.gif') center/cover no-repeat, 
+		linear-gradient(to bottom, #15009e, #adbaff);
+}
+
+/* Caption - Text caption for Polaroid */
+.polaroid__caption {
+	font-family: sam;
+	display: flex;
+	align-self: center;
+	justify-self: center;
+	margin-top: 5.5%;
+	margin-bottom: 2%;
+	font-size: clamp(1rem, 2.95vw, 1.95rem);
+	color: black;
+}
+.polaroid__caption.dark-mode {
+	color: white;
+}	

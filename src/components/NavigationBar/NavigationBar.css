@@ -2,15 +2,15 @@
 //                                NavigationBar.css                                    //
 //--------------------------------------------------------------------------------------*/
 
-/* Main container for the navigation bar */
+/* Navbar - Main container for the navigation bar */
 .navbar { 
     display: flex;
-    height: var(--navbar-height);
+    height: 2.3rem;
     width: 100%;
     text-decoration: none;
-    position: fixed; /* Make navbar fixed */
+    position: sticky; /* Make navbar fixed */
     top: 0;          /* Stick to the top */
-    z-index: 1000;   /* Ensure it stays on top of other elements */
+    z-index: 1000;   /* Ensure it stays on top of everything */
     background-color: var(--app-dark-mode-color);
 }
 .navbar.dark-mode{
@@ -24,7 +24,6 @@
     width: 90%; /* 90% of the navbar width, make space for switch */
 }
 
-
 /* The entire navigation bar except the light/dark switch */
 .navbar__list {
     display: flex;
@@ -37,14 +36,16 @@
 }
 
 /* Style for each Link component, acting as a navigation item */
-.navbar__list a { /* Adjust this selector based on how you've implemented the Link component */
+.navbar__list a { 
     flex: 1;
     display: flex;
+    font-family: 'SF Pro Display', sans-serif;
+    font-weight: 500;
+    font-size: clamp(.75rem, 2vw, 1rem);
     justify-content: center;
     align-items: center;
     height: 100%;
     text-decoration: none; /* Remove underline from links */
-
 }
 
 /* Each item (tab) in the navigation bar */
@@ -75,7 +76,6 @@ li:active{
     position: relative;
     background-color: white;
     color: black;
-    border: 1px solid black; /* Base border */
 }
 
 /* Wrapper for all items in the top right corner of the navigation bar */
@@ -98,7 +98,7 @@ li:active{
     aspect-ratio: 1/1;
     height: 32px;
     margin-left: .8rem;
-    background-image: url('../../images/github_logo.png');
+    background-image: url('../../images/github_icon.png');
     border: 1.5px solid white;
     border-radius: 50%;
     background-size: cover;

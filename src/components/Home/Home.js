@@ -2,38 +2,58 @@
 //                                         Home                                         //
 //--------------------------------------------------------------------------------------//
 // Credit for rotating text animation: https://www.npmjs.com/package/react-rotating-text?activeTab=readme
-import ReactRotatingText from './RotatingText';
-import React, { useState, useEffect } from 'react';
-import './Home.css';
-import '../../normalize.css';
+
+// Libraries & Files
+import useInView from '../../hooks/useInView';      // Import custom hook to check if an element is in the viewport
+import ReactRotatingText from './RotatingText';     // Import rotating text component
+import React, { useRef, useEffect } from 'react';   // Import React features
+import classNames from 'classnames';                // Import classnames for dynamic className assignment
+import { useDarkMode } from '../../shared/DarkModeToggle/DarkModeContext'; // Import custom hook for dark mode state
+import './Home.css';          // Import CSS for Home component
+import '../../normalize.css'; // Import normalize.css for CSS resets
+
+// Images
+import normalImage from '../../images/self-image.png';         // Import normal mode image of me
+import darkImage from '../../images/self-image-dark-mode.png'; // Import dark mode image of me
+
 function Home() {
+    // States for dark mode & checking if Home is in view
+    const { isDarkMode } = useDarkMode();          // Get dark mode state
+    const homeRef = useRef(null);                  // Create ref for home section
+    const isHomeInView = useInView                 // Check if home section is in view
+        (homeRef, { sectionName: 'home' });        
 
-    // Trigger animations when the page loads
-    useEffect(() => {
-        const imageContainer = document.querySelector('.home-image-container');
-        imageContainer.classList.add('start-animation');
-    }, []);
-    
+    // Determine the class for text container based on states
+    const textContainerClass = classNames({      
+        'home__text-container': true,
+        'animate-home-text-container': isHomeInView,
+        'dark-mode': isDarkMode 
+    });
+
+    // Render the Home section
     return (
-        <section className = "home " id = "home">
+        <section className = "home" id = "home" ref={homeRef}>
+            {/* Left side of the Home section w/ my name & rotating titles */}
             <div className="home__left">
-            <div className="home__text-container">
-                <div className="block-wrapper">
-                    <h1 className="home__text-name">Kevin Cendana</h1>
-                    <p className="home__text-alias">
-                        <ReactRotatingText items={[
-                            'Computer Science Student',
-                            'Web Developer',
-                            'Software Engineer']} />
-                    </p>
+                <div className={textContainerClass}>
+                    <div className="block-wrapper">
+                        {/* Text w/ my name & rotating titles */}
+                        <h1 className="home__text-name">Kevin Cendana</h1>
+                        <p className="home__text-alias">
+                            <ReactRotatingText items={[
+                                'Computer Science Student',
+                                'Web Developer',
+                                'Software Engineer']} />
+                        </p>
+                    </div>
                 </div>
             </div>
-            </div>
-            <div className="home__right">
-                <div className="home-image-container">
-
-                </div>
-            </div>
+            {/* Right side of the Home section w/ drawing of me, darkens on dark mode*/}
+            <img src={isDarkMode ? darkImage : normalImage} 
+                alt='Kevin Cendana Drawing' 
+                className = {`home-image ${isHomeInView ? 'animate-home-image' : ''}`} 
+                draggable = "false">
+            </img>
         </section>
     );
 }

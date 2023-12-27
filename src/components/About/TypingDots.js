@@ -14,17 +14,19 @@ const TypingDots = ({ startAnimation }) => {
   // Array of messages to be displayed
   const messageArray = [
     <>Hello! My name is Kevin.</>,
-    <>I'm currently a senior Comp Sci student here at Sac State, graduating in Spring 2024.<br></br></>,
-    <>I love coding as both work & as a pastime, but I also like manga, art, and getting boba & frozen yogurt with my partner, Emma.</>,
-    'Thank you for taking the time to visit my website!'
+    <>I'm currently a senior CS student here at Sac State, graduating in Spring.<br></br></>,
+    <>I love coding as both work & as a pastime, but I also like manga, art, and getting boba with my partner, Emma.</>,
+    <>Thank you for taking the time to visit my website!</>,
   ];
 
-  let delays = [0, 1500, 2000, 2000, 3000]; // Delays between messages
+  // Delays between messages in milliseconds
+  let delays = [0,0,0,0];
 
   // Effect hook to handle the display of messages and typing dots
   useEffect(() => {
-    // Check if animation should start
+    // Check if animation should start via passed in arg & if it's the first iteration
     if (startAnimation) { 
+
       // Function to display the next message
       const displayNextMessage = () => {
         if (currentMessageIndex < messageArray.length) {      // Check if there are more messages to display
@@ -35,7 +37,7 @@ const TypingDots = ({ startAnimation }) => {
           clearInterval(timerRef.current);                    // Clear interval when all messages are displayed
         }
       };
-
+      
       // Determine the duration for each interval based on the index
       const intervalDuration = currentMessageIndex < delays.length ? delays[currentMessageIndex] : 1000;
       timerRef.current = setInterval(displayNextMessage, intervalDuration); // Set interval for displaying messages
@@ -93,4 +95,4 @@ const TypingDots = ({ startAnimation }) => {
   return <div id="allSpeechBubblesWrapper">{renderSpeechBubbles()}</div>;
 };
 
-export default TypingDots; // Export the TypingDots component
+export default TypingDots; 

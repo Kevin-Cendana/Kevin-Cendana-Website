@@ -3,23 +3,57 @@
 //                Both in one file since they are both small components.                //
 //--------------------------------------------------------------------------------------//
 
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Zoom from 'react-medium-image-zoom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCoffee, faAnchor, faAppleAlt, faBolt } from '@fortawesome/free-solid-svg-icons'; // Import the icons you need
+import useInView from '../../hooks/useInView';
+import classNames from 'classnames';
+import { useDarkMode } from '../../shared/DarkModeToggle/DarkModeContext';
 import 'react-medium-image-zoom/dist/styles.css'; // source: https://www.npmjs.com/package/react-medium-image-zoom
-import DarkModeToggle from '../../shared/DarkModeToggle/DarkModeToggle';
 import './ResumeContact.css';
+
+// Images
 import resumeImage from '../../images/resume.png';
 
+// Icons: Hackathons
+import attIcon from '../../images/att_icon.png';
+import datafestIcon from '../../images/datafest_icon.png';
+import sachacksIcon from '../../images/sachacks_icon.png';
+
+// Icons: Languages
+import htmlIcon from '../../images/html_icon.png';
+import javascriptIcon from '../../images/javascript_icon.png';
+import cppIcon from '../../images/c++_icon.png';
+import dartIcon from '../../images/dart_icon.png';
+
+// Icons: Tech Stack
+import reactIcon from '../../images/react_icon.png';
+import jiraIcon from '../../images/jira_icon.png';
+import githubIcon from '../../images/github_icon.png';
+import vsCodeIcon from '../../images/vscode_icon.png';
+import flutterIcon from '../../images/flutter_icon.png';
+
+
+
 const attributeListOne = [
-  { text: 'attribute1', icon: faCoffee },
-  { text: 'attribute2', icon: faAnchor }
+  { text: 'AT&T: EmpowHer', icon: attIcon },
+  { text: 'DataFest', icon: datafestIcon },
+  { text: 'SacHacks', icon: sachacksIcon },
 ];
 
+
 const attributeListTwo = [
-  { text: 'attribute3', icon: faAppleAlt },
-  { text: 'attribute4', icon: faBolt }
+  { text: 'HTML & CSS', icon: htmlIcon },
+  { text: 'JavaScript', icon: javascriptIcon },
+  { text: 'C++', icon: cppIcon },
+  { text: 'Dart', icon: dartIcon },
+];
+
+const attributeListThree = [
+  { text: 'GitHub', icon: githubIcon },
+  { text: 'Jira', icon: jiraIcon },
+  { text: 'React', icon: reactIcon },
+  { text: 'Flutter', icon: flutterIcon },
+  { text: 'VS Code', icon: vsCodeIcon },
 ];
 
 function showAttributes() {
@@ -34,29 +68,67 @@ function showAttributes() {
     const currentList = allLists[currentListIndex];
     currentList.style.display = 'block';
 
+    // Select all .attribute elements in the current list
     const attributes = currentList.querySelectorAll('.attribute');
     attributes.forEach((attribute, index) => {
-      // Reset hide class for each attribute
-      attribute.classList.remove('hide');
-
-      // Set timeout to add hide class
+      // Immediately remove the hide class for fade-in effect
       setTimeout(() => {
-        attribute.classList.add('hide');
-      }, 6000 + 300 * index);
+        attribute.classList.remove('attribute-hide');
+      }, 100 * index); // Staggered fade-in
+
+      // Set timeout to add hide class, triggering fade out
+      setTimeout(() => {
+        attribute.classList.add('attribute-hide');
+      }, 5000 + 100 * index);
     });
 
-    // Set timeout for next list
+    // Set timeout for next list, including 400ms delay
     setTimeout(() => {
       // Move to the next list
       currentListIndex = (currentListIndex + 1) % allLists.length;
       processList();
-    }, 6000 + 300 * attributes.length);
+    }, 5000 + 100 * attributes.length + 700); // Added 700ms delay between lists
   }
 
   processList();
 }
 
 function ResumeContact() {
+  const { isDarkMode } = useDarkMode();
+  const resumeRef = useRef(null);
+  const contactRef = useRef(null);
+  const isResumeInView = useInView(resumeRef, { threshold: [0.2], sectionName: 'resume-contact' } );
+  const isContactInView = useInView(contactRef, { threshold: [0.2], sectionName: 'resume-contact' } );
+  const resumeClass = classNames({
+    'resume-wrapper': true,
+    'animate-resume': isResumeInView,
+    'dark-mode': isDarkMode 
+  });
+  const contactClass = classNames({
+    'contact-container': true,
+    'animate-contact': isContactInView,
+    'dark-mode': isDarkMode 
+  });
+  const resumeHeaderClass = classNames({
+    'resume-header': true,
+    'animate-resume-header': isResumeInView,
+    'dark-mode': isDarkMode
+  });
+  const contactHeaderClassBig = classNames({
+    'contact-header': true,
+    'big-screens-only': true,
+    'animate-contact-header': isContactInView,
+    'dark-mode': isDarkMode
+  });
+  const contactHeaderClassSmall = classNames({
+    'contact-header': true,
+    'small-screens-only': true,
+    'animate-contact-header': isContactInView,
+    'dark-mode': isDarkMode
+  });
+
+
+
   const handleDownloadClick = () => {
     // This will change the current window location to the PDF export link.
     window.location.href = 'https://docs.google.com/document/d/1xiAtzAXNMSw3ZkajAZaag-O40Fxn4iWoJ1nj-sb5YCA/export?format=pdf';
@@ -71,13 +143,14 @@ function ResumeContact() {
   useEffect(() => {
     showAttributes();
   }, []);
+
   return (
     <div className="resume-contact" id = "resume-contact">
 
       {/* Resume Section*/}
-      <section className="resume">
-        <h2 className = "resume-header">Resume</h2>
-        <div className="resume-wrapper">
+      <section className= 'resume' ref = {resumeRef}>
+        <h2 className = {resumeHeaderClass}>Resume</h2>
+        <div className={resumeClass}>
           <div className="resume__image__container">
             <Zoom>
               <img
@@ -93,50 +166,56 @@ function ResumeContact() {
               <button onClick={handleNewWindowClick} className="resume-button new-window"></button> */}
           </div>
 
-          {/* Attribute slide out - lists skills like HTML, CSS, JS, etc.) */}
-          <div className = "resume-slide-out">
-            {/* List: General Profile */}
+          {/* Resume Right Side */}
+          <div className = "resume__right">
+            {/* List: Hackathons */}
             <ul className="attributes-list">
             {attributeListOne.map((attribute, index) => (
               <li key={index} className="attribute">
-                <FontAwesomeIcon icon={attribute.icon} /> {/* Icon for each attribute */}
-                <span className="attribute-text">attribute1</span>
+                <img src={attribute.icon} alt="" className="custom-icon" />
+                <span className="attribute-text">{attribute.text}</span>
               </li>
             ))}
             </ul>
+
+            {/* List: Languages */}
+            <ul className="attributes-list">
+            {attributeListTwo.map((attribute, index) => (
+              <li key={index} className="attribute">
+                <img src={attribute.icon} alt="" className="custom-icon" />
+                <span className="attribute-text">{attribute.text}</span>
+              </li>
+            ))}
+            </ul>
+
             {/* List: Tech Stack */}
             <ul className="attributes-list">
-              {attributeListTwo.map((attribute, index) => (
-                <li key={index} className="attribute">
-                  <FontAwesomeIcon icon={attribute.icon} />
-                  <span className="attribute-text">attribute1</span>
-                </li>
-              ))}
+            {attributeListThree.map((attribute, index) => (
+              <li key={index} className="attribute">
+                <img src={attribute.icon} alt="" className="custom-icon" />
+                <span className="attribute-text">{attribute.text}</span>
+              </li>
+            ))}
             </ul>
-            {/* List: Coding Languages */}
-            <ul className="attributes-list">
-              {attributeListTwo.map((attribute, index) => (
-                <li key={index} className="attribute">
-                  <FontAwesomeIcon icon={attribute.icon} />
-                  <span className="attribute-text">attribute1</span>
-                </li>
-              ))}
-            </ul>
+
           </div>
         </div>
       </section>
 
       {/* Contact Section*/}
-      <section className="contact">
-        <h2 className = "contact-header">Contact</h2>
-        <div className="contact-container">
+      <section className='contact' ref = {contactRef}>
+        <h2 className = {contactHeaderClassBig}>Contact</h2>
+        <div className={contactClass}>
           <form className="contact-form" name="contact" method="POST" data-netlify="true" >
+            <input type="hidden" name="form-name" value="contact" />
             <div className="input-group">
+              <h2 className = {contactHeaderClassSmall}>Contact</h2>
               <input type="text" name="name" placeholder="Name" />
               <input type="email" name="email" placeholder="Email" />
+              <button className = "contact-submit-button small-screens-only" type="submit">Send</button>
             </div>
             <textarea name="message" placeholder="Message"></textarea>
-            <button className = "contact-submit-button" type="submit">Send</button>
+            <button className = "contact-submit-button big-screens-only" type="submit">Send</button>
           </form>
         </div>
       </section>

@@ -1,46 +1,43 @@
 //--------------------------------------------------------------------------------------//
 //                                  DarkModeToggle.js                                   //
 //--------------------------------------------------------------------------------------//
-import React, { useState, useEffect, useCallback } from 'react'; 
+import React, { useEffect, useCallback } from 'react'; 
 import './DarkModeToggle.css'; 
-import { getCookie, setCookie } from '../../CookieUtils'; 
-import { useLocation } from 'react-router-dom'; 
-
-// Define CSS selectors for dark mode elements
-const darkModeSelectors = `
-    html, body, p, div, label, section, span, nav, Link, ul, h1, h2, a, button,
-    .background, .navbar, .navbar__list, .navbar__link, .skills,
-    .slider, .slider:before, .polaroid__caption, .resume, .contact
-`;
+import { useDarkMode } from './DarkModeContext';
 
 function DarkModeToggle() {
-    const location = useLocation();     
-    const getStoredDarkMode = () => getCookie('dark-mode') === 'true'; 
-    const [isDarkMode, setIsDarkMode] = useState(getStoredDarkMode()); // Initialize based on cookie
+    const { isDarkMode, setIsDarkMode } = useDarkMode();
 
-
-    const storeDarkMode = (value) => setCookie('dark-mode', value, 365);
+    // Define CSS selectors for dark mode elements
+    const darkModeSelectors = `
+        html, body, p, div, label, section, span, nav, Link, ul, h1, h2, a, button,
+        .animate-header, .about, .background, .home, .home-image, .navbar, .navbar__list, 
+        .navbar__link, .skills, .slider, .slider:before, .polaroid__caption, .resume, .contact
+    `;
 
     const toggleDarkMode = useCallback((value) => {
         document.body.classList.toggle('dark-mode', value);
         document.querySelectorAll(darkModeSelectors).forEach(el => {
             el.classList.toggle('dark-mode', value);
         });
-        storeDarkMode(value);
-    }, []); 
+    }, [darkModeSelectors]);
 
-        // Apply dark mode on component mount
-        useEffect(() => {
-            toggleDarkMode(isDarkMode);
-        }, [location, isDarkMode, toggleDarkMode]);
-    
+    // Apply dark mode on component mount and when isDarkMode changes
+    useEffect(() => {
+        toggleDarkMode(isDarkMode);
+    }, [isDarkMode, toggleDarkMode]);
 
     const handleToggleChange = () => {
-        setIsDarkMode(!isDarkMode);
-    }
+        setIsDarkMode(!isDarkMode); // This will update the global state
+    };
 
     return (
-        <input type="checkbox" id="dark-mode" checked={isDarkMode} onChange={handleToggleChange} /> 
+        <input 
+            type="checkbox" 
+            id="dark-mode" 
+            checked={isDarkMode} 
+            onChange={handleToggleChange} 
+        />
     );
 }
 

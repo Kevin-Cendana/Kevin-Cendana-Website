@@ -2,122 +2,118 @@
 //                                Typing Dots Animation                                 //
 //--------------------------------------------------------------------------------------*/
 
-* {
-  overflow: visible; /* so the speech bubble 'tail' can be seen */
-  --secondDotColor: rgb(84, 84, 84);
-  --speechBubbleColor: rgb(234, 234, 234);
-  /* --speechBubbleColor: skyblue;   */
-  --speechBubblePadding: .7rem 1.2rem;
-  --speechBubbleTailHeight: 1.6rem;
-  --speechBubbleTailWidth: 2rem;
-  --speechBubbleTailBottom: .2rem;
-  --speechBubbleTailLeft: -.8rem;
-  --speechBubbleTailRotate: -11deg;
-}
-
+/* Typing Dots - Container */
 .typingDots {
-    box-sizing: content-box;
-    visibility: hidden;
-    position: relative;
-    display: flex;
-    flex-direction: row;
-    align-items: center;       
-    justify-content: center;
-    margin-top: .25rem;
-    width: 1.45em;
-    height: 1.1em;
-    padding: .4rem .8rem; /* h/w gap b/t edge and outside container */
-
-    border-radius: 50px;
-    transition: opacity .3s, visibility .3s .3s;   
-    z-index: 2;
-    animation: scaleUp 2.5s ease-in-out; /* !Decrease for faster typing dots */
+  box-sizing: content-box;
+  visibility: hidden; 
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;       
+  justify-content: center;
+  margin-top: .25rem;
+  width: 1.45em;
+  height: 1.1em;
+  padding: .4rem .8rem; 
+  border-radius: 50px; 
+  transition: opacity .3s, visibility .3s .3s; /* Transition for opacity and visibility */
+  z-index: 2;
+  animation: scaleUp 2.5s ease-in-out;      /* Animation for scaling up */
 }
-  
-  /* Each typing dot */
-  .dot {
-    width: .5em;
-    height: 0.55em;
-    border-radius: 80%;
-    background-color: #B3B3B3; /* Lighter grey by default */
-    margin: 0 2.2px; /* gap b/t dots */
-    transform: scale(1); /* Default size */
-  }
 
-  /* Keyframes for first dot */
+/* Dot - Individual dot in typing animation */
+.dot {
+  width: .5em;
+  height: 0.55em;
+  border-radius: 80%; 
+  background-color: #B3B3B3; 
+  margin: 0 2.2px; 
+  transform: scale(1); 
+}
+
+/* ColorChange1 - Animation for first dot color and scale */
 @keyframes colorChange1 {
-    0%, 100% {
+  0%, 100% {
+  background-color: var(--secondDotColor);
+    transform: scale(1); 
+  }
+  20%, 25% {
+    background-color: #9c9c9c; /* Intermediate color */
+    transform: scale(1.15);      /* Scale up */
+  }
+}
+/* ColorChange2 - Animation for second dot color and scale */
+@keyframes colorChange2 {
+  0%, 100% {
     background-color: var(--secondDotColor);
-      transform: scale(1); 
-    }
-    20%, 25% {
-      background-color: #9c9c9c;
-      transform: scale(1.15); 
-    }
+    transform: scale(1); 
   }
-  
-  /* Keyframes for second dot */
-  @keyframes colorChange2 {
-    0%, 100% {
-      background-color: var(--secondDotColor);
-      transform: scale(1); 
-    }
-    50%, 55% {
-      background-color: #8a8a8a;
-      transform: scale(1.15); 
-    }
+  50%, 55% {
+    background-color: #8a8a8a; /* Intermediate color */
+    transform: scale(1.15);      /* Scale up */
   }
-  
-  /* Keyframes for third dot */
-  @keyframes colorChange3 {
-    0%, 100% {
-      background-color: var(--secondDotColor);
-      transform: scale(1); 
-    }
-    80%, 85% {
-      background-color: #8a8a8a;
-      transform: scale(1.15); 
-    }
+}
+/* ColorChange3 - Animation for third dot color and scale */
+@keyframes colorChange3 {
+  0%, 100% {
+    background-color: var(--secondDotColor);
+    transform: scale(1); 
   }
-  
-  .dot:nth-child(1) {
-    animation: colorChange1 1.2s infinite;
+  80%, 85% {
+    background-color: #8a8a8a; /* Intermediate color */
+    transform: scale(1.15);      /* Scale up */
   }
-  
-  .dot:nth-child(2) {
-    animation: colorChange2 1.2s infinite;
-  }
-  
-  .dot:nth-child(3) {
-    animation: colorChange3 1.2s infinite;
-  }
+}
 
-  .typingDotsVisible { /* When the typing dots are visible */
-    visibility: visible;
+/* Applying animations to each dot */
+.dot:nth-child(1) {
+  animation: colorChange1 1.2s infinite; /* First dot */
+}
+.dot:nth-child(2) {
+  animation: colorChange2 1.2s infinite; /* Second dot */
+}
+.dot:nth-child(3) {
+  animation: colorChange3 1.2s infinite; /* Third dot */
+}
+
+/* TypingDotsVisible - Style when dots are visible */
+.typingDotsVisible {
+  visibility: visible; 
 }
 
 /*--------------------------------------------------------------------------------------//
 //                                    Speech Bubbles                                    //
 //--------------------------------------------------------------------------------------*/
 
-/* Speech bubble container */
+/* SpeechBubble - Container for speech bubbles */
 .speechBubble {
+  overflow: visible;                            /* Allows 'tail' to be visible */
+  --secondDotColor: rgb(84, 84, 84);          /* Variable for dot color */
+  --speechBubbleColor: rgb(234, 234, 234);    /* Variable for bubble color */
+  --speechBubblePadding: .8rem 1.3rem;          /* Variable for bubble padding */
+  --speechBubbleTailHeight: 1.6rem;             /* Variable for tail height */
+  --speechBubbleTailWidth: 2rem;                /* Variable for tail width */
+  --speechBubbleTailBottom: .2rem;              /* Variable for tail position from bottom */
+  --speechBubbleTailLeft: -.8rem;               /* Variable for tail position from left */
+  --speechBubbleTailRotate: -11deg;             /* Variable for tail rotation */
   position: relative;
-  margin-bottom: clamp(0.05rem, 0.7vw, 0.6rem);
-  border-radius: 1.3rem;
+  letter-spacing: -.015rem;
+  margin-bottom: clamp(0.05rem, 0.7vw, 0.3rem); /* Responsive margin below speech bubble*/
+  border-radius: clamp(.9rem, 2.5vw, 1.9rem);   /* Responsive border-radius */
   background-color: var(--speechBubbleColor);
-  /* box-shadow: .1rem .1rem .2rem rgb(210, 210, 210); */
   justify-content: flex-end;
   align-self: flex-start;
   display: inline-block;
-  animation: speechBubbleFadeInSlideRight 1s ease-in-out;
-}
-.speechBubble.dark-mode {
-  background-color: var(--speechBubbleColor);
-  color: black;
+  animation: baseFadeInSlideLeft .7s ease-in-out; /* Fade-in and slide animation */
 }
 
-/* Speech bubble 'tail' */
+/* SpeechBubbleDarkMode - Style for speech bubbles in dark mode */
+.speechBubble.dark-mode {
+  background-color: var(--speechBubbleColor);
+  color: black; 
+}
+
+/* SpeechBubbleTail - 'Tail' part of speech bubble */
 .speechBubble:before {
   content: "";
   position: absolute;
@@ -125,106 +121,96 @@
   left: var(--speechBubbleTailLeft);
   height: var(--speechBubbleTailHeight);
   width: var(--speechBubbleTailWidth); 
-  background-image: url('../../images/speech_bubble_tail.png');
+  background-image: url('../../images/speech_bubble_tail.png'); /* Image for tail */
   background-size: cover;
   background-repeat: no-repeat;
-  transform: rotate(var(--speechBubbleTailRotate));
+  transform: rotate(var(--speechBubbleTailRotate)); /* Rotation of tail */
 }
+
+/* SpeechBubbleHideTail - Hide tail for all but the first speech bubble */
 .speechBubble.hideTail:before {
-  display: none; /* Hide the tail for all but the first speech bubble */
+  display: none;
 }
 
+/* SpeechBubbleParagraph - Paragraph inside speech bubble */
 .speechBubble p {
-  padding: var(--speechBubblePadding);
+  padding: var(--speechBubblePadding); /* Padding inside bubble */
 }
 
-/* Vertical pacing between speech bubbles */
+/* Break - Vertical spacing between speech bubbles */
 br {
   content: "";
   display: block;
 }
 
-/* Animation for the speech bubble expansion */
+/* SpeechBubbleFadeInSlideRight - Animation for speech bubble expansion */
 @keyframes speechBubbleFadeInSlideRight {
-  from {
-      opacity: 0;
-      transform: translateX(-2%); /* Start from the original position */
-  }
-  to {
-      opacity: 1;
-      transform: translateX(0%); /* End 1% to the right */
-  }
-}
-
-/* Animation for the text fade-in */
-@keyframes fadeIn {
-  0% { opacity: 0; }
-  100% { opacity: 1; } /* Gradually become visible */
-}
-
-/* Animation: Typing dots fade in and scale upwards diagonally, then shrink slightly */
-@keyframes scaleUp {
-  0% {
+from {
     opacity: 0;
-    transform: scale(.8) translate(0, 0);
-  }
-  40% {
-    opacity: .8;
-    transform: scale(1);
-  }
-  100% {
+    transform: translateX(-2%); /* Start position */
+}
+to {
     opacity: 1;
-    transform: scale(1);
-  }
+    transform: translateX(0%); /* End position */
+}
+}
+
+/* ScaleUp - Typing dots fade in and scale upwards diagonally */
+@keyframes scaleUp {
+0% {
+  opacity: 0;
+  transform: scale(.8) translate(0, 0);
+}
+40% {
+  opacity: .8;
+  transform: scale(1);
+}
+100% {
+  opacity: 1;
+  transform: scale(1);
+}
 }
 .scaleUp {
-  animation: scaleUp .7s ease-in-out;
-  animation-name: scaleUp;
+  animation: scaleUp .7s ease-in-out; /* Apply scale up animation */
 }
 
-  
-/* Media Queries:
-/  By default w/o queries, I assume an average window size on desktop (~1400x900 px).
-/  Queries are used for: wide screens, standard tablets & phones, & small phones.
-/  Note: I change the background color just to debug; makes it easier to see what query is being applied.*/
-
+/* Media Queries - Adjust styles for different screen sizes */
 
 /* Wide screens */
 @media (min-width: 1600px) { }
 
 /* Standard tablet */
 @media (max-width: 1050px) {
-  .speechBubble {
-    --speechBubblePadding: .4rem 1rem;
-    --speechBubbleTailHeight: 1.4rem;
-    --speechBubbleTailWidth: 1.7rem;
-    --speechBubbleTailBottom: -.25rem;
-    --speechBubbleTailLeft: -.8rem;
-    --speechBubbleTailRotate: -10deg;
-  }
+.speechBubble {
+  --speechBubblePadding: .6rem .9rem;
+  --speechBubbleTailHeight: 1.4rem;
+  --speechBubbleTailWidth: 1.7rem;
+  --speechBubbleTailBottom: -.05rem;
+  --speechBubbleTailLeft: -.75rem;
+  --speechBubbleTailRotate: -10deg;
+}
 }
 
 /* Standard smart phones */
 @media (max-width: 720px) {
-  .speechBubble {
-    --speechBubblePadding: .4rem .9rem;
-    --speechBubbleTailHeight: 1.45rem;
-    --speechBubbleTailWidth: 1.7rem;
-    --speechBubbleTailBottom: -.2rem;
-    --speechBubbleTailLeft: -.8rem;
-    --speechBubbleTailRotate: -10deg;
-  }
+.speechBubble {
+  --speechBubblePadding: .5rem .8rem;
+  --speechBubbleTailHeight: 1.35rem;
+  --speechBubbleTailWidth: 1.3rem;
+  --speechBubbleTailBottom: -.2rem;
+  --speechBubbleTailLeft: -.8rem;
+  --speechBubbleTailRotate: -10deg;
+}
 }
 
 /* Small smart phones */
 @media (max-width: 560px) {
-  .speechBubble {
-    --speechBubblePadding: .35rem .8rem;
-    --speechBubbleTailHeight: 1.35rem;
-    --speechBubbleTailWidth: 1.7rem;
-    --speechBubbleTailBottom: 0rem;
-    --speechBubbleTailLeft: -0.7rem;
-    --speechBubbleTailRotate: -12deg;
-  }
+.speechBubble {
+  --speechBubblePadding: .35rem .8rem;
+  --speechBubbleTailHeight: 1.35rem;
+  --speechBubbleTailWidth: 1.5rem;
+  --speechBubbleTailBottom: 0rem;
+  --speechBubbleTailLeft: -0.7rem;
+  --speechBubbleTailRotate: -12deg;
 }
-
+}

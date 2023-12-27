@@ -2,57 +2,100 @@
 //                                       App.css                                        //
 //--------------------------------------------------------------------------------------*/
 
-/* fonts */
-@font-face {
-  font-family: 'Thasadith';
-  src: url('fonts/Thasadith.ttf') format('truetype');
-  font-weight: normal;
+/* Fonts */
+@font-face { /* Avenir Next */
+  font-family: 'Avenir Next', sans-serif;
+  src: url('fonts/Avenir-Next.otf') format('truetype');
+  font-weight: 400;
   font-style: normal;
 }
-
-@font-face {
+@font-face { /* Avenir Next - Bold */
+  font-family: 'Avenir Next', sans-serif;
+  src: url('fonts/Avenir-Next-Bold.otf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+@font-face { /* F21  */
   font-family: "F21";
   src: url('fonts/F21.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
+@font-face { /* SF Pro */
+  font-family: "SF Pro";
+  src: url('fonts/SF-Pro.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face { /* SF Pro Text Light*/
+  font-family: "SF Pro Text Light";
+  src: url('fonts/SF-Pro-Text-Light.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
 
+@font-face { /* SF Pro Display */
+  font-family: "SF Pro Display";
+  src: url('fonts/SF-Pro-Display.otf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face { /* SF Pro Display - Bold */
+  font-family: "SF Pro Display";
+  src: url('fonts/SF-Pro-Display-Bold.otf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face { /* SF Pro Display - Italic (Regular) */
+  font-family: "SF Pro Display";
+  src: url('fonts/SF-Pro-Display-RegularItalic.otf') format('truetype');
+  font-weight: normal;
+  font-style: italic;
+}
+@font-face { /* SF Pro Display - Ultra Light */
+  font-family: "SF Pro Display";
+  src: url('fonts/SF-Pro-Display-Ultralight.otf') format('truetype');
+  font-weight: 300;
+  font-style: normal;
+}
+
+/* Root - Variables to be reused for all sections */
 :root {
-  --app-light-mode-color: rgb(245, 245, 245); /* Old: 251 */
+  --app-light-mode-color: rgb(245, 245, 245); 
   --app-dark-mode-color: rgb(0, 0, 0);
-  --navbar-height: 2.3rem;
-  --section-margin: clamp(1rem, 2vw, .2rem) clamp(0.6rem, 2vw, 10.2rem); /* top/bottom, left/right */
+  --section-margin: clamp(1rem, 2vw, .2rem) clamp(0.6rem, 2vw, 10.2rem); 
 }
-:root.dark-mode{
-  background-color: var(--app-dark-mode-color);
-}
+  :root.dark-mode{
+    background-color: var(--app-dark-mode-color);
+  }
 
 
-/* Styling all elements */
+/* All elements in app */
 *, *:before, *:after {
+  overflow: visible;
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
-  -moz-box-sizing: border-box;    /* Firefox, other Gecko */
-  box-sizing: border-box;         /* Opera/IE 8+ */
-  overflow: hidden;
-  transition: background-color 0.7s ease;
-  /* z-index: 0; */
+  -webkit-box-sizing: border-box;         /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;            /* Firefox, other Gecko */
+  box-sizing: border-box;                 /* Opera/IE 8+ */
+  transition: background-color 1s ease, background-image 1s ease; /* Transition for dark mode */
 }
-*.dark-mode {
-  transition: background-color 0.7s ease;
-}
+  *.dark-mode {
+    transition: background-color 1s ease, background-image 1s ease; /* Transition to go back to light mode */
+  }
 
-html.dark-mode, body.dark-mode {
-  background-color: (--app-dark-mode-color);
-}
-
+/* HTML of entire app */
 html {
   font-size: clamp(14px, 4vw, 18px); 
   scroll-behavior: smooth;
   background-color: rgb(255, 255, 255);
 }
+  html.dark-mode, body.dark-mode {
+    background-color: (--app-dark-mode-color);
+  }
+
+/* Body of entire app */
 body, html {
   margin: 0;
   padding: 0;
@@ -60,6 +103,7 @@ body, html {
   width: 100%;
 }
 
+/* App - Wraps all content*/
 .app {
   display: flex;
   flex-direction: column;
@@ -67,8 +111,9 @@ body, html {
   height: 100%;
 }
 
-/* Container for all content except nav bar */
-.app-main-content {
+/* Main - Container for all content except nav bar */
+main {
+  flex-grow: 1;
   width: 100%;
   height: 100%; 
   display: flex;
@@ -76,12 +121,8 @@ body, html {
   justify-content: center;
   background-color: var(-app-light-mode-color);
 }
-.app__main-content.dark-mode {
-  background-color: var(--app-dark-mode-color);
-  /* background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%); */
-}
 
-/* Applies to all sections: Home, Skills, About, Projects, Resume, Contact */
+/* Sections - Home, Skills, About, Projects, Resume, Contact */
 section {
   display: flex;
   flex-direction: column;
@@ -90,19 +131,41 @@ section {
   border: .05rem solid black;
   box-shadow: .8rem .65rem .4rem rgba(0,0,0,0.5); /*  horizontal, vertical, blur, spread */
 }
-section.dark-mode {
-  border: .05rem solid white;
-  /* box-shadow: .8rem .65rem .4rem rgba(158, 158, 158, 0.5); */
+  section.dark-mode {
+    border: .05rem solid white;
+    background-color: transparent !important; /* Comment this out to see the normal dark bg color */
+    /* background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%); */
+    /* box-shadow: .8rem .65rem .4rem rgba(158, 158, 158, 0.5); */
+  }
+
+/* Headers for all sections */
+h1,h2 {
+  font-family: "SF Pro Display";
+  font-weight: normal;
+  letter-spacing: .1rem;
+}
+  h1.dark-mode, h2.dark-mode {
+    color: white;
+  }
+
+/* Paragraphs for all sections */
+p {
+  font-family: "SF Pro Text Light";
+  font-weight: normal;
 }
 
+/* Footer */
 footer {
   display: flex;
   flex-direction: row;
+  bottom: 0;
   height: 3rem;
   width: 100vw;
   color: white;
   background-color: black;
 }
+
+/* Footer - Left & Right Side*/
 .footer-left, .footer-right {
   display: flex;
   flex-direction: column;
@@ -118,15 +181,54 @@ footer {
   align-items: flex-end;
   padding-right: 1rem;
 }
+
+/* Animate Header - Animation for headers for sections */
+.animate-header {
+  animation: baseFadeInSlideDown 0.85s ease-out forwards;
+  color: black;
+}
+  .animate-header.dark-mode {
+    color: white;
+  }
+
+/* Links */
+a {
+  font-weight: bold; 
+  color: rgb(0, 112, 241);
+}
+  a.dark-mode {
+    color: rgb(1, 98, 210);
+  }
+
 /* Animations */
-@keyframes baseFadeInSlideRight {
+@keyframes baseFadeInSlideDown {
   from {
       opacity: 0;
-      transform: translateX(-2%); /* Start from the original position */
+      transform: translateY(-0.55rem); /* Start from the original position */
   }
   to {
       opacity: 1;
-      transform: translateX(0%); /* End 1% to the right */
+      transform: translateY(0%);
+  }
+}
+@keyframes baseFadeInSlideRight {
+  from {
+      opacity: 0;
+      transform: translateX(-1rem); /* Start from the original position */
+  }
+  to {
+      opacity: 1;
+      transform: translateX(0%); 
+  }
+}
+@keyframes baseFadeInSlideLeft {
+  from {
+      opacity: 0;
+      transform: translateX(1rem); /* Start from the original position */
+  }
+  to {
+      opacity: 1;
+      transform: translateX(0%);
   }
 }
 

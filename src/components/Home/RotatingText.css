@@ -1,3 +1,8 @@
+/*--------------------------------------------------------------------------------------//
+//                                  RotatingText.ccs                                    //
+//--------------------------------------------------------------------------------------*/
+
+/* Credit for rotating text animation: https://www.npmjs.com/package/react-rotating-text?activeTab=readme */
 .react-rotating-text-cursor {
   animation: blinking-cursor 1.2s cubic-bezier(0.68, 0.01, 0.01, 0.99) 0s infinite;
 }

@@ -20,7 +20,7 @@ import React, {
   CSSProperties,       // Type for CSS properties in JSX.
   useImperativeHandle  // To customize the instance value exposed to parent components when using refs.
 } from 'react';
-import './Carousel.css';
+
 
 // Type definitions for different props and items used in the carousel.
 export type CarouselItem = Readonly<{
@@ -164,20 +164,38 @@ export const Carousel: FC<CarouselProps> = forwardRef((
         [selectedIndex]
     );
 
-    // Adding and removing touch gestures and swipe event listeners
+    // Adding and removing touch gestures, swipe, and keyboard event listeners
     useEffect(() => {
         const area = ref?.current;
         const touchsweep = new TouchSweep(area ?? undefined);
 
+        // Add swipe event listeners for touch gestures
         area?.addEventListener('swipeleft', next);
         area?.addEventListener('swiperight', prev);
 
+        // Handling arrow key presses for keyboard navigation
+        const handleKeyDown = (event) => {
+            if (event.keyCode === 37) { // Left arrow key
+                prev();
+            } else if (event.keyCode === 39) { // Right arrow key
+                next();
+            }
+        };
+
+        // Add keyboard event listener
+        window.addEventListener('keydown', handleKeyDown);
+
         return () => {
+            // Unbind touchsweep and remove swipe event listeners
             touchsweep.unbind();
             area?.removeEventListener('swipeleft', next);
             area?.removeEventListener('swiperight', prev);
+
+            // Remove keyboard event listener
+            window.removeEventListener('keydown', handleKeyDown);
         };
     }, [next, prev]);
+
 
     // Exposing methods to parent component via ref
     useImperativeHandle(

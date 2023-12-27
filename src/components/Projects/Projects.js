@@ -2,19 +2,23 @@
 //                                       Projects.js                                       //
 //--------------------------------------------------------------------------------------//
 
-
+// Libraries & Files
 import React, { useState, useEffect, useRef } from 'react';
 import useInView from '../../hooks/useInView'; 
 import Carousel  from './Carousel.tsx'; // Credit: React Round Carousel by scriptex: https://github.com/scriptex/react-round-carousel
 import DarkModeToggle from '../../shared/DarkModeToggle/DarkModeToggle.js';
+import { useDarkMode } from '../../shared/DarkModeToggle/DarkModeContext';
+import classNames from 'classnames';
+import './Projects.css';
+import './SlideBackgrounds.css';
+
+// Slideshow images
 import personal_project1 from '../../images/slideshow_images/maplestory_app.gif';
 import personal_project2 from '../../images/slideshow_images/invaded_space.gif';
 import personal_project3 from '../../images/slideshow_images/bullseye.png';
 import hackathon1 from '../../images/slideshow_images/lyric_link.gif';
 import hackathon2 from '../../images/slideshow_images/att_empowher.png';
 import hackathon3 from '../../images/slideshow_images/datafest.png';
-import './Projects.css';
-import './SlideBackgrounds.css';
 
 // Gradient colors for each slide's captions
 const rainbowGradient = 'linear-gradient(45deg, #fcb0a9, #a3c9f8, #a6fcb3, #fff2cc)';
@@ -38,13 +42,11 @@ const project_data = [
         ),
         captions: [
             { text: 'Hackathon', style: { color: 'black', background: rainbowGradient}},
-            // { text: 'React', style: { backgroundColor: 'red'} },
-            // { text: 'Django', style: { backgroundColor: 'red'} },
         ]
     },
     { 
     image: hackathon2,
-    title: "AT&T Website", 
+    title: "AT&T Site", 
     description: (
         <span> 
         <a href="https://inside.att.jobs/empowherhackathon#subpage/welcome.io" target="_blank" rel="noopener noreferrer">AT&T EmpowHer:</a>{" "}
@@ -55,13 +57,12 @@ const project_data = [
     ),
     captions: [
         { text: 'Hackathon', style: { background: blueGradient, color: 'black'}},
-        // { text: 'HTML', style: { backgroundColor: 'blue'}},
     ]
 
     },
     { 
     image: hackathon3, 
-    title: "Word Clouds",
+    title: "Word Cloud",
     description: (
         <span> 
         <a href="https://ww2.amstat.org/education/datafest/" target="_blank" rel="noopener noreferrer">DataFest 2023:</a>{" "}
@@ -71,7 +72,6 @@ const project_data = [
     ),
     captions: [
         { text: 'Hackathon', style: { color: 'black', background: lightGreenGradient}},
-        // { text: 'Pandas', style: { backgroundColor: 'lightgreen'} },
     ]
     },
     { 
@@ -80,7 +80,6 @@ const project_data = [
     description: "To practice Flutter and it's widgets, states, and frame animations, I replicated the core gameplay loop of one of my favorite childhood games, Maplestory.",
     captions: [
         { text: 'Flutter', style: { color: 'black', background: orangeGradient } },
-        // { text: 'Dart', style: { background: orangeGradient} }
     ] 
     },
     { 
@@ -89,7 +88,6 @@ const project_data = [
     description: "My contribution to a Game Jam session in Video Game Development Club! Our goal was to create a tower defense game, where I was in charge of programming player & enemy units as well as projectile logic.",
     captions: [
         { text: 'Unity', style: { color: 'white', background: violetGradient} },
-        // { text: 'C#', style: { color: 'white', background: violetGradient} }
     ]  
     },
     { 
@@ -98,11 +96,9 @@ const project_data = [
     description: "To learn SwiftUI and try mobile app development for the first time, I made a series of apps using Swift UI including a sleep tracker, time converter, tip calculator, Word Scrabble, Guess the Flag, and this Bullseye game.",
     captions: [
         { text: 'SwiftUI', style: { color: 'black', background: targetGradient} },
-        // { text: 'Swift', style: { backgroundColor: 'red'} }
     ]    
     },
 ];
-  
 
 // Function to add padding to each caption
 const addPaddingToCaptions = (projects) => {
@@ -115,7 +111,7 @@ const addPaddingToCaptions = (projects) => {
     }));
 };
 
-// New project data w/ all the styles above like padding. Pass this in instead.
+// New project data w/ all the styles above like padding. Pass this arg in instead.
 const updatedProjectData = addPaddingToCaptions(project_data);
 
 function Projects() {
@@ -125,10 +121,24 @@ function Projects() {
     const carouselRef = useRef(null);
     const [bgClass, setBgClass] = useState('bg-slide-0'); // Background for each slide
     const projectsRef = useRef(null);           // Ref to play animations when Projects section is in view
-    const isInView = useInView(projectsRef);    //
+    const isProjectsInView = useInView(projectsRef, { threshold:[0.2], sectionName: "projects"});    //
+    const [showTutorial, setShowTutorial] = useState(true); // Show tutorial on first load
+    const { isDarkMode } = useDarkMode();
+    const projectsHeader = classNames({
+        'projects__header': true,
+        'animate-projects-header': isProjectsInView,
+    });
+    const projectsLeft = classNames({
+        'projects__left': true,
+        'animate-projects-left': isProjectsInView,
+    });
+    const projectsRight = classNames({
+        'projects__right': true,
+        'animate-projects-right': isProjectsInView,
+    });
 
     useEffect(() => {
-        console.log("Projects.js: useEffect");
+        // Function: Update the description and title of the current slide
         const descriptionUpdater = () => {
             const currentIndex = carouselRef.current?.getSelectedIndex();
             if (currentIndex !== undefined) {
@@ -136,20 +146,33 @@ function Projects() {
                 setCurrentDescription(project.description);
                 setCurrentTitle(project.title);
                 setCurrentCaptions(Array.isArray(project.captions) ? project.captions : []);
-                setBgClass(`bg-slide-${currentIndex}`); // Update the background class based on slide index
-                // console.log("Projects.js: Slide Index: " + currentIndex);
-                // console.log("Projects.js: Slide Title: " + project.title); 
-                // console.log("Projects.js: Slide Desc: " + project.description); 
-                // console.log("Projects.js: Slide Captions: " + project.captions);
+                setBgClass(`bg-slide-${currentIndex}`); 
             }
         };
-
+    
         // Update description initially and on slide change
         descriptionUpdater();
-        const interval = setInterval(descriptionUpdater, 1000); // Adjust the interval as needed
-
-        return () => clearInterval(interval);
-    }, [currentDescription]);
+        const interval = setInterval(descriptionUpdater, 1000);
+    
+        // Set a timeout to hide the tutorial text after 4 seconds
+        let tutorialTimeout;
+        if (isProjectsInView) {
+            tutorialTimeout = setTimeout(() => {
+                const tutorialElement = document.querySelector('.projects__carousel__tutorial');
+                if (tutorialElement) tutorialElement.classList.add('tutorial-hide');
+            }, 5000);
+        } else {
+            const tutorialElement = document.querySelector('.projects__carousel__tutorial');
+            if (tutorialElement) tutorialElement.classList.remove('tutorial-hide');
+        }
+    
+        // Cleanup function to clear interval and timeout when the component unmounts
+        return () => {
+            clearInterval(interval);
+            if (tutorialTimeout) clearTimeout(tutorialTimeout);
+        };
+    }, [isProjectsInView, currentDescription]); // Dependencies: isProjectsInView and currentDescription
+    
     
     // Mapping data to carousel items for Carousel.tsx
     const carouselItems = updatedProjectData.map((project, index) => ({
@@ -193,21 +216,24 @@ function Projects() {
         carouselRef.current?.prev(); // Calls the 'prev' method of Carousel
     };
 
-
     return (
-        <section className="projects">
-            <h1 className='projects__header'>
-                        Project Showcase
-                    </h1>
-            <div className="projects__section">
-                <div className="projects__left">
+        <section className="projects" ref = {projectsRef}>
+            {/* Header title */}
+            <h1 className = {projectsHeader}>
+                Project Showcase
+            </h1>
+            <div className = "projects__section">
+                {/* Left side w/ Carousel slideshow  */}
+                <div className = {projectsLeft}>
                     <div className="projects__carousel-wrapper">
                         <Carousel ref={carouselRef} items={carouselItems}/>
                     </div>
                 </div>
-                <div className="projects__right">
+                {/* Right side w/ dynamic project description */}
+                <div className = {projectsRight}>
                     <div className="projects__text-container gradient-border">
                         <div className="row-wrapper">
+                            {/* Title & Captions */}
                             <h2 className="projects__title">{currentTitle}</h2>
                             <div className="projects__captions ">
                             {currentCaptions.map((caption, index) => (
@@ -216,12 +242,23 @@ function Projects() {
                                 </span>
                             ))}
                             </div>
+                            {/* Arrow buttons */}
                             <div className="arrow__buttons__container">
-                                <div className="arrow__button left" onClick={goToPrevSlide}></div>
-                                <div className="arrow__button right" onClick={goToNextSlide}></div>
+                                <button className="arrow__button left" onClick={goToPrevSlide}></button>
+                                <button className="arrow__button right" onClick={goToNextSlide}></button>
                             </div>
                         </div>
-                        <div className="projects__description">{currentDescription}</div>
+                        {/* Description */}
+                        <p className="projects__description">{currentDescription}</p>
+                    </div>
+                    {/* Instructions on how to move the Carousel, dissapears after a few sec. */}
+                    <div className='projects__carousel__tutorial'>
+                        <p><i>Scroll with buttons, arrow keys, or swipe.</i></p>
+                        <div className="tutorial__gifs-container">
+                            <div className="tutorial__gif tap-animation"></div>
+                            <div className="tutorial__gif key-animation"></div>
+                            <div className="tutorial__gif swipe-animation"></div>
+                        </div>
                     </div>
                 </div>
             </div>

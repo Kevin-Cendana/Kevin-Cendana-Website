@@ -5,11 +5,10 @@
 /* Project variables */
 :root {
     --projects-title-font-size: 2.1rem;
-    --projects-desc-font-size: 1.6rem;
-    --projects-height: 65vh;
+    --projects-height: clamp(60vh, 65vw, 67vh);
     --projects-min-height: 1000px;
     --projects-background-color: var(--app-light-mode-color);
-    --projects-text-container-width: 100%;
+    --projects-text-container-width: clamp(300px, 38vw, 1200px);
     --projects-text-container-max-width: 600px;
     --projects-text-container-bg-color: rgb(250, 250, 250);
     --projects-section-flex-direction: row;
@@ -18,11 +17,10 @@
     --projects-text-spacer-left: -5px;
     --projects-title-padding: 16px;
     --carousel-scale: 2.15; 
-    /* --carousel-scale: clamp(1, 10vw, 3); */
-     --carousel-base-width: 13.125rem;
-     --carousel-left-margin: 117px;
-     --carousel-bottom-margin: 0px;
-     --projects-left-min-width: 650px;
+    --carousel-base-width: 13.125rem;
+    --carousel-left-margin: 117px;
+    --carousel-bottom-margin: 0px;
+    --projects-left-min-width: 650px;
 }
 
 /* Projects */
@@ -35,22 +33,28 @@
     background-color: var(--app-light-mode-color);
     overflow: hidden;
     color: black;
-    /*! For debugging */
-    /* background-color: var(--projects-background-color);  */
 }
-.projects.dark-mode, .projects__text-container.dark-mode {
-    background-color: var(--app-dark-mode-color);
-    color: white;
-}
+    /* Projects Dark mode */
+    .projects.dark-mode, .projects__text-container.dark-mode {
+        background-color: var(--app-dark-mode-color);
+        color: white;
+    }
 
-.projects__title-card h1 {
-    font-size: 3rem;
-    font-family: 'Avenir Next', sans-serif;
-    font-weight: 500;
-    margin: clamp(1rem, 2vw, 2.1rem) 2.5rem;
+/* Projects Header - Title for section */
+.projects__header {
+    opacity: 0; /* Hide until animation */
+    height: 25%;
+    font-size: clamp(2.3rem, 4.9vw, 3.1rem);
+    display: flex;
+    align-self: center;
 }
+    /* Slide header when in view */
+    .animate-projects-header {
+        animation: baseFadeInSlideDown .7s ease-out;
+        opacity: 1;
+    }
 
-/* Project section including slideshow, text */
+/* Project Section - Including slideshow, text */
 .projects__section {
     /* background-color: blue; */
     display: flex;
@@ -69,20 +73,27 @@
     display: flex;
 }
 
+/* Projects Left & Right  - Left side has carousel, Right side has text box*/
 .projects__left, .projects__right {
     height: 72%;
+    opacity: 0; /* Hide until animation */
 }
 
+/* Projects Left - Carousel*/
 .projects__left {
     /* background-color: blue; */
     min-width: var(--projects-left-min-width);
     display: flex;
     flex-direction: column;
     align-self: center;
-
 }
+    /* Slide carousel when in view */
+    .animate-projects-left { 
+        animation: baseFadeInSlideRight .7s ease-out;
+        opacity: 1;
+    }
 
-/* Right side of the projects section w/ all the text */ 
+/* Projects Right - Container for dynamic text box*/ 
 .projects__right {
     display: flex;
     flex-direction: column;
@@ -91,17 +102,13 @@
     margin-top: 7rem;
     align-self: center;
 }
+    /* Slide text box when in view */
+    .animate-projects-right {
+        animation: baseFadeInSlideLeft .7s ease-out;
+        opacity: 1;
+    }
 
-.projects__header {
-    height: 25%;
-    font-size: clamp(2.3rem, 4.8vw, 3rem);
-    font-family: 'Avenir Next', sans-serif;
-    font-weight: 300;
-    display: flex;
-    align-self: center;
-}
-
-/* Text container w/ individual slide titles, descriptions */
+/* Text container - Dynamic text box that describes the current slide */
 .projects__text-container {
     position: relative;
     background: var(--projects-text-container-bg-color);
@@ -112,55 +119,54 @@
     align-self: flex-start;
     align-items: flex-start;
     width: var(--projects-text-container-width);
-    max-width: var(--projects-text-container-max-width);
+    max-width: var(--projects-text-container-max-width); 
     height: var(--projects-text-container-min-height);
     margin-top: var(--projects-text-spacer-up);
     margin-left: 1rem;
-    /* border-radius: 1rem; */
-    /* box-shadow: .8rem .5rem .7rem rgba(0,0,0,0.5); horizontal, vertical, blur, spread */
     border: 1px solid black;
-
 }
-.projects__text-container::before {
-    content: '';
-    position: absolute;
-    top: -.6rem; /* Move up */
-    left: -.6rem; /* Move left */
-    width: 100%; /* Same width as container */
-    height: 100%; /* Same height as container */
-    border: 1px solid black; /* Add a border */
-    z-index: -1; /* Place it behind the text container */
-}
-.projects__text-container.dark-mode {
-    color: white;
-    border: 1px solid white;
-    &::before {
+    /* Text container Dark mode */
+    .projects__text-container.dark-mode {
+        color: white;
         border: 1px solid white;
+        &::before {
+            border: 1px solid white;
+        }
     }
-}
+    /* Box behind text container for aesthetic purposes */
+    .projects__text-container::before {
+        content: '';
+        position: absolute;
+        top: -.6rem; /* Move up */
+        left: -.6rem; /* Move left */
+        width: 100%; /* Same width as container */
+        height: 100%; /* Same height as container */
+        border: 1px solid black; /* Add a border */
+        z-index: -1; /* Place it behind the text container */
+    }
 
+/* Title - Dynamic title for current slide */
 .projects__title {
     font-size: var(--projects-title-font-size);  
-    font-family: 'Avenir Next', sans-serif;
     font-weight: bold;
     padding: var(--projects-title-padding);
     margin: 0px;
     text-wrap: nowrap;
     animation: 1s ease-out baseFadeInSlideRight;
-    
-    /* border-top-left-radius: 1rem; */
-    /* border-radius: 1rem; */
 }
+
+/* Description - Dynamic description for the current slide */
 .projects__description {
-    font-size: var(--projects-desc-font-size);
+    font-size: clamp(1rem, 2vw, 1.5rem);
     padding: var(--projects-title-padding);
 }
+
+/* Captions - Dynamic captions (colored boxes) for the current slide */
 .projects__captions {
-    font-size: calc(var(--projects-desc-font-size) * 1.1);
-    justify-self: flex-start;
-    font-weight: 900;
-    /* Note: Change font color in the js file, not here. */
+    font-size: clamp(1.1rem, 2vw, 1.7rem);
 }
+
+/* Row wrapper - Used to wrap the captions and icons in a row */
 .row-wrapper {
     position: relative;
     margin-bottom: -2.2%;
@@ -170,23 +176,87 @@
     align-items: center;
 }
 
-/* Applies to all backgrounds based on Carousel Slide */
-.projects__background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-size: cover;
-    transition: background-image .5s ease-in-out;
+/* Carousel Tutorial - Container w/ text & gifs that notifies the user on how to move carousel. */
+.projects__carousel__tutorial {
+    display: flex; 
+    align-self: center;
+    flex-direction: column;
+    margin-top: 1rem;
+    transition: opacity 1s ease-in-out, transform 1s ease-in-out; 
+    opacity: 1; /* Initially fully visible, fades out right after a few sec */
+}
+    /* Hide tutorial after a few seconds */
+    .projects__carousel__tutorial.tutorial-hide {
+        opacity: 0; /* Fade out */
+        transform: translateX(50px); /* Move to the right */
+    }
+
+/* Tutorial Text - Informs user how to use carousel */
+.projects__carousel__tutorial p {
+    font-family: "SF Pro Text";
+    font-weight: 300;
+    font-size: clamp(1.05rem, 2vw, 1.8rem);
 }
 
-a {
-    font-weight: bold; 
-    color: rgb(0, 112, 241);
+/* Tutorial Gifs Container - Container for gifs that show user how to use carousel */ 
+.tutorial__gifs-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: clamp(1rem, 4vw, 3rem);
 }
-a.dark-mode {
-    color: rgb(1, 98, 210);
+
+/* Tutorial Gifs Container - Shows user how to user carousel */
+.tutorial__gif {
+    width: clamp(3.5rem, 7vw, 5rem);
+    aspect-ratio: 1/1;
+}
+    /* Dark mode */
+    .tutorial__gif.dark-mode {
+        filter: invert(100);
+    }
+
+/* Swipe animation - Shows user they can swipe to scroll carousel */
+.swipe-animation {
+    background-image: url('../../images/swipe_animation.gif');
+    background-size: cover;
+    background-position: center;
+}
+
+/* Tap animation - Shows user they can tap to scroll carousel */
+.tap-animation {
+    position: relative;
+    width: 1.8rem;
+    background-image: url('../../images/arrow_button.png');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: .6;
+}
+    /* The actual tap animation, the above class just has a picture, this one has a gif overlayed on top */
+    .tap-animation::after {
+        width: 5rem;
+        aspect-ratio: 1/1;
+        content: '';
+        position: absolute;
+        top: 15px;
+        left: -12px;
+        right: 0;
+        bottom: 0;
+        background-image: url('../../images/tap_animation.gif');
+        background-size: contain;
+        background-position: center;
+        background-repeat: no-repeat;
+        opacity: 1;
+    }
+
+/* Key animation - Shows user they can use arrow keys to scroll carousel */
+.key-animation {
+    width: 2.1rem;
+    background-image: url('../../images/key_animation.gif');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 /*--------------------------------------------------------------------------------------//
@@ -209,7 +279,9 @@ a.dark-mode {
 
 /* Arrow button */
 .arrow__button {
-    height: 60%;
+    background: none;
+    border: none;
+    height: clamp(1.8rem, 3.3vw, 2.5rem);
     aspect-ratio: 1/1;
     background-image: url('../../images/arrow_button.png');
     background-size: contain;
@@ -220,7 +292,7 @@ a.dark-mode {
 }
 .arrow__button.left {
     transform: scaleX(-1);
-    margin-right: 0.3rem;
+    margin-right: clamp(.1rem, .3vw, .3rem);
 }
 
 /* Arrow button animation */
@@ -287,7 +359,7 @@ a.dark-mode {
     height: 11.875rem;  /* Increases width of each slide, but not container. */
     left: 0.625rem;
     top: 0.625rem;
-    border: 0.1rem solid;
+    border: 0.01rem solid;
     transition: transform 1s, opacity 1s;
 
 }
@@ -354,79 +426,49 @@ a.dark-mode {
         --projects-height: 70vh;
         --projects-text-spacer-left: 200px;
         --projects-title-font-size: 2.5rem;
-        --projects-desc-font-size: 1.9rem;
         --projects-title-padding: 18px;
-        --projects-text-container-max-width: 770px;
         --projects-section-flex-direction: row;
         --projects-left-min-width: 750px;
         /* Carousel */
-        --carousel-scale: 2.45;
-        --carousel-left-margin: 160px;
-    }
-}
-@media (min-width: 1800px) {
-    :root {
-        --projects-background-color: darkred;
-        --projects-text-container-max-width: 870px;
-    }
-}
-@media (min-width: 1600px) {
-    :root {
-        --projects-text-container-max-width: 720px;
-    }
-}
-@media (min-width: 1500px) {
-    :root {
-        --projects-text-container-max-width: 650px;
+        --carousel-scale: 2.3;
+        --carousel-left-margin: 143px;
     }
 }
 
 /* Standard tablet */
-
 @media (max-width: 1350px) {
     :root {
-        --projects-background-color: darkorange;
-        --projects-text-container-max-width: 532px;
         --projects-left-min-width: 620px;
         --projects-title-font-size: 1.6rem;
-        --projects-desc-font-size: 1.4rem;
-        --carousel-scale: 2.07;
-        --carousel-left-margin: 110px;
+        --carousel-scale: 2;
+        --carousel-left-margin: 100px;
         --carousel-bottom-margin: 0px;
-    }
-}
-@media (max-width: 1275px) {
-    :root {
-        --projects-text-container-max-width: 500px;
     }
 }
 
 @media (max-width: 1200px) {
     :root {
         --projects-background-color: rgb(0, 0, 0);
-        --projects-text-container-max-width: 450px;
         --projects-title-font-size: 1.55rem;
-        --projects-desc-font-size: 1.3rem;
         --projects-title-padding: 12px;
         --projects-left-min-width: 572px;
-        --carousel-left-margin: 94px;
-        --carousel-scale: 1.9;
+        --carousel-left-margin: 86px;
+        --carousel-scale: 1.87;
     }
 }
-@media (max-width: 1100px) {
-    :root {
-        --projects-text-container-max-width: 400px;
-    }
-}
-@media (max-width: 1050px) {
+@media (max-width: 1100px) { :root { 
+    --carousel-scale: 1.8; --carousel-left-margin: 84px; --projects-left-min-width: 550px; } }
+@media (max-width: 1000px) { :root { 
+    --carousel-scale: 1.65; --carousel-left-margin: 64px; --projects-left-min-width: 500px; } }
+
+/* Once the window is small enough @960px, the text goes below the carousel and covers the whole width. */
+@media (max-width: 960px) {
     :root {
         --projects-background-color: gold;
-        --projects-height: 65vh;
+        --projects-height: 67vh;
         --projects-text-spacer-left: 0px;
         --projects-title-font-size: 1.55rem;
-        --projects-desc-font-size: 1.3rem;
         --projects-title-padding: 12px;
-        --projects-text-container-max-width: 1000px;
         --projects-text-spacer-up: 12%;
         --projects-extra-carousel-right-space: 0;
         --projects-text-container-width: 80%;
@@ -437,9 +479,6 @@ a.dark-mode {
         justify-content: center;
         align-items: center;
         flex-direction: column;
-    }
-    .projects__header {
-        /* visibility: hidden; */
     }
     .projects__left {
         height: 50%;
@@ -457,15 +496,32 @@ a.dark-mode {
         margin-top: 1.2rem;
         transform-origin: top right;
     }
+    .projects__carousel__tutorial {
+        padding: 0;
+        margin: .4rem;
+        flex-direction: row;
+        align-items: center;
+    }
+    .projects__carousel__tutorial p {
+        margin-right: 2vw;
+    }
+    .tutorial__gif {
+        width: 1.2rem;
+    }
+    .tap-animation::after {
+        display: none;
+    }
+    .swipe-animation {
+        height: 2.2rem;
+    }
 }
 
 /* Standard smart phones */
 @media (max-width: 720px) {
     :root {
-        --projects-height: 57vh;
+        --projects-height: 58.5vh;
         --projects-text-spacer-left: -362px;
         --projects-title-font-size: 1rem;
-        --projects-desc-font-size: .95rem;
         --projects-title-padding: 10px;
         --carousel-scale: 1.4;
     }
@@ -475,12 +531,21 @@ a.dark-mode {
     .projects__text-container {
         margin-top: 1rem;
     }
+    .projects__carousel__tutorial p {
+        font-size: .9rem;
+    }
 }
 
 /* Small smart phones */
 @media (max-width: 560px) {
     :root {
-        --carousel-scale: 1.2;
-        --carousel-left-margin: 4rem;
+        --carousel-scale: 1.15;
+        --carousel-left-margin: 2.3rem;
+    }
+    .projects__text-container {
+        margin-top: -1rem;
+    }
+    .projects__carousel__tutorial p {
+        font-size: .7rem;
     }
 }

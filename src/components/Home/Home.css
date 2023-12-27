@@ -2,219 +2,91 @@
 //                                      Home.css                                        //
 //--------------------------------------------------------------------------------------*/
 
-/* Fonts */
-@font-face {
-    font-family: 'Avenir Next', sans-serif;
-    src: url('../../fonts/Avenir-Next.otf') format('truetype');
-    font-weight: 400;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'Avenir Next', sans-serif;
-    src: url('../../fonts/Avenir-Next-Bold.otf') format('truetype');
-    font-weight: 700;
-    font-style: normal;
-}
-
-/* All */
-*, *:before, *:after {
-    font-family: 'Thasadith', sans-serif;
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-/* Home */
-/* Variables are used to make it easier to change the layout for different screen sizes */
+/* Home - Main container */
 .home {
-    --home-font-size-name: 3.5rem;
-    --home-alias-font-size: 2.2rem;
-    --home-height: 80vh;
-    --home-min-height: 1000px;
-    --home-background-color: var(--app-light-mode-color);
-    --home-image-path: url('../../images/self-image.png');
-    --home-image-height: 140%;
-    --home-image-min-height: 900px;
-    --home-image-width: 140%;
-    --home-image-max-width: 1000px;
-    --home-move-image: 0, -26%;
-    --home-move-text: 0, 0;
-    margin-top: calc(1rem + var(--navbar-height)); /* Make space for navbar */
     display: flex;
-    flex-direction: row;
-    height: var(--home-height);
-    background-color: var(--home-background-color);
-    flex-direction: row;
+    position: relative;
+    margin-top: 1.5rem;
+    height: clamp(40vh, 75vw, 80vh);
+    max-height: 820px; /* Beyond this height, the image will end */
     overflow: hidden;
+    flex-direction: row;
+
+    background-color: var(--app-light-mode-color);
 }
-.home.dark-mode, .home__left.dark-mode {
-    --home-background-color: var(--app-dark-mode-color);
-    --home-image-path: url('../../images/self-image-dark-mode.png');
+
+/* Home Dark Mode - Style for dark mode */
+.home.dark-mode {
     color: white;
 }
 
-/* Right side of home page, currently contains only an image of me */
-.home__right {
-    width: auto;
-    min-width: 535px;
-    padding-top: 15px;
+/* Home Image - Image of the user */
+.home-image {
     display: flex;
-    flex-direction: row;
-    background-position: center top;
+    position: absolute;
+    top: 5%;
+    left: 60%;
+    height: clamp(400px, 72vw, 783px);
+    opacity: 0;
 }
 
-/* Image of me */
-.home-image-container {
-    width: var(--home-image-width);
-    max-width: var(--home-image-max-width);
-    height: var(--home-image-height);
-    min-height: var(--home-image-min-height);
-    
-    display: flex;
-    transform: translate(var(--home-move-image));
-    background-image: var(--home-image-path);
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: bottom;
-    filter:brightness(102%);
-}
-.home-image-container.dark-mode {
-    filter:brightness(120%);
+/* Home Image Dark Mode - Background image for dark mode */
+.home__image-container.dark-mode {
+    background-image: url('../../images/self-image-dark-mode.png');
+    filter: brightness(120%);
 }
 
-.home-image-container.start-animation {
-    animation: fadeInSlideRight .85s ease-out forwards;
-    /* animation-name: fadeInSlideRight;
-    animation-delay: 1s; */
+/* Animate Home Image - Animation for home image */
+.animate-home-image {
+    animation: baseFadeInSlideRight .85s ease-out forwards;
+    opacity: 1;
 }
 
-/* Left side of home page, currently contains only text */
+/* Home Left - Left side of the home page */
 .home__left {
+    position: absolute;
     display: flex;
     height: 100%;
-    width: 75%;
-    min-width: 330px;
+    width: 65%;
 }
 
-/* Text container */
+/* Text Container - Container for text */
 .home__text-container {
-    width: 100%; 
-    margin-left: 40px;
-    animation: fadeInSlideRight2 .85s ease-out forwards;
-    /* transform: translate(var(--home-move-text)); */
     display: flex;
+    width: 100%;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    white-space: nowrap; /* Prevent words from stacking in a column if there's no space */
+    white-space: nowrap; /* Prevent words from stacking */
+    opacity: 0;
 }
-/* Text wrapper to keep a block shape */
-.block-wrapper { 
 
+/* Animate Text Container - Animation for text container */
+.animate-home-text-container {
+    animation: baseFadeInSlideRight .85s ease-out forwards;
+    opacity: 1;
 }
-/* Text name (Kevin Cendana) */
+
+/* Block Wrapper - Text wrapper to maintain block shape */
+.block-wrapper {
+    display: block;
+}
+
+/* Text Name - User's name */
 .home__text-name {
     position: relative;
-    font-family: 'Avenir Next', sans-serif;
-    font-weight: 650;
-    font-size: var(--home-font-size-name);
-    margin-top: 2vh;
-    margin-bottom: 1vh;
+    margin: 0 0 .4rem 0;
+    font-family: 'SF Pro Display', sans-serif;
+    font-weight: 800;
+    font-size: clamp(1.6rem, 5.3vw, 3.5rem);
 }
-/* Text alias (CS Student, etc etc) */
+
+/* Text Alias - User's alias or title */
 .home__text-alias {
-    font-size: var(--home-alias-font-size);
-    align-items: flex-start;
-    margin-left: 4px;
     display: flex;
+    align-items: flex-start;
+    margin-left: 1.5px;
+    font-family: 'SF Pro Display', sans-serif;
+    font-weight: 300;
+    font-size: clamp(1rem, 3.3vw, 2.05rem);
 }
-
-/* Animations */
-
-/* Animation for image */
-@keyframes fadeInSlideRight {
-    from {
-        opacity: 0;
-        transform: translate(var(--home-move-image)) translateX(-20px); 
-    }
-    to {
-        opacity: 1;
-        /* Retain original translation after the animation ends
-        This is so it keeps the translation from moving the image using --home-move-image,
-        since the picture is always moved*/
-        transform: translate(var(--home-move-image)) translateX(0);
-    }
-}
-
-/* Animation for text */
-@keyframes fadeInSlideRight2 {
-    from {
-        opacity: 0;
-        transform: translate(var(--home-move-text)) translateX(-20px); 
-    }
-    to {
-        opacity: 1;
-        transform: translate(var(--home-move-text)) translateX(0);
-    }
-}
-
-
-/* Media Queries:
-/  By default w/o queries, I assume an average window size on desktop (~1400x900 px).
-/  Queries are used for: wide screens, standard tablets & phones, & small phones.
-/  Note: I change the background color just to debug; makes it easier to see what query is being applied.*/
-
-
-/* Wide screens */
-@media (min-width: 1600px) {
-
-}
-
-/* Standard tablet */
-@media (max-width: 1050px) {
-    .home {
-        --home-font-size-name: 3rem;
-        --home-alias-font-size: 1.85rem;
-        --home-height: 70vh;
-        /* --home-background-color: orange; */
-        --home-image-height: 90%;
-        --home-image-min-height: 720px;
-        --home-image-width: 90%;
-        --home-image-max-width: 600px;
-        --home-move-image: 25%, 0;
-        --home-move-text: 5%, 0%;
-    }
-}
-
-/* Standard smart phones */
-@media (max-width: 720px) {
-    .home {
-        --home-font-size-name: 2rem;
-        --home-alias-font-size: 1.3rem;
-        --home-height: 55vh;
-        --home-move-image: -3%, 0;
-        --home-move-text: -6%;
-        /* --home-background-color: yellow; */
-        --home-image-height: 80%;
-        --home-image-min-height: 550px;
-        --home-image-width: 75%;
-        --home-image-max-width: 600px;
-    }
-}
-
-/* Small smart phones */
-@media (max-width: 560px) {
-    .home {
-        --home-font-size-name: 1.5rem;
-        --home-alias-font-size: 1rem;
-        --home-height: 40vh;
-        --home-move-image: -23%, 0;
-        --home-move-text: -18%;
-        /* --home-background-color: green; */
-        --home-image-height: 70%;
-        --home-image-min-height: 500px;
-        --home-image-width: 70%;
-        --home-image-max-width: 600px;
-    }
-}
-
