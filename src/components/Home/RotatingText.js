@@ -196,16 +196,16 @@ ReactRotatingText.propTypes = {
 
 // Setting default prop values
 ReactRotatingText.defaultProps = {
-  color: 'inherit',
-  cursor: true,
-  deletingInterval: 50, // Default time between deleting characters
-  emptyPause: 600,     // Default pause time between words (when no word is visible)
-  eraseMode: 'erase',   // Default erase mode
-  items: ['first', 'second', 'third', 'fourth', 'fifth'], // Default text items
-  pause: 3500,          // Default pause time after typing a word (when a word is visible)
-  typingInterval: 52,   // Default time between typing characters
-  random: false,         // Default setting for randomizing text items
-  initialdelay: 2000,      // Default time to wait before typing starts
+    color: 'inherit',
+    cursor: true,
+    deletingInterval: 50, // Default time between deleting characters
+    emptyPause: 600,     // Default pause time between words (when no word is visible)
+    eraseMode: 'erase',   // Default erase mode
+    items: ['first', 'second', 'third', 'fourth', 'fifth'], // Default text items
+    pause: 3500,          // Default pause time after typing a word (when a word is visible)
+    typingInterval: 52,   // Default time between typing characters
+    random: false,         // Default setting for randomizing text items
+    initialdelay: 2000,      // Default time to wait before typing starts
 };
 
 

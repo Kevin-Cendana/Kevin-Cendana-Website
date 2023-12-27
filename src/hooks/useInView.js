@@ -74,7 +74,7 @@ const useInView = (refs, { threshold = [0.1], delay = 100, playOnce, isDarkMode,
                 }
             });
         };
-    }, [refs, hasBeenInView, threshold, delay, playOnce, isDarkMode]); // Added isDarkMode as a dependency
+    }, [refs, hasBeenInView, threshold, delay, playOnce, isDarkMode, sectionName]); // Added isDarkMode as a dependency
 
     return startAnimation;
 };

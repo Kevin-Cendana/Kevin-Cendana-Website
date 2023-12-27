@@ -12,9 +12,7 @@ import About from './components/About/About';
 import ResumeContact from './components/ResumeContact/ResumeContact';
 import Projects from './components/Projects/Projects';
 import Skills from './components/Skills/Skills';
-import DarkModeToggle from './shared/DarkModeToggle/DarkModeToggle.js';
 import { DarkModeProvider } from './shared/DarkModeToggle/DarkModeContext.js';
-import DebugWindowDimensions from './shared/DebugWindowDimensions.js';
 import NavigationBar from './components/NavigationBar/NavigationBar';
 import './StarsBackground.scss';
 

@@ -6,8 +6,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import useInView from '../../hooks/useInView'; 
 import Carousel  from './Carousel.tsx'; // Credit: React Round Carousel by scriptex: https://github.com/scriptex/react-round-carousel
-import DarkModeToggle from '../../shared/DarkModeToggle/DarkModeToggle.js';
-import { useDarkMode } from '../../shared/DarkModeToggle/DarkModeContext';
 import classNames from 'classnames';
 import './Projects.css';
 import './SlideBackgrounds.css';
@@ -119,11 +117,8 @@ function Projects() {
     const [currentTitle, setCurrentTitle] = useState('');
     const [currentCaptions, setCurrentCaptions] = useState([]);
     const carouselRef = useRef(null);
-    const [bgClass, setBgClass] = useState('bg-slide-0'); // Background for each slide
     const projectsRef = useRef(null);           // Ref to play animations when Projects section is in view
     const isProjectsInView = useInView(projectsRef, { threshold:[0.2], sectionName: "projects"});    //
-    const [showTutorial, setShowTutorial] = useState(true); // Show tutorial on first load
-    const { isDarkMode } = useDarkMode();
     const projectsHeader = classNames({
         'projects__header': true,
         'animate-projects-header': isProjectsInView,
@@ -146,7 +141,6 @@ function Projects() {
                 setCurrentDescription(project.description);
                 setCurrentTitle(project.title);
                 setCurrentCaptions(Array.isArray(project.captions) ? project.captions : []);
-                setBgClass(`bg-slide-${currentIndex}`); 
             }
         };
     

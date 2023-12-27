@@ -114,31 +114,12 @@ function ResumeContact() {
     'animate-resume-header': isResumeInView,
     'dark-mode': isDarkMode
   });
-  const contactHeaderClassBig = classNames({
+  const contactHeaderClass = classNames({
     'contact-header': true,
     'big-screens-only': true,
     'animate-contact-header': isContactInView,
     'dark-mode': isDarkMode
   });
-  const contactHeaderClassSmall = classNames({
-    'contact-header': true,
-    'small-screens-only': true,
-    'animate-contact-header': isContactInView,
-    'dark-mode': isDarkMode
-  });
-
-
-
-  const handleDownloadClick = () => {
-    // This will change the current window location to the PDF export link.
-    window.location.href = 'https://docs.google.com/document/d/1xiAtzAXNMSw3ZkajAZaag-O40Fxn4iWoJ1nj-sb5YCA/export?format=pdf';
-  };
-
-  // Here, I define another function for the new window button click.
-  const handleNewWindowClick = () => {
-    // This will open the Google Doc in a new tab.
-    window.open('https://docs.google.com/document/d/1xiAtzAXNMSw3ZkajAZaag-O40Fxn4iWoJ1nj-sb5YCA/edit?usp=sharing', '_blank');
-  };
 
   useEffect(() => {
     showAttributes();
@@ -204,18 +185,16 @@ function ResumeContact() {
 
       {/* Contact Section*/}
       <section className='contact' ref = {contactRef}>
-        <h2 className = {contactHeaderClassBig}>Contact</h2>
+        <h2 className = {contactHeaderClass}>Contact</h2>
         <div className={contactClass}>
           <form className="contact-form" name="contact" method="POST" data-netlify="true" >
             <input type="hidden" name="form-name" value="contact" />
             <div className="input-group">
-              <h2 className = {contactHeaderClassSmall}>Contact</h2>
               <input type="text" name="name" placeholder="Name" />
               <input type="email" name="email" placeholder="Email" />
-              <button className = "contact-submit-button small-screens-only" type="submit">Send</button>
             </div>
             <textarea name="message" placeholder="Message"></textarea>
-            <button className = "contact-submit-button big-screens-only" type="submit">Send</button>
+            <button className = "contact-submit-button" type="submit">Send</button>
           </form>
         </div>
       </section>

@@ -196,7 +196,7 @@
 .contact {
     display: flex;
     flex-direction: column;
-    width: fill-available;
+    width: stretch;
     /* padding: clamp(.2rem, 1.5vw, 1.7rem); */
 }
 
@@ -204,12 +204,9 @@
 .contact-header {
     opacity: 0;
 }
-.animate-contact-header.big-screens-only {
+.animate-contact-header {
     animation: baseFadeInSlideLeft 0.75s ease forwards;
     opacity: 1;
-}
-.contact-header.small-screens-only {
-    display: none;
 }
 
 .contact-container {
@@ -250,8 +247,12 @@ input {
 }
 
 .input-group input,
-.contact-form textarea {
+.contact-form textarea,
+.contact-submit-button {
+    width: 100%;
+    align-self: center;
     padding: var(--input-padding);
+    max-width: 420px;
 }
 
 .contact-form textarea {
@@ -328,7 +329,7 @@ input {
     - Message text field takes up the right side  */
 @media (max-width: 900px) {
     .resume-contact {
-        height: 85vh;
+        height: 101.5vh;
         flex-direction: column;
     }
     .resume {
@@ -346,69 +347,13 @@ input {
     .resume__image__container img {
         width: 280px;
     }
-    .attribute {
-        margin-bottom: 1.5rem;
-    }
-    .attribute-text {
-        font-size: 1.55rem;
-    }
-    .custom-icon {
-        width: 2.2rem;
-        margin-right: .8rem; 
-    }
-
-    .input-group {
-        width: 38%;
-        gap: 0;
-        margin-right: 1rem;
-        margin-bottom: 0;
-    }
-    input {
-        margin-bottom: .62rem;
-    }
-    .contact {
-        padding: 1.6rem;
-        height: 38vh;
-        align-items: center;
-        justify-content: center;
-    }
-    .contact-container {
-        height: 100%;
-    }
-    .contact-form {
-        flex-direction: row;
-        padding: 0;
-    }
-    .contact-form textarea {
-        width: fill-available;
-        height: 190px;
-    }
-    .contact-submit-button.small-screens-only, .contact-header.small-screens-only {
-        display: block;
-    }
-    .contact-header.small-screens-only {
-        margin: .3rem 0 -.3rem 0;
-        letter-spacing: .15rem;
-        padding: 0;
-        align-self: center;
-        font-size: clamp(1.7rem, 2vw, 2.2rem);
-    }
-    .contact-submit-button.small-screens-only {
-        margin: 0;
-        border: none;
-    }
-    .contact-submit-button.big-screens-only, .contact-header.big-screens-only {
-        display: none;
-    }
-    .animate-contact-header.small-screens-only {
-        opacity: 1;
-    }
+    
 }
 
 /* Resize Resume + Contact height & padding */
 @media (max-width: 760px) {
     .resume-contact {
-        height: 74vh;
+        height: 89.5vh;
     }
     .resume {
         height: 42vh;
@@ -430,17 +375,17 @@ input {
         margin-right: .7rem; 
     }
     .contact {
-        height: 30vh;
+        height: 40vh;
     }
 }
 
 /* Resizing Resume */
 @media (max-width: 680px) {
     .resume { height: 40vh; }                                   /* Resume height */
-    .resume__image__container { margin-left: 2.5rem; }            /* Decrease space to the left of Resume */ 
+    .resume__image__container { margin-left: 2.5rem; }          /* Decrease space to the left of Resume */ 
     .resume__image__container img { width: 226px; }             /* Resume image size */
     .attribute { margin-bottom: 1.2rem; margin-left: -.4rem;}   /* Space between attributes */
-    .attribute-text { font-size: 1.1rem; }                     /* Attribute text size */
+    .attribute-text { font-size: 1.1rem; }                      /* Attribute text size */
     .custom-icon { width: 1.9rem; margin-right: .6rem; }        /* Attribute icon size */
 }
 @media (max-width: 560px) {
@@ -448,6 +393,6 @@ input {
     .resume__image__container { margin-left: 2rem; }            /* Space to the left of Resume */ 
     .resume__image__container img { width: 196px; }             /* Resume image size */
     .attribute { margin-bottom: 1.1rem; margin-left: -.6rem;}   /* Space b/t attributes, space left of list */
-    .attribute-text { font-size: 1rem; }                     /* Attribute text size */
-    .custom-icon { width: 1.45rem; margin-right: .5rem; }        /* Attribute icon size, space right of icon */
+    .attribute-text { font-size: 1rem; }                        /* Attribute text size */
+    .custom-icon { width: 1.45rem; margin-right: .5rem; }       /* Attribute icon size, space right of icon */
 }

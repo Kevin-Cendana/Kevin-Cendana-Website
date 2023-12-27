@@ -82,7 +82,6 @@ li:active{
 .top-right-items {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
     align-items: center;
     width: auto; /* Fill up the rest of the navbar space */
     height: 100%;

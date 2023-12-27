@@ -7,9 +7,9 @@ const TypingDots = ({ startAnimation }) => {
   const [messages, setMessages] = useState([]);                      // Stores all the messages
   const [isFirstIteration, setIsFirstIteration] = useState(true);    // Checks if it's the first iteration
   const showTypingDots = false;                                      // Decides if typing dots show in general
-  const [showTypingDotsAfterFirst, setShowTypingDotsAfterFirst] = useState(true); // Decides if typing dots show after the first message
+  const [showTypingDotsAfterFirst] = useState(true); // Decides if typing dots show after the first message
   const [typingDotsVisible, setTypingDotsVisible] = useState(false); // Controls visibility of typing dots
-  const [typingDotsDelay, setTypingDotsDelay] = useState(400);       // Delay before typing dots animation starts
+  const [typingDotsDelay] = useState(400);       // Delay before typing dots animation starts
 
   // Array of messages to be displayed
   const messageArray = [
@@ -59,6 +59,7 @@ const TypingDots = ({ startAnimation }) => {
     return () => {
       clearInterval(timerRef.current); // Clear the timer on component unmount
     };
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [startAnimation, currentMessageIndex, isFirstIteration, typingDotsDelay]);
 
   // Function to render speech bubbles with messages
