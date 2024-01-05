@@ -8,8 +8,8 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    height: clamp(50vw, 57vw, 59vw);
-    min-height: 350px;
+    height: clamp(310px, 57vw, 650px);
+    min-height: 310px;
     max-height: 700px;
     background-color: var(--app-light-mode-color);
 }
@@ -64,7 +64,7 @@
     display: flex;
     aspect-ratio: 1/1.1;
 	margin-right: 1.6vw;
-    min-width: clamp(174px, 30vw, 370px);
+    min-width: clamp(136px, 29vw, 350px);
     opacity: 0; /* Hide until animation */
 }
 .about__polaroid-wrapper.animate-polaroid-wrapper {
@@ -77,12 +77,16 @@
     height: 100%;
     width: 107%;
     transform: translateX(-5%);
-
     box-shadow: 5px 5px 10px grey; /* Vertical, horizontal, blur radius */
     background-image: url('../../images/kevin_and_emma.png');
     background-size: cover;
-    animation: pop-in 0.52s cubic-bezier(0, 1.05, 0.3, 1) forwards;
+    /* animation: pop-in 0.52s cubic-bezier(0, 1.05, 0.3, 1) forwards; */
+	transition: all 1s ease;
 }
+	/* On Hover: Change the polaroid image*/
+	.about-image-container:hover {
+		background-image: url('../../images/kevin_and_emma_hover.png');
+	}
 
 /* Right Side - Right side of the about page with text bubbles */
 .about__right {
@@ -108,7 +112,7 @@
     height: 100%;
     width: 100%;
     margin: 0;
-    max-width: clamp(230px, 50vw, 600px);
+    max-width: clamp(160px, 49vw, 600px);
 }
 
 /*--------------------------------------------------------------------------------------//
@@ -130,15 +134,6 @@
 	width: 85%;
 	max-width: 400px;
 	transition: .25s ease;
-	&:hover {			
-		transform: rotate(6deg);
-		.card:before {
-			transform: translatey(-4%) rotate(-8deg);
-		}	
-		.card:after {
-			transform: translatey(4%) rotate(8deg);
-		}
-	}
 }
 
 /* Card - Individual polaroid card */
@@ -211,7 +206,7 @@
 	justify-self: center;
 	margin-top: 5.5%;
 	margin-bottom: 2%;
-	font-size: clamp(1rem, 2.95vw, 1.95rem);
+	font-size: clamp(.85rem, 2.95vw, 1.95rem);
 	color: black;
 }
 .polaroid__caption.dark-mode {

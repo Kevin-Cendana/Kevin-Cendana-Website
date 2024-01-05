@@ -142,9 +142,6 @@ function ResumeContact() {
               />
             </Zoom>
             <div className = "resume__image__magnifying-icon"></div>
-              {/* Resume Download & Open in a new window Buttons */}
-              {/* <button onClick={handleDownloadClick} className="resume-button download"></button>
-              <button onClick={handleNewWindowClick} className="resume-button new-window"></button> */}
           </div>
 
           {/* Resume Right Side */}
@@ -153,7 +150,7 @@ function ResumeContact() {
             <ul className="attributes-list">
             {attributeListOne.map((attribute, index) => (
               <li key={index} className="attribute">
-                <img src={attribute.icon} alt="" className="custom-icon" />
+                <img src={attribute.icon} alt="" className="attribute-icon" />
                 <span className="attribute-text">{attribute.text}</span>
               </li>
             ))}
@@ -163,7 +160,7 @@ function ResumeContact() {
             <ul className="attributes-list">
             {attributeListTwo.map((attribute, index) => (
               <li key={index} className="attribute">
-                <img src={attribute.icon} alt="" className="custom-icon" />
+                <img src={attribute.icon} alt="" className="attribute-icon" />
                 <span className="attribute-text">{attribute.text}</span>
               </li>
             ))}
@@ -173,7 +170,7 @@ function ResumeContact() {
             <ul className="attributes-list">
             {attributeListThree.map((attribute, index) => (
               <li key={index} className="attribute">
-                <img src={attribute.icon} alt="" className="custom-icon" />
+                <img src={attribute.icon} alt="" className="attribute-icon" />
                 <span className="attribute-text">{attribute.text}</span>
               </li>
             ))}
@@ -187,13 +184,13 @@ function ResumeContact() {
       <section className='contact' ref = {contactRef}>
         <h2 className = {contactHeaderClass}>Contact</h2>
         <div className={contactClass}>
-          <form className="contact-form" name="contact" method="POST" data-netlify="true" >
+          <form className="contact-form" name="contact" method="POST" data-netlify="true" netlify>
             <input type="hidden" name="form-name" value="contact" />
-            <div className="input-group">
-              <input type="text" name="name" placeholder="Name" />
-              <input type="email" name="email" placeholder="Email" />
+            <div className="contact-name-and-email">
+              <input type="text" name="name" placeholder="Name" className="contact=form-name" />
+              <input type="email" name="email" placeholder="Email" className="contact-form-email"/>
             </div>
-            <textarea name="message" placeholder="Message"></textarea>
+            <textarea name="message" className = "contact-form-message" placeholder="Message"></textarea>
             <button className = "contact-submit-button" type="submit">Send</button>
           </form>
         </div>

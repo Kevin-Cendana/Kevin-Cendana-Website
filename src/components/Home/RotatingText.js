@@ -1,8 +1,9 @@
 //--------------------------------------------------------------------------------------//
 //                                   RotatingText.js                                    //
+//          https://www.npmjs.com/package/react-rotating-text?activeTab=readme          //
 //--------------------------------------------------------------------------------------//
 
-// Credit for rotating text animation: https://www.npmjs.com/package/react-rotating-text?activeTab=readme
+// Credit for rotating text animation: 
 import './RotatingText.css';
 var React = require('react');
 var PropTypes = require('prop-types');

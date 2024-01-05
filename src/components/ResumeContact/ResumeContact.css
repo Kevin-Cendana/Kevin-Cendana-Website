@@ -5,14 +5,15 @@
 
 /* Resume Contact Section */
 .resume-contact {
-    height: 50vh;
+    height: 500px;
     width: 100%;
     display: flex;
     flex-direction: row;
     padding-bottom: 2.8rem;
-    --input-padding: clamp(0.25rem, 1vw, 0.5rem); 
+    --contact-form-padding: clamp(0.25rem, 1vw, 0.5rem); 
     --button-width: clamp(1rem, 4.2vw, 1.5rem); 
 }
+
 /* Styles for both */
 .resume, .contact {
     background-color: var(--app-light-mode-color);
@@ -21,13 +22,15 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
+    margin-top: 0;
     padding: clamp(0.5rem, 1vw, 1.5rem);
 }
-.resume-contact.dark-mode, .resume.dark-mode, .contact.dark-mode {
-    /* background-color: var(--app-dark-mode-color); */
-    color: white;
-}
+    /* Dark mode */
+    .resume-contact.dark-mode, .resume.dark-mode, .contact.dark-mode {
+        color: white;
+    }
 
+/* Header for both Resume & Contact */
 .resume-contact h2 {
     height: clamp(2rem, 9vw, 3rem);
     padding-top: clamp(.7rem, 1vw, 1rem);
@@ -37,7 +40,7 @@
     font-size: clamp(2.15rem, 5vw, 2.3rem);
 }
 
-/* Resume */
+/* Resume - Seciton */
 .resume {
     display: flex;
     flex-direction: column;
@@ -45,7 +48,7 @@
     min-width: 638px;
     margin-right: 0; /* Every section has margin already, so Contact is far enough */
 }
-/* Resume wrapper for both the image and the skills list */
+/* Resume Wrapper - for both the image and the skills list */
 .resume-wrapper {
     display: flex;
     flex-direction: row;
@@ -54,39 +57,45 @@
     height: 100%;
     opacity: 0;
 }
-.animate-resume {
-    animation: baseFadeInSlideRight 0.75s ease forwards;
-    opacity: 1;
-}
-/* Resume header */
+    /* Animation plays when Resume is in view, slides and fades into view*/
+    .animate-resume {
+        animation: baseFadeInSlideRight 0.75s ease forwards;
+        opacity: 1;
+    }
+
+/* Resume Header */
 .resume-header {
     opacity: 0;
 }
-.animate-resume-header {
-    animation: baseFadeInSlideRight 0.75s ease forwards;
-    opacity: 1;
-}
-/* Resume image container (not the actual img) */
+    /* Animation plays when Resume is in view, slides and fades into view*/
+    .animate-resume-header {
+        animation: baseFadeInSlideRight 0.75s ease forwards;
+        opacity: 1;
+    }
+
+/* Resume Image Container - Contains the image of the Resume */
 .resume__image__container {
     display:flex;
     position: relative;
     margin-left: clamp(.3rem, 3vw, 1.2rem);
     padding: 0px;
 }
-/* The actual image */
+
+/* Resume Image */
 .resume__image__container img {
     aspect-ratio: 1/1.2;
     width: 270px;
-    /* border: 1px solid black; */
     background-color: black;
     box-shadow: .4rem .4rem .5rem rgba(0,0,0,0.5);
 }
-/* Size of both the image and the slide out with all the skills. */
+
+/* Resume Image + Resume Right - Size of both the image and the right side with the list of attributes  */
 .resume__image__container img, .resume__right {
     aspect-ratio: 1/1.2;
     width: 250px;
 }
-/* Slide out with all the skills */
+
+/* Resume Right - Contains lists of attributes on the right side */
 .resume__right {
     display: flex;
     flex-direction: column;
@@ -96,11 +105,9 @@
     margin-left: clamp(.3rem, 3vw, .8rem);
     margin-top: -5px;
     height: 324px;
-    
-    /* border: 1px solid black;
-    background-color: white; */
 }
-/* Magnifying glass icon */
+
+/* Magnifying Glass Icon - UI Element to show user that they can zoom in on the Resume by clicking. Moves up/down a little. */
 .resume__image__magnifying-icon {
     position: absolute;
     top: 10px;
@@ -114,42 +121,13 @@
     animation: floatUpDown 3s linear infinite;
 }
 
-/* Resume buttons for download + open in new window */
-.resume-button {
-    position: absolute;
-    display: flex;
-    bottom: 0;
-    left: 0;
-    aspect-ratio: 1/1;
-    width: var(--button-width);
-    cursor: pointer;
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-color: white;
-    border: none;
-}
-.download {
-    background-image: url('../../images/download_icon.png');
-    margin: 0 0 .7rem .5rem;
-}
-
-.new-window {
-    background-image: url('../../images/new_window_icon.png');
-    margin: 0 0 .7rem 2.7rem;
-}
-
-.download.dark-mode, .new-window.dark-mode {
-    filter: invert(100);
-    
-}
-
 /* Magnifying glass animation: Float up and down */
 @keyframes floatUpDown {
     0%, 100% { transform: translateY(-2px); } /* Starting and ending at the original position */
     50% { transform: translateY(2px); } /* Peak of the float, adjust px for more or less movement */
 }
 
-/* list */
+/* Attributes List - Container for attributes */
 .attributes-list {
     display: none; /* Initially hide all lists */
     list-style: none; /* Removes bullet points from lists */
@@ -158,6 +136,7 @@
     margin-top: -.4rem;
 }
 
+/* Attribute - List item showcasing an attribute's name & icon */
 .attribute {
     display: flex;
     flex-direction: row;
@@ -168,23 +147,25 @@
 
 }
 
-.custom-icon {
+/* Attribute Icon - Singule icon for the attribute */
+.attribute-icon {
     margin-right: .5rem;
     width: clamp(1.5rem, 3vw, 2rem);
     aspect-ratio: 1/1;
     
 }
 
+/* Attribute Text - Text for attribute */
 .attribute-text {
     text-wrap: nowrap;
     font-weight: 1000;
     font-size: clamp(1.3rem, 3vw, 1.45rem);
 }
 
+/* Attribute Hide - Hides list of attributes 1, then shows attribute list 2, then 3, then back to 1 */
 .attribute-hide {
     opacity: 0;
     transform: translateX(1rem);
-
 }
 
 
@@ -193,6 +174,7 @@
 //                                       Contact                                        //
 //--------------------------------------------------------------------------------------*/
 
+/* Contact - Section*/
 .contact {
     display: flex;
     flex-direction: column;
@@ -200,15 +182,17 @@
     /* padding: clamp(.2rem, 1.5vw, 1.7rem); */
 }
 
-/* Contact header */
+/* Contact Header - Title for the Contact section*/
 .contact-header {
     opacity: 0;
 }
-.animate-contact-header {
-    animation: baseFadeInSlideLeft 0.75s ease forwards;
-    opacity: 1;
-}
+    /* Animation plays when Contact is in view, slides and fades into view*/
+    .animate-contact-header {
+        animation: baseFadeInSlideLeft 0.75s ease forwards;
+        opacity: 1;
+    }
 
+/* Contact Container - Container for all of the Contact seciton except the header*/
 .contact-container {
     color: black;
     padding: 0 1.2rem 1.2rem 1.2rem;
@@ -220,11 +204,13 @@
     margin: 0;
     opacity: 0;
 }
-.animate-contact {
-    animation: baseFadeInSlideLeft 0.75s ease forwards;
-    opacity: 1;
-}
+    /* Animation plays when Contact is in view, slides and fades into view*/
+    .animate-contact {
+        animation: baseFadeInSlideLeft 0.75s ease forwards;
+        opacity: 1;
+    }
 
+/* Contact Form - Container for the form */
 .contact-form {
     height: 100%;
     width: 100%;
@@ -232,7 +218,8 @@
     flex-direction: column;
 }
 
-.input-group {
+/* Contact Name & Email-  Container */
+.contact-name-and-email {
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -241,21 +228,24 @@
     gap: clamp(0.2rem, .5vw, 4rem);
     margin-bottom: clamp(0.2rem, .5vw, .4rem);
 }
+
+/* Input - Input fields for Name, Email. However, Message is more suited to be a Textarea */
 input {
     height: 2rem;
     width: 100%;
 }
 
-.input-group input,
-.contact-form textarea,
+/* Name & Email, Message, Submit Button */
+input, textarea,
 .contact-submit-button {
     width: 100%;
     align-self: center;
-    padding: var(--input-padding);
+    padding: .5rem;
     max-width: 420px;
 }
 
-.contact-form textarea {
+/* Contact Form Message - Text Area for the user to input a message to send */
+.contact-form-message {
     height: 250px; 
     resize: none;
 }
@@ -273,13 +263,11 @@ input {
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
-.contact-submit-button:hover {
-    background-color: #414141;
-    color: #fff;
-}
-.contact-submit-button.small-screens-only {
-    display: none;
-}
+    /* Hovering over the button glows white */
+    .contact-submit-button:hover {
+        background-color: #414141;
+        color: #fff;
+    }
 
 /* Media Queries:
 /  By default w/o queries, I assume an average window size on desktop (~1400x900 px).
@@ -300,7 +288,7 @@ input {
     .attribute-text {
         font-size: 1.4rem;
     }
-    .custom-icon {
+    .attribute-icon {
         width: 1.67rem;
     }
 }
@@ -317,7 +305,7 @@ input {
     .attribute-text {
         font-size: 1.3rem;
     }
-    .custom-icon {
+    .attribute-icon {
         width: 1.5rem;
     }
 }
@@ -329,7 +317,7 @@ input {
     - Message text field takes up the right side  */
 @media (max-width: 900px) {
     .resume-contact {
-        height: 101.5vh;
+        height: 1100px;
         flex-direction: column;
     }
     .resume {
@@ -353,10 +341,10 @@ input {
 /* Resize Resume + Contact height & padding */
 @media (max-width: 760px) {
     .resume-contact {
-        height: 89.5vh;
+        height: 1000px;
     }
     .resume {
-        height: 42vh;
+        height: 430px;
     }
     .resume__image__container {
         margin-left: clamp(3rem, 13vw, 7rem);
@@ -370,29 +358,44 @@ input {
     .attribute-text {
         font-size: 1.15rem;
     }
-    .custom-icon {
+    .attribute-icon {
         width: 1.9rem;
         margin-right: .7rem; 
-    }
-    .contact {
-        height: 40vh;
     }
 }
 
 /* Resizing Resume */
 @media (max-width: 680px) {
-    .resume { height: 40vh; }                                   /* Resume height */
     .resume__image__container { margin-left: 2.5rem; }          /* Decrease space to the left of Resume */ 
     .resume__image__container img { width: 226px; }             /* Resume image size */
     .attribute { margin-bottom: 1.2rem; margin-left: -.4rem;}   /* Space between attributes */
     .attribute-text { font-size: 1.1rem; }                      /* Attribute text size */
-    .custom-icon { width: 1.9rem; margin-right: .6rem; }        /* Attribute icon size */
+    .attribute-icon { width: 1.9rem; margin-right: .6rem; }     /* Attribute icon size */
+    .contact { height: 510px; }
 }
 @media (max-width: 560px) {
-    .resume { height: 40vh; }                                   /* Resume height */
+    .resume { height: 400px; }
     .resume__image__container { margin-left: 2rem; }            /* Space to the left of Resume */ 
     .resume__image__container img { width: 196px; }             /* Resume image size */
     .attribute { margin-bottom: 1.1rem; margin-left: -.6rem;}   /* Space b/t attributes, space left of list */
     .attribute-text { font-size: 1rem; }                        /* Attribute text size */
-    .custom-icon { width: 1.45rem; margin-right: .5rem; }       /* Attribute icon size, space right of icon */
+    .attribute-icon { width: 1.45rem; margin-right: .5rem; }    /* Attribute icon size, space right of icon */
+}
+@media (max-width: 480px) {
+    .resume { height: 396px; }
+    .resume__image__container { margin-left: 2rem; }            /* Space to the left of Resume */ 
+    .resume__image__container img { width: 176px; }             /* Resume image size */
+    .attribute { margin-bottom: 1.1rem; margin-left: -.6rem;}   /* Space b/t attributes, space left of list */
+    .attribute-text { font-size: 1rem; }                        /* Attribute text size */
+    .attribute-icon { width: 1.45rem; margin-right: .5rem; }    /* Attribute icon size, space right of icon */
+}
+@media (max-width: 400px) {
+    .resume-contact { height: 690px; }
+    .resume { height: 296px; }
+    .resume__image__container { margin-left: 2rem; }            /* Space to the left of Resume */ 
+    .resume__image__container img { width: 146px; }             /* Resume image size */
+    .attribute { margin-bottom: 1.1rem; margin-left: -.6rem;}   /* Space b/t attributes, space left of list */
+    .attribute-text { font-size: .8rem; }                       /* Attribute text size */
+    .attribute-icon { width: 1.25rem; margin-right: .4rem; }    /* Attribute icon size, space right of icon */
+    .contact { height: 300px;}
 }

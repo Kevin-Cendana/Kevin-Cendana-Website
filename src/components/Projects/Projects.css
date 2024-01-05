@@ -5,7 +5,7 @@
 /* Project variables */
 :root {
     --projects-title-font-size: 2.1rem;
-    --projects-height: clamp(60vh, 65vw, 67vh);
+    --projects-height: clamp(550px, 60vw, 730px);
     --projects-min-height: 1000px;
     --projects-background-color: var(--app-light-mode-color);
     --projects-text-container-width: clamp(300px, 38vw, 1200px);
@@ -43,8 +43,8 @@
 /* Projects Header - Title for section */
 .projects__header {
     opacity: 0; /* Hide until animation */
-    height: 25%;
-    font-size: clamp(2.3rem, 4.9vw, 3.1rem);
+    height: 10rem;
+    font-size: clamp(2rem, 4.9vw, 3.1rem);
     display: flex;
     align-self: center;
 }
@@ -157,7 +157,7 @@
 
 /* Description - Dynamic description for the current slide */
 .projects__description {
-    font-size: clamp(1rem, 2vw, 1.5rem);
+    font-size: clamp(0.8rem, 2vw, 1.5rem);
     padding: var(--projects-title-padding);
 }
 
@@ -423,7 +423,6 @@
     :root {
         /* Projects */
         --projects-background-color: red;
-        --projects-height: 70vh;
         --projects-text-spacer-left: 200px;
         --projects-title-font-size: 2.5rem;
         --projects-title-padding: 18px;
@@ -464,8 +463,8 @@
 /* Once the window is small enough @960px, the text goes below the carousel and covers the whole width. */
 @media (max-width: 960px) {
     :root {
+        --projects-height: clamp(550px, 100vw, 700px);
         --projects-background-color: gold;
-        --projects-height: 67vh;
         --projects-text-spacer-left: 0px;
         --projects-title-font-size: 1.55rem;
         --projects-title-padding: 12px;
@@ -473,6 +472,7 @@
         --projects-extra-carousel-right-space: 0;
         --projects-text-container-width: 80%;
         --carousel-scale: 1.6;
+        --carousel-left-margin: 86px;
         --carousel-bottom-margin: -2.4rem;
     }
     .projects__section {
@@ -519,17 +519,18 @@
 /* Standard smart phones */
 @media (max-width: 720px) {
     :root {
-        --projects-height: 58.5vh;
+        --projects-height: 620px;
         --projects-text-spacer-left: -362px;
         --projects-title-font-size: 1rem;
         --projects-title-padding: 10px;
         --carousel-scale: 1.4;
+        --carousel-left-margin: 76px;
     }
     .carousel {
         margin-left: -1rem;
     }
     .projects__text-container {
-        margin-top: 1rem;
+        margin-top: 2.5rem;
     }
     .projects__carousel__tutorial p {
         font-size: .9rem;
@@ -539,7 +540,8 @@
 /* Small smart phones */
 @media (max-width: 560px) {
     :root {
-        --carousel-scale: 1.15;
+        --projects-height: 560px;
+        --carousel-scale: 1.12;
         --carousel-left-margin: 2.3rem;
     }
     .projects__text-container {
@@ -547,5 +549,18 @@
     }
     .projects__carousel__tutorial p {
         font-size: .7rem;
+    }
+}
+@media (max-width: 420px) {
+    :root {
+        --projects-height: 500px;
+        --carousel-scale: 1;
+        --carousel-left-margin: 2.4rem;
+    }
+    .projects__text-container {
+        margin-top: -2rem;
+    }
+    .projects__carousel__tutorial p {
+        font-size: .6rem;
     }
 }

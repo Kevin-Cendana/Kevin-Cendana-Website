@@ -63,14 +63,14 @@
 :root {
   --app-light-mode-color: rgb(245, 245, 245); 
   --app-dark-mode-color: rgb(0, 0, 0);
-  --section-margin: clamp(1rem, 2vw, .2rem) clamp(0.6rem, 2vw, 10.2rem); 
+  --section-margin: clamp(.6rem, 2.7vw, 1.6rem) clamp(0.6rem, 2vw, 10.2rem); 
 }
   :root.dark-mode{
     background-color: var(--app-dark-mode-color);
   }
 
 
-/* All elements in app */
+/* All */
 *, *:before, *:after {
   overflow: visible;
   box-sizing: border-box;
@@ -129,7 +129,7 @@ section {
   box-sizing: border-box;
   margin: var(--section-margin);
   border: .05rem solid black;
-  box-shadow: .8rem .65rem .4rem rgba(0,0,0,0.5); /*  horizontal, vertical, blur, spread */
+  box-shadow: .8rem .65rem .4rem rgba(0,0,0,0.5);
 }
   section.dark-mode {
     border: .05rem solid white;
@@ -137,6 +137,8 @@ section {
     /* background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%); */
     /* box-shadow: .8rem .65rem .4rem rgba(158, 158, 158, 0.5); */
   }
+
+
 
 /* Headers for all sections */
 h1,h2 {

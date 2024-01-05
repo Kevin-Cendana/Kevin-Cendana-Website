@@ -13,6 +13,7 @@ import ResumeContact from './components/ResumeContact/ResumeContact';
 import Projects from './components/Projects/Projects';
 import Skills from './components/Skills/Skills';
 import { DarkModeProvider } from './shared/DarkModeToggle/DarkModeContext.js';
+// import DebugWindowDimensions from './shared/DebugWindowDimensions.js';
 import NavigationBar from './components/NavigationBar/NavigationBar';
 import './StarsBackground.scss';
 
@@ -23,7 +24,7 @@ function App() {
       {/* <DarkModeProvider to give global dark mode */}
       <DarkModeProvider>
       <div className="app">
-        {/* <DebugWindowDimensions /> Comment this out for final release. */}
+        {/* <DebugWindowDimensions /> */}
         <NavigationBar />
           <div className="stars-container">
             <div id="stars"></div>

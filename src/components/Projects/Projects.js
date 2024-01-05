@@ -75,7 +75,7 @@ const project_data = [
     { 
     image: personal_project1, 
     title: "Maplestory",
-    description: "To practice Flutter and it's widgets, states, and frame animations, I replicated the core gameplay loop of one of my favorite childhood games, Maplestory.",
+    description: "To practice Flutter and its widgets, states, and frame animations, I replicated the core gameplay loop of one of my favorite childhood games, Maplestory.",
     captions: [
         { text: 'Flutter', style: { color: 'black', background: orangeGradient } },
     ] 
