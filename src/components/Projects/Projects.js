@@ -8,15 +8,14 @@ import useInView from '../../hooks/useInView';
 import Carousel  from './Carousel.tsx'; // Credit: React Round Carousel by scriptex: https://github.com/scriptex/react-round-carousel
 import classNames from 'classnames';
 import './Projects.css';
-import './SlideBackgrounds.css';
 
 // Slideshow images
-import personal_project1 from '../../images/slideshow_images/maplestory_app.gif';
-import personal_project2 from '../../images/slideshow_images/invaded_space.gif';
-import personal_project3 from '../../images/slideshow_images/bullseye.png';
 import hackathon1 from '../../images/slideshow_images/lyric_link.gif';
 import hackathon2 from '../../images/slideshow_images/att_empowher.png';
 import hackathon3 from '../../images/slideshow_images/datafest.png';
+import personal_project1 from '../../images/slideshow_images/maplestory_app.gif';
+import personal_project2 from '../../images/slideshow_images/invaded_space.gif';
+import personal_project3 from '../../images/slideshow_images/bullseye.png';
 
 // Gradient colors for each slide's captions
 const rainbowGradient = 'linear-gradient(45deg, #fcb0a9, #a3c9f8, #a6fcb3, #fff2cc)';
@@ -42,6 +41,7 @@ const project_data = [
             { text: 'Hackathon', style: { color: 'black', background: rainbowGradient}},
         ]
     },
+
     { 
     image: hackathon2,
     title: "AT&T Site", 
@@ -58,6 +58,7 @@ const project_data = [
     ]
 
     },
+
     { 
     image: hackathon3, 
     title: "Word Cloud",
@@ -72,6 +73,7 @@ const project_data = [
         { text: 'Hackathon', style: { color: 'black', background: lightGreenGradient}},
     ]
     },
+
     { 
     image: personal_project1, 
     title: "Maplestory",
@@ -80,6 +82,7 @@ const project_data = [
         { text: 'Flutter', style: { color: 'black', background: orangeGradient } },
     ] 
     },
+
     { 
     image: personal_project2, caption: 'Invaded Space',
     title: "Invaded Space",
@@ -225,7 +228,7 @@ function Projects() {
                 </div>
                 {/* Right side w/ dynamic project description */}
                 <div className = {projectsRight}>
-                    <div className="projects__text-container gradient-border">
+                    <div className="projects__text-container">
                         <div className="row-wrapper">
                             {/* Title & Captions */}
                             <h2 className="projects__title">{currentTitle}</h2>

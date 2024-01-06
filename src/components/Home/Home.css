@@ -38,7 +38,6 @@
 
 /* Home Image Dark Mode - Background image for dark mode */
 .home__image-container.dark-mode {
-    background-image: url('../../images/self-image-dark-mode.png');
     filter: brightness(120%);
 }
 

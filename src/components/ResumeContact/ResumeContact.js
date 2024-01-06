@@ -11,9 +11,6 @@ import { useDarkMode } from '../../shared/DarkModeToggle/DarkModeContext';
 import 'react-medium-image-zoom/dist/styles.css'; // source: https://www.npmjs.com/package/react-medium-image-zoom
 import './ResumeContact.css';
 
-// Images
-import resumeImage from '../../images/resume.png';
-
 // Icons: Hackathons
 import attIcon from '../../images/att_icon.png';
 import datafestIcon from '../../images/datafest_icon.png';
@@ -136,7 +133,7 @@ function ResumeContact() {
             <Zoom>
               <img
                 alt="Resume"
-                src={resumeImage}
+                src={'https://i.imgur.com/SPyTBJ4.png'}
                 style={{
                 }}
               />

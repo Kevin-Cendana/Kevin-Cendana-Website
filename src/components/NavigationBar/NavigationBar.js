@@ -8,6 +8,7 @@ import { Link } from 'react-scroll';       // Import Link from react-scroll for 
 import classNames from 'classnames';       // Import classNames to dynamically set class names
 import './NavigationBar.css';              // Import CSS for the navigation bar
 import DarkModeToggle from '../../shared/DarkModeToggle/DarkModeToggle'; // Import the DarkModeToggle component
+import githubIcon from '../../images/github_icon.png'; // Import the GitHub logo
 
 function NavigationBar() {
     // State to track which section is active
@@ -52,8 +53,8 @@ function NavigationBar() {
 
             {/* Items in the top right of the nav bar: GitHub logo & Dark Mode switch */}
             <div className="top-right-items">
-            <a href="https://github.com/KevCendana" target="_blank" className="github-logo-link"rel="noreferrer">
-                <div className = "github-logo"></div>
+            <a href="https://github.com/KevCendana" target="_blank" className="github-logo-link" rel="noopener noreferrer">
+                <img src = {githubIcon} className = "github-logo" alt = "GitHub Logo Link"></img>
             </a>
                 <div className="toggle__container">
                     <label className="switch">

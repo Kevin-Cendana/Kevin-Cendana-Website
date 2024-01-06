@@ -206,7 +206,7 @@
 	justify-self: center;
 	margin-top: 5.5%;
 	margin-bottom: 2%;
-	font-size: clamp(.85rem, 2.95vw, 1.95rem);
+	font-size: clamp(.8rem, 2.95vw, 1.95rem);
 	color: black;
 }
 .polaroid__caption.dark-mode {

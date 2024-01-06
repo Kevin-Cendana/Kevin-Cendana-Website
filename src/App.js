@@ -13,9 +13,11 @@ import ResumeContact from './components/ResumeContact/ResumeContact';
 import Projects from './components/Projects/Projects';
 import Skills from './components/Skills/Skills';
 import { DarkModeProvider } from './shared/DarkModeToggle/DarkModeContext.js';
-// import DebugWindowDimensions from './shared/DebugWindowDimensions.js';
 import NavigationBar from './components/NavigationBar/NavigationBar';
 import './StarsBackground.scss';
+
+// Debugging - Comment this out for production
+//import DebugWindowDimensions from './shared/DebugWindowDimensions.js';
 
 // Main App
 function App() {
@@ -24,6 +26,7 @@ function App() {
       {/* <DarkModeProvider to give global dark mode */}
       <DarkModeProvider>
       <div className="app">
+        {/* Debugging - Comment this out for production */}
         {/* <DebugWindowDimensions /> */}
         <NavigationBar />
           <div className="stars-container">
@@ -44,7 +47,8 @@ function App() {
           <div className = "footer-left">
             <p>© Kevin Cendana 2024</p>
           </div>
-          <div className = "footer-right"></div>
+          <div className = "footer-right">
+          </div>
         </footer>
       </div>
       </DarkModeProvider>

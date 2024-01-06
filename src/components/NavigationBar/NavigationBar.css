@@ -59,17 +59,13 @@
     text-decoration: none; /* Remove underline */
     color: white;
 }
-li:hover {
-    color: black;
-    background-color: white;
-    transform: scale(1.05) translate(.1rem, -.1rem);
-    transition: all 0.3s ease;
-}
-li:active{
-    background-color: gray;
-    transform: scale(1) translate(-.1rem, -.1rem);
-    transition: all 0.3s ease;
-}
+    .navbar__list li:hover {
+        /* color: black;
+        background-color: white; */
+        transform: scale(1.05) translate(.1rem, -.05rem);
+        transition: all 0.3s ease;
+    }
+
 
 /* Each active item (tab) in the navigation bar */
 .navbar__link-active li {
@@ -90,19 +86,23 @@ li:active{
 
 
 /* Container for GitHub Logo */
-/* ::before and :active cause logo to turn gray when clicked */
-.github-logo-link {
+.github-logo {
     content: 'GitHub'; /* Text to show on hover */
     align-self: center;
     aspect-ratio: 1/1;
     height: 32px;
+    margin-top: .15rem;
     margin-left: .8rem;
-    background-image: url('../../images/github_icon.png');
     border: 1.5px solid white;
     border-radius: 50%;
     background-size: cover;
     background-repeat: no-repeat;
+    transition: all 0.3s ease;
 }
+    .github-logo:hover {
+        box-shadow: 0 0 15px 5px white;
+        transition: all 0.3s ease;
+    }
 
 /* Container for the dark mode toggle switch */
 .toggle__container {

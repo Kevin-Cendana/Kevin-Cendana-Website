@@ -12,9 +12,9 @@
     --projects-text-container-max-width: 600px;
     --projects-text-container-bg-color: rgb(250, 250, 250);
     --projects-section-flex-direction: row;
+    --projects-text-container-left-margin: 2.1rem;
     --projects-left-min-width: 650px;
     --projects-text-spacer-up: 0px;
-    --projects-text-spacer-left: -5px;
     --projects-title-padding: 16px;
     --carousel-scale: 2.15; 
     --carousel-base-width: 13.125rem;
@@ -113,7 +113,6 @@
     position: relative;
     background: var(--projects-text-container-bg-color);
     font-size: var(--projects-desc-font-size);
-    margin-left: var(--projects-extra-carousel-right-space);
     display: flex;
     flex-direction: column;
     align-self: flex-start;
@@ -122,7 +121,7 @@
     max-width: var(--projects-text-container-max-width); 
     height: var(--projects-text-container-min-height);
     margin-top: var(--projects-text-spacer-up);
-    margin-left: 1rem;
+    margin-left: var(--projects-text-container-left-margin);
     border: 1px solid black;
 }
     /* Text container Dark mode */
@@ -423,8 +422,8 @@
     :root {
         /* Projects */
         --projects-background-color: red;
-        --projects-text-spacer-left: 200px;
-        --projects-title-font-size: 2.5rem;
+        --projects-title-font-size: 2.4rem;
+        --projects-text-container-left-margin: 0rem;
         --projects-title-padding: 18px;
         --projects-section-flex-direction: row;
         --projects-left-min-width: 750px;
@@ -437,6 +436,7 @@
 /* Standard tablet */
 @media (max-width: 1350px) {
     :root {
+        --projects-text-container-left-margin: .8rem;
         --projects-left-min-width: 620px;
         --projects-title-font-size: 1.6rem;
         --carousel-scale: 2;
@@ -465,7 +465,6 @@
     :root {
         --projects-height: clamp(550px, 100vw, 700px);
         --projects-background-color: gold;
-        --projects-text-spacer-left: 0px;
         --projects-title-font-size: 1.55rem;
         --projects-title-padding: 12px;
         --projects-text-spacer-up: 12%;
@@ -520,7 +519,6 @@
 @media (max-width: 720px) {
     :root {
         --projects-height: 620px;
-        --projects-text-spacer-left: -362px;
         --projects-title-font-size: 1rem;
         --projects-title-padding: 10px;
         --carousel-scale: 1.4;
