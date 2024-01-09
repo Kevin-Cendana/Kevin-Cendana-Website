@@ -3,7 +3,7 @@
 //                Both in one file since they are both small components.                //
 //--------------------------------------------------------------------------------------//
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Zoom from 'react-medium-image-zoom';
 import useInView from '../../hooks/useInView';
 import classNames from 'classnames';
@@ -90,10 +90,14 @@ function showAttributes() {
   processList();
 }
 
+
+
 function ResumeContact() {
-  const { isDarkMode } = useDarkMode();
-  const resumeRef = useRef(null);
-  const contactRef = useRef(null);
+  const { isDarkMode } = useDarkMode(); // Get the global state for dark mode 
+  const [showPopup, setShowPopup] = useState(false); // State for showing the popup
+  const [popupMessage, setPopupMessage] = useState(""); // State for the popup message
+  const resumeRef = useRef(null); // Ref for resume section
+  const contactRef = useRef(null); // Ref for contact section
   const isResumeInView = useInView(resumeRef, { threshold: [0.2], sectionName: 'resume-contact' } );
   const isContactInView = useInView(contactRef, { threshold: [0.2], sectionName: 'resume-contact' } );
   const resumeClass = classNames({
@@ -122,6 +126,62 @@ function ResumeContact() {
     showAttributes();
   }, []);
 
+  // PopUp for Contact Form Submission - Pops up a white box with a message
+  const Popup = ({ message, onClose }) => {
+    return (
+      <div className="popup-background"> 
+        <div className="popup">
+          <p>{message}</p>
+          <button onClick={onClose}>Close</button>
+        </div>
+      </div>
+    );
+  };
+
+  // Function: Handle Form Submission
+  const handleFormSubmit = (event) => {
+    event.preventDefault(); // Prevent default form submission behavior
+    
+    const form = event.target; // Get the form element
+    const formData = new FormData(form); // Create a FormData object from the form
+
+    // Send the form data to the server
+    fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: new URLSearchParams([...formData]).toString() // Convert the FormData object to a URL-encoded string
+    })
+    // Handle the response
+    .then(response => {
+      // If the response is ok, show a success message
+      if (response.ok) {
+        setPopupMessage("Thank you! Your message has been sent successfully.");
+        setShowPopup(true); // Show the popup
+        form.reset(); // Reset the form
+      // Else, show an error message
+      } else {
+        setPopupMessage("Failed to send message. Please try again later.");
+        setShowPopup(true);
+      }
+    })
+    // If there's an error during the fetch operation
+    .catch(error => {
+      console.error('Error:', error); // Log the error to the console
+      setPopupMessage("An error occurred. Please try again later."); 
+      setShowPopup(true); // Show the popup
+    });
+  };
+
+  // Function: Close Popup
+  const closePopup = () => {
+    setShowPopup(false);
+  };
+
+// UseEffect to show attributes
+useEffect(() => {
+  showAttributes();
+}, []);
+
   return (
     <div className="resume-contact" id = "resume-contact">
 
@@ -133,7 +193,7 @@ function ResumeContact() {
             <Zoom>
               <img
                 alt="Resume"
-                src={'https://i.imgur.com/SPyTBJ4.png'}
+                src={'https://drive.google.com/uc?export=view&id=1gWuMa_hFEyR21zJy8zc6wYkRPVeenhc1'}
                 style={{
                 }}
               />
@@ -181,18 +241,18 @@ function ResumeContact() {
       <section className='contact' ref = {contactRef}>
         <h2 className = {contactHeaderClass}>Contact</h2>
         <div className={contactClass}>
-          <form className="contact-form" name="contact" method="POST" data-netlify="true" netlify>
-            <input type="hidden" name="form-name" value="contact" />
-            <div className="contact-name-and-email">
-              <input type="text" name="name" placeholder="Name" className="contact=form-name" />
-              <input type="email" name="email" placeholder="Email" className="contact-form-email"/>
-            </div>
-            <textarea name="message" className = "contact-form-message" placeholder="Message"></textarea>
-            <button className = "contact-submit-button" type="submit">Send</button>
-          </form>
+        <form className="contact-form" name="contact" method="POST" onSubmit={handleFormSubmit} data-netlify="true">
+          <input type="hidden" name="form-name" value="contact" />
+          <div className="contact-name-and-email">
+            <input type="text" id="name" name="name" placeholder="Name" autocomplete="name" className="contact-form-name" />
+            <input type="email" id="email" name="email" placeholder="Email" autocomplete="email" className="contact-form-email"/>
+          </div>
+          <textarea id="message" name="message" className="contact-form-message" placeholder="Message"></textarea>
+          <button className="contact-submit-button" type="submit">Send</button>
+        </form>
         </div>
       </section>
-
+      {showPopup && <Popup message={popupMessage} onClose={closePopup} />}
     </div>
   );
 

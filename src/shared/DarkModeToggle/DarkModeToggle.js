@@ -12,7 +12,8 @@ function DarkModeToggle() {
     const darkModeSelectors = `
         html, body, p, div, label, section, span, nav, Link, ul, h1, h2, a, button,
         .animate-header, .about, .background, .home, .home-image, .navbar, .navbar__list, 
-        .navbar__link, .skills, .slider, .slider:before, .polaroid__caption, .resume, .contact
+        .navbar__link, .popup, .skills, .slider, .slider:before, .polaroid__caption, .resume, 
+        .contact
     `;
 
     const toggleDarkMode = useCallback((value) => {

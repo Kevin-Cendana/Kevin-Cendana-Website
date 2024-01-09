@@ -80,12 +80,12 @@
     box-shadow: 5px 5px 10px grey; /* Vertical, horizontal, blur radius */
     background-image: url('../../images/kevin_and_emma.png');
     background-size: cover;
-    /* animation: pop-in 0.52s cubic-bezier(0, 1.05, 0.3, 1) forwards; */
-	transition: all 1s ease;
+	transition: all 1s ease-in-out;
 }
 	/* On Hover: Change the polaroid image*/
 	.about-image-container:hover {
 		background-image: url('../../images/kevin_and_emma_hover.png');
+        transition: all 1s ease-in-out;
 	}
 
 /* Right Side - Right side of the about page with text bubbles */
