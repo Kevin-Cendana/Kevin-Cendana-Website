@@ -71,6 +71,7 @@ useEffect(() => {
         }, typingDotsDelay);
       }
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentMessageIndex, startAnimation]); // Dependencies include currentMessageIndex and startAnimation
 
   // Function to render speech bubbles with messages
