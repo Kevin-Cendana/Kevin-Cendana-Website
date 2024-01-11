@@ -23,11 +23,11 @@
 .about__header {
     display: flex;
     align-items: center;
-    height: clamp(1.3rem, 8vw, 6rem);
+    height: clamp(1.4rem, 10vw, 6.3rem);
     padding: 0;
     opacity: 0;
 
-    font-size: clamp(1.65rem, 4.8vw, 3rem);
+    font-size: clamp(1.8rem, 5vw, 3rem);
     font-weight: 400;
 }
 
@@ -123,7 +123,8 @@
 /* Custom Font - Polaroid Font */
 @font-face {
     font-family: 'sam', sans-serif;
-    src: url('../../fonts/Sam.otf') format('truetype');
+    src: url('../../fonts/Sam.woff') format('woff'), /* Older Browsers */
+         url('../../fonts/Sam.otf') format('opentype'); /* Fallback */
     font-weight: 400;
     font-style: normal;
 }

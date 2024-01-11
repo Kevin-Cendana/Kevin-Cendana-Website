@@ -551,7 +551,7 @@
 }
 @media (max-width: 420px) {
     :root {
-        --projects-height: 500px;
+        --projects-height: 515px;
         --carousel-scale: 1;
         --carousel-left-margin: 2.4rem;
     }

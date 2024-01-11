@@ -32,12 +32,12 @@
 
 /* Header for both Resume & Contact */
 .resume-contact h2 {
-    height: clamp(2rem, 9vw, 3rem);
+    height: clamp(1.95rem, 9vw, 3rem);
     padding-top: clamp(.7rem, 1vw, 1rem);
     margin-bottom: clamp(1.8rem, 2vw, 2.5rem);
     display: flex;
     align-self: center;
-    font-size: clamp(2.15rem, 5vw, 2.3rem);
+    font-size: clamp(2.05rem, 5vw, 2.3rem);
 }
 
 /* Resume - Seciton */
@@ -375,6 +375,7 @@ input, textarea,
         width: 96.1%;
         min-width: 0;
         margin: var(--section-margin);
+        margin-top: 0rem;
     }
     .resume-wrapper {
         align-items: flex-start;
@@ -386,7 +387,9 @@ input, textarea,
     .resume__image__container img {
         width: 280px;
     }
-    
+    .contact {
+        margin-bottom: -1rem;
+    }
 }
 
 /* Resize Resume + Contact height & padding */
@@ -425,6 +428,7 @@ input, textarea,
     .contact { height: 510px; }
 }
 @media (max-width: 560px) {
+    .resume-contact { height: 940px; }
     .resume { height: 400px; }
     .resume__image__container { margin-left: 2rem; }            /* Space to the left of Resume */ 
     .resume__image__container img { width: 196px; }             /* Resume image size */
@@ -442,11 +446,11 @@ input, textarea,
 }
 @media (max-width: 400px) {
     .resume-contact { height: 690px; }
-    .resume { height: 296px; }
+    .resume { height: 290px; }
     .resume__image__container { margin-left: 2rem; }            /* Space to the left of Resume */ 
     .resume__image__container img { width: 146px; }             /* Resume image size */
-    .attribute { margin-bottom: 1.1rem; margin-left: -.6rem;}   /* Space b/t attributes, space left of list */
-    .attribute-text { font-size: .8rem; }                       /* Attribute text size */
+    .attribute { margin-bottom: 1.1rem; margin-left: -.7rem;}   /* Space b/t attributes, space left of list */
+    .attribute-text { font-size: .75rem; }                       /* Attribute text size */
     .attribute-icon { width: 1.25rem; margin-right: .4rem; }    /* Attribute icon size, space right of icon */
     .contact { height: 300px;}
 }

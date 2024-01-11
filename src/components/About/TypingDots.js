@@ -1,66 +1,77 @@
-import React, { useState, useEffect, useRef } from 'react'; // Import necessary hooks and components from React
+import React, { useState, useEffect, useMemo, useRef } from 'react'; // Import necessary hooks and components from React
 
 // TypingDots: component for displaying typing animation and messages
 const TypingDots = ({ startAnimation }) => {
   const timerRef = useRef(null);                                     // Keeps track of the timer
+  const [lastAnimationStart, setLastAnimationStart] = useState(0);    // Delay between animating speech bubbles again
   const [currentMessageIndex, setCurrentMessageIndex] = useState(0); // Tracks the current message index
   const [messages, setMessages] = useState([]);                      // Stores all the messages
-  const [isFirstIteration, setIsFirstIteration] = useState(true);    // Checks if it's the first iteration
+  const [, setIsFirstIteration] = useState(true);    // Checks if it's the first iteration
   const showTypingDots = false;                                      // Decides if typing dots show in general
   const [showTypingDotsAfterFirst] = useState(true); // Decides if typing dots show after the first message
   const [typingDotsVisible, setTypingDotsVisible] = useState(false); // Controls visibility of typing dots
   const [typingDotsDelay] = useState(400);       // Delay before typing dots animation starts
 
   // Array of messages to be displayed
-  const messageArray = [
+  const messageArray = useMemo(() => [
     <>Hello! My name is Kevin.</>,
     <>I'm currently a senior CS student here at Sac State, graduating in Spring.<br></br></>,
     <>I love coding as both work & as a pastime, but I also like manga, art, and getting boba with my partner, Emma.</>,
     <>Thank you for taking the time to visit my website!</>,
-  ];
+  ], []);
 
   // Delays between messages in milliseconds
-  let delays = [0,0,0,0];
+  const delays = useMemo(() => [0, 0, 0, 0], []);
 
-  // Effect hook to handle the display of messages and typing dots
+  // Effect hook for starting and stopping the animation
+useEffect(() => {
+  if (startAnimation) {
+    const now = Date.now();
+    // Start the animation if it's been more than 1 second since the last animation
+    if (now - lastAnimationStart > 1000) {
+      setMessages([]); // Clear existing messages
+      setCurrentMessageIndex(0); // Reset index
+      setIsFirstIteration(true); // Reset iteration flag
+      setLastAnimationStart(now);
+    }
+  } else {
+    // Stop the animation
+    clearInterval(timerRef.current); // Clear the interval
+    setMessages([]); // Clear messages
+    setCurrentMessageIndex(0); // Reset index
+    setIsFirstIteration(false); // Update iteration flag
+    setTypingDotsVisible(false); // Hide typing dots
+  }
+
+  // Cleanup function to clear the interval
+  return () => {
+    clearInterval(timerRef.current); // Clear the interval when component unmounts or startAnimation changes
+  };
+// eslint-disable-next-line react-hooks/exhaustive-deps
+}, [startAnimation]); // Dependency array includes only startAnimation
+
+  // Effect hook for handling message display and typing dots
   useEffect(() => {
-    // Check if animation should start via passed in arg & if it's the first iteration
-    if (startAnimation) { 
-
+    if (currentMessageIndex < messageArray.length && startAnimation) {
       // Function to display the next message
       const displayNextMessage = () => {
-        if (currentMessageIndex < messageArray.length) {      // Check if there are more messages to display
-          setTypingDotsVisible(false);                        // Hide typing dots before showing next message
-          setMessages(prevMessages => [...prevMessages, messageArray[currentMessageIndex]]); // Add next message to the list
-          setCurrentMessageIndex(prevIndex => prevIndex + 1); // Increment message index
-        } else {
-          clearInterval(timerRef.current);                    // Clear interval when all messages are displayed
-        }
+        setTypingDotsVisible(false); // Hide typing dots
+        setMessages(prevMessages => [...prevMessages, messageArray[currentMessageIndex]]); // Add next message
+        setCurrentMessageIndex(prevIndex => prevIndex + 1); // Increment index
       };
-      
-      // Determine the duration for each interval based on the index
+
+      // Determine the interval duration for the current message
       const intervalDuration = currentMessageIndex < delays.length ? delays[currentMessageIndex] : 1000;
-      timerRef.current = setInterval(displayNextMessage, intervalDuration); // Set interval for displaying messages
+      timerRef.current = setTimeout(displayNextMessage, intervalDuration); // Set timeout for current message
 
-      // Show typing dots with a delay
-      setTimeout(() => {
-        setTypingDotsVisible(true); // Make typing dots visible after the set delay
-      }, typingDotsDelay);
-    } else {
-      // Reset states when animation is not started
-      clearInterval(timerRef.current); // Clear the timer
-      setCurrentMessageIndex(0);       // Reset message index
-      setMessages([]);                 // Clear messages
-      setIsFirstIteration(true);       // Reset iteration flag
-      setTypingDotsVisible(false);     // Hide typing dots
+      // Show typing dots with a delay, if needed
+      if (showTypingDots && showTypingDotsAfterFirst && currentMessageIndex < messageArray.length - 1) {
+        setTimeout(() => {
+          setTypingDotsVisible(true); // Show typing dots
+        }, typingDotsDelay);
+      }
     }
-
-    // Cleanup function to clear the interval
-    return () => {
-      clearInterval(timerRef.current); // Clear the timer on component unmount
-    };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [startAnimation, currentMessageIndex, isFirstIteration, typingDotsDelay]);
+  }, [currentMessageIndex, startAnimation]); // Dependencies include currentMessageIndex and startAnimation
 
   // Function to render speech bubbles with messages
   const renderSpeechBubbles = () => {

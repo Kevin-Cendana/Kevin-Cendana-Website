@@ -63,7 +63,7 @@
 :root {
   --app-light-mode-color: rgb(245, 245, 245); 
   --app-dark-mode-color: rgb(0, 0, 0);
-  --section-margin: clamp(.6rem, 2.7vw, 1.6rem) clamp(0.6rem, 2vw, 10.2rem); 
+  --section-margin: clamp(.75rem, 2.7vw, 1.6rem) clamp(0.6rem, 2vw, 10.2rem); 
 }
   :root.dark-mode{
     background-color: var(--app-dark-mode-color);
@@ -109,6 +109,7 @@ body, html {
   flex-direction: column;
   width: 100%;
   height: 100%;
+  overflow-x: hidden;
 }
 
 /* Main - Container for all content except nav bar */
@@ -129,7 +130,7 @@ section {
   box-sizing: border-box;
   margin: var(--section-margin);
   border: .05rem solid black;
-  box-shadow: .8rem .65rem .4rem rgba(0,0,0,0.5);
+  box-shadow: .8rem .6rem .34rem rgba(0,0,0,0.5);
 }
   section.dark-mode {
     border: .05rem solid white;
@@ -234,3 +235,13 @@ a {
   }
 }
 
+/* Media Queries: Reduce box shadow for all sections. */
+@media screen and (max-width: 860px) {
+  section { box-shadow: .6rem .42rem .24rem rgba(0,0,0,0.5); }
+}
+@media screen and (max-width: 600px) {
+  section { box-shadow: .5rem .32rem .22rem rgba(0,0,0,0.5); }
+}
+@media screen and (max-width: 420px) {
+  section { box-shadow: .45rem .29rem .2rem rgba(0,0,0,0.5); }
+}

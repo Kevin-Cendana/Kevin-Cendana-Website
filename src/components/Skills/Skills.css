@@ -12,8 +12,8 @@
 .skills-header {
     margin: 0;
     padding: 0;
-    height: clamp(6rem, 14vw, 7.7rem);
-    font-size: clamp(2.1rem, 4.8vw, 3rem);
+    height: clamp(5.8rem, 13vw, 7.7rem);
+    font-size: clamp(2rem, 4.8vw, 3rem);
     font-weight: 400;
     display: flex;
     align-items: center;
@@ -130,7 +130,8 @@
         width: clamp(7rem, 20vw, 8.5rem);
     }
     .skills-header {
-        height: clamp(7rem, 17vw, 8rem);
+        /* height: clamp(7rem, 17vw, 8rem); */
+        margin-bottom: 1.75rem;
     }
     .skills img {
         width: clamp(4.6rem, 12vw, 5.6rem);
@@ -142,32 +143,42 @@
         position: absolute;
         left: calc(19vw + 1.6rem);
         margin: 1rem;
-        font-size: clamp(.9rem, 2.6vw, 1.3rem);
+        font-size: clamp(.8rem, 2.65vw, 1.3rem);
     }
     .skills {
-        height: 870px;
+        height: clamp(600px, 108vw, 880px);
     }
 }
 
 
-/* Standard smart phones */
+/* Resizing Skills Section*/
 @media (max-width: 720px) {
-    .skills {
-        height: 780px;
-    }
+    .skills { height: 760px; }
 }
-
-/* Small smart phones */
+@media (max-width: 700px) {
+    .skills { height: 740px; }
+}
+@media (max-width: 680px) {
+    .skills { height: 740px; }
+}
+@media (max-width: 640px) {
+    .skills { height: 730px; }
+    .skills-header { margin-bottom: 1rem; }
+}
+@media (max-width: 600px) {
+    .skills { height: 720px; }
+}
 @media (max-width: 560px) {
-    .skills {
-        height: 740px;
-    }
-    .skills p {
-        font-size: .8rem;
-    }
+    .skills { height: 710px; }
 }
-@media (max-width: 420px) {
-    .skills {
-        height: 670px;
-    }
+@media (max-width: 520px) {
+    .skills { height: 700px; }
+    .skills-header { margin-bottom: .8rem; }
+}
+@media (max-width: 480px) {
+    .skills { height: 690px; }
+}
+@media (max-width: 440px) {
+    .skills { height: 680px; }
+    .skills-header { margin-bottom: .7rem; }
 }
