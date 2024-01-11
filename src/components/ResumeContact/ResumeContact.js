@@ -11,6 +11,9 @@ import { useDarkMode } from '../../shared/DarkModeToggle/DarkModeContext';
 import 'react-medium-image-zoom/dist/styles.css'; // source: https://www.npmjs.com/package/react-medium-image-zoom
 import './ResumeContact.css';
 
+// Resume
+import resume from '../../images/Resume_Kevin_Cendana.png';
+
 // Icons: Hackathons
 import attIcon from '../../images/att_icon.png';
 import datafestIcon from '../../images/datafest_icon.png';
@@ -193,11 +196,13 @@ useEffect(() => {
             <Zoom>
               <img
                 alt="Resume"
-                src={'https://drive.google.com/uc?export=view&id=1gWuMa_hFEyR21zJy8zc6wYkRPVeenhc1'}
+                // src={'https://drive.google.com/uc?export=view&id=1gWuMa_hFEyR21zJy8zc6wYkRPVeenhc1'}
+                src = {resume}
                 style={{
                 }}
               />
             </Zoom>
+            
             <div className = "resume__image__magnifying-icon"></div>
           </div>
 
@@ -244,8 +249,8 @@ useEffect(() => {
         <form className="contact-form" name="contact" method="POST" onSubmit={handleFormSubmit} data-netlify="true">
           <input type="hidden" name="form-name" value="contact" />
           <div className="contact-name-and-email">
-            <input type="text" id="name" name="name" placeholder="Name" autocomplete="name" className="contact-form-name" />
-            <input type="email" id="email" name="email" placeholder="Email" autocomplete="email" className="contact-form-email"/>
+            <input type="text" id="name" name="name" placeholder="Name" autoComplete="name" className="contact-form-name" />
+            <input type="email" id="email" name="email" placeholder="Email" autoComplete="email" className="contact-form-email"/>
           </div>
           <textarea id="message" name="message" className="contact-form-message" placeholder="Message"></textarea>
           <button className="contact-submit-button" type="submit">Send</button>
