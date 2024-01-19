@@ -3,13 +3,20 @@ import React, { useRef } from 'react';
 import useInView from '../../hooks/useInView';  
 import classNames from 'classnames';  
 import { useDarkMode } from '../../shared/DarkModeToggle/DarkModeContext';
+import '../../shared/HoverImage.js';
 import './Skills.css';
+import HoverImage from '../../shared/HoverImage.js';
 
 // Icons
-import codeIcon from '../../images/code_icon.png';
-import hackathonIcon from '../../images/hackathon_icon.png';
+import codingIcon from '../../images/code_icon.png';
+import codingIconGif from '../../images/code_icon.gif';
+import competingIcon from '../../images/hackathon_icon.png';
+import competingIconGif from '../../images/hackathon_icon.gif';
 import caringIcon from '../../images/caring_icon.png';
-import designIcon from '../../images/design_icon.png';
+import caringIconGif from '../../images/caring_icon.gif';
+import creatingIcon from '../../images/creating_icon.png';
+import creatingIconGif from '../../images/creating_icon.gif';
+
 
 // Skills Component
 function Skills() {
@@ -19,8 +26,15 @@ function Skills() {
     const isSkillsInView = useInView(skillsRef, { threshold: [0.25], sectionName: 'skills' } );
 
     // Class Names for dynamic styling - Changes based on if the section is in view & if dark mode is on
-    const headerClass = classNames({
+    const skillsHeaderClass = classNames({
         'skills-header': true,
+        'section-header': true,
+        'animate-header': isSkillsInView,
+        'dark-mode': isDarkMode 
+    });
+    const skillsSubheaderClass = classNames({
+        'skills-subheader': true,
+        'section-subheader': true,
         'animate-header': isSkillsInView,
         'dark-mode': isDarkMode 
     });
@@ -39,13 +53,14 @@ function Skills() {
     return (
         <section className="skills" id="skills" ref = {skillsRef}>
             {/* Header */}
-            <h1 className={headerClass}>What I Do</h1>
+            <h1 className={skillsHeaderClass}>What I Do</h1>
+            <h2 className={skillsSubheaderClass}>Building vibrant web worlds, one line of code at a time.</h2>
              {/* Skill Categories */}
             <div className="skills-category-container">
                 {/* Category - Coding */}
                 <div className={skillsCategoryClassRight}>
                     <div className = "skills-icon-header-wrapper">
-                        <img src={codeIcon} alt="Coding Icon" className="skills-icon" />                    
+                        <HoverImage defaultImage={codingIcon} hoverImage={codingIconGif} key={isSkillsInView} />              
                         <h2>Coding</h2>                
                     </div>  
                     <p>
@@ -56,7 +71,7 @@ function Skills() {
                 {/* Category - Creating */}
                 <div className={skillsCategoryClassRight}>
                 <div className = "skills-icon-header-wrapper">
-                        <img src={designIcon} alt="Creating Icon" className="skills-icon app-icon" />
+                        <HoverImage defaultImage={creatingIcon} hoverImage={creatingIconGif} key={isSkillsInView} />
                         <h2>Creating</h2>
                     </div>  
                     <p>
@@ -68,7 +83,7 @@ function Skills() {
                 {/* Category - Competing */}
                 <div className={skillsCategoryClassLeft} ref={skillsRef}>
                 <div className = "skills-icon-header-wrapper">
-                        <img src={hackathonIcon} alt="Hackathon Icon" className="skills-icon hackathon-icon" />
+                        <HoverImage defaultImage={competingIcon} hoverImage={competingIconGif} key={isSkillsInView} />              
                         <h2>Competing</h2>
                     </div>  
                     <p>
@@ -79,7 +94,7 @@ function Skills() {
                 {/* Category - Caring */}
                 <div className={skillsCategoryClassLeft} ref={skillsRef}>
                 <div className = "skills-icon-header-wrapper">
-                        <img src={caringIcon} alt="Caring Icon" className="skills-icon caring-icon" />
+                        <HoverImage defaultImage={caringIcon} hoverImage={caringIconGif} key={isSkillsInView} />
                         <h2>Caring</h2>
                     </div>  
                     <p>

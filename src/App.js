@@ -9,7 +9,7 @@ import './App.css';
 import './normalize.css';
 import Home from './components/Home/Home';
 import About from './components/About/About';
-import ResumeContact from './components/ResumeContact/ResumeContact';
+import Contact from './components/Contact/Contact';
 import Projects from './components/Projects/Projects';
 import Skills from './components/Skills/Skills';
 import { DarkModeProvider } from './shared/DarkModeToggle/DarkModeContext.js';
@@ -40,7 +40,7 @@ function App() {
           <About />
           <Skills />
           <Projects />
-          <ResumeContact />
+          <Contact />
         </main>
         {/* Footer */}
         <footer>

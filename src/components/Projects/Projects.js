@@ -124,7 +124,13 @@ function Projects() {
     const isProjectsInView = useInView(projectsRef, { threshold:[0.2], sectionName: "projects"});    //
     const projectsHeader = classNames({
         'projects__header': true,
+        'section-header': true,
         'animate-projects-header': isProjectsInView,
+    });
+    const projectsSubHeader = classNames({
+        'projects__subheader': true,
+        'section-subheader': true,
+        'animate-projects-subheader': isProjectsInView,
     });
     const projectsLeft = classNames({
         'projects__left': true,
@@ -216,9 +222,10 @@ function Projects() {
     return (
         <section className="projects" ref = {projectsRef}>
             {/* Header title */}
-            <h1 className = {projectsHeader}>
-                Project Showcase
-            </h1>
+            <h1 className = {projectsHeader}> Project Showcase </h1>
+            <h2 className = {projectsSubHeader}>All of my projects below can be found pinned on my&nbsp;
+                <a href="https://github.com/KevCendana" target="_blank" className="" rel="noopener noreferrer">GitHub.</a>
+            </h2>
             <div className = "projects__section">
                 {/* Left side w/ Carousel slideshow  */}
                 <div className = {projectsLeft}>

@@ -206,11 +206,11 @@ to {
 /* Small smart phones */
 @media (max-width: 560px) {
 .speechBubble {
-  --speechBubblePadding: .35rem .8rem;
-  --speechBubbleTailHeight: 1.35rem;
-  --speechBubbleTailWidth: 1.5rem;
+  --speechBubblePadding: .3rem .7rem;
+  --speechBubbleTailHeight: 1.2rem;
+  --speechBubbleTailWidth: 1.3rem;
   --speechBubbleTailBottom: 0rem;
-  --speechBubbleTailLeft: -0.7rem;
+  --speechBubbleTailLeft: -0.6rem;
   --speechBubbleTailRotate: -12deg;
 }
 }

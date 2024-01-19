@@ -4,14 +4,11 @@
 
 /* About Section - Main container for the about section */
 .about {
-    display: flex;
     align-items: center;
-    justify-content: center;
-    flex-direction: column;
-    height: clamp(310px, 57vw, 650px);
+    height: clamp(320px, 58vw, 680px);
     min-height: 310px;
     max-height: 700px;
-    background-color: var(--app-light-mode-color);
+    margin-top: clamp(.6rem, 2vw, 1.4rem);
 }
 
 /* Dark Mode - Applies dark mode styling to about section */
@@ -23,11 +20,8 @@
 .about__header {
     display: flex;
     align-items: center;
-    height: clamp(1.4rem, 10vw, 6.3rem);
     padding: 0;
     opacity: 0;
-
-    font-size: clamp(1.8rem, 5vw, 3rem);
     font-weight: 400;
 }
 
@@ -64,7 +58,7 @@
     display: flex;
     aspect-ratio: 1/1.1;
 	margin-right: 1.6vw;
-    min-width: clamp(136px, 29vw, 350px);
+    min-width: clamp(136px, 26.5vw, 320px);
     opacity: 0; /* Hide until animation */
 }
 .about__polaroid-wrapper.animate-polaroid-wrapper {
@@ -98,7 +92,7 @@
     width: 60%;
     aspect-ratio: 1/1;
 
-    font-size: clamp(0.7rem, 2.3vw, 1.7rem);
+    font-size: clamp(0.7rem, 2.1vw, 1.45rem);
 
     z-index: 0;
 }
@@ -112,7 +106,7 @@
     height: 100%;
     width: 100%;
     margin: 0;
-    max-width: clamp(160px, 49vw, 600px);
+    max-width: clamp(160px, 45vw, 555px);
 }
 
 /*--------------------------------------------------------------------------------------//
@@ -207,7 +201,7 @@
 	justify-self: center;
 	margin-top: 5.5%;
 	margin-bottom: 2%;
-	font-size: clamp(.8rem, 2.95vw, 1.95rem);
+	font-size: clamp(.7rem, 2.75vw, 1.75rem);
 	color: black;
 }
 .polaroid__caption.dark-mode {

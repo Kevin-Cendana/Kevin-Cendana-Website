@@ -1,19 +1,10 @@
 .skills {
-    height: 630px;
-    display: flex;
-    flex-direction: column;
-    background-color: var(--app-light-mode-color);
-    padding-bottom: 1rem;
+    height: clamp(500px, 52vw, 600px);
 }
-.skills.dark-mode {
-    background-color: var(--app-dark-mode-color);
-}
+
 /* The header at the top of the section */
 .skills-header {
-    margin: 0;
-    padding: 0;
-    height: clamp(5.8rem, 13vw, 7.7rem);
-    font-size: clamp(2rem, 4.8vw, 3rem);
+    margin-top: clamp(1rem, 1.5vw, 2rem);
     font-weight: 400;
     display: flex;
     align-items: center;
@@ -26,159 +17,125 @@
 /* Container for all of the skills categories */
 .skills-category-container {
     display: flex;
-    align-self: center;
-    height: 77%;
+
+    height: 450px;
     width: 100%;
     max-width: 1200px;
     display: flex;
     padding: clamp(.5rem, 2vw, 2rem);
     padding-top: 0;
     flex-direction: row;
+    align-self: center;
     align-items: center;
     justify-content: space-evenly;
-    /* gap: clamp(.5rem, 2vw, 2.6rem); */
 }
 /* Container for each individual skill */
 .skills-category {
-    background-color: white;
-    /* border-radius: .8rem; */
-    box-shadow: .45rem .45rem .5rem rgba(23, 23, 23, 0.5);
-    padding: clamp(0.5rem, 2vw, 1.2rem);
+    padding: clamp(0.2rem, .5vw, .7rem);
     margin: 1rem 0 1rem 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     text-align: center;
     height: 100%;
-    width: 21%;
+    width: 20%;
     max-width: 320px;
-    transform: scale(1); /* Scale back to normal size when not hovering */
-    transition: transform 0.5s ease;
+
     opacity: 0;
+
 }
-.animate-skills-category-right {
-    animation: baseFadeInSlideRight 1.5s ease;
-    opacity: 1;
+    .animate-skills-category-right {
+        animation: baseFadeInSlideRight 1.5s ease;
+        opacity: 1;
+    }
+    .animate-skills-category-left {
+        animation: baseFadeInSlideLeft 1.5s ease;
+        opacity: 1;
+    }
+    .skills-category.dark-mode {
+        color: white;
+    }
+/* Icon + Header wrapper for each skill */
+.skills-icon-header-wrapper {
+    color: black;
 }
-.animate-skills-category-left {
-    animation: baseFadeInSlideLeft 1.5s ease;
-    opacity: 1;
-}
-.skills-category.dark-mode {
-    background-color: rgb(58, 58, 58);
-    box-shadow: .5rem .5rem .5rem rgba(46, 46, 46, 0.5);
-    color: white;
-}
-.skills-category:hover {
-    transform: scale(1.04);
-    transition: transform 0.5s ease;
-    box-shadow: .45rem .45rem 0.5rem rgba(23, 23, 23, 0.55);
-}
+    .skills-icon-header-wrapper:hover {
+        color: blue;
+    }
+
 /* Icon for each skill */
 .skills img {
     width: clamp(5rem, 10vw, 7rem);
     aspect-ratio: 1/1;
     object-fit: contain;
     padding: .2rem;
+
 }
+
 /* Icons for hackathon & caring (made slightly smaller) */
 .skills .hackathon-icon, .skills .caring-icon {
     padding: .3rem;
 }
 /* Title for each skill */
-.skills h2 {
-    font-size: clamp(1rem, 2.8vw, 1.5rem);
+.skills-category-container h2 {
+    font-size: clamp(1rem, 2.8vw, 1.7rem);
     font-weight: 400;
     margin: 0;
-    padding: 0;
+    margin-top: 0rem;
 }
 /* Description for each skill */
-.skills p {
+.skills-category p {
     font-family: 'Thasadith', sans-serif;
-    font-size: clamp(.8rem, 1.7vw, 1.2rem);
-    padding-top: 1.3vh;
+    font-size: clamp(1rem, 1.6vw, 1.1rem);
+    padding-top: .7rem;
     display: flex;
-    text-align: left;
+    text-align: justify;
 }
 
-/* Media Queries:
-    By default, I code considering an average window size on desktop (~1400x900 px).
-    Then, I use media queries to adjust the layout for tablets, phones, wide screens, & tiny screens. */
-
-/* Wide screens */
-@media (min-width: 1600px) { }
-
-/* Standard tablet */
-@media (max-width: 1050px) { }
-
-@media (max-width: 900px) {
+@media (max-width: 850px) {
+    .skills {
+        height: clamp(840px, 132vw, 880px);
+    }
+    .skills-header {
+        margin-top: 2.5rem;
+    }
     .skills-category-container {
         flex-direction: column;
-        gap: 1rem;
+        display: flex;
+        align-items: flex-start;
+        justify-content: flex-start;
+        gap: 3rem;
+        align-items: center;
     }
     .skills-category {
-        height: 30%;
-        width: 85%;
+        height: 28%;
+        width: 100%;
         max-width: 630px;
         margin: 0;
         flex-direction: row;
+        display: flex;
     }
     .skills-icon-header-wrapper {
         display: flex;
-        align-items: center;
         flex-direction: column;
-        width: clamp(7rem, 20vw, 8.5rem);
+        width: clamp(7rem, 30vw, 10rem);
     }
-    .skills-header {
-        /* height: clamp(7rem, 17vw, 8rem); */
-        margin-bottom: 1.75rem;
-    }
+
     .skills img {
+        align-self: center;
         width: clamp(4.6rem, 12vw, 5.6rem);
     }
-    .skills h2 {
-        font-size: clamp(1rem, 3.5vw, 1.2rem);
+    .skills-category h2 {
+        font-size: clamp(1.2rem, 3.5vw, 1.3rem);
+        margin-top: 1rem;
     }
-    .skills p {
-        position: absolute;
-        left: calc(19vw + 1.6rem);
+    .skills-category p {
         margin: 1rem;
+        text-align:justify;
+        align-self: center;
         font-size: clamp(.8rem, 2.65vw, 1.3rem);
+        width: clamp(15rem, 65vw, 30rem);
+        padding-left: 0.6rem;
+        padding-right: 3rem;
     }
-    .skills {
-        height: clamp(600px, 108vw, 880px);
-    }
-}
-
-
-/* Resizing Skills Section*/
-@media (max-width: 720px) {
-    .skills { height: 760px; }
-}
-@media (max-width: 700px) {
-    .skills { height: 740px; }
-}
-@media (max-width: 680px) {
-    .skills { height: 740px; }
-}
-@media (max-width: 640px) {
-    .skills { height: 730px; }
-    .skills-header { margin-bottom: 1rem; }
-}
-@media (max-width: 600px) {
-    .skills { height: 720px; }
-}
-@media (max-width: 560px) {
-    .skills { height: 710px; }
-}
-@media (max-width: 520px) {
-    .skills { height: 700px; }
-    .skills-header { margin-bottom: .8rem; }
-}
-@media (max-width: 480px) {
-    .skills { height: 690px; }
-}
-@media (max-width: 440px) {
-    .skills { height: 680px; }
-    .skills-header { margin-bottom: .7rem; }
 }

@@ -9,6 +9,7 @@ import classNames from 'classnames';       // Import classNames to dynamically s
 import './NavigationBar.css';              // Import CSS for the navigation bar
 import DarkModeToggle from '../../shared/DarkModeToggle/DarkModeToggle'; // Import the DarkModeToggle component
 import githubIcon from '../../images/github_icon.png'; // Import the GitHub logo
+import csvIcon from '../../images/csv_icon.png'; // Import the CSV logo
 
 function NavigationBar() {
     // State to track which section is active
@@ -53,8 +54,11 @@ function NavigationBar() {
 
             {/* Items in the top right of the nav bar: GitHub logo & Dark Mode switch */}
             <div className="top-right-items">
+            <a href="https://drive.google.com/file/d/1gWuMa_hFEyR21zJy8zc6wYkRPVeenhc1/view?usp=drive_link" target="_blank" className="github-logo-link" rel="noopener noreferrer">
+                <img src = {csvIcon} className = "navbar-icon csv-icon" alt = "CSV Logo Link"></img>
+            </a>
             <a href="https://github.com/KevCendana" target="_blank" className="github-logo-link" rel="noopener noreferrer">
-                <img src = {githubIcon} className = "github-logo" alt = "GitHub Logo Link"></img>
+                <img src = {githubIcon} className = "navbar-icon github-icon" alt = "GitHub Logo Link"></img>
             </a>
                 <div className="toggle__container">
                     <label className="switch">

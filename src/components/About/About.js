@@ -21,14 +21,21 @@ function About() {
     const aboutSpeechBubblesRef = useRef(null); // Reference for speech bubbles section
 
     // Check if different parts of the about section are in view
-    const isAboutInView = useInView(aboutRef, {threshold: [0.25], sectionName: 'about'});
-    const isPolaroidInView = useInView(polaroidRef, {threshold: [0.2], sectionName: 'about-polaroid'});
+    const isAboutInView = useInView(aboutRef, {threshold: [0.31], sectionName: 'about'});
+    const isPolaroidInView = useInView(polaroidRef, {threshold: [0.1], sectionName: 'about-polaroid'});
     const isSpeechBubblesInView = useInView(aboutRef, {threshold: [0.3], sectionName: 'about-speech-bubbles'});
 
     // CSS Class Names for the About section
     const headerClass = classNames({
         'about__header': true,               // Base class for the header
         'animate-header': isAboutInView,     // Add animation if about section is in view
+        'section-header': true,              // Base class for the section header
+        'dark-mode': isDarkMode              // Apply dark mode styling if enabled
+    });
+    const subheaderClass = classNames({
+        'about__subheader': true,               // Base class for the header
+        'animate-header': isAboutInView,     // Add animation if about section is in view
+        'section-subheader': true,              // Base class for the section header
         'dark-mode': isDarkMode              // Apply dark mode styling if enabled
     });
     const polaroidClass = classNames({
@@ -41,9 +48,8 @@ function About() {
     return (
         <section className="about" ref={aboutRef}>
             {/* Header */}
-            <h1 className={headerClass}>
-                About Me
-            </h1>
+            <h1 className={headerClass}>About Me</h1>
+            <h2 className={subheaderClass}><i>"There are no strangers here; only friends you haven't yet met."</i></h2>
             {/* About Content */}
             <div className="about__wrapper">
                 {/* Left Side with polaroid image */}
@@ -57,7 +63,7 @@ function About() {
                                     <div className="about-image-container"></div>
                                 </div>
                                 {/* Caption for the polaroid image */}
-                                <h3 className="polaroid__caption"> kevin & emma :)</h3> 
+                                <h3 className="polaroid__caption"> kevin & emma </h3> 
                             </div>
                         </div>
                     </div>

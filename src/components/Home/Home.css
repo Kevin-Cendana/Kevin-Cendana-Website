@@ -4,15 +4,11 @@
 
 /* Home - Main container */
 .home {
-    display: flex;
     position: relative;
-    margin-top: 1.5rem;
-    height: clamp(310px, 75vw, 780px);
-    max-height: 820px; /* Beyond this height, the image will end */
+    margin-top: var(--navbar-height);
+    height: clamp(310px, 75vw, 842px);
     overflow: hidden;
     flex-direction: row;
-
-    background-color: var(--app-light-mode-color);
 }
 
 /* Home Dark Mode - Style for dark mode */

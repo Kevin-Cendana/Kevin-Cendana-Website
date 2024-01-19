@@ -10,6 +10,7 @@ import React, { useRef } from 'react';   // Import React features
 import classNames from 'classnames';                // Import classnames for dynamic className assignment
 import { useDarkMode } from '../../shared/DarkModeToggle/DarkModeContext'; // Import custom hook for dark mode state
 import './Home.css';          // Import CSS for Home component
+import '../NavigationBar/NavigationBar.css';       // Import CSS for NavigationBar component
 import '../../normalize.css'; // Import normalize.css for CSS resets
 
 // Images

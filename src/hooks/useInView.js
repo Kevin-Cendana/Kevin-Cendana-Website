@@ -25,14 +25,6 @@ const useInView = (refs, { threshold = [0.1], delay = 100, playOnce, isDarkMode,
                 entries.forEach(entry => {
                     const isInView = entry.isIntersecting;
 
-                    // Debugging Print log
-                    
-                    // console.log(`Threshold set for ${sectionName}:`, threshold);
-                    // console.log(`Section: ${sectionName}, 
-                    // \n   isInView: ${entry.isIntersecting}, 
-                    // \n   target: ${entry.target.className},
-                    // \n   threshold set for ${sectionName}:`, threshold
-                    // );
                     console.log(`Section: ${sectionName}`); 
 
                     // Check for dark mode and reapply class if necessary

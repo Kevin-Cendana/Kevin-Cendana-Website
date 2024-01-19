@@ -2,13 +2,17 @@
 //                                NavigationBar.css                                    //
 //--------------------------------------------------------------------------------------*/
 
+:root {
+    --navbar-height: 2.3rem;
+}
+
 /* Navbar - Main container for the navigation bar */
 .navbar { 
     display: flex;
-    height: 2.3rem;
+    height: var(--navbar-height);
     width: 100%;
     text-decoration: none;
-    position: sticky; /* Make navbar fixed */
+    position: fixed; /* Make navbar fixed */
     top: 0;          /* Stick to the top */
     z-index: 1000;   /* Ensure it stays on top of everything */
     background-color: var(--app-dark-mode-color);
@@ -85,24 +89,39 @@
 }
 
 
-/* Container for GitHub Logo */
-.github-logo {
-    content: 'GitHub'; /* Text to show on hover */
+/* Logos for CSV, GitHub */
+.navbar-icon {
     align-self: center;
     aspect-ratio: 1/1;
     height: 32px;
-    margin-top: .15rem;
-    margin-left: .8rem;
+    margin-top: .17rem;
+    margin-left: .7rem;
     border: 1.5px solid white;
-    border-radius: 50%;
-    background-size: cover;
+
+    background-size: contain;
     background-repeat: no-repeat;
     transition: all 0.3s ease;
 }
-    .github-logo:hover {
+    .navbar-icon:hover {
         box-shadow: 0 0 15px 5px white;
         transition: all 0.3s ease;
     }
+
+/* Logo for CSV */
+.navbar-icon.csv-icon {
+    content: 'CSV'; /* Text to show on hover */
+    height: 29px;
+    background-color: white;
+    border-radius: 10%;
+    overflow: hidden;
+    border: 1.5px solid white;
+}
+/* Logo for GitHub */
+.navbar-icon.github-icon {
+    content: 'GitHub'; /* Text to show on hover */
+    border-radius: 50%;
+}
+
 
 /* Container for the dark mode toggle switch */
 .toggle__container {
