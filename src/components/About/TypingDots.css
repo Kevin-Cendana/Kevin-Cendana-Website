@@ -107,12 +107,6 @@
   animation: baseFadeInSlideLeft .7s ease-in-out; /* Fade-in and slide animation */
 }
 
-/* SpeechBubbleDarkMode - Style for speech bubbles in dark mode */
-.speechBubble.dark-mode {
-  background-color: var(--speechBubbleColor);
-  color: black; 
-}
-
 /* SpeechBubbleTail - 'Tail' part of speech bubble */
 .speechBubble:before {
   content: "";

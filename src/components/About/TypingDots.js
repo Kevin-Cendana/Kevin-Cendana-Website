@@ -15,7 +15,7 @@ const TypingDots = ({ startAnimation }) => {
   // Array of messages to be displayed
   const messageArray = useMemo(() => [
     <>Hello! My name is Kevin.</>,
-    <>I'm currently a senior CS student here at Sacramento State, graduating in Spring.<br></br></>,
+    <>I'm currently a senior CS student here at Sacramento State, graduating May 2024.<br></br></>,
     <>I love coding as both work & as a pastime, but I also like manga, art, and getting boba with my partner, Emma.</>,
     <>Thank you for taking the time to visit my website!</>,
   ], []);

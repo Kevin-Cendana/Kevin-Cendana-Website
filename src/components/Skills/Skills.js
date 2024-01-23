@@ -65,7 +65,7 @@ function Skills() {
                     </div>  
                     <p>
                         Whether it's for my career and my hobby, I love coding.
-                        I've always been drawn to the puzzle solving aspect and I've grown to enjoy the grind.
+                        I've always been drawn to the puzzle solving aspect and the challenges that come with it.
                     </p>
                 </div>           
                 {/* Category - Creating */}
@@ -76,7 +76,7 @@ function Skills() {
                     </div>  
                     <p>
                         Creating something new and seeing it come to life is the most beloved part of coding for me. 
-                        That's why frontend dev and design is my field of choice.
+                        That's why frontend dev and design is my programming field of choice.
 
                     </p>
                 </div>           
@@ -84,7 +84,7 @@ function Skills() {
                 <div className={skillsCategoryClassLeft} ref={skillsRef}>
                 <div className = "skills-icon-header-wrapper">
                         <HoverImage defaultImage={competingIcon} hoverImage={competingIconGif} key={isSkillsInView} />              
-                        <h2>Competing</h2>
+                        <h2 className = "competing">Competing</h2>
                     </div>  
                     <p>
                         Hackathons are exciting challenges for me to learn new technologies and build something beautiful.

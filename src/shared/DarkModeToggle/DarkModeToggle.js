@@ -2,7 +2,6 @@
 //                                  DarkModeToggle.js                                   //
 //--------------------------------------------------------------------------------------//
 import React, { useEffect, useCallback } from 'react'; 
-import './DarkModeToggle.css'; 
 import { useDarkMode } from './DarkModeContext';
 
 function DarkModeToggle() {

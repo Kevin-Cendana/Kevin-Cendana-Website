@@ -184,13 +184,20 @@
 	height: 100%;
 	border: 2.5px solid black;
 	overflow: hidden;
-	background: url('../../images/snowflake_animation.gif') center/cover no-repeat, 
-	linear-gradient(to bottom, #c6efff, #ffffff);
+	/* For Christmas: */
+	/* background: url('../../images/snowflake_animation.gif') center/cover no-repeat, 
+	linear-gradient(to bottom, #c6efff, #ffffff); */
+	background: url('../../images/pastel-bg.gif');
 	background-size: cover;
+	transition: 0s ease;
 }
 .polaroid__image.dark-mode {
-	background: url('../../images/snowflake_animation.gif') center/cover no-repeat, 
-		linear-gradient(to bottom, #15009e, #adbaff);
+	/* For Christmas: */
+	/* background: url('../../images/snowflake_animation.gif') center/cover no-repeat, 
+		linear-gradient(to bottom, #15009e, #adbaff); */
+	background: url('../../images/pastel-bg-dark.gif');
+	background-size: cover;
+	transition: 0s ease;
 }
 
 /* Caption - Text caption for Polaroid */

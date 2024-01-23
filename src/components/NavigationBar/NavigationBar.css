@@ -3,7 +3,7 @@
 //--------------------------------------------------------------------------------------*/
 
 :root {
-    --navbar-height: 2.3rem;
+    --navbar-height: 2.4rem;
 }
 
 /* Navbar - Main container for the navigation bar */
@@ -25,7 +25,7 @@
 /* Wrapper for the entire navigation bar except the light/dark switch */
 /* Used to change the overall width of the navbar to make space for switch */
 .navbar__list-wrapper {
-    width: 90%; /* 90% of the navbar width, make space for switch */
+    width: 100%; 
 }
 
 /* The entire navigation bar except the light/dark switch */
@@ -45,7 +45,8 @@
     display: flex;
     font-family: 'SF Pro Display', sans-serif;
     font-weight: 500;
-    font-size: clamp(.75rem, 2vw, 1rem);
+    font-size: clamp(.65rem, 2vw, 1rem);
+    letter-spacing: clamp(0px, 0.05vw, 1px);
     justify-content: center;
     align-items: center;
     height: 100%;
@@ -64,10 +65,12 @@
     color: white;
 }
     .navbar__list li:hover {
-        /* color: black;
-        background-color: white; */
-        transform: scale(1.05) translate(.1rem, -.05rem);
+        background-color: rgb(190, 190, 190);
+        color: black;
         transition: all 0.3s ease;
+    }
+    .navbar__list li:active {
+        background-color: rgb(130, 130, 130);
     }
 
 
@@ -88,14 +91,11 @@
 
 }
 
-
 /* Logos for CSV, GitHub */
 .navbar-icon {
-    align-self: center;
     aspect-ratio: 1/1;
     height: 32px;
-    margin-top: .17rem;
-    margin-left: .7rem;
+
     border: 1.5px solid white;
 
     background-size: contain;
@@ -111,6 +111,8 @@
 .navbar-icon.csv-icon {
     content: 'CSV'; /* Text to show on hover */
     height: 29px;
+    margin-top: 2px;
+    margin-left: 10px;
     background-color: white;
     border-radius: 10%;
     overflow: hidden;
@@ -118,23 +120,110 @@
 }
 /* Logo for GitHub */
 .navbar-icon.github-icon {
+    margin: 1.5px 10px 0 10px;
     content: 'GitHub'; /* Text to show on hover */
     border-radius: 50%;
 }
 
+/*--------------------------------------------------------------------------------------//
+//                                  DarkModeToggle                                      //
+//--------------------------------------------------------------------------------------*/
 
 /* Container for the dark mode toggle switch */
 .toggle__container {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-left: 10px;
     margin-right: 10px;
     align-items: center;
     width: 100%; /* Fill up the rest of the navbar space */
 }
 
+.toggleButton {
+    z-index: 1;         /* toggle button always stays on top of everything else */
+}
+
+/* Switch container */
+.switch { 
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    min-width: 60px;
+    max-width: 60px;
+    height: 33px;
+    z-index: 1; /* toggle button always stays on top of everything else */
+}
+
+/* Hide the checkbox input (since we want a toggle switch in this case) */
+.switch input {  
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+/* Visual slider part of the toggle switch */
+.slider {
+    position: absolute; /* Absolute position within .switch */
+    cursor: pointer;
+    background-color: #ccc;
+    transition: .4s; /* Smooth transition for the sliding effect */
+    border-radius: 34px; /* Rounded borders for the slider */
+    width: 100%; /* Full width of the switch */
+    height: 100%; /* Full height of the switch */
+}
+
+/* Circle part of the toggle switch */
+.slider:before { 
+    position: absolute;
+    content: "";
+    width: 30px;
+    aspect-ratio: 1/1;
+    left: 1px;
+    bottom: 1px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%; /* Make it round */
+    background-image: url('../../images/sun.png'); /* Sun icon */
+    background-size: cover;
+    background-position: center;
+}
+
+/* Slider changes to sun/moon when the switch is in 'checked' state, i.e., dark mode is on */
+input:checked + .slider:before {
+    transform: translateX(27.5px);
+    background-image: url('../../images/moon.png');
+}
 
 
 
-
+@media (max-width: 700px) {
+    /* Logo for CSV */
+    .navbar-icon.csv-icon {
+        height: 25px;
+        margin-left: 10px;
+    }
+    /* Logo for GitHub */
+    .navbar-icon.github-icon {
+        height: 29px;
+        border-radius: 50%;
+        margin: 2px 9px 0 10px;
+    }
+    /* Container for the dark mode toggle switch */
+    .switch {
+        width: 50px;
+        min-width: 53px;
+        max-width: 53px;
+        height: 29px;
+    }
+    /* Visual slider part of the toggle switch */
+    .slider:before {
+        width: 28px;
+        bottom: 0px;
+    }
+    /* Slider changes to sun/moon when the switch is in 'checked' state, i.e., dark mode is on */
+    input:checked + .slider:before {
+        transform: translateX(23px);
+        background-image: url('../../images/moon.png');
+    }
+    
+}

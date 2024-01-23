@@ -17,7 +17,6 @@
 /* Container for all of the skills categories */
 .skills-category-container {
     display: flex;
-
     height: 450px;
     width: 100%;
     max-width: 1200px;
@@ -72,10 +71,7 @@
 
 }
 
-/* Icons for hackathon & caring (made slightly smaller) */
-.skills .hackathon-icon, .skills .caring-icon {
-    padding: .3rem;
-}
+
 /* Title for each skill */
 .skills-category-container h2 {
     font-size: clamp(1rem, 2.8vw, 1.7rem);
@@ -94,7 +90,7 @@
 
 @media (max-width: 850px) {
     .skills {
-        height: clamp(840px, 132vw, 880px);
+        height: clamp(800px, 103vw, 880px);
     }
     .skills-header {
         margin-top: 2.5rem;
@@ -104,7 +100,7 @@
         display: flex;
         align-items: flex-start;
         justify-content: flex-start;
-        gap: 3rem;
+        gap: clamp(0.6rem, 4vw, 3rem);
         align-items: center;
     }
     .skills-category {
@@ -118,24 +114,39 @@
     .skills-icon-header-wrapper {
         display: flex;
         flex-direction: column;
+        padding-left: 0.6rem;
         width: clamp(7rem, 30vw, 10rem);
     }
-
     .skills img {
         align-self: center;
-        width: clamp(4.6rem, 12vw, 5.6rem);
+        width: clamp(3.6rem, 10vw, 5.6rem);
     }
     .skills-category h2 {
-        font-size: clamp(1.2rem, 3.5vw, 1.3rem);
-        margin-top: 1rem;
+        font-size: clamp(1rem, 3.3vw, 1.3rem);
+        margin-top: 0.2rem;
     }
+    .competing {
+        letter-spacing: clamp(0.7px, 1.5vw, 1px);
+    }
+    /* Skill Description Text Block*/
     .skills-category p {
         margin: 1rem;
         text-align:justify;
         align-self: center;
-        font-size: clamp(.8rem, 2.65vw, 1.3rem);
+        font-size: clamp(.8rem, 3vw, 1.3rem);
         width: clamp(15rem, 65vw, 30rem);
         padding-left: 0.6rem;
-        padding-right: 3rem;
+        padding-right: 0.6rem;
     }
 }
+
+/* Responsive Height */ 
+@media (max-width: 700px) { .skills { height: 760px; } }
+@media (max-width: 600px) { .skills { height: 730px; } }
+@media (max-width: 550px) { .skills { height: 715px; } }
+@media (max-width: 500px) { .skills { height: 700px; } }
+@media (max-width: 440px) { .skills { height: 670px; } }
+@media (max-width: 420px) { .skills { height: 660px; } }
+@media (max-width: 390px) { .skills { height: 570px;    .skills-category-container { gap: 0px;}} }
+@media (max-width: 360px) { .skills { height: 560px; } }
+@media (max-width: 300px) { .skills { height: 595px; } }

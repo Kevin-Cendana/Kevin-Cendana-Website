@@ -5,7 +5,7 @@
 
 /* Resume Contact Section */
 .contact {
-    height: 550px;
+    height: 530px;
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -123,7 +123,11 @@ input, textarea,
         background-color: #414141;
         color: #fff;
     }
-
+    /* Dark mode */
+    .contact-submit-button.dark-mode {
+        background-color: #515151;
+        color: #fff;
+    }
 /* Pop up box for form submission */
 .popup {
     display: flex;
@@ -193,7 +197,6 @@ input, textarea,
 .contact-info {
     display: flex;
     flex-direction: column;
-
     width: 250px;
     height: 295px;
     padding: 0 0.8rem;
@@ -204,6 +207,13 @@ input, textarea,
     background-color: var(--app-light-mode-color);
     align-items: space-between;
 }
+    .contact-info-text.dark-mode {
+        color: white;
+    }
+    /* Dark Mode */
+    .contact-info-text.dark-mode {
+        background-color: #626262;
+    }
 
 .contact-name {
     font-size: 1.48rem;
@@ -220,6 +230,9 @@ input, textarea,
     color: gray;
     letter-spacing: -0.6px;
 }
+    .contact-email.dark-mode {
+        color: rgb(227, 227, 255);
+    }
 
 /* Contact Profile Picture */
 .contact-profile-picture-container {
@@ -229,18 +242,41 @@ input, textarea,
     aspect-ratio: 1/1;
     width: 7rem;
     border-radius: 50%;
-    padding: 16px;
+    padding: clamp(0px, 2vw, 16px);
     padding-bottom: 0px;
     overflow:hidden;
     border: 5px solid black;
     margin-bottom: 1rem;
 }
+    .contact-profile-picture-container.dark-mode {
+        border: 5px solid gray;
+        background-color: white;
+    }
 
 /* Small/Big Screens only: Hide content based on screen size. */ 
 .small-screens-only {
     display: none;
 }
 
+/* Wide Screens: Increase height of contact form */
+@media (min-width: 1250px) {
+    .contact {
+        height: 595px;
+    }   
+    .contact-form-message {
+        height: 200px;
+    }
+}
+@media (min-width: 1600px) {
+    .contact {
+        height: 650px;
+    }   
+    .contact-form-message {
+        height: 240px;
+    }
+}
+
+/* Small Screens Only: Move contact info based on screen size. */
 @media (max-width: 800px) {
     .big-screens-only {
         display: none;
@@ -273,11 +309,10 @@ input, textarea,
     .contact-right {
         margin-top: 10px;
         margin-bottom: 1rem;
-        height: 190px;
+        height: clamp(110px, 35vw, 190px);
         width: 100%;
     }
     .contact-profile-picture-container {
-        margin-right: 14px;
         width: 60%;
         min-width: 80px;
         max-width: 140px;
@@ -295,7 +330,45 @@ input, textarea,
     .contact-name, .contact-city {
         font-size: clamp(1rem, 3.3vw, 1.4rem);
     }
+    .contact-city {
+        margin-bottom: 0.4rem;
+    }
     .contact-email {
         font-size: clamp(0.7rem, 2.5vw, 0.9rem);
+    }
+    
+}
+
+@media (max-width: 550px) {
+    .contact {
+        height: 640px;
+    }
+    .contact-info {
+        height: 140px;
+    }
+    .contact-profile-picture-container {
+        width: 100px;
+    }
+    .contact-left, .contact-right {
+        padding: 0 1.5rem;
+    }
+    .contact-right {
+        height: 130px;
+    }
+    .contact-city {
+        margin-bottom: 0.25rem;
+    }
+}
+@media (max-width: 550px) { .contact { height: 600px; } }
+@media (max-width: 450px) { .contact { height: 580px; } }
+@media (max-width: 400px) { 
+    .contact { 
+        height: 520px; 
+    } 
+    .contact-right {
+        height: 110px;
+    }
+    .contact-form-message {
+        height: 130px;
     }
 }

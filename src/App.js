@@ -17,7 +17,7 @@ import NavigationBar from './components/NavigationBar/NavigationBar';
 import './StarsBackground.scss';
 
 // Debugging - Comment this out for production
-// import DebugWindowDimensions from './shared/DebugWindowDimensions.js';
+import DebugWindowDimensions from './shared/DebugWindowDimensions.js';
 
 // Main App
 function App() {
@@ -27,7 +27,7 @@ function App() {
       <DarkModeProvider>
       <div className="app">
         {/* Debugging - Comment this out for production */}
-        {/* <DebugWindowDimensions /> */}
+        <DebugWindowDimensions />
         <NavigationBar />
           <div className="stars-container">
             <div id="stars"></div>

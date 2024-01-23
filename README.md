@@ -6,7 +6,6 @@
 - **About** - Personal section about myself
 - **What I Do** - My skills and interests
 - **Projects** - Projects I've made for hackathons, school, and for fun
-- **Resume** - A resume of my abilities and experience, able to zoom in and out
 - **Contact** - A form to contact me
 
 ## Creation Process
@@ -34,14 +33,14 @@ Kevin-Cendana-Website/
 │       ├── About/
 │       ├── Skills/
 │       ├── Projects/
-│       ├── Resume/
 │       ├── Contact/
 |   └── hooks/                          // Custom hooks - Reusable functions to check if section is in view & get window dimensions
 │       ├── useInView.js
 │       ├── useWindowDimensions.js
 |   └── shared/                         // Shared components - Reusable components used in multiple sections such as Dark Mode
-│       ├── DarkModeToggle/
+│       ├── DarkModeToggle.js
 │       ├── DebugWindowDimensions.js
+│       ├── HoverImage.js
 
 ```
 
@@ -49,9 +48,8 @@ Kevin-Cendana-Website/
 - [React Rotating Text](https://www.npmjs.com/package/react-rotating-text?activeTab=readme) - The typing effect in the Home section
 - [Polaroid Wrapper](https://codepen.io/havardob/pen/jOwrXaJ ) - The polaroid image wireframe in the About section
 - [React Round Carousel](https://github.com/scriptex/react-round-carousel) - Base code for the carousel in the Projects section
-- [React Medium Image Zoom](https://www.npmjs.com/package/react-medium-image-zoom) - The zoom in/out effect for the Resume
 - [Parallax Stars Background](https://codepen.io/sarazond/pen/LYGbwj) - Stars background for dark mode
-<br>
 - [FlatIcon.com](https://www.flaticon.com/) - The icons used in the What I Do section
 - [LottieFiles.com](https://lottiefiles.com/) - The brief animations in the What I Do section informing the user on how to use the carousel
-- [Netlify.com](https://www.netlify.com/) - The hosting service for the website, also handles the form submissions in the Contact section
+- [Netlify.com](https://www.netlify.com/) - The hosting service for the website
+- [Web3Forms.com](https://web3forms.com/) - The contact form service for the website

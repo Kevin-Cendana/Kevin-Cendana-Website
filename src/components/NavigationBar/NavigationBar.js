@@ -27,7 +27,7 @@ function NavigationBar() {
 
     // Return the Navigation Bar
     return (
-        <nav className="navbar">
+        <nav className="navbar" role = "navigation">
             <div className="navbar__list-wrapper">
                 {/* List of Navigation Bar sections to go to. "Offset" arg changes the position they are detected. */}
                 <ul className="navbar__list">
@@ -43,10 +43,7 @@ function NavigationBar() {
                     <Link className={`borderXwidth ${getActiveClass('projects')}`} to="projects" offset={-260} spy={true} onSetActive={() => onSetActive('projects')}>
                         <li>Projects</li>
                     </Link>
-                    <Link className={`borderXwidth ${getActiveClass('resume-contact')}`} to="resume-contact" offset={-570} spy={true} onSetActive={() => onSetActive('resume-contact')}>
-                        <li>Resume</li>
-                    </Link>
-                    <Link className={`borderXwidth ${getActiveClass('resume-contact')}`} to="resume-contact" spy={true} onSetActive={() => onSetActive('resume-contact')}>
+                    <Link className={`borderXwidth ${getActiveClass('contact')}`} to="contact" offset = {-420} spy={true} onSetActive={() => onSetActive('contact')}>
                         <li>Contact</li>
                     </Link>
                 </ul>

@@ -103,7 +103,7 @@ const closePopup = () => {
 
 return (
 
-    <section className='contact' ref = {contactRef}>
+    <section className='contact' id = "contact" ref = {contactRef}>
         <h1 className = {contactHeaderClass}>Contact Me</h1>
         <h2 className = {contactSubHeaderClass}>Leave me a message and I'll get back to you as soon as possible. </h2>
         <div className="contact-main-content-wrapper">
@@ -123,15 +123,17 @@ return (
 
             {/* Contact Left Side - Contains Email Form */}
             <div className={contactLeftClass}>
-                <form className="contact-form" name="contact" method="POST" onSubmit={handleFormSubmit} data-netlify="true">
-                <input type="hidden" name="form-name" value="contact" />
+                <form className="contact-form" name="contact" method="POST" action="https://api.web3forms.com/submit">
+                <input type="hidden" name="access_key" value="dbd50966-efb7-4221-8a8a-0349a0714f37" />
                 <div className="contact-name-and-email">
-                    <input type="text" id="name" name="name" placeholder="Name" autoComplete="name" className="contact-form-name" />
-                    <input type="email" id="email" name="email" placeholder="Email" autoComplete="email" className="contact-form-email"/>
+                    <input type="text" id="name" name="name" placeholder="Name" autoComplete="name" className="contact-form-name" required/>
+                    <input type="email" id="email" name="email" placeholder="Email" autoComplete="email" className="contact-form-email" required/>
                 </div>
-                <textarea id="message" name="message" className="contact-form-message" placeholder="Message"></textarea>
+                <textarea id="message" name="message" className="contact-form-message" placeholder="Message" required></textarea>
+                <div class="h-captcha" data-captcha="true"></div>
                 <button className="contact-submit-button" type="submit">Send</button>
                 </form>
+                <script src="https://web3forms.com/client/script.js" async defer></script>
             </div>
 
             {showPopup && <Popup message={popupMessage} onClose={closePopup} />}
