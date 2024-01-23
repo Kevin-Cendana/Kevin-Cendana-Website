@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.29e85be4.css",
-    "main.js": "/static/js/main.bee17bff.js",
+    "main.css": "/static/css/main.5df8b471.css",
+    "main.js": "/static/js/main.08257e16.js",
     "static/js/787.b701888c.chunk.js": "/static/js/787.b701888c.chunk.js",
     "static/media/maplestory_app.gif": "/static/media/maplestory_app.a74f21672d8f78b0a330.gif",
     "static/media/SF-Pro.ttf": "/static/media/SF-Pro.2f9118d7e608bf94730c.ttf",
@@ -12,6 +12,7 @@
     "static/media/SF-Pro-Display-UltralightItalic.otf": "/static/media/SF-Pro-Display-UltralightItalic.14706eb655663242a7f5.otf",
     "static/media/SF-Pro-Display-RegularItalic.otf": "/static/media/SF-Pro-Display-RegularItalic.79fd51831418eb03a963.otf",
     "static/media/datafest.png": "/static/media/datafest.3e3b72c712d3970ce92e.png",
+    "static/media/pastel-bg.gif": "/static/media/pastel-bg.648d8d7a2d53dab163c9.gif",
     "static/media/code_icon.gif": "/static/media/code_icon.7f86a8a395785bf9e339.gif",
     "static/media/caring_icon.gif": "/static/media/caring_icon.d56522e968461b1fe547.gif",
     "static/media/creating_icon.gif": "/static/media/creating_icon.6c4492cf840cf86b0d93.gif",
@@ -20,7 +21,7 @@
     "static/media/kevin_icon.png": "/static/media/kevin_icon.58b3c02db1ff80bb6419.png",
     "static/media/hackathon_icon.gif": "/static/media/hackathon_icon.534db45d31562cc0c643.gif",
     "static/media/invaded_space.gif": "/static/media/invaded_space.bef9a257d8e4c2176e80.gif",
-    "static/media/self-image.png": "/static/media/self-image.513d620eb102b90072b8.png",
+    "static/media/self-image.png": "/static/media/self-image.6ad2fca0d1abd7807b91.png",
     "static/media/bullseye.png": "/static/media/bullseye.d1d2b10427e4598d191f.png",
     "static/media/SF-Pro-Display-Bold.otf": "/static/media/SF-Pro-Display-Bold.b1f4d2c69fa808ebca12.otf",
     "static/media/self-image-dark-mode.png": "/static/media/self-image-dark-mode.60d5845c76250a34918e.png",
@@ -29,10 +30,10 @@
     "static/media/F21.ttf": "/static/media/F21.ea32fb1a67667f8e0c8f.ttf",
     "static/media/key_animation.gif": "/static/media/key_animation.ceedac65cff1db542157.gif",
     "static/media/Avenir-Next-Bold.otf": "/static/media/Avenir-Next-Bold.711a4eb654bf1139f123.otf",
+    "static/media/pastel-bg-dark.gif": "/static/media/pastel-bg-dark.af5d3884cd7f32b63f0e.gif",
     "static/media/Avenir-Next.otf": "/static/media/Avenir-Next.3e062c6caf04ecafa42c.otf",
     "static/media/Sam.otf": "/static/media/Sam.fa776ee44adf51ff554e.otf",
     "static/media/tap_animation.gif": "/static/media/tap_animation.e455b31505e976de8099.gif",
-    "static/media/snowflake_animation.gif": "/static/media/snowflake_animation.0d265e1e7d758bba5fa9.gif",
     "static/media/sun.png": "/static/media/sun.950ff2a42cd3ab29f0fa.png",
     "static/media/Sam.woff": "/static/media/Sam.42e9650e623893288c2b.woff",
     "static/media/swipe_animation.gif": "/static/media/swipe_animation.f8fe6dac981ac4a721da.gif",
@@ -41,12 +42,12 @@
     "static/media/arrow_button.png": "/static/media/arrow_button.70a17d6df74fe38db56a.png",
     "static/media/caring_icon.png": "/static/media/caring_icon.e8bf9c26b02ee83185bb.png",
     "index.html": "/index.html",
-    "main.29e85be4.css.map": "/static/css/main.29e85be4.css.map",
-    "main.bee17bff.js.map": "/static/js/main.bee17bff.js.map",
+    "main.5df8b471.css.map": "/static/css/main.5df8b471.css.map",
+    "main.08257e16.js.map": "/static/js/main.08257e16.js.map",
     "787.b701888c.chunk.js.map": "/static/js/787.b701888c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.29e85be4.css",
-    "static/js/main.bee17bff.js"
+    "static/css/main.5df8b471.css",
+    "static/js/main.08257e16.js"
   ]
 }

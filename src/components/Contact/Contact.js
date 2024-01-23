@@ -2,7 +2,7 @@
 //                                   Contact.js                                         //
 //--------------------------------------------------------------------------------------//
 
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 
 import { useDarkMode } from '../../shared/DarkModeToggle/DarkModeContext';
 import useInView from '../../hooks/useInView';
@@ -13,8 +13,6 @@ import kevinIcon from '../../images/kevin_icon.png';
 
 function Contact() {
 const { isDarkMode } = useDarkMode(); // Get the global state for dark mode 
-const [showPopup, setShowPopup] = useState(false); // State for showing the popup
-const [popupMessage, setPopupMessage] = useState(""); // State for the popup message
 
 const contactRef = useRef(null); // Ref for contact section
 const isContactInView = useInView(contactRef, { threshold: [0.2], sectionName: 'resume-contact' } );
@@ -50,56 +48,6 @@ const contactSubHeaderClass = classNames({
 });
 
 
-// PopUp for Contact Form Submission - Pops up a white box with a message
-const Popup = ({ message, onClose }) => {
-    return (
-    <div className="popup-background"> 
-        <div className="popup">
-        <p>{message}</p>
-        <button onClick={onClose}>Close</button>
-        </div>
-    </div>
-    );
-};
-
-// Function: Handle Form Submission
-const handleFormSubmit = (event) => {
-    event.preventDefault(); // Prevent default form submission behavior
-    
-    const form = event.target; // Get the form element
-    const formData = new FormData(form); // Create a FormData object from the form
-
-    // Send the form data to the server
-    fetch('/', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: new URLSearchParams([...formData]).toString() // Convert the FormData object to a URL-encoded string
-    })
-    // Handle the response
-    .then(response => {
-    // If the response is ok, show a success message
-    if (response.ok) {
-        setPopupMessage("Thank you! Your message has been sent successfully.");
-        setShowPopup(true); // Show the popup
-        form.reset(); // Reset the form
-    // Else, show an error message
-    } else {
-        setPopupMessage("Failed to send message. Please try again later.");
-        setShowPopup(true);
-    }
-    })
-    // If there's an error during the fetch operation
-    .catch(error => {
-    console.error('Error:', error); // Log the error to the console
-    setPopupMessage("An error occurred. Please try again later."); 
-    setShowPopup(true); // Show the popup
-    });
-};
-
-// Function: Close Popup
-const closePopup = () => {
-    setShowPopup(false);
-};
 
 return (
 
@@ -136,7 +84,6 @@ return (
                 <script src="https://web3forms.com/client/script.js" async defer></script>
             </div>
 
-            {showPopup && <Popup message={popupMessage} onClose={closePopup} />}
             {/* Contact Right Side - Contains Contact Info */}
             <div className={contactRightClassBig}>
                 <div className = "contact-info">
