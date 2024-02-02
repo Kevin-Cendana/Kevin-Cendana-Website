@@ -95,9 +95,8 @@
 .navbar-icon {
     aspect-ratio: 1/1;
     height: 32px;
-
+    margin: 10px 5px;
     border: 1.5px solid white;
-
     background-size: contain;
     background-repeat: no-repeat;
     transition: all 0.3s ease;
@@ -111,16 +110,21 @@
 .navbar-icon.csv-icon {
     content: 'CSV'; /* Text to show on hover */
     height: 29px;
-    margin-top: 2px;
-    margin-left: 10px;
     background-color: white;
     border-radius: 10%;
     overflow: hidden;
     border: 1.5px solid white;
 }
+
+/* Logo for LinkedIn */
+.navbar-icon.linkedin-icon {
+    content: 'LinkedIn'; /* Text to show on hover */
+    background-color: white;
+    border-radius: 50%;
+}
+
 /* Logo for GitHub */
 .navbar-icon.github-icon {
-    margin: 1.5px 10px 0 10px;
     content: 'GitHub'; /* Text to show on hover */
     border-radius: 50%;
 }
@@ -134,7 +138,7 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-right: 10px;
+    margin: 5px;
     align-items: center;
     width: 100%; /* Fill up the rest of the navbar space */
 }
@@ -197,27 +201,23 @@ input:checked + .slider:before {
 
 
 @media (max-width: 700px) {
-    /* Logo for CSV */
-    .navbar-icon.csv-icon {
-        height: 25px;
-        margin-left: 10px;
+    /* Logos */
+    .navbar-icon {
+        height: 27px;
     }
-    /* Logo for GitHub */
-    .navbar-icon.github-icon {
-        height: 29px;
-        border-radius: 50%;
-        margin: 2px 9px 0 10px;
+    .navbar-icon.csv-icon {
+        height: 24px;
     }
     /* Container for the dark mode toggle switch */
     .switch {
-        width: 50px;
-        min-width: 53px;
-        max-width: 53px;
-        height: 29px;
+        width: 48px;
+        min-width: 51px;
+        max-width: 51px;
+        height: 28px;
     }
     /* Visual slider part of the toggle switch */
     .slider:before {
-        width: 28px;
+        width: 27px;
         bottom: 0px;
     }
     /* Slider changes to sun/moon when the switch is in 'checked' state, i.e., dark mode is on */
@@ -226,4 +226,11 @@ input:checked + .slider:before {
         background-image: url('../../images/moon.png');
     }
     
+}
+
+/* Very small screens: Remove navigation buttons */
+@media (max-width: 600px) {
+    .navbar__list {
+        display: none;
+    }
 }

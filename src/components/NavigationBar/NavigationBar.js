@@ -8,8 +8,11 @@ import { Link } from 'react-scroll';       // Import Link from react-scroll for 
 import classNames from 'classnames';       // Import classNames to dynamically set class names
 import './NavigationBar.css';              // Import CSS for the navigation bar
 import DarkModeToggle from '../../shared/DarkModeToggle/DarkModeToggle'; // Import the DarkModeToggle component
+
+// Icons for the top right of the nav bar
 import githubIcon from '../../images/github_icon.png'; // Import the GitHub logo
-import csvIcon from '../../images/csv_icon.png'; // Import the CSV logo
+import csvIcon from '../../images/csv_icon.png';       // Import the CSV logo
+import linkedinIcon from '../../images/linkedin_icon.png';       // Import the CSV logo
 
 function NavigationBar() {
     // State to track which section is active
@@ -51,10 +54,15 @@ function NavigationBar() {
 
             {/* Items in the top right of the nav bar: GitHub logo & Dark Mode switch */}
             <div className="top-right-items">
-            <a href="https://drive.google.com/file/d/1gWuMa_hFEyR21zJy8zc6wYkRPVeenhc1/view?usp=drive_link" target="_blank" className="github-logo-link" rel="noopener noreferrer">
+            <a href="https://docs.google.com/document/d/1xiAtzAXNMSw3ZkajAZaag-O40Fxn4iWoJ1nj-sb5YCA/edit?usp=sharing
+
+" target="_blank" className="github-logo-link" rel="noopener noreferrer">
                 <img src = {csvIcon} className = "navbar-icon csv-icon" alt = "CSV Logo Link"></img>
             </a>
-            <a href="https://github.com/KevCendana" target="_blank" className="github-logo-link" rel="noopener noreferrer">
+            <a href="https:/linkedin.com/in/kevincendana" target="_blank" className="linkedin-icon-link" rel="noopener noreferrer">
+                <img src = {linkedinIcon} className = "navbar-icon linkedin-icon" alt = "LinkedIn Logo Link"></img>
+            </a>
+            <a href="https://github.com/KevCendana" target="_blank" className="github-icon-link" rel="noopener noreferrer">
                 <img src = {githubIcon} className = "navbar-icon github-icon" alt = "GitHub Logo Link"></img>
             </a>
                 <div className="toggle__container">

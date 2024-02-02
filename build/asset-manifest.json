@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.5df8b471.css",
-    "main.js": "/static/js/main.08257e16.js",
+    "main.css": "/static/css/main.20a1ddc3.css",
+    "main.js": "/static/js/main.f7a72fbd.js",
     "static/js/787.b701888c.chunk.js": "/static/js/787.b701888c.chunk.js",
     "static/media/maplestory_app.gif": "/static/media/maplestory_app.a74f21672d8f78b0a330.gif",
     "static/media/SF-Pro.ttf": "/static/media/SF-Pro.2f9118d7e608bf94730c.ttf",
@@ -41,13 +41,14 @@
     "static/media/moon.png": "/static/media/moon.048c9d18e810ea8a8182.png",
     "static/media/arrow_button.png": "/static/media/arrow_button.70a17d6df74fe38db56a.png",
     "static/media/caring_icon.png": "/static/media/caring_icon.e8bf9c26b02ee83185bb.png",
+    "static/media/linkedin_icon.png": "/static/media/linkedin_icon.9a1a7f8162140e296345.png",
     "index.html": "/index.html",
-    "main.5df8b471.css.map": "/static/css/main.5df8b471.css.map",
-    "main.08257e16.js.map": "/static/js/main.08257e16.js.map",
+    "main.20a1ddc3.css.map": "/static/css/main.20a1ddc3.css.map",
+    "main.f7a72fbd.js.map": "/static/js/main.f7a72fbd.js.map",
     "787.b701888c.chunk.js.map": "/static/js/787.b701888c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5df8b471.css",
-    "static/js/main.08257e16.js"
+    "static/css/main.20a1ddc3.css",
+    "static/js/main.f7a72fbd.js"
   ]
 }

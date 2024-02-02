@@ -58,9 +58,6 @@
 .skills-icon-header-wrapper {
     color: black;
 }
-    .skills-icon-header-wrapper:hover {
-        color: blue;
-    }
 
 /* Icon for each skill */
 .skills img {
