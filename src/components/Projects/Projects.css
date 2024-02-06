@@ -358,16 +358,21 @@
     height: 11.875rem;  /* Increases width of each slide, but not container. */
     left: 0.625rem;
     top: 0.625rem;
-    border: 0.01rem solid;
+    border: 0.05rem solid;
     transition: transform 1s, opacity 1s;
 
 }
 
 /* Styles for the image in each slide. */
-.carousel__slide img {
+.carousel__slide img, .carousel__slide video {
     width: 100%; /* Resizes only the image, not container. will poke through */
     height: 100%;
-    display: block;
+}
+
+.carousel__slide video {
+    object-fit: cover;
+    padding-right: 0.3px;
+    overflow: hidden;
 }
 
 /* Overlay style for each slide, typically for captions or additional content. */

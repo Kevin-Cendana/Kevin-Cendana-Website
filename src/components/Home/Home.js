@@ -6,12 +6,12 @@
 // Libraries & Files
 import useInView from '../../hooks/useInView';      // Import custom hook to check if an element is in the viewport
 import ReactRotatingText from './RotatingText';     // Import rotating text component
-import React, { useRef } from 'react';   // Import React features
+import React, { useRef } from 'react';              // Import React features
 import classNames from 'classnames';                // Import classnames for dynamic className assignment
 import { useDarkMode } from '../../shared/DarkModeToggle/DarkModeContext'; // Import custom hook for dark mode state
-import './Home.css';          // Import CSS for Home component
-import '../NavigationBar/NavigationBar.css';       // Import CSS for NavigationBar component
-import '../../normalize.css'; // Import normalize.css for CSS resets
+import './Home.css';                                // Import CSS for Home component
+import '../NavigationBar/NavigationBar.css';        // Import CSS for NavigationBar component
+import '../../normalize.css';                       // Import normalize.css for CSS resets
 
 // Images
 import normalImage from '../../images/self-image.png';         // Import normal mode image of me
@@ -51,7 +51,7 @@ function Home() {
             </div>
             {/* Right side of the Home section w/ drawing of me, darkens on dark mode*/}
             <img src={isDarkMode ? darkImage : normalImage} 
-                alt='Kevin Cendana Drawing' 
+                alt = 'Kevin Cendana Drawing' 
                 className = {`home-image ${isHomeInView ? 'animate-home-image' : ''}`} 
                 draggable = "false">
             </img>

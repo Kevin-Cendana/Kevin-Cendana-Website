@@ -78,7 +78,7 @@ return (
                     <input type="email" id="email" name="email" placeholder="Email" autoComplete="email" className="contact-form-email" required/>
                 </div>
                 <textarea id="message" name="message" className="contact-form-message" placeholder="Message" required></textarea>
-                <div class="h-captcha" data-captcha="true"></div>
+                <div className="h-captcha" data-captcha="true"></div>
                 <button className="contact-submit-button" type="submit">Send</button>
                 </form>
                 <script src="https://web3forms.com/client/script.js" async defer></script>

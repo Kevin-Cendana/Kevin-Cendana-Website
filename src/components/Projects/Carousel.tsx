@@ -25,7 +25,9 @@ import React, {
 // Type definitions for different props and items used in the carousel.
 export type CarouselItem = Readonly<{
     alt?: string; // Optional alt text for images.
-    image: string; // URL of the image.
+    image?: string; // URL of the image.
+    imageWebp?: string; // URL of the image in WebP format.
+    videoMp4?: string; // URL of the video in MP4 format.
     content: React.ReactNode; // Content to display, can be any React node.
     onClick?: () => void; // Optional click handler function.
 }>;
@@ -219,15 +221,28 @@ export const Carousel: FC<CarouselProps> = forwardRef((
         <>
             <div className={getClassName('')} ref={ref}>
                 <div className={getClassName('__container')} style={getItemStyle()}>
-                    {data.map((item: DecoratedCarouselItem, index: number) => (
-                        <div key={item.id} style={getSlideStyle(index)} onClick={() => {
-                            if (item.onClick) item.onClick();
-                            if (slideOnClick) setSelectedIndex(index);
-                        }} className={getClassName('__slide')}>
-                            <img src={item.image} alt={item.alt} />
-                            <div className={getClassName('__slide-overlay')}>
-                                {/* {item.content} */}
-                            </div>
+                {data.map((item: DecoratedCarouselItem, index: number) => (
+                    <div key={item.id} style={getSlideStyle(index)} onClick={() => {
+                        if (item.onClick) item.onClick();
+                        if (slideOnClick) setSelectedIndex(index);
+                    }} className={getClassName('__slide')}>
+                          {/* Check for MP4 videos first */}
+                            {item.videoMp4 ? (
+                                <video autoPlay loop muted playsInline>
+                                    <source src={item.videoMp4} type="video/mp4" />
+                                    Your browser does not support this video.
+                                </video>
+                            ) : item.imageWebp ? (
+                                /* Then check for WebP images, with PNG/GIF fallback */
+                                <picture>
+                                    <source srcSet={item.imageWebp} type="image/webp" />
+                                    <img src={item.image} alt={item.alt || 'Carousel item'} />
+                                </picture>
+                            ) : (
+                                /* Fallback to PNG/GIF image if no WebP */
+                                <img src={item.image} alt={item.alt || 'Carousel item'} />
+                            )}
+                            <div className={getClassName('__slide-overlay')} />
                         </div>
                     ))}
                 </div>
