@@ -2,7 +2,7 @@
 //                                        App.js                                        //
 //--------------------------------------------------------------------------------------//
 
-import React, { Suspense, useEffect, useState } from 'react';
+import React, { Suspense } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import './App.css';
 import './normalize.css';
