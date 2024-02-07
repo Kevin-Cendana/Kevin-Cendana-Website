@@ -11,7 +11,8 @@ import { useState, useEffect } from 'react';
     - Ref to element 
     - Options: threshold, delay, playOnce, isDarkMode
 */
-const useInView = (refs, { threshold = [0.1], delay = 100, playOnce, isDarkMode, sectionName } = {}) => {
+
+const useInView = (refs, { threshold = [0.1], delay = 0, playOnce, isDarkMode, sectionName } = {}) => {
     // State to keep track of whether the element has been in view
     const [hasBeenInView, setHasBeenInView] = useState(false);
     const [startAnimation, setStartAnimation] = useState(false);
@@ -66,7 +67,7 @@ const useInView = (refs, { threshold = [0.1], delay = 100, playOnce, isDarkMode,
                 }
             });
         };
-    }, [refs, hasBeenInView, threshold, delay, playOnce, isDarkMode, sectionName]); // Added isDarkMode as a dependency
+    }, [refs, hasBeenInView, threshold, delay, playOnce, isDarkMode, sectionName]); 
 
     return startAnimation;
 };

@@ -21,6 +21,13 @@
   font-weight: normal;
   font-style: normal;
 }
+@font-face { /* Thasadith */
+  font-family: "Thasadith";
+  src: url('fonts/Thasadith.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  
+}
 @font-face { /* SF Pro */
   font-family: "SF Pro";
   src: url('fonts/SF-Pro.ttf') format('truetype');
@@ -79,7 +86,7 @@
 
 /* All */
 *, *:before, *:after {
-  overflow: visible;
+
   box-sizing: border-box;
   padding: 0;
   margin: 0;

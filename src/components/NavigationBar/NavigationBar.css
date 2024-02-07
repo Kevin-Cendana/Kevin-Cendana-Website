@@ -26,6 +26,7 @@
 /* Used to change the overall width of the navbar to make space for switch */
 .navbar__list-wrapper {
     width: 100%; 
+    margin-right: 5px;
 }
 
 /* The entire navigation bar except the light/dark switch */
@@ -51,6 +52,7 @@
     align-items: center;
     height: 100%;
     text-decoration: none; /* Remove underline from links */
+    color: inherit; /* Ensures text color is inherited - Modification */
 }
 
 /* Each item (tab) in the navigation bar */
@@ -62,7 +64,7 @@
     align-items: center;
     justify-content: center;
     text-decoration: none; /* Remove underline */
-    color: white;
+    color: white; /* Default text color */
 }
     .navbar__list li:hover {
         background-color: rgb(190, 190, 190);
@@ -73,12 +75,11 @@
         background-color: rgb(130, 130, 130);
     }
 
-
 /* Each active item (tab) in the navigation bar */
-.navbar__link-active li {
-    position: relative;
+.navbar__link-active, .navbar__list li.navbar__link-active a { /* Modification for active link */
     background-color: white;
     color: black;
+    position: relative; /* Ensure specificity for active state */
 }
 
 /* Wrapper for all items in the top right corner of the navigation bar */
@@ -128,6 +129,7 @@
     content: 'GitHub'; /* Text to show on hover */
     border-radius: 50%;
 }
+
 
 /*--------------------------------------------------------------------------------------//
 //                                  DarkModeToggle                                      //
@@ -187,7 +189,7 @@
     background-color: white;
     transition: .4s;
     border-radius: 50%; /* Make it round */
-    background-image: url('../../images/sun.png'); /* Sun icon */
+    background-image: url('../../images/navigation_bar_images/sun.png'); /* Sun icon */
     background-size: cover;
     background-position: center;
 }
@@ -195,7 +197,7 @@
 /* Slider changes to sun/moon when the switch is in 'checked' state, i.e., dark mode is on */
 input:checked + .slider:before {
     transform: translateX(27.5px);
-    background-image: url('../../images/moon.png');
+    background-image: url('../../images/navigation_bar_images/moon.png');
 }
 
 
@@ -223,7 +225,6 @@ input:checked + .slider:before {
     /* Slider changes to sun/moon when the switch is in 'checked' state, i.e., dark mode is on */
     input:checked + .slider:before {
         transform: translateX(23px);
-        background-image: url('../../images/moon.png');
     }
     
 }

@@ -10,9 +10,9 @@ import './NavigationBar.css';              // Import CSS for the navigation bar
 import DarkModeToggle from '../../shared/DarkModeToggle/DarkModeToggle'; // Import the DarkModeToggle component
 
 // Icons for the top right of the nav bar
-import githubIcon from '../../images/github_icon.png'; // Import the GitHub logo
-import csvIcon from '../../images/csv_icon.png';       // Import the CSV logo
-import linkedinIcon from '../../images/linkedin_icon.png';       // Import the CSV logo
+import githubIcon from '../../images/navigation_bar_images/github_icon.png'; // Import the GitHub logo
+import csvIcon from '../../images/navigation_bar_images/csv_icon.png';       // Import the CSV logo
+import linkedinIcon from '../../images/navigation_bar_images/linkedin_icon.png';       // Import the CSV logo
 
 function NavigationBar() {
     // State to track which section is active
@@ -34,29 +34,27 @@ function NavigationBar() {
             <div className="navbar__list-wrapper">
                 {/* List of Navigation Bar sections to go to. "Offset" arg changes the position they are detected. */}
                 <ul className="navbar__list">
-                    <Link className={`borderXwidth ${getActiveClass('home')}`} to="home" offset={0} spy={true} onSetActive={() => onSetActive('home')}>
-                        <li>Home</li>
-                    </Link>
-                    <Link className={`borderXwidth ${getActiveClass('about')}`} to="about" offset={-270} spy={true} onSetActive={() => onSetActive('about')}>
-                        <li>About</li>
-                    </Link>
-                    <Link className={`borderXwidth ${getActiveClass('skills')}`} to="skills" offset={-280} spy={true} onSetActive={() => onSetActive('skills')}>
-                        <li>Skills</li>
-                    </Link>
-                    <Link className={`borderXwidth ${getActiveClass('projects')}`} to="projects" offset={-260} spy={true} onSetActive={() => onSetActive('projects')}>
-                        <li>Projects</li>
-                    </Link>
-                    <Link className={`borderXwidth ${getActiveClass('contact')}`} to="contact" offset = {-420} spy={true} onSetActive={() => onSetActive('contact')}>
-                        <li>Contact</li>
-                    </Link>
+                    <li className={`borderXwidth ${getActiveClass('home')}`}>
+                        <Link to="home" offset={0} spy={true} onSetActive={() => onSetActive('home')}>Home</Link>
+                    </li>
+                    <li className={`borderXwidth ${getActiveClass('about')}`}>
+                        <Link to="about" offset={-270} spy={true} onSetActive={() => onSetActive('about')}>About</Link>
+                    </li>
+                    <li className={`borderXwidth ${getActiveClass('skills')}`}>
+                        <Link to="skills" offset={-280} spy={true} onSetActive={() => onSetActive('skills')}>Skills</Link>
+                    </li>
+                    <li className={`borderXwidth ${getActiveClass('projects')}`}>
+                        <Link to="projects" offset={-260} spy={true} onSetActive={() => onSetActive('projects')}>Projects</Link>
+                    </li>
+                    <li className={`borderXwidth ${getActiveClass('contact')}`}>
+                        <Link to="contact" offset={-420} spy={true} onSetActive={() => onSetActive('contact')}>Contact</Link>
+                    </li>
                 </ul>
             </div>
 
             {/* Items in the top right of the nav bar: GitHub logo & Dark Mode switch */}
             <div className="top-right-items">
-            <a href="https://docs.google.com/document/d/1xiAtzAXNMSw3ZkajAZaag-O40Fxn4iWoJ1nj-sb5YCA/edit?usp=sharing
-
-" target="_blank" className="github-logo-link" rel="noopener noreferrer">
+            <a href="https://docs.google.com/document/d/1xiAtzAXNMSw3ZkajAZaag-O40Fxn4iWoJ1nj-sb5YCA/edit?usp=sharing" target="_blank" className="github-logo-link" rel="noopener noreferrer">
                 <img src = {csvIcon} className = "navbar-icon csv-icon" alt = "CSV Logo Link"></img>
             </a>
             <a href="https:/linkedin.com/in/kevincendana" target="_blank" className="linkedin-icon-link" rel="noopener noreferrer">

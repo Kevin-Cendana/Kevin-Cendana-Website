@@ -37,6 +37,7 @@ function DarkModeToggle() {
             id="dark-mode" 
             checked={isDarkMode} 
             onChange={handleToggleChange} 
+            aria-label="Toggle dark mode"
         />
     );
 }

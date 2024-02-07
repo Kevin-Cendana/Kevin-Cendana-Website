@@ -72,13 +72,15 @@
     width: 107%;
     transform: translateX(-5%);
     box-shadow: 5px 5px 10px grey; /* Vertical, horizontal, blur radius */
-    background-image: url('../../images/kevin_and_emma.png');
-    background-size: cover;
+    background-image: url('../../images/about_images/kevin_and_emma.png'); /* Fallback image for older browsers */
+    background-image: url('../../images/about_images/kevin_and_emma.webp'); /* WebP Image for modern browsers */
+	background-size: cover;
 	transition: all 1s ease-in-out;
 }
 	/* On Hover: Change the polaroid image*/
 	.about-image-container:hover {
-		background-image: url('../../images/kevin_and_emma_hover.png');
+		background-image: url('../../images/about_images/kevin_and_emma_hover.png'); /* Fallback image for older browsers */
+		background-image: url('../../images/about_images/kevin_and_emma_hover.webp'); /* WebP Image for modern browsers */
         transition: all 1s ease-in-out;
 	}
 
@@ -184,18 +186,14 @@
 	height: 100%;
 	border: 2.5px solid black;
 	overflow: hidden;
-	/* For Christmas: */
-	/* background: url('../../images/snowflake_animation.gif') center/cover no-repeat, 
-	linear-gradient(to bottom, #c6efff, #ffffff); */
-	background: url('../../images/pastel-bg.gif');
+	background: url('../../images/about_images/pastel-bg.png'); /* PNG Polaroid Image for older browsers: Attempt to load this last */
+	background: url('../../images/about_images/pastel-bg.webp'); /* WebP Polaroid Image for modern browsers */
 	background-size: cover;
 	transition: 0s ease;
 }
 .polaroid__image.dark-mode {
-	/* For Christmas: */
-	/* background: url('../../images/snowflake_animation.gif') center/cover no-repeat, 
-		linear-gradient(to bottom, #15009e, #adbaff); */
-	background: url('../../images/pastel-bg-dark.gif');
+	background: url('../../images/about_images/pastel-bg-dark.png');    /* PNG Polaroid Image for older browsers: Attempt to load this last */
+	background: url('../../images/about_images/pastel-bg-dark.webp'); 	/* WebP Polaroid Image for modern browsers: Attempt to load this first */
 	background-size: cover;
 	transition: 0s ease;
 }

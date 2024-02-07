@@ -9,20 +9,20 @@ import Carousel  from './Carousel.tsx'; // Credit: React Round Carousel by scrip
 import classNames from 'classnames';
 import './Projects.css';
 
-// Slideshow images in webp format - Optimized for faster loading
-import attempowherWebp from '../../images/slideshow_images/att_empowher.webp';
-import datafestWebp from '../../images/slideshow_images/datafest.webp';
-import bullseyeWebp from '../../images/slideshow_images/bullseye.webp';
+// Slideshow images & video in webp format - Optimized for faster loading
+import attempowherWebp from '../../images/projects_images/slideshow_images/att_empowher.webp';
+import datafestWebp from '../../images/projects_images/slideshow_images/datafest.webp';
+import bullseyeWebp from '../../images/projects_images/slideshow_images/bullseye.webp';
 
-// Slideshow images in png format - Back up for browsers that don't support webp
-import attempowherPng from '../../images/slideshow_images/att_empowher.png';
-import datafestPng from '../../images/slideshow_images/datafest.png';
-import bullseyePng from '../../images/slideshow_images/bullseye.png';
+// Slideshow videos in mp4 format - Optimized for faster loading
+import lyriclinkMp4 from '../../images/projects_images/slideshow_images/lyric_link.mp4';
+import maplestoryMp4 from '../../images/projects_images/slideshow_images/maplestory_app.mp4';
+import invadedspaceMp4 from '../../images/projects_images/slideshow_images/invaded_space.mp4';
 
-// SLideshow videos in mp4 format
-import lyriclinkMp4 from '../../images/slideshow_images/lyric_link.mp4';
-import maplestoryMp4 from '../../images/slideshow_images/maplestory_app.mp4';
-import invadedspaceMp4 from '../../images/slideshow_images/invaded_space.mp4';
+// Backup slideshow imagesin png/ mp4 format - For browsers that don't support webp
+import attempowherPng from '../../images/projects_images/slideshow_images/att_empowher.png';
+import datafestPng from '../../images/projects_images/slideshow_images/datafest.png';
+import bullseyePng from '../../images/projects_images/slideshow_images/bullseye.png';
 
 // Gradient colors for each slide's captions
 const rainbowGradient = 'linear-gradient(45deg, #fcb0a9, #a3c9f8, #a6fcb3, #fff2cc)';
@@ -35,6 +35,7 @@ const targetGradient = 'radial-gradient(circle at center, #fde4e4 0%, #fde4e4 20
 // Array of slides to use for slideshow pictures
 const project_data = [
     { 
+        // videoWebp: lyriclinkWebp,
         videoMp4: lyriclinkMp4,
         title: "Lyric Link",
         description: (
@@ -68,46 +69,48 @@ const project_data = [
     },
 
     { 
-    image: datafestPng, 
-    imageWebp: datafestWebp,
-    title: "Word Cloud",
-    description: (
-        <span> 
-        <a href="https://ww2.amstat.org/education/datafest/" target="_blank" rel="noopener noreferrer">DataFest 2023:</a>{" "}
-        A competition where we made data visualizations based off of a huge dataset with 
-        200,000+ questions from clients for their lawyers.
-    </span>
-    ),
-    captions: [
-        { text: 'Hackathon', style: { color: 'black', background: lightGreenGradient}},
-    ]
+        image: datafestPng, 
+        imageWebp: datafestWebp,
+        title: "Word Cloud",
+        description: (
+            <span> 
+            <a href="https://ww2.amstat.org/education/datafest/" target="_blank" rel="noopener noreferrer">DataFest 2023:</a>{" "}
+            A competition where we made data visualizations based off of a huge dataset with 
+            200,000+ questions from clients for their lawyers.
+        </span>
+        ),
+        captions: [
+            { text: 'Hackathon', style: { color: 'black', background: lightGreenGradient}},
+        ]
     },
 
     { 
-    videoMp4: maplestoryMp4,
-    title: "Maplestory",
-    description: "To practice Flutter and its widgets, states, and frame animations, I replicated the core gameplay loop of one of my favorite childhood games, Maplestory.",
-    captions: [
-        { text: 'Flutter', style: { color: 'black', background: orangeGradient } },
-    ] 
+        // videoWebp: maplestoryWebp,
+        videoMp4: maplestoryMp4,
+        title: "Maplestory",
+        description: "To practice Flutter and its widgets, states, and frame animations, I replicated the core gameplay loop of one of my favorite childhood games, Maplestory.",
+        captions: [
+            { text: 'Flutter', style: { color: 'black', background: orangeGradient } },
+        ] 
     },
 
     { 
-    videoMp4: invadedspaceMp4,
-    title: "Invaded Space",
-    description: "My contribution to a Game Jam session in Video Game Development Club! Our goal was to create a tower defense game, where I was in charge of programming player & enemy units as well as projectile logic.",
-    captions: [
-        { text: 'Unity', style: { color: 'white', background: violetGradient} },
-    ]  
+        // videoWebp: invadedspaceWebp,
+        videoMp4: invadedspaceMp4,
+        title: "Invaded Space",
+        description: "My contribution to a Game Jam session in Video Game Development Club! Our goal was to create a tower defense game, where I was in charge of programming player & enemy units as well as projectile logic.",
+        captions: [
+            { text: 'Unity', style: { color: 'white', background: violetGradient} },
+        ]  
     },
     { 
-    image: bullseyePng, 
-    imageWebp: bullseyeWebp,
-    title: "Bullseye",
-    description: "To learn SwiftUI and try mobile app development for the first time, I made a series of apps using Swift UI including a sleep tracker, time converter, tip calculator, Word Scrabble, Guess the Flag, and this Bullseye game.",
-    captions: [
-        { text: 'SwiftUI', style: { color: 'black', background: targetGradient} },
-    ]    
+        image: bullseyePng, 
+        imageWebp: bullseyeWebp,
+        title: "Bullseye",
+        description: "To learn SwiftUI and try mobile app development for the first time, I made a series of apps using Swift UI including a sleep tracker, time converter, tip calculator, Word Scrabble, Guess the Flag, and this Bullseye game.",
+        captions: [
+            { text: 'SwiftUI', style: { color: 'black', background: targetGradient} },
+        ]    
     },
 ];
 
@@ -192,6 +195,7 @@ function Projects() {
     const carouselItems = updatedProjectData.map((project, index) => ({
         image: project.image,           // Fall back to png/mp4 if webp is not supported
         imageWebp: project.imageWebp,
+        videoWebp: project.videoWebp,
         videoMp4: project.videoMp4,
     }));
 
@@ -250,8 +254,8 @@ function Projects() {
                             </div>
                             {/* Arrow buttons */}
                             <div className="arrow__buttons__container">
-                                <button className="arrow__button left" onClick={goToPrevSlide}></button>
-                                <button className="arrow__button right" onClick={goToNextSlide}></button>
+                                <button className="arrow__button left" onClick={goToPrevSlide} aria-label = "Previous Slide Button"></button>
+                                <button className="arrow__button right" onClick={goToNextSlide} aria-label = "Previous Slide Button"></button>
                             </div>
                         </div>
                         {/* Description */}

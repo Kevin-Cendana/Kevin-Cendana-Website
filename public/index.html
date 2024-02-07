@@ -1,13 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    
     <meta charset="utf-8" />
-    <!-- <link rel="icon" href="kc_icon.ico" /> -->
-    <link rel="preload" href="../src/images/self-image.png" as="image">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Thasadith&display=swap" rel="stylesheet">
+    <!-- Preload Home & About images. Use PNG over WEBP as fallback. -->
+    <script>
+      // Check for WebP support
+      function supportsWebp() {
+        var elem = document.createElement('canvas');
+        if (!!(elem.getContext && elem.getContext('2d'))) {
+          // Check for WebP support
+          return elem.toDataURL('image/webp').indexOf('data:image/webp') == 0;
+        }
+        // Very old browser like IE 8, canvas not supported
+        return false;
+      }
+    
+      // Function to preload an image
+      function preloadImage(imagePath) {
+        var link = document.createElement('link');
+        link.rel = 'preload';
+        link.as = 'image';
+        link.href = imagePath;
+        document.head.appendChild(link);
+      }
+    
+      // Preload the appropriate images based on window width and WebP support
+      window.onload = function() {
+        var baseImagePath = '../src/images/';
+        // Always preload Home self-image with the correct format
+        var selfImage = baseImagePath + 'home_images/self-image' + (supportsWebp() ? '.webp' : '.png');
+        preloadImage(selfImage);
+    
+        // Preload About kevin_and_emma if window width is less than 1000px
+        if (window.innerWidth < 1000) {
+          var kevinAndEmma = baseImagePath + 'about_images/kevin_and_emma' + (supportsWebp() ? '.webp' : '.png');
+          preloadImage(kevinAndEmma);
+        }
+      }
+    </script>
+    
+    
+    
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta

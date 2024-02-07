@@ -217,7 +217,8 @@
 
 /* Swipe animation - Shows user they can swipe to scroll carousel */
 .swipe-animation {
-    background-image: url('../../images/swipe_animation.gif');
+    background-image: url('../../images/projects_images/swipe_animation.gif');
+    background-image: url('../../images/projects_images/swipe_animation.webp');
     background-size: cover;
     background-position: center;
 }
@@ -226,7 +227,7 @@
 .tap-animation {
     position: relative;
     width: 1.8rem;
-    background-image: url('../../images/arrow_button.png');
+    background-image: url('../../images/projects_images/arrow_button.png');
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -242,7 +243,8 @@
         left: -12px;
         right: 0;
         bottom: 0;
-        background-image: url('../../images/tap_animation.gif');
+        background-image: url('../../images/projects_images/tap_animation.gif');
+        background-image: url('../../images/projects_images/tap_animation.webp');
         background-size: contain;
         background-position: center;
         background-repeat: no-repeat;
@@ -252,7 +254,8 @@
 /* Key animation - Shows user they can use arrow keys to scroll carousel */
 .key-animation {
     width: 2.1rem;
-    background-image: url('../../images/key_animation.gif');
+    background-image: url('../../images/projects_images/key_animation.gif');
+    background-image: url('../../images/projects_images/key_animation.webp');
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
@@ -282,7 +285,7 @@
     border: none;
     height: clamp(1.5rem, 3.3vw, 2.5rem);
     aspect-ratio: 1/1;
-    background-image: url('../../images/arrow_button.png');
+    background-image: url('../../images/projects_images/arrow_button.png');
     background-size: contain;
     background-repeat: no-repeat;
 }

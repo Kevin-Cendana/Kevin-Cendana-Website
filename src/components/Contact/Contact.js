@@ -2,20 +2,27 @@
 //                                   Contact.js                                         //
 //--------------------------------------------------------------------------------------//
 
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 
 import { useDarkMode } from '../../shared/DarkModeToggle/DarkModeContext';
 import useInView from '../../hooks/useInView';
 import classNames from 'classnames';
 import './Contact.css';
 
-import kevinIcon from '../../images/kevin_icon.png';
+import kevinIconPng from '../../images/contact_images/kevin_icon.png';
+import kevinIconWebp from '../../images/contact_images/kevin_icon.webp';
 
 function Contact() {
 const { isDarkMode } = useDarkMode(); // Get the global state for dark mode 
-
 const contactRef = useRef(null); // Ref for contact section
 const isContactInView = useInView(contactRef, { threshold: [0.2], sectionName: 'resume-contact' } );
+const [imageSrc, setImageSrc] = useState(kevinIconWebp);
+
+// Function to handle the case when the image fails to load
+const handleError = () => {
+  setImageSrc(kevinIconPng); // Fallback to PNG if WebP fails
+};
+
 
 const contactLeftClass = classNames({
     'contact-left': true,
@@ -50,7 +57,6 @@ const contactSubHeaderClass = classNames({
 
 
 return (
-
     <section className='contact' id = "contact" ref = {contactRef}>
         <h1 className = {contactHeaderClass}>Contact Me</h1>
         <h2 className = {contactSubHeaderClass}>Leave me a message and I'll get back to you as soon as possible. </h2>
@@ -59,7 +65,12 @@ return (
             <div className={contactRightClassSmall}>
                 <div className = "contact-info">
                     <div className ="contact-profile-picture-container">
-                        <img src = {kevinIcon} className = "contact-profile-picture" alt = "Kevin Contact Icon"></img>
+                        <img
+                            src={imageSrc}
+                            onError={handleError}
+                            className="contact-profile-picture"
+                            alt="Kevin Contact Icon"
+                        />
                     </div>
                     <div className="contact-info-text">
                         <p className = "contact-name">Kevin Cendana </p>
@@ -88,7 +99,12 @@ return (
             <div className={contactRightClassBig}>
                 <div className = "contact-info">
                     <div className ="contact-profile-picture-container">
-                        <img src = {kevinIcon} className = "contact-profile-picture" alt = "Kevin Contact Icon"></img>
+                    <img
+                        src={imageSrc}
+                        onError={handleError}
+                        className="contact-profile-picture"
+                        alt="Kevin Contact Icon"
+                    />
                     </div>
                     <div className="contact-info-text">
                         <p className = "contact-name">Kevin Cendana </p>

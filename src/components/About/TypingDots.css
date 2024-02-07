@@ -87,7 +87,7 @@
 
 /* SpeechBubble - Container for speech bubbles */
 .speechBubble {
-  overflow: visible;                            /* Allows 'tail' to be visible */
+
   --secondDotColor: rgb(84, 84, 84);          /* Variable for dot color */
   --speechBubbleColor: rgb(234, 234, 234);    /* Variable for bubble color */
   --speechBubblePadding: .8rem 1.3rem;          /* Variable for bubble padding */
@@ -115,7 +115,7 @@
   left: var(--speechBubbleTailLeft);
   height: var(--speechBubbleTailHeight);
   width: var(--speechBubbleTailWidth); 
-  background-image: url('../../images/speech_bubble_tail.png'); /* Image for tail */
+  background-image: url('../../images/about_images/speech_bubble_tail.png'); /* Image for tail */
   background-size: cover;
   background-repeat: no-repeat;
   transform: rotate(var(--speechBubbleTailRotate)); /* Rotation of tail */

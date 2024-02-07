@@ -1,5 +1,5 @@
 // Libaries + Files
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import useInView from '../../hooks/useInView';  
 import classNames from 'classnames';  
 import { useDarkMode } from '../../shared/DarkModeToggle/DarkModeContext';
@@ -7,15 +7,19 @@ import '../../shared/HoverImage.js';
 import './Skills.css';
 import HoverImage from '../../shared/HoverImage.js';
 
-// Icons
-import codingIcon from '../../images/code_icon.png';
-import codingIconGif from '../../images/code_icon.gif';
-import competingIcon from '../../images/hackathon_icon.png';
-import competingIconGif from '../../images/hackathon_icon.gif';
-import caringIcon from '../../images/caring_icon.png';
-import caringIconGif from '../../images/caring_icon.gif';
-import creatingIcon from '../../images/creating_icon.png';
-import creatingIconGif from '../../images/creating_icon.gif';
+// Icons - Static, Gif, and WebP (Gifs are for older browsers)
+import codingIcon from '../../images/skills_images/code_icon.png';
+import codingIconGif from '../../images/skills_images/code_icon.gif';
+import codingIconWebP from '../../images/skills_images/code_icon.webp';
+import competingIcon from '../../images/skills_images/hackathon_icon.png';
+import competingIconGif from '../../images/skills_images/hackathon_icon.gif';
+import competingIconWebP from '../../images/skills_images/hackathon_icon.webp';
+import caringIcon from '../../images/skills_images/caring_icon.png';
+import caringIconGif from '../../images/skills_images/caring_icon.gif';
+import caringIconWebP from '../../images/skills_images/caring_icon.webp';
+import creatingIcon from '../../images/skills_images/creating_icon.png';
+import creatingIconGif from '../../images/skills_images/creating_icon.gif';
+import creatingIconWebP from '../../images/skills_images/creating_icon.webp';
 
 
 // Skills Component
@@ -24,6 +28,7 @@ function Skills() {
     const { isDarkMode } = useDarkMode();
     const skillsRef = useRef(null);
     const isSkillsInView = useInView(skillsRef, { threshold: [0.25], sectionName: 'skills' } );
+    const [supportsWebP, setSupportsWebP] = useState(false);
 
     // Class Names for dynamic styling - Changes based on if the section is in view & if dark mode is on
     const skillsHeaderClass = classNames({
@@ -49,6 +54,19 @@ function Skills() {
         'dark-mode': isDarkMode 
     });
 
+    // Check if browser has WebP support
+    useEffect(() => {
+        const testWebP = new Image();
+        testWebP.onload = testWebP.onerror = () => {
+            setSupportsWebP(testWebP.height === 2);
+        };
+        testWebP.src = 'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';
+    }, []);
+
+    // Choose the right image format
+    const getImageSource = (webP, gif) => supportsWebP ? webP : gif;
+
+
     // Return Skills Component
     return (
         <section className="skills" id="skills" ref = {skillsRef}>
@@ -59,10 +77,10 @@ function Skills() {
             <div className="skills-category-container">
                 {/* Category - Coding */}
                 <div className={skillsCategoryClassRight}>
-                    <div className = "skills-icon-header-wrapper">
-                        <HoverImage defaultImage={codingIcon} hoverImage={codingIconGif} key={isSkillsInView} />              
-                        <h2>Coding</h2>                
-                    </div>  
+                    <div className="skills-icon-header-wrapper">
+                        <HoverImage defaultImage={codingIcon} hoverImage={getImageSource(codingIconWebP, codingIconGif)} key={isSkillsInView} />
+                        <h2>Coding</h2>
+                    </div>
                     <p>
                         Whether it's for my career and my hobby, I love coding.
                         I've always been drawn to the puzzle solving aspect and the challenges that come with it.
@@ -70,8 +88,8 @@ function Skills() {
                 </div>           
                 {/* Category - Creating */}
                 <div className={skillsCategoryClassRight}>
-                <div className = "skills-icon-header-wrapper">
-                        <HoverImage defaultImage={creatingIcon} hoverImage={creatingIconGif} key={isSkillsInView} />
+                    <div className = "skills-icon-header-wrapper">
+                        <HoverImage defaultImage={creatingIcon} hoverImage={getImageSource(creatingIconWebP, creatingIconGif)} key={isSkillsInView} />
                         <h2>Creating</h2>
                     </div>  
                     <p>
@@ -83,8 +101,8 @@ function Skills() {
                 {/* Category - Competing */}
                 <div className={skillsCategoryClassLeft} ref={skillsRef}>
                 <div className = "skills-icon-header-wrapper">
-                        <HoverImage defaultImage={competingIcon} hoverImage={competingIconGif} key={isSkillsInView} />              
-                        <h2 className = "competing">Competing</h2>
+                        <HoverImage defaultImage={competingIcon} hoverImage={getImageSource(competingIconWebP, competingIconGif)} key={isSkillsInView} />
+                        <h2>Competing</h2>
                     </div>  
                     <p>
                         Hackathons are exciting challenges for me to learn new technologies and build something beautiful.
@@ -94,7 +112,7 @@ function Skills() {
                 {/* Category - Caring */}
                 <div className={skillsCategoryClassLeft} ref={skillsRef}>
                 <div className = "skills-icon-header-wrapper">
-                        <HoverImage defaultImage={caringIcon} hoverImage={caringIconGif} key={isSkillsInView} />
+                        <HoverImage defaultImage={caringIcon} hoverImage={getImageSource(caringIconWebP, caringIconGif)} key={isSkillsInView} />
                         <h2>Caring</h2>
                     </div>  
                     <p>
