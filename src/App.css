@@ -3,69 +3,44 @@
 //--------------------------------------------------------------------------------------*/
 
 /* Fonts */
-@font-face { /* Avenir Next */
-  font-family: 'Avenir Next', sans-serif;
-  src: url('fonts/Avenir-Next.otf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-}
-@font-face { /* Avenir Next - Bold */
-  font-family: 'Avenir Next', sans-serif;
-  src: url('fonts/Avenir-Next-Bold.otf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
-}
-@font-face { /* F21  */
-  font-family: "F21";
-  src: url('fonts/F21.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face { /* Thasadith */
+@font-face { /* Thasadith: For Skills <p> */
   font-family: "Thasadith";
   src: url('fonts/Thasadith.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
-  
 }
-@font-face { /* SF Pro */
-  font-family: "SF Pro";
-  src: url('fonts/SF-Pro.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face { /* SF Pro Text Light*/
+@font-face { /* SF Pro Text Light: For all <p> */
   font-family: "SF Pro Text Light";
   src: url('fonts/SF-Pro-Text-Light.otf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
-@font-face { /* SF Pro Display */
+@font-face { /* SF Pro Display: For all Section Headers */
   font-family: "SF Pro Display";
   src: url('fonts/SF-Pro-Display.otf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
-@font-face { /* SF Pro Display - Bold */
+@font-face { /* SF Pro Display - Bold: For Home Header */
   font-family: "SF Pro Display";
   src: url('fonts/SF-Pro-Display-Bold.otf') format('truetype');
   font-weight: bold;
   font-style: normal;
 }
-@font-face { /* SF Pro Display - Italic (Regular) */
+@font-face { /* SF Pro Display - Italic (Regular): Currently unused, but italics version of most common font */
   font-family: "SF Pro Display";
   src: url('fonts/SF-Pro-Display-RegularItalic.otf') format('truetype');
   font-weight: normal;
   font-style: italic;
 }
-@font-face { /* SF Pro Display - Ultra Light */
+@font-face { /* SF Pro Display - Ultra Light: For Section Headers, Home Alias */
   font-family: "SF Pro Display";
   src: url('fonts/SF-Pro-Display-Ultralight.otf') format('truetype');
-  font-weight: 300;
+  font-weight: 300; 
   font-style: normal;
 }
-@font-face { /* SF Pro Display - Ultra Light Italic */
+@font-face { /* SF Pro Display - Ultra Light Italic: For About Section Header */
   font-family: "SF Pro Display";
   src: url('fonts/SF-Pro-Display-UltralightItalic.otf') format('truetype');
   font-weight: 300;

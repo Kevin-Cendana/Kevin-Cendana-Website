@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/static/css/main.f69d75de.css",
+    "main.css": "/static/css/main.d3119dd2.css",
     "main.js": "/static/js/main.234b5d71.js",
     "static/css/36.4e2b43ac.chunk.css": "/static/css/36.4e2b43ac.chunk.css",
     "static/js/36.d7691265.chunk.js": "/static/js/36.d7691265.chunk.js",
@@ -9,7 +9,6 @@
     "static/css/727.fe4a6e15.chunk.css": "/static/css/727.fe4a6e15.chunk.css",
     "static/js/727.3a9aa112.chunk.js": "/static/js/727.3a9aa112.chunk.js",
     "static/js/787.b701888c.chunk.js": "/static/js/787.b701888c.chunk.js",
-    "static/media/SF-Pro.ttf": "/static/media/SF-Pro.2f9118d7e608bf94730c.ttf",
     "static/media/SF-Pro-Text-Light.otf": "/static/media/SF-Pro-Text-Light.9f516e09570f34609f07.otf",
     "static/media/SF-Pro-Display-Ultralight.otf": "/static/media/SF-Pro-Display-Ultralight.8ce49c803289fc9283d8.otf",
     "static/media/SF-Pro-Display-UltralightItalic.otf": "/static/media/SF-Pro-Display-UltralightItalic.14706eb655663242a7f5.otf",
@@ -32,16 +31,13 @@
     "static/media/kevin_and_emma.png": "/static/media/kevin_and_emma.7b154130b8b599258fe4.png",
     "static/media/self-image-dark-mode.png": "/static/media/self-image-dark-mode.12371a9c200e33c7dbc0.png",
     "static/media/maplestory_app.mp4": "/static/media/maplestory_app.30c951753749216f6120.mp4",
-    "static/media/F21.ttf": "/static/media/F21.ea32fb1a67667f8e0c8f.ttf",
     "static/media/pastel-bg.png": "/static/media/pastel-bg.c25b9865c1e2105fd117.png",
     "static/media/datafest.webp": "/static/media/datafest.5cbf78792293883d0cf5.webp",
     "static/media/key_animation.gif": "/static/media/key_animation.ceedac65cff1db542157.gif",
     "static/media/lyric_link.mp4": "/static/media/lyric_link.3628d202d25032022b7a.mp4",
     "static/media/Thasadith.ttf": "/static/media/Thasadith.2346b87783c1065c46a3.ttf",
-    "static/media/Avenir-Next-Bold.otf": "/static/media/Avenir-Next-Bold.711a4eb654bf1139f123.otf",
     "static/media/key_animation.webp": "/static/media/key_animation.ba69f6ad293675680a18.webp",
     "static/media/att_empowher.webp": "/static/media/att_empowher.8fa14fc43238997c8f1f.webp",
-    "static/media/Avenir-Next.otf": "/static/media/Avenir-Next.3e062c6caf04ecafa42c.otf",
     "static/media/self-image.webp": "/static/media/self-image.3156630a6dc865846ce3.webp",
     "static/media/pastel-bg-dark.png": "/static/media/pastel-bg-dark.500daf8badc58f6847fb.png",
     "static/media/Sam.otf": "/static/media/Sam.fa776ee44adf51ff554e.otf",
@@ -66,7 +62,7 @@
     "static/media/pastel-bg.webp": "/static/media/pastel-bg.46efb7ebebe68bd7195e.webp",
     "static/media/pastel-bg-dark.webp": "/static/media/pastel-bg-dark.ab1bfb75b27679f76697.webp",
     "index.html": "/index.html",
-    "main.f69d75de.css.map": "/static/css/main.f69d75de.css.map",
+    "main.d3119dd2.css.map": "/static/css/main.d3119dd2.css.map",
     "main.234b5d71.js.map": "/static/js/main.234b5d71.js.map",
     "36.4e2b43ac.chunk.css.map": "/static/css/36.4e2b43ac.chunk.css.map",
     "36.d7691265.chunk.js.map": "/static/js/36.d7691265.chunk.js.map",
@@ -77,7 +73,7 @@
     "787.b701888c.chunk.js.map": "/static/js/787.b701888c.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.f69d75de.css",
+    "static/css/main.d3119dd2.css",
     "static/js/main.234b5d71.js"
   ]
 }

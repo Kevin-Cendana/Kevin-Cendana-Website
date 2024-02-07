@@ -1,47 +1,80 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    
     <meta charset="utf-8" />
-    <!-- Preload Home & About images. Use PNG over WEBP as fallback. -->
+
+    <!-- Script: Preload the first seen parts of the website first.  -->
     <script>
-      // Check for WebP support
+
+      // Function: Checks browser for WebP support
       function supportsWebp() {
-        var elem = document.createElement('canvas');
+        var elem = document.createElement('canvas'); // Assume canvas is supported
+
+        // If canvas is supported, check if WebP is supported
         if (!!(elem.getContext && elem.getContext('2d'))) {
-          // Check for WebP support
           return elem.toDataURL('image/webp').indexOf('data:image/webp') == 0;
         }
-        // Very old browser like IE 8, canvas not supported
+
+        // Return false for very old browser like IE 8, canvas not supported
         return false;
       }
     
-      // Function to preload an image
-      function preloadImage(imagePath) {
+      // Function: Preloads a resource
+      function preloadResource(resourcePath, resourceType) {
         var link = document.createElement('link');
         link.rel = 'preload';
-        link.as = 'image';
-        link.href = imagePath;
+        link.href = resourcePath;
+
+        // Preload based on resource type
+        switch (resourceType) {
+          case 'image':
+            link.as = 'image';
+            break;
+          case 'style':
+            link.as = 'style';
+            break;
+          case 'script':
+            link.as = 'script';
+            break;
+          case 'font':
+            link.as = 'font';
+            link.type = 'font/otf'; // Assuming all fonts are .otf, adjust if necessary
+            link.crossOrigin = 'anonymous'; // Needed for fonts due to CORS
+            break;
+        }
         document.head.appendChild(link);
       }
-    
-      // Preload the appropriate images based on window width and WebP support
+
+      // On Window Load: Preload based on conditions
       window.onload = function() {
-        var baseImagePath = '../src/images/';
-        // Always preload Home self-image with the correct format
-        var selfImage = baseImagePath + 'home_images/self-image' + (supportsWebp() ? '.webp' : '.png');
-        preloadImage(selfImage);
-    
-        // Preload About kevin_and_emma if window width is less than 1000px
+
+        // Preload Home self-image with the correct format
+        var selfImage = '../src/images/home_images/self-image' + (supportsWebp() ? '.webp' : '.png');
+        preloadResource(selfImage, 'image');
+  
+        // Preload About section if the screen is small enough, including images, fonts, CSS, JS
         if (window.innerWidth < 1000) {
-          var kevinAndEmma = baseImagePath + 'about_images/kevin_and_emma' + (supportsWebp() ? '.webp' : '.png');
-          preloadImage(kevinAndEmma);
+          var kevinAndEmma = '../src/images/about_images/kevin_and_emma' + (supportsWebp() ? '.webp' : '.png');
+          preloadResource(kevinAndEmma, 'image');
+          preloadResource('/src/components/About/About.css', 'style');
+          preloadResource('/src/components/About/About.js', 'script');
+          
+          // About Fonts for Polaroid, Subheader, Speech Bubbles
+          preloadResource('/src/fonts/sam.otf', 'font'); // Polaroid
+          preloadResource('/src/fonts/SF-Pro-Display-UltralightItalic.otf', 'font'); // Subheader (Italics)
+          preloadResource('/src/fonts/SF-Pro-Text-Light.otf', 'font'); // Speech Bubbles ('Hello! My name is Kevin.')
         }
       }
     </script>
-    
-    
-    
+
+    <!-- Preload Home Fonts for name (Kevin Cendana), Alias (SWE) -->
+    <link rel="preload" href="/src/fonts/SF-Pro-Display-Bold.otf" as="font" type="font/otf" crossorigin = "anonymous">
+    <link rel="preload" href="/src/fonts/SF-Pro-Display-Ultralight.otf" as="font" type="font/otf" crossorigin = "anonymous">
+  
+    <!-- Preload Home CSS and JS -->
+    <link rel="preload" href="/src/components/Home/Home.css" as="style">
+    <link rel="preload" href="/src/components/Home/Home.js" as="script">
+
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
     <meta
