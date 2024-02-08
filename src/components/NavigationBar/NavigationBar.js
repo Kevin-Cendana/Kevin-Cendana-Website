@@ -57,7 +57,7 @@ function NavigationBar() {
             <a href="https://docs.google.com/document/d/1xiAtzAXNMSw3ZkajAZaag-O40Fxn4iWoJ1nj-sb5YCA/edit?usp=sharing" target="_blank" className="github-logo-link" rel="noopener noreferrer">
                 <img src = {csvIcon} className = "navbar-icon csv-icon" alt = "CSV Logo Link"></img>
             </a>
-            <a href="https:/linkedin.com/in/kevincendana" target="_blank" className="linkedin-icon-link" rel="noopener noreferrer">
+            <a href="https://linkedin.com/in/kevincendana" target="_blank" className="linkedin-icon-link" rel="noopener noreferrer">
                 <img src = {linkedinIcon} className = "navbar-icon linkedin-icon" alt = "LinkedIn Logo Link"></img>
             </a>
             <a href="https://github.com/KevCendana" target="_blank" className="github-icon-link" rel="noopener noreferrer">
