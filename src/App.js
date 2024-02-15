@@ -9,25 +9,25 @@ import './normalize.css';
 import Home from './components/Home/Home';
 import About from './components/About/About';
 import NavigationBar from './components/NavigationBar/NavigationBar';
+import Skills from './components/Skills/Skills';
+import Projects from './components/Projects/Projects';
+import Contact from './components/Contact/Contact';
 import { DarkModeProvider } from './shared/DarkModeToggle/DarkModeContext.js';
-import './StarsBackground.scss';
+import { WindowLoadProvider } from './shared/WindowLoadContext.js';
 
 // Lazy load components that aren't seen first to improve initial load time
-const Skills = React.lazy(() => import('./components/Skills/Skills'));
-const Projects = React.lazy(() => import('./components/Projects/Projects'));
-const Contact = React.lazy(() => import('./components/Contact/Contact'));
+// const Skills = React.lazy(() => import('./components/Skills/Skills'));
+// const Projects = React.lazy(() => import('./components/Projects/Projects'));
+// const Contact = React.lazy(() => import('./components/Contact/Contact'));
 
 function App() {
   return (
+    
     <Router>
-      <DarkModeProvider>
+    <WindowLoadProvider>
+    <DarkModeProvider>
         <div className="app">
           <NavigationBar />
-          <div className="stars-container">
-            <div id="stars"></div>
-            <div id="stars2"></div>
-            <div id="stars3"></div>
-          </div>
           <main className="app-main-content">
             {/* Load Home and About first since they're the first components seen. */}
             <Home />
@@ -46,8 +46,10 @@ function App() {
             <div className="footer-right"></div>
           </footer>
         </div>
-      </DarkModeProvider>
+    </DarkModeProvider>
+    </WindowLoadProvider>
     </Router>
+    
   );
 }
 

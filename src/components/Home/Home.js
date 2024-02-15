@@ -40,7 +40,6 @@ function Home() {
     };
 
     
-
     // Determine the class for text container based on states
     const textContainerClass = classNames({      
         'home__text-container': true,

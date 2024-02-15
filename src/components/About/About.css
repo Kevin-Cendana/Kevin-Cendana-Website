@@ -8,12 +8,7 @@
     height: clamp(320px, 58vw, 680px);
     min-height: 310px;
     max-height: 700px;
-    margin-top: clamp(.6rem, 2vw, 1.4rem);
-}
-
-/* Dark Mode - Applies dark mode styling to about section */
-.about.dark-mode {
-    background-color: var(--app-dark-mode-color);
+    padding-top: clamp(.6rem, 2vw, 1.4rem);
 }
 
 /* Header - Title for About section */

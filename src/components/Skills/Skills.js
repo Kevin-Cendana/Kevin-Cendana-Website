@@ -54,7 +54,7 @@ function Skills() {
         'dark-mode': isDarkMode 
     });
 
-    // Check if browser has WebP support
+    // On mount, check if browser has WebP support
     useEffect(() => {
         const testWebP = new Image();
         testWebP.onload = testWebP.onerror = () => {
@@ -62,6 +62,40 @@ function Skills() {
         };
         testWebP.src = 'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';
     }, []);
+
+    // On mount, prefetch images
+    useEffect(() => {
+        // Function to prefetch images
+        const prefetchImages = () => {
+            // Array of images to prefetch
+            const imagesToPrefetch = supportsWebP ? [
+                codingIconWebP,
+                competingIconWebP,
+                caringIconWebP,
+                creatingIconWebP
+            ] : [
+                codingIconGif,
+                competingIconGif,
+                caringIconGif,
+                creatingIconGif
+            ];
+
+            // Create link elements for each image and append to head
+            imagesToPrefetch.forEach(imageSrc => {
+                const link = document.createElement('link');
+                link.rel = 'prefetch';
+                link.as = 'image';
+                link.href = imageSrc;
+                document.head.appendChild(link);
+            });
+        };
+
+        // Call prefetchImages if supportsWebP state is known
+        if (supportsWebP !== undefined) {
+            prefetchImages();
+        }
+    }, [supportsWebP]); // Depend on supportsWebP to ensure it runs after the support check
+
 
     // Choose the right image format
     const getImageSource = (webP, gif) => supportsWebP ? webP : gif;

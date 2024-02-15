@@ -50,8 +50,7 @@
 /* Root - Variables to be reused for all sections */
 :root {
   --app-light-mode-color: rgb(245, 245, 245); 
-  /* --app-light-mode-color: white; */
-  --app-dark-mode-color: rgb(0, 0, 0);
+  --app-dark-mode-color: rgb(30, 30, 30);
   --section-margin: clamp(.75rem, 2.7vw, 1.6rem) clamp(0.6rem, 2vw, 10.2rem); 
 }
   :root.dark-mode{
@@ -117,29 +116,37 @@ section {
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
-  background-color: var(--app-light-mode-color);
-
 }
-  section.dark-mode {
-    background-color: transparent !important; 
-    
-    /* Comment this out to see the normal dark bg color */
-    /* background: radial-gradient(ellipse at bottom, #1B2735 0%, #090A0F 100%); */
-    /* box-shadow: .8rem .65rem .4rem rgba(158, 158, 158, 0.5); */
-  }
 
 /* Main colors of all section containers, including their shadow & border. */
+.home {
+  background-color: var(--app-light-mode-color); /* Default background color */
+}
+  .home.dark-mode {
+    background-color: var(--app-dark-mode-color); /* Dark mode background color */
+  }
+
 .skills, .about {
   box-shadow: none;
   border: none;
   background-color: white;
 }
+  .skills.dark-mode, .about.dark-mode {
+    background-color: rgb(65, 65, 65);
+  }
 
-.resume, .contact {
-  background-color: rgb(231, 231, 231);
+.projects {
+  background-color: var(--app-light-mode-color); /* Default background color */
 }
-  .resume.dark-mode, .contact.dark-mode {
-    background-color: transparent;
+  .projects.dark-mode {
+    background-color: var(--app-dark-mode-color); /* Dark mode background color */
+  }
+
+.contact {
+  background-color: rgb(236, 236, 236);
+}
+  .contact.dark-mode {
+    background-color: rgb(65, 65, 65);
   }
 
 /* Headers for all sections */
@@ -160,6 +167,9 @@ p {
   font-family: "SF Pro Text Light";
   font-weight: normal;
 }
+  p.dark-mode {
+    color: white;
+  }
 
 /* Footer */
 footer {

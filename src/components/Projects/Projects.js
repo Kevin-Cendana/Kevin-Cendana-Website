@@ -154,6 +154,40 @@ function Projects() {
         'animate-projects-right': isProjectsInView,
     });
 
+    // Function to check browser for WebP support
+    const supportsWebp = () => {
+        try {
+        return document.createElement('canvas').toDataURL('image/webp').indexOf('data:image/webp') === 0;
+        } catch (err) {
+        return false;
+        }
+    };  
+
+    // On mount, prefetch images and videos
+    useEffect(() => {
+        // New useEffect for prefetching
+        const webpSupported = supportsWebp(); // Assuming supportsWebp is defined/available
+
+        const mediaToPrefetch = [
+            webpSupported ? attempowherWebp : attempowherPng,
+            webpSupported ? datafestWebp : datafestPng,
+            webpSupported ? bullseyeWebp : bullseyePng,
+            lyriclinkMp4,
+            maplestoryMp4,
+            invadedspaceMp4
+        ];
+
+        mediaToPrefetch.forEach((mediaPath) => {
+            const link = document.createElement('link');
+            link.rel = 'prefetch';
+            link.as = 'image'; // or 'video' for videos, adjust as necessary
+            link.href = mediaPath;
+            document.head.appendChild(link);
+        });
+    }, []); // Empty dependency array means this runs once on component mount
+
+
+    // On mount, update the description and title of the current slide
     useEffect(() => {
         // Function: Update the description and title of the current slide
         const descriptionUpdater = () => {

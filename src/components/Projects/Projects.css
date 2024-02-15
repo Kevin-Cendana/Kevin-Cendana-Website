@@ -7,7 +7,6 @@
     --projects-title-font-size: 2.1rem;
     --projects-height: clamp(550px, 62vw, 800px);
     --projects-min-height: 1000px;
-    --projects-background-color: var(--app-light-mode-color);
     --projects-text-container-width: clamp(300px, 38vw, 1200px);
     --projects-text-container-max-width: 600px;
     --projects-text-container-bg-color: rgb(250, 250, 250);
@@ -32,11 +31,6 @@
     color: black;
     padding-top: 10px;
 }
-    /* Projects Dark mode */
-    .projects.dark-mode, .projects__text-container.dark-mode {
-        background-color: var(--app-dark-mode-color);
-        color: white;
-    }
 
 /* Both Projects Headers and Subheaders - Title for section */
 .projects__header, .projects__subheader {
@@ -54,7 +48,6 @@
 
 /* Project Section - Including slideshow, text */
 .projects__section {
-    /* background-color: blue; */
     display: flex;
     justify-content: flex-start;
     flex-direction: var(--projects-section-flex-direction);
@@ -78,7 +71,6 @@
 
 /* Projects Left - Carousel*/
 .projects__left {
-    /* background-color: blue; */
     min-width: var(--projects-left-min-width);
     display: flex;
     flex-direction: column;
@@ -392,8 +384,6 @@
     bottom: 0;
     left: 0;
     opacity: 0;
-    /* transition: opacity 0.35s ease-in-out; */
-    /* background-color: rgba(0, 0, 0, 0.7); */
     user-select: none;
 }
 

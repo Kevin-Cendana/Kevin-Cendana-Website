@@ -94,8 +94,8 @@
 
 /* Logos for CSV, GitHub */
 .navbar-icon {
-    aspect-ratio: 1/1;
-    height: 32px;
+    object-fit: cover;
+    width: 32px;
     margin: 10px 5px;
     border: 1.5px solid white;
     background-size: contain;
@@ -110,7 +110,7 @@
 /* Logo for CSV */
 .navbar-icon.csv-icon {
     content: 'CSV'; /* Text to show on hover */
-    height: 29px;
+    width: 29px;
     background-color: white;
     border-radius: 10%;
     overflow: hidden;
@@ -205,10 +205,10 @@ input:checked + .slider:before {
 @media (max-width: 700px) {
     /* Logos */
     .navbar-icon {
-        height: 27px;
+        width: 27px;
     }
     .navbar-icon.csv-icon {
-        height: 24px;
+        width: 24px;
     }
     /* Container for the dark mode toggle switch */
     .switch {

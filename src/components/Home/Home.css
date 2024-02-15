@@ -10,12 +10,7 @@
     overflow: hidden;
     flex-direction: row;
     box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
-}
-
-/* Home Dark Mode - Style for dark mode */
-.home.dark-mode {
-    border-bottom: 1px solid white;
-    color: white;
+    
 }
 
 /* Home Image - Image of the user */
