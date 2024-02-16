@@ -266,7 +266,7 @@ function Projects() {
 
     // Render the Projects section
     return (
-        <section className="projects" ref = {projectsRef}>
+        <section className="projects" id="projects" ref = {projectsRef}>
             {/* Header title */}
             <h1 className = {projectsHeader}> Project Showcase </h1>
             <h2 className = {projectsSubHeader}>All of my projects below can be found pinned on my&nbsp;

@@ -2,30 +2,41 @@
 //                                        App.js                                        //
 //--------------------------------------------------------------------------------------//
 
-import React, { Suspense } from 'react';
+// Libraries & Files
+import React, { Suspense, useEffect } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { DarkModeProvider } from './shared/DarkModeToggle/DarkModeContext.js';
 import './App.css';
 import './AppColors.css';
 import './normalize.css';
+
+// Sections of the website that are visible on the first load
+import NavigationBar from './components/NavigationBar/NavigationBar';
 import Home from './components/Home/Home';
 import About from './components/About/About';
-import NavigationBar from './components/NavigationBar/NavigationBar';
-import Skills from './components/Skills/Skills';
-import Projects from './components/Projects/Projects';
-import Contact from './components/Contact/Contact';
-import { DarkModeProvider } from './shared/DarkModeToggle/DarkModeContext.js';
-import { WindowLoadProvider } from './shared/WindowLoadContext.js';
 
-// Lazy load components that aren't seen first to improve initial load time
-// const Skills = React.lazy(() => import('./components/Skills/Skills'));
-// const Projects = React.lazy(() => import('./components/Projects/Projects'));
-// const Contact = React.lazy(() => import('./components/Contact/Contact'));
+// Lazy load sections that aren't seen first to improve initial load time
+const Skills = React.lazy(() => import('./components/Skills/Skills'));
+const Projects = React.lazy(() => import('./components/Projects/Projects'));
+const Contact = React.lazy(() => import('./components/Contact/Contact'));
 
 function App() {
+
+  // On mount: Sequentially load Skills, Projects, and Contact
+  useEffect(() => {
+    const preloadSkills = import('./components/Skills/Skills');
+    preloadSkills.then(() => {
+      // After Skills is preloaded, start preloading Projects
+      const preloadProjects = import('./components/Projects/Projects');
+      preloadProjects.then(() => {
+        // After Projects is preloaded, start preloading Contact
+        import('./components/Contact/Contact');
+      });
+    });
+  }, []);
+
   return (
-    
     <Router>
-    <WindowLoadProvider>
     <DarkModeProvider>
         <div className="app">
           <NavigationBar />
@@ -34,7 +45,7 @@ function App() {
             <Home />
             <About />
             {/* Suspense for lazy loaded components */}
-            <Suspense fallback={<div></div>}>
+            <Suspense fallback={<div>Loading</div>}>
               <Skills />
               <Projects />
               <Contact />
@@ -48,7 +59,6 @@ function App() {
           </footer>
         </div>
     </DarkModeProvider>
-    </WindowLoadProvider>
     </Router>
     
   );

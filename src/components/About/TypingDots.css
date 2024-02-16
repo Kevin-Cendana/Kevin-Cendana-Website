@@ -99,7 +99,7 @@
   position: relative;
   letter-spacing: -.015rem;
   margin-bottom: clamp(0.05rem, 0.7vw, 0.3rem); /* Responsive margin below speech bubble*/
-  border-radius: clamp(.9rem, 2.5vw, 1.9rem);   /* Responsive border-radius */
+  border-radius: clamp(.7rem, 2.5vw, 1.9rem);   /* Responsive border-radius */
   background-color: var(--speechBubbleColor);
   justify-content: flex-end;
   align-self: flex-start;
@@ -191,20 +191,28 @@ to {
   --speechBubblePadding: .5rem .8rem;
   --speechBubbleTailHeight: 1.35rem;
   --speechBubbleTailWidth: 1.3rem;
-  --speechBubbleTailBottom: -.2rem;
-  --speechBubbleTailLeft: -.8rem;
+  --speechBubbleTailBottom: -0.1rem;
+  --speechBubbleTailLeft: -.55rem;
   --speechBubbleTailRotate: -10deg;
 }
+}
+
+@media (max-width: 640px) {
+  .speechBubble { --speechBubblePadding: .4rem .7rem; }
 }
 
 /* Small smart phones */
 @media (max-width: 560px) {
 .speechBubble {
   --speechBubblePadding: .3rem .7rem;
-  --speechBubbleTailHeight: 1.2rem;
-  --speechBubbleTailWidth: 1.3rem;
+  --speechBubbleTailHeight: 1.1rem;
+  --speechBubbleTailWidth: 1.2rem;
   --speechBubbleTailBottom: 0rem;
-  --speechBubbleTailLeft: -0.6rem;
+  --speechBubbleTailLeft: -0.55rem;
   --speechBubbleTailRotate: -12deg;
 }
+}
+
+@media (max-width: 490px) {
+  .speechBubble { --speechBubblePadding: .28rem .6rem; }
 }

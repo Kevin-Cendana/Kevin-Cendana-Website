@@ -6,7 +6,6 @@
 // This hook takes a ref to an element and returns whether that element is in view.
 // It also takes an optional thresholds array to set the % of the element that must be in view.
 import { useState, useEffect } from 'react';
-import { useWindowLoad } from '../shared/WindowLoadContext';
 
 /* Arguments: 
     - Ref to element 
@@ -25,25 +24,21 @@ const useInView = (
     // State to keep track of whether the element has been in view
     const [hasBeenInView, setHasBeenInView] = useState(false);
     const [startAnimation, allowAnimation] = useState(false);
-    const isWindowLoaded = useWindowLoad();
 
-
+    // On mount,
     useEffect(() => {
-        // Ensure this part of the hook does not run until the window has fully loaded
-        if (!isWindowLoaded) return;
 
         // Convert refs to an array if it's not already an array
         const refsArray = Array.isArray(refs) ? refs : [refs];
 
-        // Check if the window has fully loaded
+        // Create an IntersectionObserver, which checks if an element is in view
         const observer = new IntersectionObserver(
             (entries) => {
                 // For each entry, check if the element is in view
                 entries.forEach(entry => {
                     // Boolean to check if the window has fully loaded
                     const isInView = entry.isIntersecting;
-
-                    console.log(`Section: ${sectionName}`); 
+                    
 
                     // Check for dark mode and reapply class if necessary
                     if (isDarkMode && isInView) {
@@ -87,7 +82,7 @@ const useInView = (
                 }
             });
         };
-    }, [refs, hasBeenInView, threshold, delay, playOnce, isDarkMode, sectionName, startAnimation, isWindowLoaded]); 
+    }, [refs, hasBeenInView, threshold, delay, playOnce, isDarkMode, sectionName, startAnimation]); 
 
     return startAnimation;
 };

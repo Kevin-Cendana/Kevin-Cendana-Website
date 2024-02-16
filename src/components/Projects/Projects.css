@@ -339,6 +339,7 @@
     position: absolute;
     transform-style: preserve-3d;
     transition: transform 1s;
+        object-fit: cover;
     /* margin-right: var(--projects-slideshow-margin-right); */
 }
 
@@ -356,8 +357,9 @@
 
 /* Styles for the image in each slide. */
 .carousel__slide img, .carousel__slide video {
-    width: 100%; /* Resizes only the image, not container. will poke through */
+    width: 100%; /* Resizes only the image, not container. will poke through */;
     height: 100%;
+    object-fit: cover;
 }
 
 .carousel__slide video {

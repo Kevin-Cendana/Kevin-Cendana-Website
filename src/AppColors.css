@@ -41,7 +41,7 @@ a.dark-mode {color: rgb(1, 98, 210);}
 /* Navigation Bar */
 .navbar { background-color: var(--app-dark-mode-color); }
 .navbar__list li { color: white; }
-.navbar__list li:hover { background-color: rgb(190, 190, 190); color: black; }
+
 .navbar__list li:active { background-color: rgb(189, 189, 189); }
 .navbar .slider { background-color: #ccc; }
 .navbar .slider:before { background-color: white; }

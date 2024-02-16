@@ -5,10 +5,10 @@
 /* About Section - Main container for the about section */
 .about {
     align-items: center;
-    height: clamp(320px, 58vw, 680px);
-    min-height: 310px;
-    max-height: 700px;
-    padding-top: clamp(.6rem, 2vw, 1.4rem);
+    height: clamp(260px, 55vw, 650px);
+    min-height: 260px;
+    max-height: 650px;
+    margin-top: clamp(.6rem, 2vw, 1.4rem);
 }
 
 /* Header - Title for About section */
@@ -48,7 +48,7 @@
     display: flex;
     aspect-ratio: 1/1.1;
 	margin-right: 1.6vw;
-    min-width: clamp(136px, 26.5vw, 320px);
+    min-width: clamp(120px, 27.5vw, 320px);
     opacity: 0; /* Hide until animation */
 }
 .about__polaroid-wrapper.animate-polaroid-wrapper {
@@ -84,7 +84,7 @@
     width: 60%;
     aspect-ratio: 1/1;
 
-    font-size: clamp(0.7rem, 2.1vw, 1.45rem);
+    font-size: clamp(0.6rem, 2.1vw, 1.45rem);
 
     z-index: 0;
 }
@@ -98,12 +98,20 @@
     height: 100%;
     width: 100%;
     margin: 0;
-    max-width: clamp(160px, 45vw, 555px);
+    max-width: clamp(160px, 46vw, 555px);
 }
 
+/* On wide screens, show the quote author */
 @media (max-width: 950px) {
     .quote-author {
         display: none;
+    }
+}
+
+/* On tiny screens, have the height for this section shrink faster */
+@media (max-width: 500px) {
+    .about {
+        height: clamp(200px, 62vw, 500px);
     }
 }
 
