@@ -44,12 +44,7 @@ const handleSmoothScroll = (e, href) => {
 // Render the Navigation Bar
 function NavigationBar() {
     // State to track which section is active
-    const [activeSection, setActiveSection] = useState('');
-
-    // Function to set active section and update active state
-    const onSetActive = (section) => {
-        setActiveSection(section);
-    };
+    const [activeSection] = useState('');
 
     // Function to get active class for section
     const getActiveClass = (section) => {

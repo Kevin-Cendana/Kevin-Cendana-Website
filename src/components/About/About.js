@@ -46,7 +46,7 @@ function About() {
 
     // Render the About section
     return (
-        <section className="about" ref={aboutRef}>
+        <section className="about" id = "about" ref={aboutRef}>
             {/* Header */}
             <h1 className={headerClass}>About Me</h1>
             <h2 className={subheaderClass}>
