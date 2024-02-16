@@ -95,11 +95,13 @@
 /* Logos for CSV, GitHub */
 .navbar-icon {
     object-fit: cover;
+    object-position: center;
     width: 32px;
+    aspect-ratio: 1/1;
     margin: 10px 5px;
     border: 1.5px solid white;
-    background-size: contain;
-    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 50%;
     transition: all 0.3s ease;
 }
     .navbar-icon:hover {
@@ -109,25 +111,21 @@
 
 /* Logo for CSV */
 .navbar-icon.csv-icon {
-    content: 'CSV'; /* Text to show on hover */
     width: 29px;
-    background-color: white;
+    background-image: url('../../images/navigation_bar_images/csv_icon.png');
     border-radius: 10%;
-    overflow: hidden;
     border: 1.5px solid white;
-}
+}    
 
 /* Logo for LinkedIn */
 .navbar-icon.linkedin-icon {
-    content: 'LinkedIn'; /* Text to show on hover */
+    background-image: url('../../images/navigation_bar_images/linkedin_icon.png');
     background-color: white;
-    border-radius: 50%;
 }
 
 /* Logo for GitHub */
 .navbar-icon.github-icon {
-    content: 'GitHub'; /* Text to show on hover */
-    border-radius: 50%;
+    background-image: url('../../images/navigation_bar_images/github_icon.png');
 }
 
 
@@ -201,7 +199,7 @@ input:checked + .slider:before {
 }
 
 
-
+/* For smaller screens, shrink the icons. */
 @media (max-width: 700px) {
     /* Logos */
     .navbar-icon {

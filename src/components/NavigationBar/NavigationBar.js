@@ -9,11 +9,7 @@ import classNames from 'classnames';       // Import classNames to dynamically s
 import './NavigationBar.css';              // Import CSS for the navigation bar
 import DarkModeToggle from '../../shared/DarkModeToggle/DarkModeToggle'; // Import the DarkModeToggle component
 
-// Icons for the top right of the nav bar
-import githubIcon from '../../images/navigation_bar_images/github_icon.png'; // Import the GitHub logo
-import csvIcon from '../../images/navigation_bar_images/csv_icon.png';       // Import the CSV logo
-import linkedinIcon from '../../images/navigation_bar_images/linkedin_icon.png';       // Import the CSV logo
-
+// Render the Navigation Bar
 function NavigationBar() {
     // State to track which section is active
     const [activeSection, setActiveSection] = useState('');
@@ -52,16 +48,16 @@ function NavigationBar() {
                 </ul>
             </div>
 
-            {/* Items in the top right of the nav bar: GitHub logo & Dark Mode switch */}
+            {/* Items in the top right of the nav bar: Social Media icons & Dark Mode switch */}
             <div className="top-right-items">
             <a href="https://docs.google.com/document/d/1xiAtzAXNMSw3ZkajAZaag-O40Fxn4iWoJ1nj-sb5YCA/edit?usp=sharing" target="_blank" className="github-logo-link" rel="noopener noreferrer">
-                <img src = {csvIcon} className = "navbar-icon csv-icon" alt = "CSV Logo Link"></img>
+                <div className = "navbar-icon csv-icon"></div>
             </a>
             <a href="https://linkedin.com/in/kevincendana" target="_blank" className="linkedin-icon-link" rel="noopener noreferrer">
-                <img src = {linkedinIcon} className = "navbar-icon linkedin-icon" alt = "LinkedIn Logo Link"></img>
+            <div className = "navbar-icon linkedin-icon"></div>
             </a>
             <a href="https://github.com/KevCendana" target="_blank" className="github-icon-link" rel="noopener noreferrer">
-                <img src = {githubIcon} className = "navbar-icon github-icon" alt = "GitHub Logo Link"></img>
+            <div className = "navbar-icon github-icon"></div>
             </a>
                 <div className="toggle__container">
                     <label className="switch">

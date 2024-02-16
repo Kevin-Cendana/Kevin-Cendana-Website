@@ -55,7 +55,7 @@ const contactSubHeaderClass = classNames({
 });
 
 
-
+// Render the Contact Section
 return (
     <section className='contact' id = "contact" ref = {contactRef}>
         <h1 className = {contactHeaderClass}>Contact Me</h1>
