@@ -5,7 +5,6 @@
 
     <!-- Script: Preload the first seen parts of the website first.  -->
     <script>
-
       // Function: Checks browser for WebP support
       function supportsWebp() {
         var elem = document.createElement('canvas'); // Assume canvas is supported
@@ -38,7 +37,7 @@
             break;
           case 'font':
             link.as = 'font';
-            link.type = 'font/otf'; // Assuming all fonts are .otf, adjust if necessary
+            link.type = 'font/woff2'; // Assuming all fonts are .woff2, adjust if necessary
             link.crossOrigin = 'anonymous'; // Needed for fonts due to CORS
             break;
         }
@@ -60,16 +59,16 @@
           preloadResource('/src/components/About/About.js', 'script');
           
           // About Fonts for Polaroid, Subheader, Speech Bubbles
-          preloadResource('/src/fonts/sam.otf', 'font'); // Polaroid
-          preloadResource('/src/fonts/SF-Pro-Display-UltralightItalic.otf', 'font'); // Subheader (Italics)
-          preloadResource('/src/fonts/SF-Pro-Text-Light.otf', 'font'); // Speech Bubbles ('Hello! My name is Kevin.')
+          preloadResource('/src/fonts/sam.woff2', 'font'); // Polaroid
+          preloadResource('/src/fonts/SF-Pro-Display-UltralightItalic.woff2', 'font'); // Subheader (Italics)
+          preloadResource('/src/fonts/SF-Pro-Text-Light.woff2', 'font'); // Speech Bubbles ('Hello! My name is Kevin.')
         }
       }
     </script>
 
     <!-- Preload Home Fonts for name (Kevin Cendana), Alias (SWE) -->
-    <link rel="preload" href="/src/fonts/SF-Pro-Display-Bold.otf" as="font" type="font/otf" crossorigin = "anonymous">
-    <link rel="preload" href="/src/fonts/SF-Pro-Display-Ultralight.otf" as="font" type="font/otf" crossorigin = "anonymous">
+    <link rel="preload" href="/src/fonts/SF-Pro-Display-Bold.woff2" as="font" type="font/woff2" crossorigin = "anonymous">
+    <link rel="preload" href="/src/fonts/SF-Pro-Display-Ultralight.woff2" as="font" type="font/woff2" crossorigin = "anonymous">
   
     <!-- Preload Home CSS and JS -->
     <link rel="preload" href="/src/components/Home/Home.css" as="style">

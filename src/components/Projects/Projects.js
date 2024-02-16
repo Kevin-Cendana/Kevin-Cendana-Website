@@ -6,6 +6,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import useInView from '../../hooks/useInView'; 
 import Carousel  from './Carousel.tsx'; // Credit: React Round Carousel by scriptex: https://github.com/scriptex/react-round-carousel
+import { useDarkMode } from '../../shared/DarkModeToggle/DarkModeContext';
 import classNames from 'classnames';
 import './Projects.css';
 
@@ -46,7 +47,7 @@ const project_data = [
             </span>
         ),
         captions: [
-            { text: 'Hackathon', style: { color: 'black', background: rainbowGradient}},
+            { text: 'Hackathon', style: { background: rainbowGradient}},
         ]
     },
 
@@ -63,7 +64,7 @@ const project_data = [
         </span>
         ),
         captions: [
-            { text: 'Hackathon', style: { background: blueGradient, color: 'black'}},
+            { text: 'Hackathon', style: { background: blueGradient, }},
         ]
 
     },
@@ -80,7 +81,7 @@ const project_data = [
         </span>
         ),
         captions: [
-            { text: 'Hackathon', style: { color: 'black', background: lightGreenGradient}},
+            { text: 'Hackathon', style: { background: lightGreenGradient}},
         ]
     },
 
@@ -90,7 +91,7 @@ const project_data = [
         title: "Maplestory",
         description: "To practice Flutter and its widgets, states, and frame animations, I replicated the core gameplay loop of one of my favorite childhood games, Maplestory.",
         captions: [
-            { text: 'Flutter', style: { color: 'black', background: orangeGradient } },
+            { text: 'Flutter', style: { background: orangeGradient } },
         ] 
     },
 
@@ -109,7 +110,7 @@ const project_data = [
         title: "Bullseye",
         description: "To learn SwiftUI and try mobile app development for the first time, I made a series of apps using Swift UI including a sleep tracker, time converter, tip calculator, Word Scrabble, Guess the Flag, and this Bullseye game.",
         captions: [
-            { text: 'SwiftUI', style: { color: 'black', background: targetGradient} },
+            { text: 'SwiftUI', style: { background: targetGradient} },
         ]    
     },
 ];
@@ -132,6 +133,7 @@ function Projects() {
     const [currentDescription, setCurrentDescription] = useState('');
     const [currentTitle, setCurrentTitle] = useState('');
     const [currentCaptions, setCurrentCaptions] = useState([]);
+    const { isDarkMode } = useDarkMode();
     const carouselRef = useRef(null);
     const projectsRef = useRef(null);           // Ref to play animations when Projects section is in view
     const isProjectsInView = useInView(projectsRef, { threshold:[0.2], sectionName: "projects"});    //
@@ -139,19 +141,23 @@ function Projects() {
         'projects__header': true,
         'section-header': true,
         'animate-projects-header': isProjectsInView,
+        'dark-mode': isDarkMode,
     });
     const projectsSubHeader = classNames({
         'projects__subheader': true,
         'section-subheader': true,
         'animate-projects-subheader': isProjectsInView,
+        'dark-mode': isDarkMode,
     });
     const projectsLeft = classNames({
         'projects__left': true,
         'animate-projects-left': isProjectsInView,
+        'dark-mode': isDarkMode,
     });
     const projectsRight = classNames({
         'projects__right': true,
         'animate-projects-right': isProjectsInView,
+        'dark-mode': isDarkMode,
     });
 
     // Function to check browser for WebP support

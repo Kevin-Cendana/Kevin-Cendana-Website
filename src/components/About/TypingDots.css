@@ -96,7 +96,6 @@
   --speechBubbleTailBottom: .2rem;              /* Variable for tail position from bottom */
   --speechBubbleTailLeft: -.8rem;               /* Variable for tail position from left */
   --speechBubbleTailRotate: -11deg;             /* Variable for tail rotation */
-  color: black; 
   position: relative;
   letter-spacing: -.015rem;
   margin-bottom: clamp(0.05rem, 0.7vw, 0.3rem); /* Responsive margin below speech bubble*/

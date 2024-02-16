@@ -1,62 +1,64 @@
 /*--------------------------------------------------------------------------------------//
 //                                       App.css                                        //
+//                    Manage styles that cover the entire app here.                     //
 //--------------------------------------------------------------------------------------*/
+
 
 /* Fonts */
 @font-face { /* Thasadith: For Skills <p> */
   font-family: "Thasadith";
-  src: url('fonts/Thasadith.ttf') format('truetype');
+  src: url('fonts/Thasadith.ttf') format('woff2');
   font-weight: normal;
   font-style: normal;
 }
 @font-face { /* SF Pro Text Light: For all <p> */
   font-family: "SF Pro Text Light";
-  src: url('fonts/SF-Pro-Text-Light.otf') format('truetype');
+  src: url('fonts/SF-Pro-Text-Light.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face { /* SF Pro Display: For all Section Headers */
   font-family: "SF Pro Display";
-  src: url('fonts/SF-Pro-Display.otf') format('truetype');
+  src: url('fonts/SF-Pro-Display.woff2') format('woff2');
   font-weight: normal;
   font-style: normal;
 }
 @font-face { /* SF Pro Display - Bold: For Home Header */
   font-family: "SF Pro Display";
-  src: url('fonts/SF-Pro-Display-Bold.otf') format('truetype');
+  src: url('fonts/SF-Pro-Display-Bold.woff2') format('woff2');
   font-weight: bold;
   font-style: normal;
 }
 @font-face { /* SF Pro Display - Italic (Regular): Currently unused, but italics version of most common font */
   font-family: "SF Pro Display";
-  src: url('fonts/SF-Pro-Display-RegularItalic.otf') format('truetype');
+  src: url('fonts/SF-Pro-Display-RegularItalic.woff2') format('woff2');
   font-weight: normal;
   font-style: italic;
 }
 @font-face { /* SF Pro Display - Ultra Light: For Section Headers, Home Alias */
   font-family: "SF Pro Display";
-  src: url('fonts/SF-Pro-Display-Ultralight.otf') format('truetype');
+  src: url('fonts/SF-Pro-Display-Ultralight.woff2') format('woff2');
   font-weight: 300; 
   font-style: normal;
 }
 @font-face { /* SF Pro Display - Ultra Light Italic: For About Section Header */
   font-family: "SF Pro Display";
-  src: url('fonts/SF-Pro-Display-UltralightItalic.otf') format('truetype');
+  src: url('fonts/SF-Pro-Display-UltralightItalic.woff2') format('woff2');
   font-weight: 300;
   font-style: italic;
+}
+@font-face { /* Sam: Custom font for About Polaroid */
+  font-family: 'Sam', 'Comic Sans MS', cursive; /* Adding Comic Sans MS as a fallback */
+  src: url('fonts/Sam.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
 }
 
 /* Root - Variables to be reused for all sections */
 :root {
-  --app-light-mode-color: rgb(245, 245, 245); 
-  --app-dark-mode-color: rgb(30, 30, 30);
   --section-margin: clamp(.75rem, 2.7vw, 1.6rem) clamp(0.6rem, 2vw, 10.2rem); 
 }
-  :root.dark-mode{
-    background-color: var(--app-dark-mode-color);
-  }
-
 
 /* All */
 *, *:before, *:after {
@@ -77,11 +79,7 @@
 html {
   font-size: clamp(14px, 4vw, 18px); 
   scroll-behavior: smooth;
-  background-color: rgb(255, 255, 255);
 }
-  html.dark-mode, body.dark-mode {
-    background-color: (--app-dark-mode-color);
-  }
 
 /* Body of entire app */
 body, html {
@@ -118,37 +116,6 @@ section {
   box-sizing: border-box;
 }
 
-/* Main colors of all section containers, including their shadow & border. */
-.home {
-  background-color: var(--app-light-mode-color); /* Default background color */
-}
-  .home.dark-mode {
-    background-color: var(--app-dark-mode-color); /* Dark mode background color */
-  }
-
-.skills, .about {
-  box-shadow: none;
-  border: none;
-  background-color: white;
-}
-  .skills.dark-mode, .about.dark-mode {
-    background-color: rgb(65, 65, 65);
-  }
-
-.projects {
-  background-color: var(--app-light-mode-color); /* Default background color */
-}
-  .projects.dark-mode {
-    background-color: var(--app-dark-mode-color); /* Dark mode background color */
-  }
-
-.contact {
-  background-color: rgb(236, 236, 236);
-}
-  .contact.dark-mode {
-    background-color: rgb(65, 65, 65);
-  }
-
 /* Headers for all sections */
 h1,h2 {
   font-family: "SF Pro Display";
@@ -158,18 +125,12 @@ h1,h2 {
   margin-top: clamp(1.5rem, 4.7vw, 3.4rem);
   margin-bottom: clamp(1.5rem, 4.7vw, 3.4rem);
 }
-  h1.dark-mode, h2.dark-mode {
-    color: white;
-  }
 
 /* Paragraphs for all sections */
 p {
   font-family: "SF Pro Text Light";
   font-weight: normal;
 }
-  p.dark-mode {
-    color: white;
-  }
 
 /* Footer */
 footer {
@@ -178,8 +139,6 @@ footer {
   bottom: 0;
   height: 3rem;
   width: 100vw;
-  color: white;
-  background-color: black;
 }
 
 /* Footer - Left & Right Side*/
@@ -202,12 +161,8 @@ footer {
 /* Animate Header - Animation for headers for sections */
 .animate-header {
   animation: baseFadeInSlideDown 0.85s ease-out forwards;
-  color: black;
   opacity: 1;
 }
-  .animate-header.dark-mode {
-    color: white;
-  }
 
 /* Section Headers - Headers for each section */
 .section-header {
@@ -229,19 +184,8 @@ footer {
   .section-subheader a {
       display: flex;
       text-decoration: none;
-      color: blue;
       font-weight: 300;
-
   }  
-
-/* Links */
-a {
-  font-weight: bold; 
-  color: rgb(0, 112, 241);
-}
-  a.dark-mode {
-    color: rgb(1, 98, 210);
-  }
 
 /* Animations */
 @keyframes baseFadeInSlideDown {
@@ -274,14 +218,3 @@ a {
       transform: translateX(0%);
   }
 }
-
-/* Media Queries: Reduce box shadow for all sections. */
-/* @media screen and (max-width: 860px) {
-  section { box-shadow: .6rem .42rem .24rem rgba(0,0,0,0.5); }
-}
-@media screen and (max-width: 600px) {
-  section { box-shadow: .5rem .32rem .22rem rgba(0,0,0,0.5); }
-}
-@media screen and (max-width: 420px) {
-  section { box-shadow: .45rem .29rem .2rem rgba(0,0,0,0.5); }
-} */

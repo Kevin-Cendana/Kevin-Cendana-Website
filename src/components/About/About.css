@@ -20,11 +20,6 @@
     font-weight: 400;
 }
 
-/* Dark Mode - Applies dark mode styling to about section header */
-.about__header.dark-mode {
-    color: white;
-}
-
 /* Wrapper - Wrapper for left and right sides of the about page */
 .about__wrapper {
     display: flex;
@@ -106,23 +101,19 @@
     max-width: clamp(160px, 45vw, 555px);
 }
 
+@media (max-width: 950px) {
+    .quote-author {
+        display: none;
+    }
+}
+
 /*--------------------------------------------------------------------------------------//
 //                                   .Polaroid Code                                     //    
 //                      Credit: https://codepen.io/havardob/pen/jOwrXaJ                 //
 //--------------------------------------------------------------------------------------*/
 
-/* Custom Font - Polaroid Font */
-@font-face {
-    font-family: 'sam', sans-serif;
-    src: url('../../fonts/Sam.woff') format('woff'), /* Older Browsers */
-         url('../../fonts/Sam.otf') format('opentype'); /* Fallback */
-    font-weight: 400;
-    font-style: normal;
-}
-
 /* Stack - Container for polaroid cards */
 .polaroid__stack {
-	background-color: orange;
 	width: 85%;
 	max-width: 400px;
 	transition: .25s ease;
@@ -135,8 +126,7 @@
 	flex-direction: column;
 	height: 100%;
 	padding: 5% 5% 5% 5%;
-	border: 2.5px solid black;
-	background-color: white;
+
 	transition: .15s ease;
 	z-index: auto;
 	
@@ -147,7 +137,6 @@
 		content: "";
 		height: 100%;
 		width: 100%;
-		background-color: white;
 		border: 2.5px solid;
 		transform-origin: center center;
 		transition: .15s ease;
@@ -164,22 +153,13 @@
 		z-index: -2;
 	}
 }
-/* Card Dark Mode - Styling for dark mode */
-.polaroid__card.dark-mode  {
-	background-color: var(--app-dark-mode-color);
-	border: 2.5px solid white;
-	&:before, &:after {
-		background-color: black;
-		border: 2.5px solid white;
-	}
-}
+
 
 /* Image - Polaroid image styling */
 .polaroid__image {
 	position: relative;
 	width: 100%;
 	height: 100%;
-	border: 2.5px solid black;
 	overflow: hidden;
 	background: url('../../images/about_images/pastel-bg.png'); /* PNG Polaroid Image for older browsers: Attempt to load this last */
 	background: url('../../images/about_images/pastel-bg.webp'); /* WebP Polaroid Image for modern browsers */
@@ -202,8 +182,5 @@
 	margin-top: 5.5%;
 	margin-bottom: 2%;
 	font-size: clamp(.7rem, 2.75vw, 1.75rem);
-	color: black;
 }
-.polaroid__caption.dark-mode {
-	color: white;
-}	
+

@@ -11,9 +11,7 @@
     justify-content: center;
     opacity: 0; /* Start off invisible before animation */
 }
-.skills-header.dark-mode {
-    color: white;
-}
+
 /* Container for all of the skills categories */
 .skills-category-container {
     display: flex;
@@ -51,13 +49,7 @@
         animation: baseFadeInSlideLeft 1.5s ease;
         opacity: 1;
     }
-    .skills-category.dark-mode {
-        color: white;
-    }
-/* Icon + Header wrapper for each skill */
-.skills-icon-header-wrapper {
-    color: black;
-}
+
 
 /* Icon for each skill */
 .skills img {

@@ -5,6 +5,7 @@
 import React, { Suspense } from 'react';
 import { BrowserRouter as Router } from 'react-router-dom';
 import './App.css';
+import './AppColors.css';
 import './normalize.css';
 import Home from './components/Home/Home';
 import About from './components/About/About';

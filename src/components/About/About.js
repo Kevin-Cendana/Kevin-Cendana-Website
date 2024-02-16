@@ -33,9 +33,9 @@ function About() {
         'dark-mode': isDarkMode              // Apply dark mode styling if enabled
     });
     const subheaderClass = classNames({
-        'about__subheader': true,               // Base class for the header
+        'about__subheader': true,            // Base class for the header
         'animate-header': isAboutInView,     // Add animation if about section is in view
-        'section-subheader': true,              // Base class for the section header
+        'section-subheader': true,           // Base class for the section header
         'dark-mode': isDarkMode              // Apply dark mode styling if enabled
     });
     const polaroidClass = classNames({
@@ -49,7 +49,10 @@ function About() {
         <section className="about" ref={aboutRef}>
             {/* Header */}
             <h1 className={headerClass}>About Me</h1>
-            <h2 className={subheaderClass}><i>"There are no strangers here; only friends you haven't yet met."</i></h2>
+            <h2 className={subheaderClass}>
+                <i>"There are no strangers here; only friends you haven't yet met."</i>
+                <span className="quote-author"> - William Butler</span>
+            </h2>
             {/* About Content */}
             <div className="about__wrapper">
                 {/* Left Side with polaroid image */}

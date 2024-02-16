@@ -9,7 +9,7 @@ function DarkModeToggle() {
 
     // Define CSS selectors for dark mode elements
     const darkModeSelectors = `
-        html, body, p, div, label, section, span, nav, Link, ul, h1, h2, a, button,
+        html, body, p, div, label, section, span, nav, Link, ul, h1, h2, a, i, button,
         .animate-header, .about, .background, .home, .home-image, .navbar, .navbar__list, 
         .navbar__link, .popup, .skills, .slider, .slider:before, .polaroid__caption, .resume, 
         .contact
