@@ -8,7 +8,7 @@
     height: clamp(260px, 55vw, 650px);
     min-height: 260px;
     max-height: 650px;
-    margin-top: clamp(.6rem, 2vw, 1.4rem);
+    padding-top: clamp(.6rem, 2vw, 1.4rem);
 }
 
 /* Header - Title for About section */

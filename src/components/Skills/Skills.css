@@ -139,29 +139,3 @@
 @media (max-width: 390px) { .skills { height: 570px;    .skills-category-container { gap: 0px;}} }
 @media (max-width: 360px) { .skills { height: 560px; } }
 @media (max-width: 300px) { .skills { height: 595px; } }
-
-
-
-@import url("https://fonts.googleapis.com/css?family=Raleway:400");
-
-* {
-  box-sizing: border-box;
-}
-
-@property --angle {
-  syntax: '<angle>';
-  initial-value: 90deg;
-  inherits: true;
-}
-
-@property --gradX {
-  syntax: '<percentage>';
-  initial-value: 50%;
-  inherits: true;
-}
-
-@property --gradY {
-  syntax: '<percentage>';
-  initial-value: 0%;
-  inherits: true;
-}

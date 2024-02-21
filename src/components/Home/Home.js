@@ -14,35 +14,51 @@ import '../NavigationBar/NavigationBar.css';        // Import CSS for Navigation
 import '../../normalize.css';                       // Import normalize.css for CSS resets
 
 // Images
-import lightModeHomeImagePng from '../../images/home_images/self-image.png';         // Import normal mode image of me
-import darkModeHomeImagePng from '../../images/home_images/self-image-dark-mode.png'; // Import dark mode image of me
-import lightModeHomeImageWebp from '../../images/home_images/self-image.webp';        // Import normal mode image of me in webp format
-import darkModeHomeImageWebp from '../../images/home_images/self-image-dark-mode.webp';// Import dark mode image of me in webp format
+import lightModeHomeImagePng from '../../images/home_images/kc-no-bg.png';         // Import normal mode image of me
+import lightModeHomeImageWebp from '../../images/home_images/kc-no-bg.webp';        // Import normal mode image of me in webp format
 
 function Home() {
-    // States for dark mode & checking if Home is in view
+    // States: Dark mode, check if Home in view, img based on dark mode, & webp support
     const { isDarkMode } = useDarkMode();          // Get dark mode state
     const homeRef = useRef(null);                  // Create ref for home section
-    const isHomeInView = useInView                 // Check if home section is in view
-        (homeRef, { sectionName: 'home' });        
+    const isHomeInView = useInView(homeRef, { sectionName: 'home' }); // Check if home section is in view
+    const [imageSrc, setImageSrc] = useState(lightModeHomeImageWebp);
+    const [supportsWebP, setSupportsWebP] = useState(false); // Check if browser supports WebP
 
-    // State for image source - changes based on dark mode state
-    const [imageSrc, setImageSrc] = useState(isDarkMode ? darkModeHomeImageWebp : lightModeHomeImageWebp);
-    
-    // Update imageSrc when isDarkMode changes
+    // On error: Set imageSrc to PNG if WebP fails to load
+    const handleError = () => {
+        setImageSrc(lightModeHomeImagePng);
+    }
+
+    // On mount: Update imageSrc when isDarkMode changes
     useEffect(() => {
-        setImageSrc(isDarkMode ? darkModeHomeImageWebp : lightModeHomeImageWebp);
+        setImageSrc(lightModeHomeImageWebp);
     }, [isDarkMode]); // Dependency array, re-run effect when isDarkMode changes
 
-    // Fallback to PNG if WebP is not supported
-    const handleError = () => {
-        setImageSrc(isDarkMode ? darkModeHomeImagePng : lightModeHomeImagePng);
-    };
+    // On mount: Detect WebP support
+    useEffect(() => {
+        const testWebP = new Image();
+        testWebP.onload = testWebP.onerror = function () {
+            setSupportsWebP(testWebP.height === 2);
+        };
+        testWebP.src = 'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';
+    }, []);
+    const preloadImageSrc = supportsWebP ? lightModeHomeImageWebp : lightModeHomeImagePng; // Preload WebP or PNG based on browser support 
 
-    // Preload
+    // On mount: Dynamically preload images using a side effect
+    useEffect(() => {
+        if (preloadImageSrc) {
+            const link = document.createElement('link');
+            link.rel = 'preload';
+            link.as = 'image';
+            link.href = preloadImageSrc;
+            document.head.appendChild(link);
+
+            return () => document.head.removeChild(link);
+        }
+    }, [preloadImageSrc]);
 
 
-    
     // Determine the class for text container based on states
     const textContainerClass = classNames({      
         'home__text-container': true,

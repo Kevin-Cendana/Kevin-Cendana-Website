@@ -6,7 +6,7 @@
 .home {
     position: relative;
     margin-top: var(--navbar-height);
-    height: clamp(310px, 75vw, 842px);
+    height: clamp(260px, 60.5vw, 870px);
     overflow: hidden;
     flex-direction: row;
     box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
@@ -17,23 +17,21 @@
 .home-image {
     display: flex;
     position: absolute;
-    top: 5%;
-    left: 59.5%;
-    height: clamp(400px, 72vw, 800px); 
-
-    opacity: 0;
-    filter: brightness(100%);
+    bottom: 0px;
+    left: 48%;
+    height: clamp(320px, 71vw, 965px);
+    filter: brightness(100%) drop-shadow(12px 12px 5px rgba(0, 0, 0, 0.5));
+    opacity: 0; /* Hide image until animation */
 }
-
-/* Home Image Dark Mode - Background image for dark mode */
-.home__image-container.dark-mode {
-    filter: brightness(120%);
+.home-image.dark-mode {
+    filter: brightness(100%) drop-shadow(12px 12px 5px rgba(135, 135, 135, 0.5));
 }
 
 /* Animate Home Image - Animation for home image */
 .animate-home-image {
-    animation: baseFadeInSlideRight .85s ease-out forwards;
-    opacity: 1;
+    animation: baseFadeInSlideLeft .85s ease-out forwards;
+    animation-delay: 0.3s;
+    opacity: 0; /* Hide image until animation */
 }
 
 /* Home Left - Left side of the home page */
@@ -58,7 +56,8 @@
 /* Animate Text Container - Animation for text container */
 .animate-home-text-container {
     animation: baseFadeInSlideRight .85s ease-out forwards;
-    opacity: 1;
+    animation-delay: 0.3s;
+    opacity: 0; /* Hide image until animation */
 }
 
 /* Block Wrapper - Text wrapper to maintain block shape */
@@ -72,7 +71,7 @@
     margin: 0 0 .4rem 0;
     font-family: 'SF Pro Display', sans-serif;
     font-weight: 800;
-    font-size: clamp(1.6rem, 5.3vw, 3.5rem);
+    font-size: clamp(1.3rem, 5.5vw, 3.7rem);
 }
 
 /* Text Alias - User's alias or title */
@@ -82,5 +81,5 @@
     margin-left: 1.5px;
     font-family: 'SF Pro Display', sans-serif;
     font-weight: 300;
-    font-size: clamp(1rem, 3.3vw, 2.05rem);
+    font-size: clamp(1rem, 3.4vw, 2.05rem);
 }
