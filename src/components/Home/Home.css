@@ -31,7 +31,7 @@
 .animate-home-image {
     animation: baseFadeInSlideLeft .85s ease-out forwards;
     animation-delay: 0.3s;
-    opacity: 0; /* Hide image until animation */
+    opacity: 1; /* Hide image until animation */
 }
 
 /* Home Left - Left side of the home page */
@@ -71,7 +71,7 @@
     margin: 0 0 .4rem 0;
     font-family: 'SF Pro Display', sans-serif;
     font-weight: 800;
-    font-size: clamp(1.3rem, 5.5vw, 3.7rem);
+    font-size: clamp(1.3rem, 5.5vw, 3.7rem); 
 }
 
 /* Text Alias - User's alias or title */

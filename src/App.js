@@ -45,7 +45,7 @@ function App() {
             <Home />
             <About />
             {/* Suspense for lazy loaded components */}
-            <Suspense fallback={<div>Loading</div>}>
+            <Suspense fallback={<div></div>}>
               <Skills />
               <Projects />
               <Contact />
