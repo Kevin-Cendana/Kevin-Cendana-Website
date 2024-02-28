@@ -21,9 +21,10 @@ function Home() {
     // States: Dark mode, check if Home in view, img based on dark mode, & webp support
     const { isDarkMode } = useDarkMode();          // Get dark mode state
     const homeRef = useRef(null);                  // Create ref for home section
-    const isHomeInView = useInView(homeRef, { sectionName: 'home' }); // Check if home section is in view
+    const isHomeInView = useInView(homeRef, { sectionName: 'home'});
     const [imageSrc, setImageSrc] = useState(lightModeHomeImageWebp);
     const [supportsWebP, setSupportsWebP] = useState(false); // Check if browser supports WebP
+    
 
     // On error: Set imageSrc to PNG if WebP fails to load
     const handleError = () => {

@@ -1,9 +1,8 @@
-// Libaries + Files
+// Libraries + Files
 import React, { useRef, useState, useEffect } from 'react';
 import useInView from '../../hooks/useInView';  
 import classNames from 'classnames';  
 import { useDarkMode } from '../../shared/DarkModeToggle/DarkModeContext';
-import '../../shared/HoverImage.js';
 import './Skills.css';
 import HoverImage from '../../shared/HoverImage.js';
 
@@ -21,16 +20,18 @@ import creatingIcon from '../../images/skills_images/creating_icon.png';
 import creatingIconGif from '../../images/skills_images/creating_icon.gif';
 import creatingIconWebP from '../../images/skills_images/creating_icon.webp';
 
-
 // Skills Component
 function Skills() {
-    // Refs
+    // Refs and state
     const { isDarkMode } = useDarkMode();
     const skillsRef = useRef(null);
-    const isSkillsInView = useInView(skillsRef, { threshold: [0.25], sectionName: 'skills' } );
     const [supportsWebP, setSupportsWebP] = useState(false);
+    const [allImagesLoaded, setAllImagesLoaded] = useState(false); // New state to track if all images are loaded
 
-    // Class Names for dynamic styling - Changes based on if the section is in view & if dark mode is on
+    // Determine if the skills section is in view
+    const isSkillsInView = useInView(skillsRef, { threshold: [0.25], sectionName: 'skills' }) && allImagesLoaded; // Updated to consider allImagesLoaded
+
+    // Class Names for dynamic styling
     const skillsHeaderClass = classNames({
         'skills-header': true,
         'section-header': true,
@@ -59,47 +60,30 @@ function Skills() {
         const testWebP = new Image();
         testWebP.onload = testWebP.onerror = () => {
             setSupportsWebP(testWebP.height === 2);
+            prepareImages(testWebP.height === 2); // Call prepareImages here with the result of WebP support check
         };
         testWebP.src = 'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';
     }, []);
 
-    // On mount, prefetch images
-    useEffect(() => {
-        // Function to prefetch images
-        const prefetchImages = () => {
-            // Array of images to prefetch
-            const imagesToPrefetch = supportsWebP ? [
-                codingIconWebP,
-                competingIconWebP,
-                caringIconWebP,
-                creatingIconWebP
-            ] : [
-                codingIconGif,
-                competingIconGif,
-                caringIconGif,
-                creatingIconGif
-            ];
+    // Function to premptively load images and check if they are loaded
+    const prepareImages = (supportsWebP) => {
+        const imagesToLoad = supportsWebP ? [codingIconWebP, competingIconWebP, caringIconWebP, creatingIconWebP] : [codingIconGif, competingIconGif, caringIconGif, creatingIconGif];
+        let loadedImagesCount = 0;
 
-            // Create link elements for each image and append to head
-            imagesToPrefetch.forEach(imageSrc => {
-                const link = document.createElement('link');
-                link.rel = 'prefetch';
-                link.as = 'image';
-                link.href = imageSrc;
-                document.head.appendChild(link);
-            });
-        };
+        imagesToLoad.forEach(src => {
+            const img = new Image();
+            img.onload = img.onerror = () => {
+                loadedImagesCount++;
+                if (loadedImagesCount === imagesToLoad.length) {
+                    setAllImagesLoaded(true); // Set allImagesLoaded to true once all images are loaded
+                }
+            };
+            img.src = src;
+        });
+    };
 
-        // Call prefetchImages if supportsWebP state is known
-        if (supportsWebP !== undefined) {
-            prefetchImages();
-        }
-    }, [supportsWebP]); // Depend on supportsWebP to ensure it runs after the support check
-
-
-    // Choose the right image format
+    // Choose the right image format based on WebP support
     const getImageSource = (webP, gif) => supportsWebP ? webP : gif;
-
 
     // Return Skills Component
     return (
