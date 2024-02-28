@@ -171,9 +171,7 @@ function Projects() {
 
     // On mount, prefetch images and videos
     useEffect(() => {
-        // New useEffect for prefetching
-        const webpSupported = supportsWebp(); // Assuming supportsWebp is defined/available
-
+        const webpSupported = supportsWebp(); 
         const mediaToPrefetch = [
             webpSupported ? attempowherWebp : attempowherPng,
             webpSupported ? datafestWebp : datafestPng,

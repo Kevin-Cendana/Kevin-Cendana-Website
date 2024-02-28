@@ -1,6 +1,7 @@
 //--------------------------------------------------------------------------------------//
 //                                      useInView                                       //
-//                Use this hook to detect if an element is in the viewport.             //
+//  Use this hook to detect if an element is in the viewport & rendered. Now supports   //
+//  checking for images and videos to be fully loaded before starting animations.       //
 //--------------------------------------------------------------------------------------//
 
 // Import necessary hooks from React
@@ -15,7 +16,6 @@ const useInView = (
     { 
         threshold = [0.1], // Set default threshold
         delay = 0, // Set default delay
-        playOnce = true, // Determines if animation should only play once
         isDarkMode, // Dark mode state
         sectionName, // Name of the section for potential future use
     } = {}
@@ -24,88 +24,109 @@ const useInView = (
     const [hasBeenInView, setHasBeenInView] = useState(false);
     // State to control the start of the animation
     const [startAnimation, allowAnimation] = useState(false);
-    // New state to track if all images are loaded
-    const [allImagesLoaded, setAllImagesLoaded] = useState(false);
+    // State to track if all media (images and videos) are loaded
+    const [allMediaLoaded, setAllMediaLoaded] = useState(false);
 
-    // Function to check if all images within the ref are fully loaded
-    const checkImagesLoaded = (ref) => {
-        const images = ref.current ? ref.current.querySelectorAll('img') : [];
-        let loadedImages = 0; // Counter for loaded images
-        images.forEach((img) => {
-            const handleLoad = () => {
-                loadedImages++; // Increment for each loaded image
-                if (loadedImages === images.length) {
-                    setAllImagesLoaded(true); // Set true when all images are loaded
+    // Function to check if all images and videos within the ref are fully loaded
+    const checkMediaLoaded = (ref) => {
+        const media = ref.current ? ref.current.querySelectorAll('img, video') : [];
+        if (media.length === 0) {
+            setAllMediaLoaded(true);
+            return;
+        }
+
+        let loadedMedia = 0; // Counter for loaded media items
+        const eventListeners = []; // To keep track of event listeners for cleanup
+
+        const handleLoad = () => {
+            loadedMedia++; // Increment for each loaded media item
+            if (loadedMedia === media.length) {
+                setAllMediaLoaded(true); // Set true when all media are loaded
+            }
+        };
+
+        media.forEach((item) => {
+            const onLoad = () => handleLoad();
+            const onError = () => handleLoad(); // Consider error as loaded for simplicity
+
+            if (item.tagName === 'IMG') {
+                if (item.complete) {
+                    handleLoad(); // If image is already loaded
+                } else {
+                    item.addEventListener('load', onLoad);
+                    item.addEventListener('error', onError);
+                    eventListeners.push({ item, eventType: 'load', handler: onLoad });
+                    eventListeners.push({ item, eventType: 'error', handler: onError });
                 }
-            };
-            if (img.complete) {
-                handleLoad(); // If image is already loaded
+            } else if (item.tagName === 'VIDEO' && item.readyState >= 3) {
+                handleLoad(); // If video is already loaded
             } else {
-                img.addEventListener('load', handleLoad); // Add load event listener
-                img.addEventListener('error', handleLoad); // Consider error as loaded for simplicity
+                item.addEventListener('loadeddata', onLoad);
+                item.addEventListener('error', onError);
+                eventListeners.push({ item, eventType: 'loadeddata', handler: onLoad });
+                eventListeners.push({ item, eventType: 'error', handler: onError });
             }
         });
-        // If there are no images, set as loaded
-        if (images.length === 0) {
-            setAllImagesLoaded(true);
-        }
+
+        // Cleanup function for removing event listeners
+        const cleanupEventListeners = () => {
+            eventListeners.forEach(({ item, eventType, handler }) => {
+                item.removeEventListener(eventType, handler);
+            });
+        };
+
+        return cleanupEventListeners;
     };
 
     // useEffect hook to observe the element and start animation
     useEffect(() => {
-        // Convert refs to an array if it's not already an array
         const refsArray = Array.isArray(refs) ? refs : [refs];
-
-        // Create an IntersectionObserver to check if an element is in view
         const observer = new IntersectionObserver(
             (entries) => {
-                // For each entry, check if the element is in view
                 entries.forEach(entry => {
-                    const isInView = entry.isIntersecting; // Check if the element is intersecting
+                    const isInView = entry.isIntersecting;
 
-                    // Check for dark mode and reapply class if necessary
                     if (isDarkMode && isInView) {
                         entry.target.classList.add('dark-mode');
                     }
 
-                    // Play animation only if all images are loaded
-                    if (isInView && allImagesLoaded) {
-                        setTimeout(() => {
-                            allowAnimation(true); // Allow animation after specified delay
-                        }, delay);
+                    if (isInView && allMediaLoaded) {
+                        setTimeout(() => allowAnimation(true), delay);
                     } else {
-                        allowAnimation(false); // Reset animation state when out of view
+                        allowAnimation(false);
                     }
 
-                    // Update hasBeenInView based on playOnce
-                    if (playOnce && isInView && !hasBeenInView) {
-                        setHasBeenInView(true); // Set has been in view if playOnce is true
-                    } else if (!playOnce && !isInView) {
-                        setHasBeenInView(false); // Reset has been in view state
-                        allowAnimation(false); // Reset animation state
+                    if (isInView && !hasBeenInView) {
+                        setHasBeenInView(true);
+                    } else if (!isInView) {
+                        setHasBeenInView(false);
+                        allowAnimation(false);
                     }
                 });
             },
-            { threshold } // Observer options
+            { threshold }
         );
 
-        // Observe all refs in the array
+        let cleanupFunctions = [];
         refsArray.forEach(ref => {
             if (ref.current) {
-                observer.observe(ref.current); // Attach observer to each ref
-                checkImagesLoaded(ref); // Check if images are loaded
+                observer.observe(ref.current);
+                const cleanupEventListener = checkMediaLoaded(ref);
+                if (cleanupEventListener) {
+                    cleanupFunctions.push(cleanupEventListener);
+                }
             }
         });
 
-        // Cleanup function to unobserve refs
         return () => {
             refsArray.forEach(ref => {
                 if (ref.current) {
-                    observer.unobserve(ref.current); // Detach observer
+                    observer.unobserve(ref.current);
                 }
             });
+            cleanupFunctions.forEach(cleanup => cleanup());
         };
-    }, [refs, hasBeenInView, threshold, delay, playOnce, isDarkMode, sectionName, startAnimation, allImagesLoaded]); // Dependency array
+    }, [refs, hasBeenInView, threshold, delay, isDarkMode, sectionName, startAnimation, allMediaLoaded]);
 
     return startAnimation; // Return the animation state
 };
