@@ -1,0 +1,29 @@
+/*--------------------------------------------------------------------------------------//
+//                                    Footer.css                                        //
+//--------------------------------------------------------------------------------------*/
+
+/* Footer */
+footer {
+    display: flex;
+    flex-direction: row;
+    bottom: 0;
+    height: 3rem;
+    width: 100vw;
+}
+
+/* Footer - Left & Right Side*/
+.footer-left, .footer-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    height: 100%;
+}
+.footer-left {
+    align-items: flex-start;
+    padding-left: 1rem;
+}
+.footer-right {
+    align-items: flex-end;
+    padding-right: 1rem;
+}

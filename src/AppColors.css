@@ -11,12 +11,8 @@
   --app-dark-mode-color: rgb(30, 30, 30);
 }
 
-:root.dark-mode{
-
-}
-
 /* All HTML tags */
-* { color: black; }
+
 *.dark-mode { color: white;}
 
 /* HTML of entire app */
@@ -66,7 +62,7 @@ a.dark-mode {color: rgb(1, 98, 210);}
   &:before, &:after { background-color: var(--app-dark-mode-color); border: 1.5px solid gray;}
 }
 .about .polaroid__caption.dark-mode { color: white;}	
-.about .speechBubble.dark-mode p {color: black;}
+.about .speechBubble p {color: black;}
 
 /* Skills */
 .skills.dark-mode, .about.dark-mode {background-color: rgb(65, 65, 65);}
@@ -101,4 +97,4 @@ a.dark-mode {color: rgb(1, 98, 210);}
 .popup-background { background-color: rgba(0, 0, 0, 0.5); }
 
 /* Footer */
-footer { color: white; background-color: black; }
+footer { color: white !important; background-color: black; }

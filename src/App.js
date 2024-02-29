@@ -19,6 +19,7 @@ import About from './components/About/About';
 const Skills = React.lazy(() => import('./components/Skills/Skills'));
 const Projects = React.lazy(() => import('./components/Projects/Projects'));
 const Contact = React.lazy(() => import('./components/Contact/Contact'));
+const Footer = React.lazy(() => import('./components/Footer/Footer'));
 
 function App() {
 
@@ -30,7 +31,11 @@ function App() {
       const preloadProjects = import('./components/Projects/Projects');
       preloadProjects.then(() => {
         // After Projects is preloaded, start preloading Contact
-        import('./components/Contact/Contact');
+        const preloadContact = import('./components/Contact/Contact');
+        preloadContact.then(() => {
+          // After Contact is preloaded, start preloading Footer
+          import('./components/Footer/Footer');
+        });
       });
     });
   }, []);
@@ -51,12 +56,7 @@ function App() {
               <Contact />
             </Suspense>
           </main>
-          <footer>
-            <div className="footer-left">
-              <p>© Kevin Cendana 2024</p>
-            </div>
-            <div className="footer-right"></div>
-          </footer>
+          <Footer />
         </div>
     </DarkModeProvider>
     </Router>

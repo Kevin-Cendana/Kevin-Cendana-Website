@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkreact_app=self.webpackChunkreact_app||[]).push([[925],{925:function(e,r,n){n.r(r),n.d(r,{default:function(){return t}});n(791);var a=n(184);var t=function(){return(0,a.jsxs)("footer",{children:[(0,a.jsx)("div",{className:"footer-left",children:(0,a.jsx)("p",{children:"\xa9 Kevin Cendana 2024"})}),(0,a.jsx)("div",{className:"footer-right"})]})}}}]);
+//# sourceMappingURL=925.fcca7976.chunk.js.map
