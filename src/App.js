@@ -23,25 +23,23 @@ const Footer = React.lazy(() => import('./components/Footer/Footer'));
 
 function App() {
 
-  // On mount: Sequentially load Skills, Projects, and Contact
+  // On mount: Sequentially load Skills, Projects, Contact, Footer
   useEffect(() => {
     const preloadSkills = import('./components/Skills/Skills');
     preloadSkills.then(() => {
-      // After Skills is preloaded, start preloading Projects
       const preloadProjects = import('./components/Projects/Projects');
       preloadProjects.then(() => {
-        // After Projects is preloaded, start preloading Contact
         const preloadContact = import('./components/Contact/Contact');
         preloadContact.then(() => {
-          // After Contact is preloaded, start preloading Footer
           import('./components/Footer/Footer');
         });
       });
     });
   }, []);
 
+  // Render the website
   return (
-    <Router>
+    <Router> 
     <DarkModeProvider>
         <div className="app">
           <NavigationBar />
