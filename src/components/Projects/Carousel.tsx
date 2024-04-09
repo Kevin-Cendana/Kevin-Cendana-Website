@@ -6,7 +6,6 @@
 
 
 
-
 import TouchSweep from 'touchsweep'; // For touch gestures.
 import { v4 as uuid } from 'uuid';  // To generate unique IDs.
 import React, {
@@ -71,7 +70,18 @@ export const Carousel: FC<CarouselProps> = forwardRef((
     CarouselRef
 ) => {
 
+// Add these lines at the beginning of your Carousel component
+const slideRef = useRef<HTMLDivElement>(null);
+const [slideWidth, setSlideWidth] = useState(0);
+    
+// Add this useEffect hook to measure the width of the slide
+useEffect(() => {
+    if (slideRef.current) {
+        setSlideWidth(slideRef.current.offsetWidth);
+    }
+}, []);
 	
+
     // Refs and state initialization
     const ref = useRef<HTMLDivElement>(null);
     const [selectedIndex, setSelectedIndex] = useState(0);
@@ -84,26 +94,6 @@ export const Carousel: FC<CarouselProps> = forwardRef((
         return () => window.removeEventListener('resize', handleResize);
     }, []);
 
-    // Function to determine padding based on screen width
-    const getPaddingBasedOnWidth = (width: number) => {
-        switch (true) {
-            case (width > 1400):
-                return -22; // Large screens
-			case (width > 1000):
-				return -24; // Medium screens
-            case (width > 768):
-                return -26; // Medium screens
-            case (width > 600):
-                return -32; // Small screens
-            case (width > 520):
-                return -24; // Small screens
-            case (width > 460):
-                return -28; // Small screens
-            default:
-                return -50; // Extra small screens
-        }
-    };	
-
     // Enhancing carousel items with unique IDs and memorizing the calculation
     const data: DecoratedCarouselItem[] = useMemo(
         () => items.map((item: CarouselItem) => ({
@@ -114,12 +104,6 @@ export const Carousel: FC<CarouselProps> = forwardRef((
     );
     // Carousel geometry calculations
     const len = useMemo(() => data.length, [data.length]);
-    const theta = useMemo(() => 360 / len, [len]);
-    const padding = getPaddingBasedOnWidth(windowWidth) - 10; // Less padding for smaller screens
-    const radius = useMemo(
-        () => Math.round((itemWidth + padding) / 2 / Math.tan(Math.PI / len)),
-        [itemWidth, len, padding]
-    );
 
     // Function for corrected selected index
     const getCorrectedIndex = useCallback(() => {
@@ -129,27 +113,25 @@ export const Carousel: FC<CarouselProps> = forwardRef((
         return selectedIndex % len;
     }, [selectedIndex, len]);
 
-    // Style calculation for slides and carousel container
-    const getSlideStyle = useCallback(
-        (index: number): CSSProperties => {
-            const correctedIndex = getCorrectedIndex();
-            const isCurrentSlide = correctedIndex === index;
-            const cellAngle = theta * index;
+// Style calculation for slides and carousel container
+const getSlideStyle = useCallback(
+    (index: number): CSSProperties => {
+        const correctedIndex = getCorrectedIndex();
+        const isCurrentSlide = correctedIndex === index;
 
-            return {
-                opacity: isCurrentSlide ? 1 : 0.5,
-                transform: `rotateY(${cellAngle}deg) translateZ(${radius}px)`
-            };
-        },
-        [getCorrectedIndex, theta, radius]
-    );
-
-    const getItemStyle = useCallback((): CSSProperties => {
-        const angle = theta * selectedIndex * -1;
         return {
-            transform: `translateZ(${-1 * radius}px) rotateY(${angle}deg)`
+            opacity: 1, // Set opacity to 1 for all slides
+            transform: `translateX(${(index - correctedIndex) * (10 + slideWidth)}px)`, // Move each slide to the right by 10px + slide width
         };
-    }, [radius, selectedIndex, theta]);
+    },
+    [getCorrectedIndex, slideWidth]
+);
+
+const getItemStyle = useCallback((): CSSProperties => {
+    return {
+        transform: 'translateX(0)'
+    };
+}, []);
 
     // Helper function for className generation
     const getClassName = useCallback(
@@ -226,7 +208,9 @@ export const Carousel: FC<CarouselProps> = forwardRef((
                     <div key={item.id} style={getSlideStyle(index)} onClick={() => {
                         if (item.onClick) item.onClick();
                         if (slideOnClick) setSelectedIndex(index);
-                    }} className={getClassName('__slide')}>
+                    }} 
+                    ref={slideRef}
+                    className={getClassName('__slide')}>
                             { 
                             item.videoWebp? (
                                 /* Check if the carousel item has a webp video, with mp4 as fallback */
@@ -252,7 +236,7 @@ export const Carousel: FC<CarouselProps> = forwardRef((
                                 /* Fallback to PNG/GIF image if no WebP */
                                 <img src={item.image} alt={item.alt || 'Carousel item'} />
                             )}
-                            <div className={getClassName('__slide-overlay')} />
+
                         </div>
                     ))}
                 </div>
