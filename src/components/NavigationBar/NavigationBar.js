@@ -80,7 +80,7 @@ function NavigationBar() {
                 <a href="https://linkedin.com/in/kevincendana" target="_blank" className="linkedin-icon-link" rel="noopener noreferrer" aria-label="LinkedIn Profile">
                     <div className="navbar-icon linkedin-icon"></div>
                 </a>
-                <a href="https://github.com/KevCendana" target="_blank" className="github-icon-link" rel="noopener noreferrer" aria-label="GitHub Profile">
+                <a href="https://github.com/kevin-cendana" target="_blank" className="github-icon-link" rel="noopener noreferrer" aria-label="GitHub Profile">
                     <div className="navbar-icon github-icon"></div>
                 </a>
 
