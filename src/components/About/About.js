@@ -12,14 +12,13 @@ import './About.css';         // Import CSS for this About component
 import '../../App.css';       // Import general App CSS
 import './TypingDots.css';    // Import CSS for TypingDots component
 import '../../normalize.css'; // Import CSS to normalize styles across browsers
-import AboutPolaroidImageWebP from '../../images/about_images/kevin_and_emma.webp'; // Import polaroid image
-import AboutPolaroidImagePNG from '../../images/about_images/kevin_and_emma.png'; // Import polaroid image
+import AboutPolaroidImageWebP from '../../images/about_images/kevin-anime.webp'; // Import polaroid image
+import AboutPolaroidImagePNG from '../../images/about_images/kevin-anime.png'; // Import polaroid image
 
 // About Section Component
 function About() {
     const { isDarkMode } = useDarkMode();       // Retrieve dark mode state
     const aboutRef = useRef(null);              // Reference for the about section
-    const polaroidRef = useRef(null);           // Reference for the polaroid image
     const aboutSpeechBubblesRef = useRef(null); // Reference for speech bubbles section
     const [supportsWebP, setSupportsWebP] = useState(false); // Check if browser supports WebP
     const [imageLoaded, setImageLoaded] = useState(false);   // Check if image is loaded
@@ -40,9 +39,9 @@ function About() {
         'section-subheader': true,           // Base class for the section header
         'dark-mode': isDarkMode              // Apply dark mode styling if enabled
     });
-    const polaroidClass = classNames({
-        'about__polaroid-wrapper': true,               // Base class for the polaroid wrapper
-        'animate-polaroid-wrapper': startAnimationAbout,  // Add animation if polaroid is in view
+    const aboutLeftClass = classNames({
+        'about__left': true,               // Base class for the polaroid wrapper
+        'animate-about__left': startAnimationAbout,  // Add animation if polaroid is in view
         'dark-mode': isDarkMode                        // Apply dark mode styling if enabled
     });
     
@@ -88,19 +87,9 @@ function About() {
             {/* About Content */}
             <div className="about__wrapper">
                 {/* Left Side with polaroid image */}
-                <div className="about__left">
-                    <div className={polaroidClass} ref={polaroidRef}>
-                        {/* Polaroid stack with image and caption */}
-                        <div className="polaroid__stack"> 
-                            <div className="polaroid__card"> 
-                                <div className="polaroid__image"> 
-                                    {/* Container for the about image */}
-                                    <div className="about-image-container"></div>
-                                </div>
-                                {/* Caption for the polaroid image */}
-                                <h3 className="polaroid__caption"> kevin & emma </h3> 
-                            </div>
-                        </div>
+                <div className={aboutLeftClass} ref={aboutSpeechBubblesRef}>
+                    <div className="about__image-container">
+                        <img src={supportsWebP ? AboutPolaroidImageWebP : AboutPolaroidImagePNG} alt="Kevin Anime" />
                     </div>
                 </div>
                 {/* Right Side with Typing Dots Animation */}

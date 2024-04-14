@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.c01c3fbb.css",
-    "main.js": "/static/js/main.ff888bbd.js",
+    "main.css": "/static/css/main.edfa69b7.css",
+    "main.js": "/static/js/main.c82f0da5.js",
     "static/css/36.65931e8f.chunk.css": "/static/css/36.65931e8f.chunk.css",
     "static/js/36.cba453f2.chunk.js": "/static/js/36.cba453f2.chunk.js",
     "static/css/430.06d18d5f.chunk.css": "/static/css/430.06d18d5f.chunk.css",
@@ -15,6 +15,7 @@
     "static/media/datafest.png": "/static/media/datafest.3e3b72c712d3970ce92e.png",
     "static/media/code_icon.gif": "/static/media/code_icon.7f86a8a395785bf9e339.gif",
     "static/media/caring_icon.gif": "/static/media/caring_icon.d56522e968461b1fe547.gif",
+    "static/media/kevin-anime.png": "/static/media/kevin-anime.1b5df083040fa48f371c.png",
     "static/media/SF-Pro-Text-Light.woff2": "/static/media/SF-Pro-Text-Light.b059eb6f2c552fa10fbd.woff2",
     "static/media/creating_icon.gif": "/static/media/creating_icon.6c4492cf840cf86b0d93.gif",
     "static/media/SF-Pro-Display-Ultralight.woff2": "/static/media/SF-Pro-Display-Ultralight.7b43f4311a039aae5040.woff2",
@@ -27,11 +28,8 @@
     "static/media/bullseye.png": "/static/media/bullseye.d1d2b10427e4598d191f.png",
     "static/media/creating_icon.webp": "/static/media/creating_icon.ca26d050f675ce298666.webp",
     "static/media/hackathon_icon.webp": "/static/media/hackathon_icon.e52ca0cfd1eb3eb65170.webp",
-    "static/media/kevin_and_emma_hover.png": "/static/media/kevin_and_emma_hover.26b47366980254818f42.png",
-    "static/media/kevin_and_emma.png": "/static/media/kevin_and_emma.7b154130b8b599258fe4.png",
     "static/media/maplestory_app.mp4": "/static/media/maplestory_app.30c951753749216f6120.mp4",
     "static/media/kc-no-bg.webp": "/static/media/kc-no-bg.861e2ee263c2a21c50ed.webp",
-    "static/media/pastel-bg.png": "/static/media/pastel-bg.c25b9865c1e2105fd117.png",
     "static/media/datafest.webp": "/static/media/datafest.5cbf78792293883d0cf5.webp",
     "static/media/key_animation.gif": "/static/media/key_animation.ceedac65cff1db542157.gif",
     "static/media/lyric_link.mp4": "/static/media/lyric_link.3628d202d25032022b7a.mp4",
@@ -39,11 +37,10 @@
     "static/media/SF-Pro-Display.woff2": "/static/media/SF-Pro-Display.f2e751755e6d71d2d5ee.woff2",
     "static/media/Thasadith.ttf": "/static/media/Thasadith.2346b87783c1065c46a3.ttf",
     "static/media/key_animation.webp": "/static/media/key_animation.ba69f6ad293675680a18.webp",
+    "static/media/kevin-anime.webp": "/static/media/kevin-anime.ba74e698633edd8f22bd.webp",
     "static/media/att_empowher.webp": "/static/media/att_empowher.8fa14fc43238997c8f1f.webp",
     "static/media/pastel-bg-dark.png": "/static/media/pastel-bg-dark.500daf8badc58f6847fb.png",
     "static/media/tap_animation.gif": "/static/media/tap_animation.e455b31505e976de8099.gif",
-    "static/media/kevin_and_emma_hover.webp": "/static/media/kevin_and_emma_hover.75ae2abe5a1df95445cd.webp",
-    "static/media/kevin_and_emma.webp": "/static/media/kevin_and_emma.ea701058169a1662a90d.webp",
     "static/media/invaded_space.mp4": "/static/media/invaded_space.d1ee7e5e075632422a0b.mp4",
     "static/media/sun.png": "/static/media/sun.950ff2a42cd3ab29f0fa.png",
     "static/media/tap_animation.webp": "/static/media/tap_animation.f540ee7f10553fce14fa.webp",
@@ -58,11 +55,9 @@
     "static/media/linkedin_icon.png": "/static/media/linkedin_icon.9a1a7f8162140e296345.png",
     "static/media/swipe_animation.webp": "/static/media/swipe_animation.230786e0620c6232c58d.webp",
     "static/media/kevin_icon.webp": "/static/media/kevin_icon.c266c0607247ecbb9687.webp",
-    "static/media/pastel-bg.webp": "/static/media/pastel-bg.46efb7ebebe68bd7195e.webp",
-    "static/media/pastel-bg-dark.webp": "/static/media/pastel-bg-dark.ab1bfb75b27679f76697.webp",
     "index.html": "/index.html",
-    "main.c01c3fbb.css.map": "/static/css/main.c01c3fbb.css.map",
-    "main.ff888bbd.js.map": "/static/js/main.ff888bbd.js.map",
+    "main.edfa69b7.css.map": "/static/css/main.edfa69b7.css.map",
+    "main.c82f0da5.js.map": "/static/js/main.c82f0da5.js.map",
     "36.65931e8f.chunk.css.map": "/static/css/36.65931e8f.chunk.css.map",
     "36.cba453f2.chunk.js.map": "/static/js/36.cba453f2.chunk.js.map",
     "430.06d18d5f.chunk.css.map": "/static/css/430.06d18d5f.chunk.css.map",
@@ -74,7 +69,7 @@
     "787.a4b45000.chunk.js.map": "/static/js/787.a4b45000.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.c01c3fbb.css",
-    "static/js/main.ff888bbd.js"
+    "static/css/main.edfa69b7.css",
+    "static/js/main.c82f0da5.js"
   ]
 }

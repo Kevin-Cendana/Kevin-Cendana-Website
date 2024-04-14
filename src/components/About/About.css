@@ -4,6 +4,7 @@
 
 /* About Section - Main container for the about section */
 .about {
+    display: flex;
     align-items: center;
     height: clamp(260px, 55vw, 650px);
     min-height: 260px;
@@ -27,9 +28,7 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    height: 78%; /* Increases this moves the pic + speech bubbles down */
-    padding-top: clamp(1rem, 1vw, 2rem);
-    transform: translateX(1.2rem);
+    transform: translateX(6%);
 }
 
 /* Left Side - Left part of the about page with picture and title */
@@ -38,41 +37,53 @@
     flex-direction: column;
     align-items: flex-end;
     justify-content: flex-start;
-    width: 40%;
+    width: 27%;
     height: 100%;
+    margin-left: 10px;
     z-index: 0;
+    opacity: 0;
+    animation: baseFadeInSlideRight .7s ease-in-out;
 }
 
-/* Polaroid Wrapper - Wrapper for polaroid wireframe */
-.about__polaroid-wrapper {
-    display: flex;
-    aspect-ratio: 1/1.1;
-	margin-right: 1.6vw;
-    min-width: clamp(120px, 27.5vw, 320px);
-    opacity: 0; /* Hide until animation */
-}
-.about__polaroid-wrapper.animate-polaroid-wrapper {
-    animation: baseFadeInSlideRight 0.85s ease-out forwards;
+.animate-about__left {
+    animation: baseFadeInSlideRight .7s ease-in-out;
+    opacity: 1;
 }
 
-/* Image Container - Contains the image in the about section */
-.about-image-container {
+.about__image-container {
     display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1/1;
+    width: 100%;
+    max-width: 350px;
+    box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 20%;
+    overflow: hidden;
+}
+.about__image-container::before {
+    content: "";
+    position: absolute;
+    width: 100%;
     height: 100%;
-    width: 107%;
-    transform: translateX(-5%);
-    box-shadow: 5px 5px 10px grey; /* Vertical, horizontal, blur radius */
-    background-image: url('../../images/about_images/kevin_and_emma.png'); /* Fallback image for older browsers */
-    background-image: url('../../images/about_images/kevin_and_emma.webp'); /* WebP Image for modern browsers */
-	background-size: cover;
-	transition: all 1s ease-in-out;
+    background: url('../../images/about_images/pastel-bg-dark.png');
+    background-size: cover;
+    filter:opacity(30%) saturate(5%) brightness(160%);
 }
-	/* On Hover: Change the polaroid image*/
-	.about-image-container:hover {
-		background-image: url('../../images/about_images/kevin_and_emma_hover.png'); /* Fallback image for older browsers */
-		background-image: url('../../images/about_images/kevin_and_emma_hover.webp'); /* WebP Image for modern browsers */
-        transition: all 1s ease-in-out;
-	}
+
+.about__image-container.dark-mode::before {
+
+    background: url('../../images/about_images/pastel-bg-dark.png');
+    filter:opacity(50%) saturate(10%) brightness(70%);
+}
+.about img {
+    aspect-ratio: 1/1;
+    width: 100%;
+    border-radius: 20%;
+    transform: translate(1%, 1%);
+}
 
 /* Right Side - Right side of the about page with text bubbles */
 .about__right {
@@ -80,11 +91,13 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: center;
+    /* margin-left: 20px; */
+    margin-left: clamp(0.5rem, 2vw, 1.8rem);
     height: 100%;
-    width: 60%;
+    width: 50%;
     aspect-ratio: 1/1;
 
-    font-size: clamp(0.6rem, 2.1vw, 1.45rem);
+    font-size: clamp(0.6rem, 2vw, 1.45rem);
 
     z-index: 0;
 }
@@ -94,11 +107,10 @@
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    transform: translateY(-3%);
     height: 100%;
     width: 100%;
     margin: 0;
-    max-width: clamp(160px, 46vw, 555px);
+    max-width: clamp(160px, 43.5vw, 535px);
 }
 
 /* On wide screens, show the quote author */
@@ -115,80 +127,15 @@
     }
 }
 
-/*--------------------------------------------------------------------------------------//
-//                                   .Polaroid Code                                     //    
-//                      Credit: https://codepen.io/havardob/pen/jOwrXaJ                 //
-//--------------------------------------------------------------------------------------*/
-
-/* Stack - Container for polaroid cards */
-.polaroid__stack {
-	width: 85%;
-	max-width: 400px;
-	transition: .25s ease;
+/* On smaller screens, move picture to the left */
+@media (max-width: 500px) {
+    .about__wrapper {
+        transform: translateX(3%);
+    }
 }
-
-/* Card - Individual polaroid card */
-.polaroid__card {
-	position: relative;
-	display: flex;
-	flex-direction: column;
-	height: 100%;
-	padding: 5% 5% 5% 5%;
-
-	transition: .15s ease;
-	z-index: auto;
-	
-    /* Extra polaroid cards behind the main one */
-	&:before, &:after {
-		position: absolute;
-		display: block;
-		content: "";
-		height: 100%;
-		width: 100%;
-		border: 2.5px solid;
-		transform-origin: center center;
-		transition: .15s ease;
-		top: 0;
-		left: 0;
-		z-index: -1;
-	}
-	&:before {
-		transform: translatey(-2%) rotate(-6deg);
-		z-index: -1;
-	}
-	&:after {
-		transform: translatey(2%) rotate(6deg);
-		z-index: -2;
-	}
+/* On smaller screens, move picture to the left */
+@media (max-width: 400px) {
+    .about__wrapper {
+        transform: translateX(0%);
+    }
 }
-
-
-/* Image - Polaroid image styling */
-.polaroid__image {
-	position: relative;
-	width: 100%;
-	height: 100%;
-	overflow: hidden;
-	background: url('../../images/about_images/pastel-bg.png'); /* PNG Polaroid Image for older browsers: Attempt to load this last */
-	background: url('../../images/about_images/pastel-bg.webp'); /* WebP Polaroid Image for modern browsers */
-	background-size: cover;
-	transition: 0s ease;
-}
-.polaroid__image.dark-mode {
-	background: url('../../images/about_images/pastel-bg-dark.png');    /* PNG Polaroid Image for older browsers: Attempt to load this last */
-	background: url('../../images/about_images/pastel-bg-dark.webp'); 	/* WebP Polaroid Image for modern browsers: Attempt to load this first */
-	background-size: cover;
-	transition: 0s ease;
-}
-
-/* Caption - Text caption for Polaroid */
-.polaroid__caption {
-	font-family: sam;
-	display: flex;
-	align-self: center;
-	justify-self: center;
-	margin-top: 5.5%;
-	margin-bottom: 2%;
-	font-size: clamp(.7rem, 2.75vw, 1.75rem);
-}
-

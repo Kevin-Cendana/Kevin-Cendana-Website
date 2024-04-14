@@ -7,8 +7,8 @@ const TypingDots = ({ startAnimation }) => {
   const messageArray = [
     "Hello! My name is Kevin.",
     "I'm currently a senior CS student here at Sacramento State, graduating May 2024.",
-    "I love coding as both work & as a pastime, but I also like manga, art, and getting boba with my partner, Emma.",
-    "Thank you for taking the time to visit my website!",
+    "I love coding for both work and as a pastime, but I also like manga, art, and getting boba with my partner, Emma.",
+    "Thank you for visiting my website!",
   ];
 
   // Display or clear messages based on `startAnimation`
