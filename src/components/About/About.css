@@ -59,6 +59,7 @@
     width: 100%;
     max-width: 350px;
     box-shadow: 5px 5px 5px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: clamp(2px, 0.5vw, 5px) clamp(2px, 0.5vw, 5px) clamp(2px, 0.5vw, 4px) 0 rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(0, 0, 0, 0.2);
     border-radius: 20%;
     overflow: hidden;
