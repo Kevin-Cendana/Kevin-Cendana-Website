@@ -44,15 +44,20 @@ a.dark-mode {color: rgb(1, 98, 210);}
 .navbar__link-active, .navbar__list li.navbar__link-active a { background-color: white; color: black; }
 
 /* Home */
-.home { background-color: var(--app-light-mode-color); /* Default background color */ }
-.home.dark-mode { background-color: var(--app-dark-mode-color); /* Dark mode background color */}
+.home { 
+  background-color: var(--app-light-mode-color);
+  box-shadow: clamp(0.5px, 0.5vw, 1px) clamp(0.5px, 0.5vw, 1.5px) clamp(2px, 0.8vw, 5px)  clamp(0.5px, 0.5vw, 1.5px) 
+    rgba(61, 61, 61, 0.2);
+}
+.home.dark-mode { 
+  background-color: var(--app-dark-mode-color);
+  box-shadow: clamp(0.5px, 0.5vw, 1px) clamp(0.5px, 0.5vw, 2.5px) clamp(2px, 0.8vw, 3px)  clamp(0.5px, 0.5vw, 1.5px) 
+  rgba(0, 0, 0, 0.2);
+}
 
 /* About, Skills */
-.skills, .about {
-  box-shadow: none;
-  border: none;
-  background-color: white;
-}
+.skills, .about { background-color: white; }
+.skills.dark-mode, .about.dark-mode { background-color: rgb(65, 65, 65); }
 
 /* About */
 .about .polaroid__image { border: 2.5px solid black; }
@@ -65,11 +70,20 @@ a.dark-mode {color: rgb(1, 98, 210);}
 .about .speechBubble p {color: black;}
 
 /* Skills */
-.skills.dark-mode, .about.dark-mode {background-color: rgb(65, 65, 65);}
+.skills { border-bottom: clamp(1px, 0.5vw, 3.5px) solid rgb(239, 239, 239); }
+.skills.dark-mode {border-bottom: clamp(1px, 0.5vw, 3.5px) solid rgb(45, 45, 45); }
+
 
 /* Projects */
-.projects { background-color: var(--app-light-mode-color); }
-.projects.dark-mode { background-color: var(--app-dark-mode-color); color: white; }
+.projects { 
+  background-color: var(--app-light-mode-color); 
+  border-bottom: clamp(1px, 0.5vw, 3.5px) solid rgb(230, 230, 230); 
+}
+.projects.dark-mode { 
+  background-color: var(--app-dark-mode-color); 
+  border-bottom: clamp(1px, 0.5vw, 3.5px) solid rgb(8, 8, 8);
+  color: white; 
+}
 .projects__text-container { background-color: white;}
 .projects__text-container.dark-mode { background-color: black;}
 

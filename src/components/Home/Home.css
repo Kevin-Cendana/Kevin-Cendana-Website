@@ -9,8 +9,6 @@
     height: clamp(260px, 60.5vw, 870px);
     overflow: hidden;
     flex-direction: row;
-    box-shadow: 1px 1px 5px 1px rgba(0, 0, 0, 0.2);
-    
 }
 
 /* Home Image - Image of the user */
@@ -24,7 +22,7 @@
     opacity: 0; /* Hide image until animation */
 }
 .home-image.dark-mode {
-    filter: brightness(100%) drop-shadow(12px 12px 5px rgba(135, 135, 135, 0.5));
+    filter: brightness(88%) drop-shadow(12px 12px 5px rgba(0, 0, 0, 0.5));
 }
 
 /* Animate Home Image - Animation for home image */
