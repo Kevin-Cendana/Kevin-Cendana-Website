@@ -9,8 +9,8 @@ import useInView from '../../hooks/useInView';
 import classNames from 'classnames';
 import './Contact.css';
 
-import kevinIconPng from '../../images/contact_images/kevin_icon.png';
-import kevinIconWebp from '../../images/contact_images/kevin_icon.webp';
+import kevinIconPng from '../../images/contact_images/kevin_smiling.png';
+import kevinIconWebp from '../../images/contact_images/kevin_smiling.webp';
 
 function Contact() {
 const { isDarkMode } = useDarkMode(); // Get the global state for dark mode 

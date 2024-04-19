@@ -47,7 +47,7 @@
 
 /* Contact Left - Container for Contact form*/
 .contact-left {
-    padding: 0 1.2rem 0 1.2rem;
+    padding: 0 .8rem 0 1rem;
     margin: 0;
     opacity: 0;
     display: flex;
@@ -95,7 +95,7 @@ input, textarea,
 
 /* Contact Form Message - Text Area for the user to input a message to send */
 .contact-form-message {
-    height: 146px; 
+    height: 164px; 
     resize: none;
 }
 
@@ -196,22 +196,21 @@ input, textarea,
 /* Contact Profile Picture */
 .contact-profile-picture-container {
     display: flex;
-    align-self:center;
-    justify-content: center;
     aspect-ratio: 1/1;
-    object-fit: cover;
-    width: 7rem;
+    width: clamp(100px, 30vw, 150px);
+    align-self: center;
+    align-items: center;
+    justify-content: center;
     border-radius: 50%;
-    padding: clamp(0px, 2vw, 16px);
-    padding-bottom: 0px;
+    box-shadow: 1.5px 1px 1px 1px rgb(180, 180, 180);
+    border: 0px solid black;
     overflow:hidden;
     margin-bottom: 1rem;
 }
 
 .contact-profile-picture {
-    width: 100%;
-    object-fit: cover;
-    object-position: center;
+    width: 92%;
+    transform: translate(4px,7.5px);
 }
 
 /* Small/Big Screens only: Hide content based on screen size. */ 
@@ -277,7 +276,7 @@ input, textarea,
         width: 60%;
         min-width: 80px;
         max-width: 140px;
-        margin-right: clamp(2px, 2vw, 10px);
+        margin-right: clamp(0px, 2vw, 10px);
     }
     .contact-info-text {
         align-self: center;

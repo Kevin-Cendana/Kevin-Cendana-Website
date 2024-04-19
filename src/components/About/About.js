@@ -89,7 +89,7 @@ function About() {
                 {/* Left Side with polaroid image */}
                 <div className={aboutLeftClass} ref={aboutSpeechBubblesRef}>
                     <div className="about__image-container">
-                        <img src={supportsWebP ? AboutPolaroidImageWebP : AboutPolaroidImagePNG} alt="Kevin Anime" />
+                        <img src={supportsWebP ? AboutPolaroidImageWebP : AboutPolaroidImagePNG} alt="Kevin" draggable="false"/>
                     </div>
                 </div>
                 {/* Right Side with Typing Dots Animation */}
