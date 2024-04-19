@@ -6,7 +6,7 @@
 .home {
     position: relative;
     margin-top: var(--navbar-height);
-    height: clamp(260px, 60.5vw, 810px);
+    height: clamp(240px, 60.5vw, 810px);
     overflow: hidden;
     flex-direction: row;
 }
@@ -17,7 +17,7 @@
     position: absolute;
     bottom: 0;
     left: 59%;
-    height: clamp(320px, 52vw, 690px);
+    height: clamp(210px, 53vw, 690px);
     filter: brightness(100%) drop-shadow(12px 12px 5px rgba(0, 0, 0, 0.5));
     opacity: 0; /* Hide image until animation */
 }
