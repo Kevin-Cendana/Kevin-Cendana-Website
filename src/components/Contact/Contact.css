@@ -224,14 +224,6 @@ input, textarea,
         height: 595px;
     }   
 }
-@media (min-width: 1600px) {
-    .contact {
-        height: 650px;
-    }   
-    .contact-form-message {
-        height: 240px;
-    }
-}
 
 /* Small Screens Only: Move contact info based on screen size. */
 @media (max-width: 800px) {
