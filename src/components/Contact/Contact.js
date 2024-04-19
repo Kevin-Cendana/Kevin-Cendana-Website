@@ -61,16 +61,18 @@ return (
         <h1 className = {contactHeaderClass}>Contact Me</h1>
         <h2 className = {contactSubHeaderClass}>Leave me a message and I'll get back to you as soon as possible. </h2>
         <div className="contact-main-content-wrapper">
-            {/* Move Contact Right to the top on small screens. */}
+            {/* Contact Right (Copy Pasted from Below): Move Contact Right to the top on small screens. */}
             <div className={contactRightClassSmall}>
                 <div className = "contact-info">
                     <div className ="contact-profile-picture-container">
-                        <img
-                            src={imageSrc}
-                            onError={handleError}
-                            className="contact-profile-picture"
-                            alt="Kevin Contact Icon"
-                        />
+                        <div className="contact-profile-picture-inner-container">
+                            <img
+                                src={imageSrc}
+                                onError={handleError}
+                                className="contact-profile-picture"
+                                alt="Kevin Contact Icon"
+                            />
+                        </div>
                     </div>
                     <div className="contact-info-text">
                         <p className = "contact-name">Kevin Cendana </p>
@@ -99,12 +101,14 @@ return (
             <div className={contactRightClassBig}>
                 <div className = "contact-info">
                     <div className ="contact-profile-picture-container">
-                    <img
-                        src={imageSrc}
-                        onError={handleError}
-                        className="contact-profile-picture"
-                        alt="Kevin Contact Icon"
-                    />
+                        <div class="contact-profile-picture-inner-container">
+                            <img
+                                src={imageSrc}
+                                onError={handleError}
+                                className="contact-profile-picture"
+                                alt="Kevin Contact Icon"
+                            />
+                        </div>
                     </div>
                     <div className="contact-info-text">
                         <p className = "contact-name">Kevin Cendana </p>

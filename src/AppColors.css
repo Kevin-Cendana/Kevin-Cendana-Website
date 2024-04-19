@@ -103,8 +103,8 @@ a.dark-mode {color: rgb(1, 98, 210);}
 .contact-info-text.dark-mode { background-color: #414141; color: white; }
 .contact-email { color: gray; }
 .contact-email.dark-mode { color: rgb(227, 227, 255); }
-.contact-profile-picture-container { background-color: rgb(243, 243, 243);}
-.contact-profile-picture-container.dark-mode { background-color: rgb(139, 139, 139);}
+.contact-profile-picture-container { background-color: rgb(240, 240, 240);}
+.contact-profile-picture-container.dark-mode { background-color: rgb(32, 32, 32);}
 @media(max-width: 800px) {
   .contact-info-text, .contact-info-text.dark-mode {
     background-color: transparent;

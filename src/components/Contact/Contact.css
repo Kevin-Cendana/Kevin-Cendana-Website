@@ -95,7 +95,7 @@ input, textarea,
 
 /* Contact Form Message - Text Area for the user to input a message to send */
 .contact-form-message {
-    height: 164px; 
+    height: 178.5px; 
     resize: none;
 }
 
@@ -170,6 +170,7 @@ input, textarea,
     width: 250px;
     height: 295px;
     padding: 0 0.8rem;
+    transform: translateY(10%); /* Move down, to account for 3d pfp moving up */
 }
 
 .contact-info-text {
@@ -193,25 +194,42 @@ input, textarea,
     letter-spacing: -0.6px;
 }
 
-/* Contact Profile Picture */
+/* Contact Profile Picture Container */
 .contact-profile-picture-container {
     display: flex;
     aspect-ratio: 1/1;
-    width: clamp(100px, 30vw, 150px);
+    width: clamp(100px, 15vw, 130px);
     align-self: center;
-    align-items: center;
+    align-items: flex-end; /* Aligns items to the bottom */
     justify-content: center;
     border-radius: 50%;
-    box-shadow: 1.5px 1px 1px 1px rgb(180, 180, 180);
+    /* box-shadow: 1.75px 1px 1px 1px rgb(220, 220, 220); */
     border: 0px solid black;
-    overflow:hidden;
+    overflow: visible; 
     margin-bottom: 1rem;
+    position: relative; 
+    transform: translateX(2%); /* Move outer circle a bit right, since the inner is a bit left */
 }
 
-.contact-profile-picture {
-    width: 92%;
-    transform: translate(4px,7.5px);
+/* Inner Container */
+.contact-profile-picture-inner-container {
+    position: absolute;
+    top: -29%; 
+    left: -10%;
+    right: 0;
+    border-radius: 50%;
+    height: 129%;
+    overflow: hidden; 
 }
+
+/* Profile Picture Styling */
+.contact-profile-picture {
+    width: 105%;
+    box-shadow: 10.75px 10px 10px 10px rgb(0, 0, 0);
+    position: relative; /* Position relative to its parent (inner container) */
+    bottom: 0; /* Aligns the image at the bottom of the inner container */
+}
+
 
 /* Small/Big Screens only: Hide content based on screen size. */ 
 .small-screens-only {
@@ -267,6 +285,14 @@ input, textarea,
         max-width: 140px;
         margin-right: clamp(0px, 2vw, 10px);
     }
+    .contact-profile-picture-inner-container {
+        top: -15%; 
+        left: -4%;
+        height: 115%;
+    }
+    .contact-profile-picture {
+        width: 100%;
+    }
     .contact-info-text {
         align-self: center;
     }
@@ -298,6 +324,11 @@ input, textarea,
     .contact-profile-picture-container {
         width: 100px;
     }
+    .contact-profile-picture-inner-container {
+        top: -10%; 
+        left: 0;
+        height: 110%;
+    }
     .contact-left, .contact-right {
         padding: 0 1.5rem;
     }
@@ -319,5 +350,10 @@ input, textarea,
     }
     .contact-form-message {
         height: 130px;
+    }
+    .contact-profile-picture-inner-container {
+        top: -5%; 
+        left: 7%;
+        height: 100%;
     }
 }
