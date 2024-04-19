@@ -124,7 +124,7 @@ function Skills() {
                     </div>  
                     <p>
                         Hackathons are exciting challenges for me to learn new technologies and build something beautiful.
-                        I've been to 3 so far & I'm looking forward to attending more.
+                        I've been to 5 so far & I'm looking forward to attending more.
                     </p>
                 </div>      
                 {/* Category - Caring */}

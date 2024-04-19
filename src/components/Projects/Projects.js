@@ -267,8 +267,8 @@ function Projects() {
         <section className="projects" id="projects" ref = {projectsRef}>
             {/* Header title */}
             <h1 className = {projectsHeader}> Project Showcase </h1>
-            <h2 className = {projectsSubHeader}>All of my projects below can be found pinned on my&nbsp;
-                <a href="https://github.com/KevCendana" target="_blank" className="" rel="noopener noreferrer">GitHub.</a>
+            <h2 className = {projectsSubHeader}>
+            "The absolute best way to learn is by doing." - Aristotle
             </h2>
             <div className = "projects__section">
                 {/* Left side w/ Carousel slideshow  */}

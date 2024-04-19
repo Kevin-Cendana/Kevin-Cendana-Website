@@ -81,7 +81,7 @@ function About() {
             {/* Header */}
             <h1 className={headerClass}>About Me</h1>
             <h2 className={subheaderClass}>
-                <i>"There are no strangers here; only friends you haven't yet met."</i>
+                "There are no strangers here; only friends you haven't yet met."
                 <span className="quote-author"> - William Butler</span>
             </h2>
             {/* About Content */}

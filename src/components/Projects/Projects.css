@@ -42,6 +42,9 @@
         opacity: 1;
     }
 
+.projects__subheader {
+    letter-spacing: 3px;
+}
 
 
 /* Project Section - Including slideshow, text */

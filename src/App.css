@@ -42,12 +42,6 @@
   font-weight: 300; 
   font-style: normal;
 }
-@font-face { /* SF Pro Display - Ultra Light Italic: For About Section Header */
-  font-family: "SF Pro Display";
-  src: url('fonts/SF-Pro-Display-UltralightItalic.woff2') format('woff2');
-  font-weight: 300;
-  font-style: italic;
-}
 @font-face { /* Sam: Custom font for About Polaroid */
   font-family: 'Sam', 'Comic Sans MS', cursive; /* Adding Comic Sans MS as a fallback */
   src: url('fonts/Sam.woff2') format('woff2');
@@ -196,5 +190,12 @@ p {
   to {
       opacity: 1;
       transform: translateX(0%);
+  }
+}
+
+/* On wide screens, show the quote author */
+@media (max-width: 950px) {
+  .quote-author {
+      display: none;
   }
 }

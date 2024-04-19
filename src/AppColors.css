@@ -59,13 +59,6 @@ a.dark-mode {color: rgb(1, 98, 210);}
 .skills.dark-mode, .about.dark-mode { background-color: rgb(65, 65, 65); }
 
 /* About */
-.about .polaroid__image { border: 2.5px solid black; }
-.about .polaroid__image.dark-mode { border: 1.5px solid gray; }
-.about .polaroid__card { background-color: white; border: 2.5px solid black;}
-.about .polaroid__card.dark-mode  { background-color: var(--app-dark-mode-color); border: 1.5px solid gray;
-  &:before, &:after { background-color: var(--app-dark-mode-color); border: 1.5px solid gray;}
-}
-.about .polaroid__caption.dark-mode { color: white;}	
 .about .speechBubble p {color: black;}
 
 /* Skills */

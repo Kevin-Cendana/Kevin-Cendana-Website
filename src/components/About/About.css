@@ -113,13 +113,6 @@
     max-width: clamp(160px, 43.5vw, 535px);
 }
 
-/* On wide screens, show the quote author */
-@media (max-width: 950px) {
-    .quote-author {
-        display: none;
-    }
-}
-
 /* On tiny screens, have the height for this section shrink faster */
 @media (max-width: 500px) {
     .about {

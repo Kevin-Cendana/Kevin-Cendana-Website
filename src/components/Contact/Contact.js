@@ -59,7 +59,7 @@ const contactSubHeaderClass = classNames({
 return (
     <section className='contact' id = "contact" ref = {contactRef}>
         <h1 className = {contactHeaderClass}>Contact Me</h1>
-        <h2 className = {contactSubHeaderClass}>Leave me a message and I'll get back to you as soon as possible. </h2>
+        <h2 className = {contactSubHeaderClass}>Feel free to say hello! I'll get back to you as soon as possible. </h2>
         <div className="contact-main-content-wrapper">
             {/* Contact Right (Copy Pasted from Below): Move Contact Right to the top on small screens. */}
             <div className={contactRightClassSmall}>
