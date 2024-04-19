@@ -223,9 +223,6 @@ input, textarea,
     .contact {
         height: 595px;
     }   
-    .contact-form-message {
-        height: 200px;
-    }
 }
 @media (min-width: 1600px) {
     .contact {
