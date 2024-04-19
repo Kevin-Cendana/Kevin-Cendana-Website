@@ -84,7 +84,6 @@
 input {
     height: 2rem;
     width: 100%;
-    
 }
 
 /* Name & Email, Message, Submit Button */
@@ -175,6 +174,7 @@ input, textarea,
 
 .contact-info-text {
     padding: 1rem;
+    border-radius: 8px;
     align-items: space-between;
 }
 
@@ -205,7 +205,6 @@ input, textarea,
     padding: clamp(0px, 2vw, 16px);
     padding-bottom: 0px;
     overflow:hidden;
-    border: 5px solid black;
     margin-bottom: 1rem;
 }
 
@@ -278,9 +277,9 @@ input, textarea,
         width: 60%;
         min-width: 80px;
         max-width: 140px;
+        margin-right: clamp(2px, 2vw, 10px);
     }
     .contact-info-text {
-        background-color: transparent;
         align-self: center;
     }
     .contact-info {

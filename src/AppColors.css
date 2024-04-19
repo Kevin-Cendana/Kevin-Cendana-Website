@@ -12,7 +12,6 @@
 }
 
 /* All HTML tags */
-
 *.dark-mode { color: white;}
 
 /* HTML of entire app */
@@ -90,14 +89,27 @@ a.dark-mode {color: rgb(1, 98, 210);}
 /* Contact */
 .contact { background-color: rgb(236, 236, 236); }
 .contact.dark-mode { background-color: rgb(21, 21, 21); }
+.contact-submit-button {
+    border-left: 1px solid black; 
+    border-right: 1px solid black; 
+    border-bottom: 1px solid black;
+    border-top: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
 .contact-submit-button:hover { background-color: #414141; color: #fff;}
 .contact-submit-button.dark-mode { background-color: #515151; color: #fff; }
 .contact-info-text { background-color: var(--app-light-mode-color); }
-.contact-info-text.dark-mode { background-color: #626262; color: white; }
+.contact-info-text.dark-mode { background-color: #414141; color: white; }
 .contact-email { color: gray; }
 .contact-email.dark-mode { color: rgb(227, 227, 255); }
-.contact-profile-picture-container.dark-mode { border: 5px solid gray; background-color: white;}
-
+.contact-profile-picture-container { border: 3.5px solid rgb(180, 180, 180); background-color: white;}
+.contact-profile-picture-container.dark-mode { border: 3.5px solid #414141; background-color: white;}
+@media(max-width: 800px) {
+  .contact-info-text, .contact-info-text.dark-mode {
+    background-color: transparent;
+  }
+}
 /* Contact submit button */
 .contact-submit-button {
   background-color: rgb(216, 216, 216); color: #000;
