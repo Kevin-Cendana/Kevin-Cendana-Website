@@ -210,7 +210,7 @@
 /* Swipe animation - Shows user they can swipe to scroll carousel */
 .swipe-animation {
     background-image: url('../../images/projects_images/swipe_animation.gif');
-    background-image: url('../../images/projects_images/swipe_animation.webp');
+
     background-size: cover;
     background-position: center;
 }
@@ -236,7 +236,7 @@
         right: 0;
         bottom: 0;
         background-image: url('../../images/projects_images/tap_animation.gif');
-        background-image: url('../../images/projects_images/tap_animation.webp');
+
         background-size: contain;
         background-position: center;
         background-repeat: no-repeat;
@@ -247,7 +247,6 @@
 .key-animation {
     width: 2.1rem;
     background-image: url('../../images/projects_images/key_animation.gif');
-    background-image: url('../../images/projects_images/key_animation.webp');
     background-size: contain;
     background-position: center;
     background-repeat: no-repeat;
