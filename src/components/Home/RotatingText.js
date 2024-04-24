@@ -206,7 +206,7 @@ ReactRotatingText.defaultProps = {
     pause: 3500,          // Default pause time after typing a word (when a word is visible)
     typingInterval: 52,   // Default time between typing characters
     random: false,         // Default setting for randomizing text items
-    initialdelay: 3500,      // Default time to wait before typing starts
+    initialdelay: 2950,      // Default time to wait before typing starts
 };
 
 
