@@ -94,13 +94,13 @@ export const Carousel: FC<CarouselProps> = forwardRef((
             case (width > 768):
                 return -26; // Medium screens
             case (width > 600):
-                return -32; // Small screens
+                return -30; // Small screens
             case (width > 520):
                 return -24; // Small screens
             case (width > 460):
-                return -28; // Small screens
+                return -20; // Small screens
             default:
-                return -50; // Extra small screens
+                return -40; // Extra small screens
         }
     };	
 

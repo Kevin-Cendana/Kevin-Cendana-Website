@@ -4,13 +4,11 @@
 
 /* Project variables */
 :root {
-    --projects-title-font-size: 2.1rem;
     --projects-height: clamp(550px, 62vw, 800px);
     --projects-min-height: 1000px;
     --projects-text-container-width: clamp(300px, 38vw, 1200px);
     --projects-text-container-max-width: 600px;
     --projects-section-flex-direction: row;
-    --projects-text-container-left-margin: 2.1rem;
     --projects-left-min-width: 650px;
     --projects-text-spacer-up: 0px;
     --projects-title-padding: 16px;
@@ -102,7 +100,6 @@
 /* Text container - Dynamic text box that describes the current slide */
 .projects__text-container {
     position: relative;
-
     font-size: var(--projects-desc-font-size);
     display: flex;
     flex-direction: column;
@@ -112,7 +109,7 @@
     max-width: var(--projects-text-container-max-width); 
     height: var(--projects-text-container-min-height);
     margin-top: var(--projects-text-spacer-up);
-    margin-left: var(--projects-text-container-left-margin);
+    margin-left: clamp(3rem, 6.7vw, 7rem);
     border: 1px solid black;
 }
     /* Text container Dark mode */
@@ -136,7 +133,7 @@
 
 /* Title - Dynamic title for current slide */
 .projects__title {
-    font-size: var(--projects-title-font-size);  
+    font-size: clamp(1.2rem, 2.3vw, 2rem);  
     font-weight: bold;
     padding: var(--projects-title-padding);
     margin: 0px;
@@ -167,50 +164,49 @@
     align-items: center;
 }
 
-/* Carousel Tutorial - Container w/ text & gifs that notifies the user on how to move carousel. */
-.projects__carousel__tutorial {
+/* Carousel tooltip - Container w/ text & gifs that notifies the user on how to move carousel. */
+.projects__carousel__tooltip {
     display: flex; 
     align-self: center;
     flex-direction: column;
     margin-top: 1rem;
+    margin-left: 2.8rem;
     transition: opacity 1s ease-in-out, transform 1s ease-in-out; 
     opacity: 1; /* Initially fully visible, fades out right after a few sec */
 }
-    /* Hide tutorial after a few seconds */
-    .projects__carousel__tutorial.tutorial-hide {
+    /* Hide tooltip after a few seconds */
+    .projects__carousel__tooltip.tooltip-hide {
         opacity: 0; /* Fade out */
         transform: translateX(50px); /* Move to the right */
     }
+    /* Tooltip Text - Informs user how to use carousel */
+    .projects__carousel__tooltip p {
+        font-family: "SF Pro Text";
+        font-weight: 300;
+        font-size: clamp(1.05rem, 1.8vw, 1.8rem);
+    }
 
-/* Tutorial Text - Informs user how to use carousel */
-.projects__carousel__tutorial p {
-    font-family: "SF Pro Text";
-    font-weight: 300;
-    font-size: clamp(1.05rem, 2vw, 1.8rem);
-}
-
-/* Tutorial Gifs Container - Container for gifs that show user how to use carousel */ 
-.tutorial__gifs-container {
+/* Tooltip Gifs Container - Container for gifs that show user how to use carousel */ 
+.tooltip__gifs-container {
     display: flex;
     flex-direction: row;
     justify-content: center;
-    gap: clamp(1rem, 4vw, 3rem);
+    gap: clamp(1rem, 3.7vw, 3rem);
 }
 
-/* Tutorial Gifs Container - Shows user how to user carousel */
-.tutorial__gif {
-    width: clamp(3.5rem, 7vw, 5rem);
+/* Tooltip Gifs Container - Shows user how to user carousel */
+.tooltip__gif {
+    width: clamp(3.5rem, 6.6vw, 5rem);
     aspect-ratio: 1/1;
 }
     /* Dark mode */
-    .tutorial__gif.dark-mode {
+    .tooltip__gif.dark-mode {
         filter: invert(100);
     }
 
 /* Swipe animation - Shows user they can swipe to scroll carousel */
 .swipe-animation {
     background-image: url('../../images/projects_images/swipe_animation.gif');
-
     background-size: cover;
     background-position: center;
 }
@@ -410,20 +406,11 @@
     height: 200px;
 }
 
-/* Media Queries:
-/  By default w/o queries, I assume an average window size on desktop (~1400x900 px).
-/  Queries are used for: wide screens, standard tablets & phones, & small phones.
-/  Note: I change the background color just to debug; makes it easier to see what query is being applied.*/
-
 /* Wide screens */
 @media (min-width: 1600px) {
     :root {
-        /* Projects */
-        --projects-title-font-size: 2.4rem;
-        --projects-text-container-left-margin: 0rem;
         --projects-title-padding: 18px;
         --projects-section-flex-direction: row;
-        --projects-left-min-width: 730px;
         /* Carousel */
         --carousel-scale: 2.2;
         --carousel-left-margin: 125px;
@@ -433,9 +420,7 @@
 /* Standard tablet */
 @media (max-width: 1350px) {
     :root {
-        --projects-text-container-left-margin: .8rem;
         --projects-left-min-width: 620px;
-        --projects-title-font-size: 1.6rem;
         --carousel-scale: 2.05;
         --carousel-left-margin: 100px;
         --carousel-bottom-margin: 0px;
@@ -444,23 +429,32 @@
 
 @media (max-width: 1200px) {
     :root {
-        --projects-title-font-size: 1.55rem;
         --projects-title-padding: 12px;
         --projects-left-min-width: 572px;
         --carousel-left-margin: 86px;
         --carousel-scale: 1.87;
     }
 }
-@media (max-width: 1100px) { :root { 
-    --carousel-scale: 1.8; --carousel-left-margin: 84px; --projects-left-min-width: 550px; } }
-@media (max-width: 1000px) { :root { 
-    --carousel-scale: 1.65; --carousel-left-margin: 64px; --projects-left-min-width: 500px; } }
+@media (max-width: 1100px) { 
+    :root { 
+    --carousel-scale: 1.78; --carousel-left-margin: 76px; --projects-left-min-width: 550px; 
+    } 
+}
+@media (max-width: 1150px) { 
+    :root { 
+    --carousel-scale: 1.72; --carousel-left-margin: 70px; --projects-left-min-width: 520px; 
+    } 
+}
+@media (max-width: 1000px) { 
+    :root { 
+    --carousel-scale: 1.62; --carousel-left-margin: 56px; --projects-left-min-width: 490px; 
+    } 
+}
 
 /* Once the window is small enough @960px, the text goes below the carousel and covers the whole width. */
 @media (max-width: 960px) {
     :root {
         --projects-height: clamp(550px, 105vw, 740px);
-        --projects-title-font-size: 1.55rem;
         --projects-title-padding: 12px;
         --projects-text-spacer-up: 12%;
         --projects-extra-carousel-right-space: 0;
@@ -483,23 +477,24 @@
     }
     .projects__text-container {
         width: 80%;
+        margin-left: 0;
         align-self: center;
         align-items: center;
     }
     .carousel {
-        margin-top: 1.2rem;
+        margin-top: 0.8rem;
         transform-origin: top right;
     }
-    .projects__carousel__tutorial {
+    .projects__carousel__tooltip {
         padding: 0;
-        margin: .4rem;
+        margin: .8rem;
         flex-direction: row;
         align-items: center;
     }
-    .projects__carousel__tutorial p {
+    .projects__carousel__tooltip p {
         margin-right: 2vw;
     }
-    .tutorial__gif {
+    .tooltip__gif {
         width: 1.2rem;
     }
     .tap-animation::after {
@@ -514,18 +509,17 @@
 @media (max-width: 720px) {
     :root {
         --projects-height: 655px;
-        --projects-title-font-size: 1rem;
         --projects-title-padding: 10px;
-        --carousel-scale: 1.4;
-        --carousel-left-margin: 76px;
+        --carousel-scale: 1.25;
+        --carousel-left-margin: 46px;
     }
     .carousel {
         margin-left: -1rem;
     }
     .projects__text-container {
-        margin-top: 4rem;
+        margin-top: 1rem;
     }
-    .projects__carousel__tutorial p {
+    .projects__carousel__tooltip p {
         font-size: .9rem;
     }
 }
@@ -534,26 +528,52 @@
 @media (max-width: 560px) {
     :root {
         --projects-height: 600px;
-        --carousel-scale: 1.12;
-        --carousel-left-margin: 2.3rem;
+        --carousel-scale: 1.05;
+        --carousel-left-margin: 1.4rem;
     }
     .projects__text-container {
-        margin-top: 0.5rem;
+        margin-top: -1rem;
     }
-    .projects__carousel__tutorial p {
+    .projects__carousel__tooltip p {
+        font-size: .7rem;
+    }
+}
+@media (max-width: 490px) {
+    :root {
+        --projects-height: 600px;
+        --carousel-scale: 0.98;
+        --carousel-left-margin: 1.42rem;
+    }
+    .projects__text-container {
+        margin-top: -1rem;
+    }
+    .projects__carousel__tooltip p {
         font-size: .7rem;
     }
 }
 @media (max-width: 420px) {
     :root {
         --projects-height: 525px;
-        --carousel-scale: 1;
-        --carousel-left-margin: 2.4rem;
+        --carousel-scale: 0.9;
+        --carousel-left-margin: 1.42rem;
     }
     .projects__text-container {
-        margin-top: -2rem;
+        margin-top: -2.9rem;
     }
-    .projects__carousel__tutorial p {
+    .projects__carousel__tooltip p {
+        font-size: .6rem;
+    }
+}
+@media (max-width: 380px) {
+    :root {
+        --projects-height: 525px;
+        --carousel-scale: 0.8;
+        --carousel-left-margin: 1.3rem;
+    }
+    .projects__text-container {
+        margin-top: -2.9rem;
+    }
+    .projects__carousel__tooltip p {
         font-size: .6rem;
     }
 }

@@ -14,6 +14,7 @@ import './Projects.css';
 import attempowherWebp from '../../images/projects_images/slideshow_images/att_empowher.webp';
 import datafestWebp from '../../images/projects_images/slideshow_images/datafest.webp';
 import bullseyeWebp from '../../images/projects_images/slideshow_images/bullseye.webp';
+import sgkcWebp from '../../images/projects_images/slideshow_images/sgkc.webp';
 
 // Slideshow videos in mp4 format - Optimized for faster loading
 import lyriclinkMp4 from '../../images/projects_images/slideshow_images/lyric_link.mp4';
@@ -24,11 +25,13 @@ import invadedspaceMp4 from '../../images/projects_images/slideshow_images/invad
 import attempowherPng from '../../images/projects_images/slideshow_images/att_empowher.png';
 import datafestPng from '../../images/projects_images/slideshow_images/datafest.png';
 import bullseyePng from '../../images/projects_images/slideshow_images/bullseye.png';
+import sgkcPng from '../../images/projects_images/slideshow_images/sgkc.png';
 
 // Gradient colors for each slide's captions
 const rainbowGradient = 'linear-gradient(45deg, #fcb0a9, #a3c9f8, #a6fcb3, #fff2cc)';
 const blueGradient = 'linear-gradient(45deg, #e6f9ff, #b3ecff, #80dfff, #4dd2ff, #1ac6ff, #0077be, #004f8c)';
 const lightGreenGradient = 'linear-gradient(45deg, #f1f8e9, #dcedc8, #c5e1a5, #aed581, #9ccc65, #8bc34a, #7cb342)';
+const greenGradient = 'linear-gradient(45deg, #00cc00, #77dd77, #b3ffb3)';
 const orangeGradient = 'linear-gradient(45deg, #ffa500, #ffcc80, #ffdbb5)';
 const violetGradient = 'linear-gradient(45deg, #800080, #9400d3, #a020f0)'
 const targetGradient = 'radial-gradient(circle at center, #fde4e4 0%, #fde4e4 20%, #ffffff 20%, #ffffff 40%, #fde4e4 40%, #fde4e4 60%, #ffffff 60%, #ffffff 80%, #fde4e4 80%, #fde4e4 100%)';
@@ -113,6 +116,23 @@ const project_data = [
             { text: 'SwiftUI', style: { background: targetGradient} },
         ]    
     },
+    {
+        image: sgkcPng,
+        imageWebp: sgkcWebp,
+        // title: (
+        // <>Sacramento Glory<br></br>Korean Church</>
+        // ),
+        title: "SGKC",
+        description: (
+            <span>
+            <a href="https://sacglorychurch.org" target="_blank" rel="noopener noreferrer">Sacramento Glory Korean Church:</a>{" "}<br></br>
+            For my capstone project, I worked with a team of 8 to create a full stack Church website for a local pastor. 
+            </span>
+        ),
+        captions: [
+            { text: 'Capstone', style: { background: greenGradient} },
+        ]
+    }
 ];
 
 // Function to add padding to each caption
@@ -121,7 +141,7 @@ const addPaddingToCaptions = (projects) => {
         ...project,
         captions: project.captions.map(caption => ({
             ...caption,
-            style: { ...caption.style, borderRadius: '.5rem', margin: '0px 3px', padding: '3.5px 10px' }
+            style: { ...caption.style, borderRadius: '.5rem', margin: '0px 0px', padding: '3.5px 10px' }
         }))
     }));
 };
@@ -208,22 +228,22 @@ function Projects() {
         descriptionUpdater();
         const interval = setInterval(descriptionUpdater, 1000);
     
-        // Set a timeout to hide the tutorial text after 4 seconds
-        let tutorialTimeout;
+        // Set a timeout to hide the tooltip text after 4 seconds
+        let tooltipTimeout;
         if (isProjectsInView) {
-            tutorialTimeout = setTimeout(() => {
-                const tutorialElement = document.querySelector('.projects__carousel__tutorial');
-                if (tutorialElement) tutorialElement.classList.add('tutorial-hide');
+            tooltipTimeout = setTimeout(() => {
+                const tooltipElement = document.querySelector('.projects__carousel__tooltip');
+                if (tooltipElement) tooltipElement.classList.add('tooltip-hide');
             }, 5000);
         } else {
-            const tutorialElement = document.querySelector('.projects__carousel__tutorial');
-            if (tutorialElement) tutorialElement.classList.remove('tutorial-hide');
+            const tooltipElement = document.querySelector('.projects__carousel__tooltip');
+            if (tooltipElement) tooltipElement.classList.remove('tooltip-hide');
         }
     
         // Cleanup function to clear interval and timeout when the component unmounts
         return () => {
             clearInterval(interval);
-            if (tutorialTimeout) clearTimeout(tutorialTimeout);
+            if (tooltipTimeout) clearTimeout(tooltipTimeout);
         };
     }, [isProjectsInView, currentDescription]); // Dependencies: isProjectsInView and currentDescription
     
@@ -300,12 +320,12 @@ function Projects() {
                         <p className="projects__description">{currentDescription}</p>
                     </div>
                     {/* Instructions on how to move the Carousel, dissapears after a few sec. */}
-                    <div className='projects__carousel__tutorial'>
+                    <div className='projects__carousel__tooltip'>
                         <p><i>Scroll with buttons, arrow keys, or swipe.</i></p>
-                        <div className="tutorial__gifs-container">
-                            <div className="tutorial__gif tap-animation"></div>
-                            <div className="tutorial__gif key-animation"></div>
-                            <div className="tutorial__gif swipe-animation"></div>
+                        <div className="tooltip__gifs-container">
+                            <div className="tooltip__gif tap-animation"></div>
+                            <div className="tooltip__gif key-animation"></div>
+                            <div className="tooltip__gif swipe-animation"></div>
                         </div>
                     </div>
                 </div>
