@@ -208,26 +208,27 @@ input, textarea,
     overflow: visible; 
     margin-bottom: 1rem;
     position: relative; 
-    transform: translateX(2%); /* Move outer circle a bit right, since the inner is a bit left */
+    transform: translateX(-2%); /* Move outer circle a bit left, since the inner is a bit left */
 }
 
 /* Inner Container */
 .contact-profile-picture-inner-container {
     position: absolute;
     top: -29%; 
-    left: -10%;
+    left: -16%;
     right: 0;
     border-radius: 50%;
     height: 129%;
     overflow: hidden; 
+    
 }
 
 /* Profile Picture Styling */
 .contact-profile-picture {
-    width: 105%;
-    box-shadow: 10.75px 10px 10px 10px rgb(0, 0, 0);
+    width: 112%;
     position: relative; /* Position relative to its parent (inner container) */
     bottom: 0; /* Aligns the image at the bottom of the inner container */
+    transform: translateX(-3%); /* Move the image a bit left */
 }
 
 
