@@ -41,6 +41,7 @@ a.dark-mode {color: rgb(1, 98, 210);}
 .navbar .slider { background-color: #ccc; }
 .navbar .slider:before { background-color: white; }
 .navbar__link-active, .navbar__list li.navbar__link-active a { background-color: white; color: black; }
+.navbar__list li:hover { background-color: rgb(255, 255, 255); color: black;}
 
 /* Home */
 .home { 

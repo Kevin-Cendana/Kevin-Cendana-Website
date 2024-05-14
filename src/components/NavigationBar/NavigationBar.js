@@ -46,7 +46,6 @@ function NavigationBar() {
     // State to track which section is active
     const [activeSection] = useState('');
 
-
     // Function to get active class for section
     const getActiveClass = (section) => {
         return classNames({ 'navbar__link-active': activeSection === section });
