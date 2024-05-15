@@ -1,1 +1,20 @@
-node_modules
+# Node modules
+node_modules/
+
+# Build directory
+/build/
+
+# VSCode settings
+.vscode/
+
+# OS generated files
+.DS_Store
+
+# Ignore npm debug logs
+npm-debug.log*
+
+# Ignore yarn lock files
+yarn.lock
+
+# Ignore package-lock.json to avoid conflicts (optional)
+# package-lock.json
