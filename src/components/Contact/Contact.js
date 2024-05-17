@@ -11,8 +11,8 @@ import './Contact.css';
 
 // import kevinIconPng from '../../images/contact_images/kevin_smiling.png';
 // import kevinIconWebp from '../../images/contact_images/kevin_smiling.webp';
-import kevinIconPng from '../../images/about_images/kevin-anime2.png';
-import kevinIconWebp from '../../images/about_images/kevin-anime2.webp';
+import kevinIconPng from '../../images/contact_images/kevin-smiling.png';
+import kevinIconWebp from '../../images/contact_images/kevin-smiling.webp';
 
 function Contact() {
 const { isDarkMode } = useDarkMode(); // Get the global state for dark mode 

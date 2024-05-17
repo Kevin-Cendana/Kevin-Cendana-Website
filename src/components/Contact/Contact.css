@@ -214,21 +214,20 @@ input, textarea,
 /* Inner Container */
 .contact-profile-picture-inner-container {
     position: absolute;
-    top: -29%; 
-    left: -16%;
+    top: -26%; 
+    left: -20%;
     right: 0;
     border-radius: 50%;
-    height: 129%;
+    height: 127%;
     overflow: hidden; 
-    
 }
 
 /* Profile Picture Styling */
 .contact-profile-picture {
-    width: 112%;
+    width: 113%;
     position: relative; /* Position relative to its parent (inner container) */
     bottom: 0; /* Aligns the image at the bottom of the inner container */
-    transform: translateX(-3%); /* Move the image a bit left */
+    transform: translate(-3.5%, 2%); /* Move the image a bit left */
 }
 
 
@@ -287,9 +286,11 @@ input, textarea,
         margin-right: clamp(0px, 2vw, 10px);
     }
     .contact-profile-picture-inner-container {
-        top: -15%; 
-        left: -4%;
-        height: 115%;
+        top: -13%; 
+        height: 113.5%;
+    }
+    .contact-profile-picture {
+        transform:translateX(6.5%);
     }
     .contact-profile-picture {
         width: 100%;
