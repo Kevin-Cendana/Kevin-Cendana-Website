@@ -58,9 +58,9 @@
     aspect-ratio: 1/1;
     width: 100%;
     max-width: 350px;
-    box-shadow: clamp(2px, 0.5vw, 5px) clamp(2px, 0.5vw, 5px) clamp(2px, 0.5vw, 4px) 0 rgba(0, 0, 0, 0.2);
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    border-radius: 20%;
+    /* box-shadow: clamp(2px, 0.5vw, 5px) clamp(2px, 0.5vw, 5px) clamp(2px, 0.5vw, 4px) 0 rgba(0, 0, 0, 0.2); */
+    /* border: 1px solid rgba(0, 0, 0, 0.2); */
+    border-radius: 50%;
     overflow: hidden;
 }
 .about__image-container::before {
@@ -68,21 +68,17 @@
     position: absolute;
     width: 100%;
     height: 100%;
-    background: url('../../images/about_images/pastel-bg-dark.png');
+    /* background: url('../../images/about_images/pastel-bg-dark.png'); */
+    /* background-color: rgb(216, 216, 216); */
+    /* background-color: rgb(246, 251, 255); */
     background-size: cover;
-    filter:opacity(30%) saturate(5%) brightness(160%);
+    /* filter:opacity(30%) saturate(5%) brightness(160%); */
 }
 
-.about__image-container.dark-mode::before {
-
-    background: url('../../images/about_images/pastel-bg-dark.png');
-    filter:opacity(50%) saturate(10%) brightness(70%);
-}
 .about img {
-    aspect-ratio: 1/1;
-    width: 100%;
+    width: 93%; /* Increases the size of the image */
     border-radius: 20%;
-    transform: translate(1%, 1%);
+    transform: translate(2%, 18.5%); /* +Right, +Down */
 }
 
 /* Right Side - Right side of the about page with text bubbles */

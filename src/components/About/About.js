@@ -12,8 +12,8 @@ import './About.css';         // Import CSS for this About component
 import '../../App.css';       // Import general App CSS
 import './TypingDots.css';    // Import CSS for TypingDots component
 import '../../normalize.css'; // Import CSS to normalize styles across browsers
-import AboutPolaroidImageWebP from '../../images/about_images/kevin-anime.webp'; // Import polaroid image
-import AboutPolaroidImagePNG from '../../images/about_images/kevin-anime.png'; // Import polaroid image
+import AboutPolaroidImageWebP from '../../images/about_images/kevin-smiling.webp'; // Import polaroid image
+import AboutPolaroidImagePNG from '../../images/about_images/kevin-smiling.png'; // Import polaroid image
 
 // About Section Component
 function About() {
