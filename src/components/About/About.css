@@ -94,7 +94,7 @@
     height: 100%;
     width: 100%;
     margin: 0;
-    max-width: clamp(160px, 43.5vw, 535px);
+    max-width: clamp(190px, 44vw, 535px);
 }
 
 /* On tiny screens, have the height for this section shrink faster */
