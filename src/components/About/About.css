@@ -62,17 +62,7 @@
     /* border: 1px solid rgba(0, 0, 0, 0.2); */
     border-radius: 50%;
     overflow: hidden;
-}
-.about__image-container::before {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    /* background: url('../../images/about_images/pastel-bg-dark.png'); */
-    /* background-color: rgb(216, 216, 216); */
-    /* background-color: rgb(246, 251, 255); */
-    /* background-size: cover; */
-    /* filter:opacity(30%) saturate(5%) brightness(160%); */
+    transform: translateY(-8%); /* Move image and container up */
 }
 
 .about img {
@@ -92,9 +82,7 @@
     height: 100%;
     width: 50%;
     aspect-ratio: 1/1;
-
     font-size: clamp(0.6rem, 2vw, 1.45rem);
-
     z-index: 0;
 }
 
