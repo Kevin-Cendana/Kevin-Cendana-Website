@@ -54,6 +54,9 @@ function NavigationBar() {
     // Return the Navigation Bar
     return (
         <nav className="navbar" role="navigation">
+            <div className="navbar__name">
+                <>Kevin Cendana</>
+            </div>
             <div className="navbar__list-wrapper">
                 {/* Dynamically generate navigation links */}
                 <ul className="navbar__list">
@@ -62,34 +65,13 @@ function NavigationBar() {
                             <a
                                 href={`#${item.href}`}
                                 onClick={(e) => handleSmoothScroll(e, item.href)}
+                                className={item.name === 'Contact' ? 'nav-contact' : ''}
                             >
                                 {item.name}
                             </a>
                         </li>
                     ))}
                 </ul>
-            </div>
-
-            {/* Items in the top right of the nav bar: Social Media icons & Dark Mode switch */}
-            <div className="top-right-items">
-                {/* Icons: CSV, LinkedIn, GitHub */}
-                <a href="https://docs.google.com/document/d/1xiAtzAXNMSw3ZkajAZaag-O40Fxn4iWoJ1nj-sb5YCA/edit?usp=sharing" target="_blank" className="github-logo-link" rel="noopener noreferrer" aria-label="Resume on Google Docs">
-                    <div className="navbar-icon csv-icon"></div>
-                </a>
-                <a href="https://linkedin.com/in/kevincendana" target="_blank" className="linkedin-icon-link" rel="noopener noreferrer" aria-label="LinkedIn Profile">
-                    <div className="navbar-icon linkedin-icon"></div>
-                </a>
-                <a href="https://github.com/kevin-cendana" target="_blank" className="github-icon-link" rel="noopener noreferrer" aria-label="GitHub Profile">
-                    <div className="navbar-icon github-icon"></div>
-                </a>
-
-                {/* Dark Mode Toggle */}
-                <div className="toggle__container">
-                    <label className="switch">
-                        <DarkModeToggle />
-                        <span className="slider round"></span>
-                    </label>
-                </div>
             </div>
         </nav>
     );

@@ -5,7 +5,7 @@
 /* Home - Main container */
 .home {
     position: relative;
-    margin-top: var(--navbar-height);
+    /* margin-top: var(--navbar-height); */
     height: clamp(240px, 60.5vw, 810px);
     overflow: hidden;
     flex-direction: row;
