@@ -16,7 +16,7 @@
     display: flex;
     position: absolute;
     bottom: 0;
-    left: 59%;
+    left: 57%;
     height: clamp(210px, 53vw, 690px);
     filter: brightness(100%) drop-shadow(12px 12px 5px rgba(0, 0, 0, 0.5));
     opacity: 0; /* Hide image until animation */
@@ -42,9 +42,9 @@
 /* Text Container - Container for text */
 .home__text-container {
     display: flex;
-    width: 100%;
+    width: 62%;
     justify-content: center;
-    align-items: center;
+    margin-left: 18.5%;
     flex-direction: column;
     white-space: nowrap; /* Prevent words from stacking */
     opacity: 0;
@@ -65,17 +65,27 @@
 .home__text-name {
     position: relative;
     margin: 0 0 .4rem 0;
-    font-family: 'SF Pro Display', sans-serif;
-    font-weight: 800;
-    font-size: clamp(1.3rem, 5.5vw, 3.7rem); 
+    font-family: 'Gilroy', sans-serif;
+    font-weight: bold;
+    font-size: clamp(1rem, 5vw, 3.3rem); 
+    letter-spacing: -1px;
+    line-height: 1.1;
 }
 
 /* Text Alias - User's alias or title */
 .home__text-alias {
     display: flex;
+    flex-direction: column;
     align-items: flex-start;
+    text-wrap: wrap;
+    margin-top: 1.5rem;
     margin-left: 1.5px;
-    font-family: 'SF Pro Display', sans-serif;
-    font-weight: 300;
-    font-size: clamp(1rem, 3.4vw, 2.05rem);
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 500;
+    font-size: clamp(0.6rem, 2vw, 1rem);
+}
+
+.home__text-alias p {
+    margin-top: 0.5rem;
+    line-height: 1;
 }

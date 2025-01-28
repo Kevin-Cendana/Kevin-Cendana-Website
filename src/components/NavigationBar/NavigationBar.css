@@ -10,6 +10,7 @@
 /* Navbar - Main container for the navigation bar */
 .navbar { 
     display: flex;
+    font-family: 'Gilroy', sans-serif;
     height: var(--navbar-height);
     width: 100%;
     text-decoration: none;
@@ -27,7 +28,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    margin-left: 8%;
+    margin-left: 12%;
     font-weight: 500;
     width: 66%;
     font-size: clamp(.65rem, 1.8vw, 0.9rem);
@@ -37,7 +38,7 @@
 .navbar__list-wrapper {
     justify-self: flex-end;
     width: 500px; 
-    margin-right: 8%;
+    margin-right: 12%;
 }
 
 /* The entire navigation bar except the light/dark switch */

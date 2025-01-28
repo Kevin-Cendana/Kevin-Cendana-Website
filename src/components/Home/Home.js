@@ -75,14 +75,15 @@ function Home() {
                 <div className={textContainerClass}>
                     <div className="block-wrapper">
                         {/* Text w/ my name & rotating titles */}
-                        <h1 className="home__text-name">Kevin Cendana</h1>
-                        <p className="home__text-alias">
-                            <ReactRotatingText items={[
-                                'Software Engineer',
-                                'Web Developer',
-                                'Computer Science Student',
-                                ]} />
-                        </p>
+                        <h1 className="home__text-name">Hi, my name is</h1>
+                        <h1 className="home__text-name">Kevin Cendana.</h1>
+                        <h1 className="home__text-name">I'm a programmer.</h1>
+                        <div className="home__text-alias">
+                            <p>Passionate about creating seamless user experiences, </p>
+                            <p>I take pride in myself for writing clean and efficient code.</p>
+                            <p>I strive to make projects functional and visually appealing.</p>
+
+                        </div>
                     </div>
                 </div>
             </div>
