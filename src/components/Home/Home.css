@@ -19,26 +19,31 @@
     bottom: 0;
     left: 57%;
     height: clamp(210px, 53vw, 690px);
-    filter: brightness(100%) drop-shadow(12px 12px 5px rgba(0, 0, 0, 0.5));
+    filter: brightness(100%);
     opacity: 0; /* Hide image until animation */
 }
 .home-image.dark-mode {
     filter: brightness(88%) drop-shadow(12px 12px 5px rgba(0, 0, 0, 0.5));
 }
-
-.hero-background {
-    position: absolute;
-    width: clamp(240px, 46vw, 670px);
-    bottom: 0;
-    right: 0;
-    filter: brightness(93%) hue-rotate(330deg);
-}
-
 /* Animate Home Image - Animation for home image */
 .animate-home-image {
     animation: baseFadeInSlideLeft .85s ease-out forwards;
     opacity: 1; /* Hide image until animation */
 }
+
+.hero-background {
+    position: absolute;
+    width: clamp(240px, 42vw, 600px);
+    bottom: 0;
+    left: 53%;
+    filter: brightness(93%) hue-rotate(330deg);
+    opacity: 0;
+}
+.animate-hero-background {
+    animation: baseFadeInSlideLeft .85s ease-out forwards;
+    opacity: 1; /* Hide image until animation */
+}
+
 
 /* Home Left - Left side of the home page */
 .home__left {
@@ -97,4 +102,8 @@
 .home__text-alias p {
     margin-top: 0.5rem;
     line-height: 1;
+}
+
+.home .contact-me-button {
+    margin-top: 50px;
 }
