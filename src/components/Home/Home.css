@@ -15,6 +15,7 @@
 .home-image {
     display: flex;
     position: absolute;
+    z-index: 1000;
     bottom: 0;
     left: 57%;
     height: clamp(210px, 53vw, 690px);
@@ -23,6 +24,14 @@
 }
 .home-image.dark-mode {
     filter: brightness(88%) drop-shadow(12px 12px 5px rgba(0, 0, 0, 0.5));
+}
+
+.hero-background {
+    position: absolute;
+    width: clamp(240px, 46vw, 670px);
+    bottom: 0;
+    right: 0;
+    filter: brightness(93%) hue-rotate(330deg);
 }
 
 /* Animate Home Image - Animation for home image */

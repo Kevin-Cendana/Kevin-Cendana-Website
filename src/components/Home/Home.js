@@ -16,6 +16,7 @@ import '../../normalize.css';                       // Import normalize.css for 
 // Images
 import lightModeHomeImagePng from '../../images/home_images/kc-no-bg.png';         // Import normal mode image of me
 import lightModeHomeImageWebp from '../../images/home_images/kc-no-bg.webp';        // Import normal mode image of me in webp format
+import heroBackground from '../../images/home_images/kc-hero-bg.png';                     // Import hero background image
 
 function Home() {
     // States: Dark mode, check if Home in view, img based on dark mode, & webp support
@@ -82,9 +83,8 @@ function Home() {
                             <p>Passionate about creating seamless user experiences, </p>
                             <p>I take pride in myself for writing clean and efficient code.</p>
                             <p>I strive to make projects functional and visually appealing.</p>
-
                         </div>
-                    </div>
+                    </div> 
                 </div>
             </div>
             {/* Right side of the Home section w/ drawing of me, darkens on dark mode*/}
@@ -94,6 +94,9 @@ function Home() {
                 className={`home-image ${isHomeInView ? 'animate-home-image' : ''}`} 
                 draggable="false">
             </img>
+            {/* Hero background image */}
+            <img src={heroBackground} alt='Hero Background' className="hero-background"></img>
+            {/* Rotating text animation */}
         </section>
     );
 }
