@@ -18,7 +18,7 @@ const navigation = [
     { name: 'Contact', href: 'contact' },
 ];
 
-// Helper function for smooth scrolling (Consider this as an example, you might need to adjust based on your setup)
+// Helper function for smooth scrolling
 const handleSmoothScroll = (e, href) => {
     e.preventDefault(); // Prevent the default anchor behavior
 

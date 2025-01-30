@@ -8,19 +8,27 @@ const buttonStyle = {
     color: 'white',
     border: 'none',
     borderRadius: '30px',
-    padding: '18px 20px',
+    padding: '18px',
     fontFamily: 'Gilroy',
     fontWeight: '500',
     fontSize: '16px',
+    textDecoration: 'none',
     cursor: 'pointer'
+};
+
+const emailIconStyle = {
+    display: 'inline-block',
+    width: '17px',
+    marginRight: '8px',
+    transform: 'translateY(2.5px)'
 };
 
 const ContactMeButton = () => {
     return (
-        <button style={buttonStyle} className="contact-me-button">
-            <img src={emailIcon} alt="Email Icon" style={{ width: '15px', marginRight: '10px' }} />
+        <a href="#contact" style={buttonStyle} className="contact-me-button">
+            <img src={emailIcon} alt="Email Icon" style={emailIconStyle} />
             CONTACT ME
-        </button>
+        </a>
     );
 };
 

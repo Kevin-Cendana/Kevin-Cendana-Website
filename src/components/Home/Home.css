@@ -104,6 +104,7 @@
     line-height: 1;
 }
 
-.home .contact-me-button {
+.home .row-wrapper {
     margin-top: 50px;
+    gap: clamp(10px, 2vw, 20px);
 }
