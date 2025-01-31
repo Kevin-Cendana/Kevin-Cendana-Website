@@ -74,38 +74,41 @@ function Home() {
     return (
         <section className = "home" id = "home" ref={homeRef}>
             {/* Left side of the Home section w/ my name & rotating titles */}
-            <div className="home__left">
-                <div className={textContainerClass}>
-                    <div className="block-wrapper">
-                        {/* Text w/ my name & rotating titles */}
-                        <h1 className="home__text-name">Hi, my name is</h1>
-                        <h1 className="home__text-name">Kevin Cendana.</h1>
-                        <h1 className="home__text-name">I'm a programmer.</h1>
-                        <div className="home__text-alias">
-                            <p>Passionate about creating seamless user experiences, </p>
-                            <p>I take pride in myself for writing clean and efficient code.</p>
-                            <p>I strive to make projects functional and visually appealing.</p>
+            <div className="home__top">
+                <div className="home__left">
+                    <div className={textContainerClass}>
+                        <div className ="text-wrapper">
+                            <h1 className="home__text-name">Hi, my name is</h1>
+                            <h1 className="home__text-name">Kevin Cendana.</h1>
+                            <h1 className="home__text-name">I'm a programmer.</h1>
+                            <div className="home__text-alias">
+                                <p>Passionate about creating seamless user experiences, </p>
+                                <p>I take pride in myself for writing clean and efficient code.</p>
+                                <p>I strive to make projects functional and visually appealing.</p>
+                            </div>
                         </div>
-                    </div> 
-                    <div class="row-wrapper">
-                        <ContactMeButton />
-                        <ViewResumeButton />
+                        <div class="row-wrapper">
+                            <ContactMeButton />
+                            <ViewResumeButton />
+                        </div>
                     </div>
                 </div>
+                {/* Right side of the Home section w/ drawing of me, darkens on dark mode*/}
+                <img src={imageSrc}
+                    onError={handleError}
+                    alt='Kevin Cendana Drawing'
+                    className={`home-image ${isHomeInView ? 'animate-home-image' : ''}`}
+                    draggable="false">
+                </img>
+                {/* Hero background image */}
+                <img src={heroBackground}
+                    alt='Hero Background'
+                    className={`hero-background ${isHomeInView ? 'animate-hero-background' : ''}`}
+                    draggable="false">
+                </img>
             </div>
-            {/* Right side of the Home section w/ drawing of me, darkens on dark mode*/}
-            <img src={imageSrc} 
-                onError={handleError} 
-                alt='Kevin Cendana Drawing' 
-                className={`home-image ${isHomeInView ? 'animate-home-image' : ''}`} 
-                draggable="false">
-            </img>
-            {/* Hero background image */}
-            <img src={heroBackground} 
-            alt='Hero Background' 
-            className={`hero-background ${isHomeInView ? 'animate-hero-background' : ''}`} 
-            draggable="false"></img>
-            
+            <div className="home__bottom">
+            </div>
         </section>
     );
 }

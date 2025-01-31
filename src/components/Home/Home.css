@@ -6,8 +6,15 @@
 .home {
     position: relative;
     /* margin-top: var(--navbar-height); */
-    height: clamp(240px, 60.5vw, 810px);
+    height: clamp(240px, 70.5vw, 810px);
     overflow: hidden;
+    flex-direction: row;
+}
+.home__top {
+    height: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: row;
 }
 
@@ -47,10 +54,9 @@
 
 /* Home Left - Left side of the home page */
 .home__left {
-    position: absolute;
     display: flex;
     height: 100%;
-    width: 65%;
+    width: 100%;
 }
 
 /* Text Container - Container for text */
@@ -107,4 +113,32 @@
 .home .row-wrapper {
     margin-top: 50px;
     gap: clamp(10px, 2vw, 20px);
+}
+
+@media (max-width: 400px) {
+    .home {
+        flex-direction: column;
+        justify-content: center;
+        height: 650px;
+    }
+    .home__left {
+        height: 100%;
+        width: 100%;
+        align-items: flex-start;
+    }
+    .home__text-container {
+        height: 100%;
+        width: 100%;
+        margin: 100px 0 0 0;
+        align-items: center;
+        justify-content: flex-start;
+    }
+    .home__text-name {
+        letter-spacing: 0;
+    }
+    .home__text-alias {
+        text-wrap: wrap;
+        margin-left: 0;
+        font-size: clamp(0.6rem, 2vw, 1rem);
+    }
 }
