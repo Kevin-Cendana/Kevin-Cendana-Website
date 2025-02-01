@@ -3,15 +3,15 @@ import '../AppColors.css';
 import viewResumeIcon from '../images/shared_images/resume_icon.png';
 
 const buttonStyle = {
-    width: '170px',
+    width: 'clamp(65px, 18vw, 165px)',
     backgroundColor: 'white',
     color: 'black',
     border: 'none',
     borderRadius: '30px',
-    padding: 'clamp(6px, 1.8vw, 18px)',
+    padding: 'clamp(6px, 1.5vw, 12px)',
     fontFamily: 'Gilroy',
-    fontWeight: '500',
-    fontSize: 'clamp(6px, 1.4vw, 16px)',
+    fontWeight: '600',
+    fontSize: 'clamp(6px, 1.4vw, 15.5px)',
     textDecoration: 'none',
     cursor: 'pointer'
 };
@@ -20,7 +20,7 @@ const resumeIconStyle = {
     display: 'inline-block',
     width: 'clamp(7px, 1.7vw, 17px)',
     marginRight: 'clamp(3px, 0.8vw, 8px)',
-    transform: 'translateY(clamp(1px, 0.3vw, 2.5px))'
+    transform: 'translateY(clamp(1px, 0.4vw, 4px))'
 };
 
 const ViewResumeButton = () => {

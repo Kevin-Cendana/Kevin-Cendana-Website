@@ -18,3 +18,6 @@ yarn.lock
 
 # Ignore package-lock.json to avoid conflicts (optional)
 # package-lock.json
+
+# Ignore huge amount of node modules
+node_modules/

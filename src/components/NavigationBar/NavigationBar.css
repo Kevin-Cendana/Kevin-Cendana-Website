@@ -15,8 +15,9 @@
     width: 100%;
     text-decoration: none;
     top: 0;
-    position: absolute;          
-    z-index: 1000;   
+    position: fixed;          
+    z-index: 10000;   
+    margin: 0;
 
 }
 .navbar.dark-mode{
@@ -28,7 +29,8 @@
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    margin-left: 12%;
+    text-wrap: nowrap;
+    margin-left: 9vw;
     font-weight: 500;
     width: 66%;
     font-size: clamp(.65rem, 1.8vw, 0.9rem);

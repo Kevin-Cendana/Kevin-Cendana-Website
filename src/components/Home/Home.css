@@ -6,16 +6,28 @@
 .home {
     position: relative;
     /* margin-top: var(--navbar-height); */
-    height: clamp(240px, 70.5vw, 810px);
+    height: clamp(230px, 70.5vw, 810px);
     overflow: hidden;
-    flex-direction: row;
+    flex-direction: column;
 }
 .home__top {
-    height: 80%;
+    position: relative;
+    height: 85%;
+    width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: row;
+}
+
+.home__bottom {
+    height: 15%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    background: black;
 }
 
 /* Home Image - Image of the user */
@@ -24,8 +36,8 @@
     position: absolute;
     z-index: 1000;
     bottom: 0;
-    left: 57%;
-    height: clamp(210px, 53vw, 690px);
+    left: 59%;
+    height: clamp(164px, 48vw, 550px);
     filter: brightness(100%);
     opacity: 0; /* Hide image until animation */
 }
@@ -40,9 +52,9 @@
 
 .hero-background {
     position: absolute;
-    width: clamp(240px, 42vw, 600px);
+    width: clamp(148px, 38vw, 500px);
     bottom: 0;
-    left: 53%;
+    left: 57%;
     filter: brightness(93%) hue-rotate(330deg);
     opacity: 0;
 }
@@ -55,8 +67,12 @@
 /* Home Left - Left side of the home page */
 .home__left {
     display: flex;
+    align-self: flex-start;
+    justify-content: flex-start;
     height: 100%;
     width: 100%;
+    margin-top: 1rem;
+    margin-left: 9vw;
 }
 
 /* Text Container - Container for text */
@@ -64,7 +80,6 @@
     display: flex;
     width: 62%;
     justify-content: center;
-    margin-left: 18.5%;
     flex-direction: column;
     white-space: nowrap; /* Prevent words from stacking */
     opacity: 0;
@@ -89,7 +104,7 @@
     font-weight: bold;
     font-size: clamp(1rem, 5vw, 3.3rem); 
     letter-spacing: -1px;
-    line-height: 1.1;
+    line-height: clamp(1rem, 5vw, 3.3rem);
 }
 
 /* Text Alias - User's alias or title */
@@ -98,47 +113,67 @@
     flex-direction: column;
     align-items: flex-start;
     text-wrap: wrap;
-    margin-top: 1.5rem;
     margin-left: 1.5px;
     font-family: 'Gilroy', sans-serif;
     font-weight: 500;
-    font-size: clamp(0.6rem, 2vw, 1rem);
+    font-size: clamp(0.6rem, 1.5vw, 1rem);
 }
 
 .home__text-alias p {
     margin-top: 0.5rem;
     line-height: 1;
+    font-size: clamp(0.4rem, 1.45vw, 1rem);
 }
 
-.home .row-wrapper {
-    margin-top: 50px;
+.home__button-wrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-top: clamp(10px, 3.5vw, 30px);
     gap: clamp(10px, 2vw, 20px);
 }
 
-@media (max-width: 400px) {
+@media (max-width: 320px) {
     .home {
         flex-direction: column;
         justify-content: center;
-        height: 650px;
+        height: 388px;
+    }
+    .home__top {
+        height: 100%;
+    }
+    .home__bottom {
+        display: none;
     }
     .home__left {
         height: 100%;
         width: 100%;
         align-items: flex-start;
     }
+    .home-image {
+        left: 25%;
+        width: 120px;
+    }
+    .hero-background {
+        left: 23%;
+        width: 150px;
+    }
     .home__text-container {
         height: 100%;
         width: 100%;
-        margin: 100px 0 0 0;
+        margin-top: 2.2rem;
         align-items: center;
         justify-content: flex-start;
     }
     .home__text-name {
         letter-spacing: 0;
+        font-size: clamp(1.5rem, 8vw, 3rem);
+        line-height: 1;
     }
-    .home__text-alias {
+    .home__text-alias p {
+        width: 100%;
         text-wrap: wrap;
         margin-left: 0;
-        font-size: clamp(0.6rem, 2vw, 1rem);
+        font-size: clamp(0.5rem, 2.7vw, 1rem);
     }
 }

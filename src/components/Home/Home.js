@@ -86,11 +86,12 @@ function Home() {
                                 <p>I take pride in myself for writing clean and efficient code.</p>
                                 <p>I strive to make projects functional and visually appealing.</p>
                             </div>
-                        </div>
-                        <div class="row-wrapper">
+                            <div class="home__button-wrapper">
                             <ContactMeButton />
                             <ViewResumeButton />
                         </div>
+                        </div>
+
                     </div>
                 </div>
                 {/* Right side of the Home section w/ drawing of me, darkens on dark mode*/}
