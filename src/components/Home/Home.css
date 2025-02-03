@@ -6,13 +6,15 @@
 .home {
     position: relative;
     /* margin-top: var(--navbar-height); */
-    height: clamp(230px, 70.5vw, 810px);
+    height: clamp(230px, 74vw, 700px);
     overflow: hidden;
     flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
 }
 .home__top {
     position: relative;
-    height: 85%;
+    height: 100%;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -21,6 +23,7 @@
 }
 
 .home__bottom {
+    bottom: 0px;
     height: 15%;
     width: 100%;
     display: flex;
@@ -35,9 +38,9 @@
     display: flex;
     position: absolute;
     z-index: 1000;
-    bottom: 0;
-    left: 59%;
-    height: clamp(164px, 48vw, 550px);
+    bottom: -70px;
+    left: 56%;
+    height: clamp(284px, 64vw, 570px);
     filter: brightness(100%);
     opacity: 0; /* Hide image until animation */
 }
@@ -52,9 +55,9 @@
 
 .hero-background {
     position: absolute;
-    width: clamp(148px, 38vw, 500px);
+    width: clamp(148px, 48vw, 460px);
     bottom: 0;
-    left: 57%;
+    left: 54%;
     filter: brightness(93%) hue-rotate(330deg);
     opacity: 0;
 }
@@ -102,7 +105,7 @@
     margin: 0 0 .4rem 0;
     font-family: 'Gilroy', sans-serif;
     font-weight: bold;
-    font-size: clamp(1rem, 5vw, 3.3rem); 
+    font-size: clamp(1rem, 4.7vw, 3.3rem); 
     letter-spacing: -1px;
     line-height: clamp(1rem, 5vw, 3.3rem);
 }
@@ -116,13 +119,12 @@
     margin-left: 1.5px;
     font-family: 'Gilroy', sans-serif;
     font-weight: 500;
-    font-size: clamp(0.6rem, 1.5vw, 1rem);
 }
 
 .home__text-alias p {
     margin-top: 0.5rem;
     line-height: 1;
-    font-size: clamp(0.4rem, 1.45vw, 1rem);
+    font-size: clamp(0.4rem, 1.6vw, 1rem);
 }
 
 .home__button-wrapper {
@@ -133,30 +135,32 @@
     gap: clamp(10px, 2vw, 20px);
 }
 
-@media (max-width: 320px) {
+@media (max-width: 412px) {
     .home {
         flex-direction: column;
         justify-content: center;
-        height: 388px;
+        height: 608px;
     }
     .home__top {
         height: 100%;
     }
     .home__bottom {
-        display: none;
+        
     }
     .home__left {
         height: 100%;
         width: 100%;
+        margin-top: 1.7em;
+        margin-left: 0;
         align-items: flex-start;
     }
     .home-image {
         left: 25%;
-        width: 120px;
+        height:320px;
     }
     .hero-background {
-        left: 23%;
-        width: 150px;
+        left: 21%;
+        width: 260px;
     }
     .home__text-container {
         height: 100%;

@@ -3,12 +3,12 @@ import '../AppColors.css';
 import viewResumeIcon from '../images/shared_images/resume_icon.png';
 
 const buttonStyle = {
-    width: 'clamp(65px, 18vw, 165px)',
-    backgroundColor: 'white',
+    width: 'clamp(70px, 20vw, 165px)',
+    backgroundColor: 'transparent',
     color: 'black',
     border: 'none',
     borderRadius: '30px',
-    padding: 'clamp(6px, 1.5vw, 12px)',
+    padding: 'clamp(6px, 1.5vw, 12px) clamp(8px, 3vw, 18px)',
     fontFamily: 'Gilroy',
     fontWeight: '600',
     fontSize: 'clamp(6px, 1.4vw, 15.5px)',

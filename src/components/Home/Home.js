@@ -78,9 +78,12 @@ function Home() {
                 <div className="home__left">
                     <div className={textContainerClass}>
                         <div className ="text-wrapper">
-                            <h1 className="home__text-name">Hi, my name is</h1>
+                            {/* <h1 className="home__text-name">Hi, my name is</h1>
                             <h1 className="home__text-name">Kevin Cendana.</h1>
-                            <h1 className="home__text-name">I'm a programmer.</h1>
+                            <h1 className="home__text-name">I'm a programmer.</h1> */}
+                            <h1 className="home__text-name">Kevin Cendana.</h1>
+                            <h1 className="home__text-name">Software Engineer.</h1>
+                            <h1 className="home__text-name">Web Developer.</h1>
                             <div className="home__text-alias">
                                 <p>Passionate about creating seamless user experiences, </p>
                                 <p>I take pride in myself for writing clean and efficient code.</p>

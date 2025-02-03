@@ -3,12 +3,12 @@ import '../AppColors.css';
 import emailIcon from '../images/shared_images/email_icon.png';
 
 const buttonStyle = {
-    width: 'clamp(65px, 18vw, 165px)',
+    width: 'clamp(70px, 18.5vw, 165px)',
     backgroundColor: 'var(--app-theme-color)',
     color: 'white',
     border: 'none',
     borderRadius: '30px',
-    padding: 'clamp(6px, 1.5vw, 12px)',
+    padding: 'clamp(6px, 1.5vw, 12px) clamp(8px, 3vw, 18px)',
     fontFamily: 'Gilroy',
     fontWeight: '600',
     fontSize: 'clamp(6px, 1.4vw, 15.5px)',
