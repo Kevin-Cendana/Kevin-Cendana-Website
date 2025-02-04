@@ -89,7 +89,7 @@ function Skills() {
     return (
         <section className="skills" id="skills" ref = {skillsRef}>
             {/* Header */}
-            <h1 className={skillsHeaderClass}>What I Do</h1>
+            <h1 className={skillsHeaderClass}>What I do</h1>
             <h2 className={skillsSubheaderClass}>Building vibrant web worlds, one line of code at a time.</h2>
              {/* Skill Categories */}
             <div className="skills-category-container">
