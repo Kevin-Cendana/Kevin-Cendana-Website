@@ -29,7 +29,7 @@ function Skills() {
     const [allImagesLoaded, setAllImagesLoaded] = useState(false); // New state to track if all images are loaded
 
     // Determine if the skills section is in view
-    const isSkillsInView = useInView(skillsRef, { threshold: [0.25], sectionName: 'skills' }) && allImagesLoaded; // Updated to consider allImagesLoaded
+    const isSkillsInView = useInView(skillsRef, { threshold: [0.1], sectionName: 'skills' }) && allImagesLoaded; // Updated to consider allImagesLoaded
 
     // Class Names for dynamic styling
     const skillsHeaderClass = classNames({
@@ -93,51 +93,54 @@ function Skills() {
             <h2 className={skillsSubheaderClass}>Building vibrant web worlds, one line of code at a time.</h2>
              {/* Skill Categories */}
             <div className="skills-category-container">
-                {/* Category - Coding */}
-                <div className={skillsCategoryClassRight}>
-                    <div className="skills-icon-header-wrapper">
-                        <HoverImage defaultImage={codingIcon} hoverImage={getImageSource(codingIconWebP, codingIconGif)} key={isSkillsInView} />
-                        <h2>Coding</h2>
+                <div className="skill-row-1">
+                    {/* Category - Coding */}
+                    <div className={skillsCategoryClassRight}>
+                        <HoverImage defaultImage={codingIcon} hoverImage={getImageSource(codingIconWebP, codingIconGif)} key={isSkillsInView} />        
+                        <div className="skills-icon-header-wrapper">
+                            <h2>Coding</h2>
+                            <p>
+                                Whether it's for my career and my hobby, I love coding.
+                                I've always been drawn to the puzzle solving aspect and the challenges that come with it.
+                            </p>
+                        </div>
                     </div>
-                    <p>
-                        Whether it's for my career and my hobby, I love coding.
-                        I've always been drawn to the puzzle solving aspect and the challenges that come with it.
-                    </p>
-                </div>           
-                {/* Category - Creating */}
-                <div className={skillsCategoryClassRight}>
-                    <div className = "skills-icon-header-wrapper">
+                    {/* Category - Creating */}
+                    <div className={skillsCategoryClassRight}>
                         <HoverImage defaultImage={creatingIcon} hoverImage={getImageSource(creatingIconWebP, creatingIconGif)} key={isSkillsInView} />
+                        <div className = "skills-icon-header-wrapper">
                         <h2>Creating</h2>
-                    </div>  
-                    <p>
-                        Creating something new and seeing it come to life is the most beloved part of coding for me. 
-                        That's why frontend dev and design is my programming field of choice.
-
-                    </p>
-                </div>           
-                {/* Category - Competing */}
-                <div className={skillsCategoryClassLeft} ref={skillsRef}>
-                <div className = "skills-icon-header-wrapper">
+                            <p>
+                                Creating something new and seeing it come to life is the most beloved part of coding for me.
+                                That's why frontend dev and design is my programming field of choice.
+                            </p>
+                        </div>
+                    </div>
+                </div>        
+                <div className="skill-row-2">
+                    {/* Category - Competing */}
+                    <div className={skillsCategoryClassLeft} ref={skillsRef}>
                         <HoverImage defaultImage={competingIcon} hoverImage={getImageSource(competingIconWebP, competingIconGif)} key={isSkillsInView} />
-                        <h2>Competing</h2>
-                    </div>  
-                    <p>
-                        Hackathons are exciting challenges for me to learn new technologies and build something beautiful.
-                        I've been to 5 so far & I'm looking forward to attending more.
-                    </p>
-                </div>      
-                {/* Category - Caring */}
-                <div className={skillsCategoryClassLeft} ref={skillsRef}>
-                <div className = "skills-icon-header-wrapper">
+                        <div className = "skills-icon-header-wrapper">
+                            <h2>Competing</h2>
+                            <p>
+                                I strive to be better than the person I was yesterday.
+                                I also love participating in hackathons; exciting challenges that allow me to learn new technologies and build something beautiful.
+                            </p>
+                        </div>
+                    </div>
+                    {/* Category - Caring */}
+                    <div className={skillsCategoryClassLeft} ref={skillsRef}>
                         <HoverImage defaultImage={caringIcon} hoverImage={getImageSource(caringIconWebP, caringIconGif)} key={isSkillsInView} />
-                        <h2>Caring</h2>
-                    </div>  
-                    <p>
-                        Above all, I love doing what I do, and I strive to make that clear in every project I make. 
-                        I'm always learning and growing, and I'm excited to see where my journey takes me.
-                    </p>
-                </div>      
+                        <div className = "skills-icon-header-wrapper">
+                            <h2>Caring</h2>
+                            <p>
+                                Above all, I love doing what I do, and I strive to make that clear in every project I make.
+                                I'm always learning and growing, and I'm excited to see where my journey takes me.
+                            </p>
+                        </div>
+                    </div>
+                </div>     
             </div>
         </section>
     );

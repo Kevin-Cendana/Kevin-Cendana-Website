@@ -65,7 +65,7 @@ a.dark-mode {color: rgb(1, 98, 210);}
 .about .speechBubble p {color: black;}
 
 /* Skills */
-.skills { border-bottom: clamp(1px, 0.5vw, 3.5px) solid rgb(239, 239, 239); }
+.skills { background-color: var(--app-light-mode-color); border-bottom: clamp(1px, 0.5vw, 3.5px) solid rgb(239, 239, 239); }
 .skills.dark-mode {border-bottom: clamp(1px, 0.5vw, 3.5px) solid rgb(45, 45, 45); }
 
 

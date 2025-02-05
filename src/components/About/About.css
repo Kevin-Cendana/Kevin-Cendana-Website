@@ -6,12 +6,11 @@
 .about {
     display: flex;
     flex-direction: row;
-    height: clamp(260px, 55vw, 650px);
+    height: clamp(280px, 64vw, 650px);
     justify-content: center;
     align-items: center;
     min-height: 260px;
     max-height: 650px;
-    padding-top: clamp(.6rem, 2vw, 1.4rem);
     gap: 2rem;
 }
 
@@ -26,9 +25,10 @@
 /* Subtitle - Subtitle for About section */
 .about__subheader {
     font-family: 'Gilroy', sans-serif;
-    margin: 1rem 0;
+    margin: clamp(0.3rem, 1vw, 1rem) 0;
     font-weight: 600;
     letter-spacing: -2px;
+    font-size: clamp(1.3rem, 4vw, 2.6rem);
 }
 
 /* Left Side - Left part of the about page with picture and title */
@@ -56,8 +56,9 @@
     font-family: 'Gilroy', sans-serif;
     font-weight: 500;
     font-size: clamp(0.6rem, 2vw, 1rem);
-    margin-top: 0.5rem;
+
     display: block;
+    padding-right: clamp(0rem, 5vw, 6rem);
 }
 
 .about__image-container {
