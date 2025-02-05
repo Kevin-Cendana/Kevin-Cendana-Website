@@ -40,7 +40,7 @@
 .navbar__list-wrapper {
     justify-self: flex-end;
     width: 500px; 
-    margin-right: 12%;
+    margin-right: 9vw;
 }
 
 /* The entire navigation bar except the light/dark switch */

@@ -6,7 +6,7 @@
 .about {
     display: flex;
     flex-direction: row;
-    height: clamp(280px, 64vw, 650px);
+    height: clamp(310px, 64vw, 650px);
     justify-content: center;
     align-items: center;
     min-height: 260px;
@@ -103,7 +103,7 @@
 
 @media (max-width: 412px) {
     .about {
-        height: 280px;
+        height: 330px;
         flex-direction: column;
         align-items: center;
         justify-content: center;

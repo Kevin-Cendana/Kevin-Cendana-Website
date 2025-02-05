@@ -65,10 +65,10 @@
 
 /* Icon for each skill */
 .skills img {
-    width: clamp(5rem, 8vw, 6rem);
+    width: clamp(4.5rem, 8.3vw, 6rem);
     aspect-ratio: 1/1;
     object-fit: contain;
-    padding: 1rem;
+    padding: clamp(0.8rem, 1vw, 1rem);
     margin-right: 1rem;
     background-color: rgb(230, 242, 255);
     border-radius: 0.5rem;
@@ -95,3 +95,56 @@
     text-align: justify;
 }
 
+@media (max-width: 762px) {
+    .skills {
+        height: 900px;
+    }
+    .skill-row-1, .skill-row-2 {
+        flex-direction: column;
+        width: 100%;
+    }
+    .skills-category {
+        width: 100%;
+    }
+
+}
+@media (max-width: 520px) {
+    .skills {
+        height: 920px;
+    }
+}
+@media (max-width: 500px) {
+    .skills {
+        height: 960px;
+    }
+}
+@media (max-width: 460px) {
+    .skills {
+        height: 1000px;
+    }
+}
+@media (max-width: 430px) {
+    .skills {
+        height: 970px;
+    }
+}
+@media (max-width: 400px) {
+    .skills {
+        height: 900px;
+    }
+}
+@media (max-width: 360px) {
+    .skills {
+        height: 860px;
+    }
+}
+@media (max-width: 340px) {
+    .skills {
+        height: 900px;
+    }
+}
+@media (max-width: 300px) {
+    .skills {
+        height: 920px;
+    }
+}

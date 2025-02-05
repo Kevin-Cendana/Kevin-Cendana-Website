@@ -5,7 +5,6 @@
 // Libraries & Files
 import React, { useState, useEffect, useRef } from 'react';
 import useInView from '../../hooks/useInView'; 
-import Carousel  from './Carousel.tsx'; // Credit: React Round Carousel by scriptex: https://github.com/scriptex/react-round-carousel
 import { useDarkMode } from '../../shared/DarkModeToggle/DarkModeContext';
 import classNames from 'classnames';
 import './Projects.css';
@@ -145,16 +144,8 @@ const addPaddingToCaptions = (projects) => {
         }))
     }));
 };
-
-// New project data w/ all the styles above like padding. Pass this arg in instead.
-const updatedProjectData = addPaddingToCaptions(project_data);
-
 function Projects() {
-    const [currentDescription, setCurrentDescription] = useState('');
-    const [currentTitle, setCurrentTitle] = useState('');
-    const [currentCaptions, setCurrentCaptions] = useState([]);
     const { isDarkMode } = useDarkMode();
-    const carouselRef = useRef(null);
     const projectsRef = useRef(null);           // Ref to play animations when Projects section is in view
     const isProjectsInView = useInView(projectsRef, { threshold:[0.2], sectionName: "projects"});    //
     const projectsHeader = classNames({
@@ -163,20 +154,9 @@ function Projects() {
         'animate-projects-header': isProjectsInView,
         'dark-mode': isDarkMode,
     });
-    const projectsSubHeader = classNames({
+    const projectsSubheader = classNames({
         'projects__subheader': true,
-        'section-subheader': true,
         'animate-projects-subheader': isProjectsInView,
-        'dark-mode': isDarkMode,
-    });
-    const projectsLeft = classNames({
-        'projects__left': true,
-        'animate-projects-left': isProjectsInView,
-        'dark-mode': isDarkMode,
-    });
-    const projectsRight = classNames({
-        'projects__right': true,
-        'animate-projects-right': isProjectsInView,
         'dark-mode': isDarkMode,
     });
 
@@ -210,125 +190,12 @@ function Projects() {
         });
     }, []); // Empty dependency array means this runs once on component mount
 
-
-    // On mount, update the description and title of the current slide
-    useEffect(() => {
-        // Function: Update the description and title of the current slide
-        const descriptionUpdater = () => {
-            const currentIndex = carouselRef.current?.getSelectedIndex();
-            if (currentIndex !== undefined) {
-                const project = updatedProjectData[currentIndex];
-                setCurrentDescription(project.description);
-                setCurrentTitle(project.title);
-                setCurrentCaptions(Array.isArray(project.captions) ? project.captions : []);
-            }
-        };
-    
-        // Update description initially and on slide change
-        descriptionUpdater();
-        const interval = setInterval(descriptionUpdater, 1000);
-    
-        // Set a timeout to hide the tooltip text after 4 seconds
-        let tooltipTimeout;
-        if (isProjectsInView) {
-            tooltipTimeout = setTimeout(() => {
-                const tooltipElement = document.querySelector('.projects__carousel__tooltip');
-                if (tooltipElement) tooltipElement.classList.add('tooltip-hide');
-            }, 5000);
-        } else {
-            const tooltipElement = document.querySelector('.projects__carousel__tooltip');
-            if (tooltipElement) tooltipElement.classList.remove('tooltip-hide');
-        }
-    
-        // Cleanup function to clear interval and timeout when the component unmounts
-        return () => {
-            clearInterval(interval);
-            if (tooltipTimeout) clearTimeout(tooltipTimeout);
-        };
-    }, [isProjectsInView, currentDescription]); // Dependencies: isProjectsInView and currentDescription
-    
-    
-    // Mapping data to carousel items for Carousel.tsx.
-    // Note: Carousel.tsx shows a video if it exists, otherwise it shows a webp, and finally a png if webp is not supported.
-    const carouselItems = updatedProjectData.map((project, index) => ({
-        image: project.image,           // Fall back to png/mp4 if webp is not supported
-        imageWebp: project.imageWebp,
-        videoWebp: project.videoWebp,
-        videoMp4: project.videoMp4,
-    }));
-
-    // Function: Animate the clicked arrow button
-    document.querySelectorAll('.arrow__button').forEach(arrowButton => {
-        arrowButton.addEventListener('click', function() {
-            // Force restart of the animation
-            this.classList.remove('animation');
-            void this.offsetWidth; // Trigger a reflow to restart the animation
-            this.classList.add('animation');
-
-            // Set a timeout to remove the animation class after 1.4 seconds
-            setTimeout(() => {
-                this.classList.remove('animation');
-            }, 1400); // 1.4 seconds
-        });
-    });
-
-    // Function: Click right arrow button to go to the next slide
-    const goToNextSlide = () => {
-        carouselRef.current?.next(); // Calls the 'next' method of Carousel
-    };
-
-    // Function: Click left arrow button to go to the previous slide
-    const goToPrevSlide = () => {
-        carouselRef.current?.prev(); // Calls the 'prev' method of Carousel
-    };
-
     // Render the Projects section
     return (
         <section className="projects" id="projects" ref = {projectsRef}>
-            {/* Header title */}
-            <h1 className = {projectsHeader}> Project Showcase </h1>
-            <h2 className = {projectsSubHeader}>
-            "The absolute best way to learn is by doing." - Aristotle
-            </h2>
-            <div className = "projects__section">
-                {/* Left side w/ Carousel slideshow  */}
-                <div className = {projectsLeft}>
-                    <div className="projects__carousel-wrapper">
-                        <Carousel ref={carouselRef} items={carouselItems}/>
-                    </div>
-                </div>
-                {/* Right side w/ dynamic project description */}
-                <div className = {projectsRight}>
-                    <div className="projects__text-container">
-                        <div className="row-wrapper">
-                            {/* Title & Captions */}
-                            <h2 className="projects__title">{currentTitle}</h2>
-                            <div className="projects__captions ">
-                            {currentCaptions.map((caption, index) => (
-                                <span key={index} style={caption.style}>
-                                    {caption.text}
-                                </span>
-                            ))}
-                            </div>
-                            {/* Arrow buttons */}
-                            <div className="arrow__buttons__container">
-                                <button className="arrow__button left" onClick={goToPrevSlide} aria-label = "Previous Slide Button"></button>
-                                <button className="arrow__button right" onClick={goToNextSlide} aria-label = "Previous Slide Button"></button>
-                            </div>
-                        </div>
-                        {/* Description */}
-                        <p className="projects__description">{currentDescription}</p>
-                    </div>
-                    {/* Instructions on how to move the Carousel, dissapears after a few sec. */}
-                    <div className='projects__carousel__tooltip'>
-                        <p><i>Scroll with buttons, arrow keys, or swipe.</i></p>
-                        <div className="tooltip__gifs-container">
-                            <div className="tooltip__gif tap-animation"></div>
-                            <div className="tooltip__gif key-animation"></div>
-                            <div className="tooltip__gif swipe-animation"></div>
-                        </div>
-                    </div>
-                </div>
+            <div class="projects__top">
+                <h1 className = {projectsHeader}> MY PORTFOLIO </h1>
+                <h2 className = {projectsSubheader}> Check out my latest work</h2>
             </div>
         </section>
     );
