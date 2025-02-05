@@ -22,7 +22,38 @@
 .projects__subheader {
     font-family: 'Gilroy', sans-serif;
     margin: clamp(0.3rem, 1vw, 1rem) 0;
+    margin-bottom: 2rem;
     font-weight: 600;
     letter-spacing: -2px;
     font-size: clamp(1.3rem, 4vw, 2.6rem);
+}
+
+.projects-carousel {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+
+}
+
+.project-item {
+    text-align: center;
+    margin: 10px;
+}
+
+.project-media {
+    width: 300px; /* Adjust the size as needed */
+    height: auto;
+    
+}
+
+.project-title {
+    font-size: 1.2em;
+    margin: 10px 0 5px;
+}
+
+.project-subtitle {
+    font-size: 1em;
+    color: #666;
 }

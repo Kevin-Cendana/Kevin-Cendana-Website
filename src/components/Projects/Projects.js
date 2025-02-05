@@ -26,20 +26,11 @@ import datafestPng from '../../images/projects_images/slideshow_images/datafest.
 import bullseyePng from '../../images/projects_images/slideshow_images/bullseye.png';
 import sgkcPng from '../../images/projects_images/slideshow_images/sgkc.png';
 
-// Gradient colors for each slide's captions
-const rainbowGradient = 'linear-gradient(45deg, #fcb0a9, #a3c9f8, #a6fcb3, #fff2cc)';
-const blueGradient = 'linear-gradient(45deg, #e6f9ff, #b3ecff, #80dfff, #4dd2ff, #1ac6ff, #0077be, #004f8c)';
-const lightGreenGradient = 'linear-gradient(45deg, #f1f8e9, #dcedc8, #c5e1a5, #aed581, #9ccc65, #8bc34a, #7cb342)';
-const greenGradient = 'linear-gradient(45deg, #00cc00, #77dd77, #b3ffb3)';
-const orangeGradient = 'linear-gradient(45deg, #ffa500, #ffcc80, #ffdbb5)';
-const violetGradient = 'linear-gradient(45deg, #800080, #9400d3, #a020f0)'
-const targetGradient = 'radial-gradient(circle at center, #fde4e4 0%, #fde4e4 20%, #ffffff 20%, #ffffff 40%, #fde4e4 40%, #fde4e4 60%, #ffffff 60%, #ffffff 80%, #fde4e4 80%, #fde4e4 100%)';
-
 // Array of slides to use for slideshow pictures
 const project_data = [
     { 
         // videoWebp: lyriclinkWebp,
-        videoMp4: lyriclinkMp4,
+        mainMedia: lyriclinkMp4,
         title: "Lyric Link",
         description: (
             <span> 
@@ -48,14 +39,11 @@ const project_data = [
                 where people could discuss songs in the current Top 100.
             </span>
         ),
-        captions: [
-            { text: 'Hackathon', style: { background: rainbowGradient}},
-        ]
     },
 
     { 
-        image: attempowherPng,
-        imageWebp: attempowherWebp,
+        backupMedia: attempowherPng,
+        mainMedia: attempowherWebp,
         title: "AT&T Site", 
         description: (
             <span> 
@@ -65,15 +53,12 @@ const project_data = [
                 
         </span>
         ),
-        captions: [
-            { text: 'Hackathon', style: { background: blueGradient, }},
-        ]
 
     },
 
     { 
-        image: datafestPng, 
-        imageWebp: datafestWebp,
+        backupMedia: datafestPng, 
+        mainMedia: datafestWebp,
         title: "Word Cloud",
         description: (
             <span> 
@@ -82,45 +67,30 @@ const project_data = [
             200,000+ questions from clients for their lawyers.
         </span>
         ),
-        captions: [
-            { text: 'Hackathon', style: { background: lightGreenGradient}},
-        ]
     },
 
     { 
         // videoWebp: maplestoryWebp,
-        videoMp4: maplestoryMp4,
+        mainMedia: maplestoryMp4,
         title: "Maplestory",
         description: "To practice Flutter and its widgets, states, and frame animations, I replicated the core gameplay loop of one of my favorite childhood games, Maplestory.",
-        captions: [
-            { text: 'Flutter', style: { background: orangeGradient } },
-        ] 
     },
 
     { 
         // videoWebp: invadedspaceWebp,
-        videoMp4: invadedspaceMp4,
+        mainMedia: invadedspaceMp4,
         title: "Invaded Space",
-        description: "My contribution to a Game Jam session in Video Game Development Club! Our goal was to create a tower defense game, where I was in charge of programming player & enemy units as well as projectile logic.",
-        captions: [
-            { text: 'Unity', style: { color: 'white', background: violetGradient} },
-        ]  
+        description: "My contribution to a Game Jam session in Video Game Development Club! Our goal was to create a tower defense game, where I was in charge of programming player & enemy units as well as projectile logic.", 
     },
     { 
-        image: bullseyePng, 
-        imageWebp: bullseyeWebp,
+        backupMedia: bullseyePng, 
+        mainMedia: bullseyeWebp,
         title: "Bullseye",
         description: "To learn SwiftUI and try mobile app development for the first time, I made a series of apps using Swift UI including a sleep tracker, time converter, tip calculator, Word Scrabble, Guess the Flag, and this Bullseye game.",
-        captions: [
-            { text: 'SwiftUI', style: { background: targetGradient} },
-        ]    
     },
     {
-        image: sgkcPng,
-        imageWebp: sgkcWebp,
-        // title: (
-        // <>Sacramento Glory<br></br>Korean Church</>
-        // ),
+        backupMedia: sgkcPng,
+        mainMedia: sgkcWebp,
         title: "SGKC",
         description: (
             <span>
@@ -128,22 +98,9 @@ const project_data = [
             For my capstone project, I worked with a team of 8 to create a full stack Church website for a local pastor. 
             </span>
         ),
-        captions: [
-            { text: 'Capstone', style: { background: greenGradient} },
-        ]
     }
 ];
 
-// Function to add padding to each caption
-const addPaddingToCaptions = (projects) => {
-    return projects.map(project => ({
-        ...project,
-        captions: project.captions.map(caption => ({
-            ...caption,
-            style: { ...caption.style, borderRadius: '.5rem', margin: '0px 0px', padding: '3.5px 10px' }
-        }))
-    }));
-};
 function Projects() {
     const { isDarkMode } = useDarkMode();
     const projectsRef = useRef(null);           // Ref to play animations when Projects section is in view
@@ -197,6 +154,25 @@ function Projects() {
                 <h1 className = {projectsHeader}> MY PORTFOLIO </h1>
                 <h2 className = {projectsSubheader}> Check out my latest work</h2>
             </div>
+            <div className="projects-carousel">
+
+            {/* Dynamically display each proj based on .mp4 or .webp */}
+            {project_data.map((project, index) => (
+                <div key={index} className="project-item">
+
+                    {project.mainMedia.endsWith('.mp4') ? (
+                        <video controls autoPlay muted loop className="project-media">
+                            <source src={project.mainMedia} type="video/mp4" />
+                            Your browser does not support the video tag.
+                        </video>
+                    ) : (
+                        <img src={project.mainMedia} alt={project.title} className="project-media" />
+                    )}
+                    <h3 className="project-title">{project.title}</h3>
+                    <p className="project-subtitle">Subtitle here</p>
+                </div>
+            ))}
+        </div>
         </section>
     );
     
