@@ -5,7 +5,8 @@
 .projects {
     display: flex;
     flex-direction: column;
-    height: clamp(310px, 64vw, 650px);
+    height: clamp(350px, 70vw, 650px);
+    padding: 0 1rem;
 }
 
 .projects__top {
@@ -22,7 +23,7 @@
 .projects__subheader {
     font-family: 'Gilroy', sans-serif;
     margin: clamp(0.3rem, 1vw, 1rem) 0;
-    margin-bottom: 2rem;
+    margin-bottom: clamp(0.5rem, 4vw, 2rem);
     font-weight: 600;
     letter-spacing: -2px;
     font-size: clamp(1.3rem, 4vw, 2.6rem);
@@ -30,30 +31,99 @@
 
 .projects-carousel {
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
     align-items: center;
-    flex-wrap: wrap;
+    overflow-y: hidden;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+    scrollbar-width:auto;
+    
+}
+/* Scrollbar styles for WebKit browsers (Chrome, Safari) */
+.projects-carousel::-webkit-scrollbar {
+    height: 12px; /* Adjust the height of the scrollbar */
+}
 
+.projects-carousel::-webkit-scrollbar-track {
+    background: #f1f1f1; /* Background of the scrollbar track */
+    border-radius: 10px; /* Rounded edges for the track */
+    -webkit-box-shadow: inset 0 0 6px rgba(156, 156, 156, 0.3);
+}
+
+.projects-carousel::-webkit-scrollbar-thumb {
+    background: #d9d9d9; /* Color of the scrollbar thumb */
+    border-radius: 10px; /* Rounded edges for the thumb */
+    -webkit-box-shadow: inset 0 0 6px rgba(168, 168, 168, 0.5);
+}
+
+.projects-carousel::-webkit-scrollbar-thumb:hover {
+    background: rgb(164, 164, 164)/* Color of the scrollbar thumb on hover */
+}
+/* Hide scrollbar arrows for WebKit browsers */
+.projects-carousel::-webkit-scrollbar-button {
+    display: none;
 }
 
 .project-item {
     text-align: center;
     margin: 10px;
+    scroll-snap-align: start;
+    flex: 0 0 auto;
 }
 
 .project-media {
-    width: 300px; /* Adjust the size as needed */
+    width: 250px; 
     height: auto;
-    
+    border-radius: 0.5rem;
 }
 
 .project-title {
-    font-size: 1.2em;
+    font-size: clamp(1rem, 2vw, 1.5rem);
     margin: 10px 0 5px;
 }
 
 .project-subtitle {
-    font-size: 1em;
+    font-size: clamp(0.8rem, 1.5vw, 1rem);
     color: #666;
+}
+
+@media (max-width: 800px) {
+    .project-media {
+        width: 200px;
+    }
+}
+@media (max-width: 700px) {
+    .project-media {
+        width: 180px;
+    }
+}
+@media (max-width: 620px) {
+    .project-media {
+        width: 160px;
+    }
+}
+@media (max-width: 540px) {
+    .project-media {
+        width: 140px;
+    }
+}
+@media (max-width: 460px) {
+    .projects {
+        height: 2300px;
+    }
+    .projects-carousel {
+        flex-direction: column;
+    }
+    .project-media {
+        width: 250px;
+    }
+}
+@media (max-width: 300px) {
+    .projects {
+        height: 2080px;
+    }
+    .project-media {
+        width: 220px;
+    }
 }

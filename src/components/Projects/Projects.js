@@ -32,6 +32,7 @@ const project_data = [
         // videoWebp: lyriclinkWebp,
         mainMedia: lyriclinkMp4,
         title: "Lyric Link",
+        subtitle: "App Demo",
         description: (
             <span> 
                 <a href="https://sachacks.io" target="_blank" rel="noopener noreferrer">SacHacks 2023:</a>{" "}
@@ -44,7 +45,8 @@ const project_data = [
     { 
         backupMedia: attempowherPng,
         mainMedia: attempowherWebp,
-        title: "AT&T Site", 
+        title: "AT&T: EmpowHer", 
+        subtitle: "Website",
         description: (
             <span> 
             <a href="https://inside.att.jobs/empowherhackathon#subpage/welcome.io" target="_blank" rel="noopener noreferrer">AT&T EmpowHer:</a>{" "}
@@ -59,7 +61,8 @@ const project_data = [
     { 
         backupMedia: datafestPng, 
         mainMedia: datafestWebp,
-        title: "Word Cloud",
+        title: "DataFest",
+        subtitle: "Data Visual",
         description: (
             <span> 
             <a href="https://ww2.amstat.org/education/datafest/" target="_blank" rel="noopener noreferrer">DataFest 2023:</a>{" "}
@@ -72,7 +75,8 @@ const project_data = [
     { 
         // videoWebp: maplestoryWebp,
         mainMedia: maplestoryMp4,
-        title: "Maplestory",
+        title: "Maplestory Remake",
+        subtitle: "App Demo",
         description: "To practice Flutter and its widgets, states, and frame animations, I replicated the core gameplay loop of one of my favorite childhood games, Maplestory.",
     },
 
@@ -80,18 +84,21 @@ const project_data = [
         // videoWebp: invadedspaceWebp,
         mainMedia: invadedspaceMp4,
         title: "Invaded Space",
+        subtitle: "Game Jam",
         description: "My contribution to a Game Jam session in Video Game Development Club! Our goal was to create a tower defense game, where I was in charge of programming player & enemy units as well as projectile logic.", 
     },
     { 
         backupMedia: bullseyePng, 
         mainMedia: bullseyeWebp,
         title: "Bullseye",
+        subtitle: "Mini Apps",
         description: "To learn SwiftUI and try mobile app development for the first time, I made a series of apps using Swift UI including a sleep tracker, time converter, tip calculator, Word Scrabble, Guess the Flag, and this Bullseye game.",
     },
     {
         backupMedia: sgkcPng,
         mainMedia: sgkcWebp,
         title: "SGKC",
+        subtitle: "Capstone Website",
         description: (
             <span>
             <a href="https://sacglorychurch.org" target="_blank" rel="noopener noreferrer">Sacramento Glory Korean Church:</a>{" "}<br></br>
@@ -146,6 +153,49 @@ function Projects() {
             document.head.appendChild(link);
         });
     }, []); // Empty dependency array means this runs once on component mount
+    
+    const carouselRef = useRef(null);
+
+    useEffect(() => {
+        const carousel = carouselRef.current;
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        const handleMouseDown = (e) => {
+            isDown = true;
+            startX = e.pageX - carousel.offsetLeft;
+            scrollLeft = carousel.scrollLeft;
+        };
+
+        const handleMouseLeave = () => {
+            isDown = false;
+        };
+
+        const handleMouseUp = () => {
+            isDown = false;
+        };
+
+        const handleMouseMove = (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - carousel.offsetLeft;
+            const walk = (x - startX) * 3; // Scroll-fast
+            carousel.scrollLeft = scrollLeft - walk;
+        };
+
+        carousel.addEventListener('mousedown', handleMouseDown);
+        carousel.addEventListener('mouseleave', handleMouseLeave);
+        carousel.addEventListener('mouseup', handleMouseUp);
+        carousel.addEventListener('mousemove', handleMouseMove);
+
+        return () => {
+            carousel.removeEventListener('mousedown', handleMouseDown);
+            carousel.removeEventListener('mouseleave', handleMouseLeave);
+            carousel.removeEventListener('mouseup', handleMouseUp);
+            carousel.removeEventListener('mousemove', handleMouseMove);
+        };
+    }, []);
 
     // Render the Projects section
     return (
@@ -154,25 +204,22 @@ function Projects() {
                 <h1 className = {projectsHeader}> MY PORTFOLIO </h1>
                 <h2 className = {projectsSubheader}> Check out my latest work</h2>
             </div>
-            <div className="projects-carousel">
-
-            {/* Dynamically display each proj based on .mp4 or .webp */}
-            {project_data.map((project, index) => (
-                <div key={index} className="project-item">
-
-                    {project.mainMedia.endsWith('.mp4') ? (
-                        <video controls autoPlay muted loop className="project-media">
-                            <source src={project.mainMedia} type="video/mp4" />
-                            Your browser does not support the video tag.
-                        </video>
-                    ) : (
-                        <img src={project.mainMedia} alt={project.title} className="project-media" />
-                    )}
-                    <h3 className="project-title">{project.title}</h3>
-                    <p className="project-subtitle">Subtitle here</p>
-                </div>
-            ))}
-        </div>
+            <div className="projects-carousel" ref={carouselRef}>
+                {project_data.map((project, index) => (
+                    <div key={index} className="project-item">
+                        {project.mainMedia.endsWith('.mp4') ? (
+                            <video autoPlay muted loop className="project-media">
+                                <source src={project.mainMedia} type="video/mp4" />
+                                Your browser does not support the video tag.
+                            </video>
+                        ) : (
+                            <img src={project.mainMedia} alt={project.title} className="project-media" draggable='false' />
+                        )}
+                        <h3 className="project-title">{project.title}</h3>
+                        <p className="project-subtitle">{project.subtitle}</p>
+                    </div>
+                ))}
+            </div>
         </section>
     );
     
