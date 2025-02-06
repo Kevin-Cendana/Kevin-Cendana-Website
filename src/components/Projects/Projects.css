@@ -6,7 +6,8 @@
     display: flex;
     flex-direction: column;
     height: clamp(350px, 70vw, 650px);
-    padding: 0 1rem;
+    padding: 1rem;
+    background-color: white;
 }
 
 .projects__top {
@@ -66,20 +67,20 @@
 }
 
 .project-item {
-    text-align: center;
+
     margin: 10px;
     scroll-snap-align: start;
     flex: 0 0 auto;
 }
 
 .project-media {
-    width: 250px; 
+    width: 300px; 
     height: auto;
     border-radius: 0.5rem;
 }
 
 .project-title {
-    font-size: clamp(1rem, 2vw, 1.5rem);
+    font-size: clamp(0.8rem, 1.8vw, 1.1rem);
     margin: 10px 0 5px;
 }
 
@@ -88,29 +89,41 @@
     color: #666;
 }
 
+.project-item-bottom {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.projects .github-icon {
+    display: flex;
+    width: clamp(20px, 3vw, 30px);
+    margin: 0 10px 0 10px;
+}
+
 @media (max-width: 800px) {
     .project-media {
-        width: 200px;
+        width: 220px;
     }
 }
 @media (max-width: 700px) {
     .project-media {
-        width: 180px;
+        width: 200px;
     }
 }
 @media (max-width: 620px) {
     .project-media {
-        width: 160px;
+        width: 180px;
     }
 }
 @media (max-width: 540px) {
     .project-media {
-        width: 140px;
+        width: 160px;
     }
 }
 @media (max-width: 460px) {
     .projects {
-        height: 2300px;
+        height: 2330px;
     }
     .projects-carousel {
         flex-direction: column;

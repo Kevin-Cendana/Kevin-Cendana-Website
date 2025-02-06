@@ -3,11 +3,12 @@
 //--------------------------------------------------------------------------------------//
 
 // Libraries & Files
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import useInView from '../../hooks/useInView'; 
 import { useDarkMode } from '../../shared/DarkModeToggle/DarkModeContext';
 import classNames from 'classnames';
 import './Projects.css';
+import githubIcon from '../../images/navigation_bar_images/github_icon.png';
 
 // Slideshow images & video in webp format - Optimized for faster loading
 import attempowherWebp from '../../images/projects_images/slideshow_images/att_empowher.webp';
@@ -33,6 +34,7 @@ const project_data = [
         mainMedia: lyriclinkMp4,
         title: "Lyric Link",
         subtitle: "App Demo",
+        githubLink: "https://github.com/Kevin-Cendana/Hackathon-SacHacks-2023",
         description: (
             <span> 
                 <a href="https://sachacks.io" target="_blank" rel="noopener noreferrer">SacHacks 2023:</a>{" "}
@@ -45,8 +47,9 @@ const project_data = [
     { 
         backupMedia: attempowherPng,
         mainMedia: attempowherWebp,
-        title: "AT&T: EmpowHer", 
+        title: "AT&T 5G", 
         subtitle: "Website",
+        githubLink: "https://github.com/Kevin-Cendana/Hackathon-ATT-EmpowHer",
         description: (
             <span> 
             <a href="https://inside.att.jobs/empowherhackathon#subpage/welcome.io" target="_blank" rel="noopener noreferrer">AT&T EmpowHer:</a>{" "}
@@ -57,26 +60,28 @@ const project_data = [
         ),
 
     },
-
-    { 
-        backupMedia: datafestPng, 
-        mainMedia: datafestWebp,
-        title: "DataFest",
-        subtitle: "Data Visual",
+    {
+        backupMedia: sgkcPng,
+        mainMedia: sgkcWebp,
+        title: "SGK Church",
+        subtitle: "Website",
+        githubLink: "https://github.com/Kevin-Cendana/Sacramento-Glory-Korean-Church-Website",
         description: (
-            <span> 
-            <a href="https://ww2.amstat.org/education/datafest/" target="_blank" rel="noopener noreferrer">DataFest 2023:</a>{" "}
-            A competition where we made data visualizations based off of a huge dataset with 
-            200,000+ questions from clients for their lawyers.
-        </span>
+            <span>
+            <a href="https://sacglorychurch.org" target="_blank" rel="noopener noreferrer">Sacramento Glory Korean Church:</a>{" "}<br></br>
+            For my capstone project, I worked with a team of 8 to create a full stack Church website for a local pastor. 
+            </span>
         ),
     },
+
+
 
     { 
         // videoWebp: maplestoryWebp,
         mainMedia: maplestoryMp4,
-        title: "Maplestory Remake",
+        title: "Maplestory",
         subtitle: "App Demo",
+        githubLink: "https://github.com/Kevin-Cendana/Byte-Sized-Projects",
         description: "To practice Flutter and its widgets, states, and frame animations, I replicated the core gameplay loop of one of my favorite childhood games, Maplestory.",
     },
 
@@ -85,27 +90,31 @@ const project_data = [
         mainMedia: invadedspaceMp4,
         title: "Invaded Space",
         subtitle: "Game Jam",
+        githubLink: "https://github.com/Kevin-Cendana/Byte-Sized-Projects",
         description: "My contribution to a Game Jam session in Video Game Development Club! Our goal was to create a tower defense game, where I was in charge of programming player & enemy units as well as projectile logic.", 
+    },
+    { 
+        backupMedia: datafestPng, 
+        mainMedia: datafestWebp,
+        title: "DataFest",
+        subtitle: "Big Data",
+        githubLink: "https://github.com/Kevin-Cendana/Hackathon-DataFest-2023",
+        description: (
+            <span> 
+            <a href="https://ww2.amstat.org/education/datafest/" target="_blank" rel="noopener noreferrer">DataFest 2023:</a>{" "}
+            A competition where we made data visualizations based off of a huge dataset with 
+            200,000+ questions from clients for their lawyers.
+        </span>
+        ),
     },
     { 
         backupMedia: bullseyePng, 
         mainMedia: bullseyeWebp,
         title: "Bullseye",
         subtitle: "Mini Apps",
+        githubLink: "https://github.com/Kevin-Cendana/Byte-Sized-Projects",
         description: "To learn SwiftUI and try mobile app development for the first time, I made a series of apps using Swift UI including a sleep tracker, time converter, tip calculator, Word Scrabble, Guess the Flag, and this Bullseye game.",
     },
-    {
-        backupMedia: sgkcPng,
-        mainMedia: sgkcWebp,
-        title: "SGKC",
-        subtitle: "Capstone Website",
-        description: (
-            <span>
-            <a href="https://sacglorychurch.org" target="_blank" rel="noopener noreferrer">Sacramento Glory Korean Church:</a>{" "}<br></br>
-            For my capstone project, I worked with a team of 8 to create a full stack Church website for a local pastor. 
-            </span>
-        ),
-    }
 ];
 
 function Projects() {
@@ -215,8 +224,15 @@ function Projects() {
                         ) : (
                             <img src={project.mainMedia} alt={project.title} className="project-media" draggable='false' />
                         )}
-                        <h3 className="project-title">{project.title}</h3>
-                        <p className="project-subtitle">{project.subtitle}</p>
+                        <div className="project-item-bottom">
+                            <a href={project.githubLink} target="_blank" rel="noopener noreferrer">
+                                <img src={githubIcon} alt="GitHub" className="github-icon" />
+                            </a>
+                            <div className="project-text">
+                                <h3 className="project-title">{project.title}</h3>
+                                <p className="project-subtitle">{project.subtitle}</p>
+                            </div>
+                        </div>
                     </div>
                 ))}
             </div>
