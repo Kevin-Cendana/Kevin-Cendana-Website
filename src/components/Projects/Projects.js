@@ -9,6 +9,7 @@ import { useDarkMode } from '../../shared/DarkModeToggle/DarkModeContext';
 import classNames from 'classnames';
 import './Projects.css';
 import githubIcon from '../../images/navigation_bar_images/github_icon.png';
+import GitHubButton from '../../shared/GitHubButton';
 
 // Slideshow images & video in webp format - Optimized for faster loading
 import attempowherWebp from '../../images/projects_images/slideshow_images/att_empowher.webp';
@@ -210,8 +211,11 @@ function Projects() {
     return (
         <section className="projects" id="projects" ref = {projectsRef}>
             <div class="projects__top">
-                <h1 className = {projectsHeader}> MY PORTFOLIO </h1>
-                <h2 className = {projectsSubheader}> Check out my latest work</h2>
+                <div class="col-wrapper">
+                    <h1 className = {projectsHeader}> MY PORTFOLIO </h1>
+                    <h2 className = {projectsSubheader}> Check out my latest work</h2>
+                </div>
+                <GitHubButton />
             </div>
             <div className="projects-carousel" ref={carouselRef}>
                 {project_data.map((project, index) => (

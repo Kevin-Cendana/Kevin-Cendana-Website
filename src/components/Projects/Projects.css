@@ -5,12 +5,15 @@
 .projects {
     display: flex;
     flex-direction: column;
-    height: clamp(350px, 70vw, 650px);
+    height: clamp(380px, 72vw, 650px);
     padding: 1rem;
     background-color: white;
 }
 
 .projects__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     padding: 0 9vw;
 }
 
@@ -67,7 +70,6 @@
 }
 
 .project-item {
-
     margin: 10px;
     scroll-snap-align: start;
     flex: 0 0 auto;
@@ -80,12 +82,12 @@
 }
 
 .project-title {
-    font-size: clamp(0.8rem, 1.8vw, 1.1rem);
+    font-size: clamp(0.9rem, 1.8vw, 1.1rem);
     margin: 10px 0 5px;
 }
 
 .project-subtitle {
-    font-size: clamp(0.8rem, 1.5vw, 1rem);
+    font-size: clamp(0.9rem, 1.5vw, 1rem);
     color: #666;
 }
 
@@ -101,6 +103,9 @@
     margin: 0 10px 0 10px;
 }
 
+.projects .github-button {
+    margin-top: 15px;
+}
 @media (max-width: 800px) {
     .project-media {
         width: 220px;
@@ -128,8 +133,14 @@
     .projects-carousel {
         flex-direction: column;
     }
+    .project-item-bottom {
+        margin-left: 50px;
+    }
     .project-media {
         width: 250px;
+    }
+    .projects .github-button {
+        display: none !important;
     }
 }
 @media (max-width: 300px) {

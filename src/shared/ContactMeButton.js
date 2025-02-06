@@ -5,6 +5,7 @@ import emailIcon from '../images/shared_images/email_icon.png';
 const buttonStyle = {
     width: 'clamp(70px, 18.5vw, 165px)',
     backgroundColor: 'var(--app-theme-color)',
+    boxShadow: '3px 4px 4px rgba(7, 57, 195, 0.25)',
     color: 'white',
     border: 'none',
     borderRadius: '30px',
