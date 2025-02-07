@@ -5,29 +5,15 @@
 
 /* Resume Contact Section */
 .contact {
-    height: 530px;
+    height: clamp(530px, 50vw, 590px);
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    padding: clamp(0.5rem, 1vw, 1.5rem);
-}
-
-/* Header for both Resume & Contact */
-.contact h1 {
-    display: flex;
-    align-self: center;
-    font-size: clamp(2.05rem, 5vw, 2.3rem);
-}
-
-/* Contact Main Content Wrapper - Wrapper for all of the Contact seciton except the header*/
-.contact-main-content-wrapper {
+    padding: 6vw 9vw;
     display: flex;
     flex-direction: row;
-    align-self: center;
-    height: 70%;
-    width: 70%;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: var(--app-theme-color);
+    gap: 10vw;
 }
 
 /* Contact Header - Title for the Contact section*/
@@ -47,12 +33,26 @@
 
 /* Contact Left - Container for Contact form*/
 .contact-left {
-    padding: 0 .8rem 0 1rem;
-    margin: 0;
-    opacity: 0;
-    display: flex;
-    justify-content: flex-end;
-    width: 65%;
+    font-family: "Gilroy", sans-serif;
+    color: white;
+    width: 37%;
+}
+
+.contact-left h1 {
+    color: white;
+    font-family: "Gilroy", sans-serif;
+    font-weight: 600;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+.contact-left h2 {
+    color: white;
+    font-family: "Gilroy", sans-serif;
+    font-weight: 400;
+    text-align: left;
+    border-bottom: 1px solid white;
+    padding: 1rem 0;
+    font-size: clamp(0.8rem, 3vw, 1rem);
 }
     /* Animation plays when Contact is in view, slides and fades into view*/
     .animate-contact-left {
@@ -60,13 +60,68 @@
         opacity: 1;
     }
 
+.contact-info-container {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 1rem;
+    align-items: center;
+}
+
+.contact-icon {
+    filter: hue-rotate(-50deg);
+    background-color: white;
+    border-radius: 50%;
+    overflow: visible;
+    padding: 10px;
+    width: 40px;
+    height: 40px;
+
+}
+
+.contact-info-text {
+    background-color: transparent;
+    margin-left: 1rem;
+}
+
+.contact-info-text h3 {
+    color: white;
+    font-family: "Gilroy", sans-serif;
+    font-size: clamp(0.6rem, 2vw, 1rem);
+}
+
+/* Contact Right - Container for the contact information */
+.contact-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    opacity: 0;
+    height: 425px;
+    width: 50%;
+    background-color: white;
+    padding: 2.5rem 1.8rem;
+    border-radius: 1rem;
+}
+    /* Animation plays when Contact is in view, slides and fades into view*/
+    .animate-contact-right {
+        animation: baseFadeInSlideLeft 0.75s ease forwards;
+        opacity: 1;
+    }
+
+.contact-right h3 {
+    font-family: "Gilroy", sans-serif;
+    font-weight: 500;
+    color: black;
+    font-size: 16px;
+}
+
 /* Contact Form - Container for the form */
 .contact-form {
     display: flex;
     flex-direction: column;
     height: 100%;
     width: 100%;
-    min-width: 400px;
+
     max-width: 560px;
 }
 
@@ -89,22 +144,27 @@ input {
 /* Name & Email, Message, Submit Button */
 input, textarea,
 .contact-submit-button {
-    width: 100%;
+
     padding: .5rem;
 }
 
 /* Contact Form Message - Text Area for the user to input a message to send */
 .contact-form-message {
-    height: 178.5px; 
+    min-height: 120px; 
+    margin-top: 0.5rem; 
     resize: none;
 }
 
 /* Contact Form Send Button */
 .contact-submit-button {
-    border-left: 1px solid black; 
-    border-right: 1px solid black; 
-    border-bottom: 1px solid black;
-    border-top: none;
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 500;
+    margin-top: 1rem;
+    background-color: var(--app-theme-color);
+    border: none;
+    border-radius: 1rem;
+    color: white;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.25);
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
@@ -148,22 +208,6 @@ input, textarea,
     z-index: 1000; 
 }
 
-
-/* Contact Right - Container for the contact information */
-.contact-right {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: flex-start;
-    opacity: 0;
-    width: 35%;
-}
-    /* Animation plays when Contact is in view, slides and fades into view*/
-    .animate-contact-right {
-        animation: baseFadeInSlideLeft 0.75s ease forwards;
-        opacity: 1;
-    }
-
 .contact-info {
     display: flex;
     flex-direction: column;
@@ -173,189 +217,38 @@ input, textarea,
     transform: translateY(10%); /* Move down, to account for 3d pfp moving up */
 }
 
-.contact-info-text {
-    padding: 1rem;
-    border-radius: 8px;
-    align-items: space-between;
-}
-
-.contact-name {
-    font-size: 1.48rem;
-    margin-bottom: 0.4rem;
-}
-
-.contact-city {
-    font-size: 1.36rem;
-    margin-bottom: 0.5rem;
-}
-
-.contact-email {
-    font-size: 0.8rem;
-    letter-spacing: -0.6px;
-}
-
-/* Contact Profile Picture Container */
-.contact-profile-picture-container {
-    display: flex;
-    aspect-ratio: 1/1;
-    width: clamp(100px, 15vw, 130px);
-    align-self: center;
-    align-items: flex-end; /* Aligns items to the bottom */
-    justify-content: center;
-    border-radius: 50%;
-    /* box-shadow: 1.75px 1px 1px 1px rgb(220, 220, 220); */
-    border: 0px solid black;
-    overflow: visible; 
-    margin-bottom: 1rem;
-    position: relative; 
-    transform: translateX(-2%); /* Move outer circle a bit left, since the inner is a bit left */
-}
-
-/* Inner Container */
-.contact-profile-picture-inner-container {
-    position: absolute;
-    top: -26%; 
-    left: -20%;
-    right: 0;
-    border-radius: 50%;
-    height: 127%;
-    overflow: hidden; 
-}
-
-/* Profile Picture Styling */
-.contact-profile-picture {
-    width: 113%;
-    position: relative; /* Position relative to its parent (inner container) */
-    bottom: 0; /* Aligns the image at the bottom of the inner container */
-    transform: translate(-3.5%, 2%); /* Move the image a bit left */
-}
-
-
-/* Small/Big Screens only: Hide content based on screen size. */ 
-.small-screens-only {
-    display: none;
-}
-
-/* Wide Screens: Increase height of contact form */
-@media (min-width: 1250px) {
+@media (max-width: 700px) {
     .contact {
-        height: 595px;
-    }   
-}
-
-/* Small Screens Only: Move contact info based on screen size. */
-@media (max-width: 800px) {
-    .big-screens-only {
-        display: none;
-    }
-    .small-screens-only {
-        display: flex;
-    }
-    .contact {
-        height: clamp(500px, 130vw, 690px);
-    }
-    .contact-subheader {
-        margin-bottom: 1rem;
-    }
-    .contact-main-content-wrapper {
         flex-direction: column;
+        height: 890px;
+        gap: 0;
+    }
+
+    .contact-left {
+        width: 100%;
+        height: 360px;
+    }
+
+    .contact-info-container h3 {
+        font-size: 1rem;
+    }
+
+    .contact-right {
+        width: 100%;
+    }
+
+    .contact-info {
         width: 100%;
         height: 100%;
+        padding: 0;
     }
-    .contact-left, .contact-right {
-        padding: 0 3rem;
+}
+@media (max-width: 400px) {
+    .contact {
+        height: 840px;
     }
     .contact-left {
+        width: 100%;
         height: 320px;
-        width: 100%;
-    }
-    .contact-form {
-        min-width: 100%;
-        max-width: 100%;
-    }
-    .contact-right {
-        margin-top: 10px;
-        margin-bottom: 1rem;
-        height: clamp(110px, 35vw, 190px);
-        width: 100%;
-    }
-    .contact-profile-picture-container {
-        width: 60%;
-        min-width: 80px;
-        max-width: 140px;
-        margin-right: clamp(0px, 2vw, 10px);
-    }
-    .contact-profile-picture-inner-container {
-        top: -13%; 
-        height: 113.5%;
-    }
-    .contact-profile-picture {
-        transform:translateX(6.5%);
-    }
-    .contact-profile-picture {
-        width: 100%;
-    }
-    .contact-info-text {
-        align-self: center;
-    }
-    .contact-info {
-        flex-direction: row;
-        justify-content: center;
-        width: 100%;
-        border-radius: 0px;
-    }
-    .contact-name, .contact-city {
-        font-size: clamp(1rem, 3.3vw, 1.4rem);
-    }
-    .contact-city {
-        margin-bottom: 0.4rem;
-    }
-    .contact-email {
-        font-size: clamp(0.7rem, 2.5vw, 0.9rem);
-    }
-    
-}
-
-@media (max-width: 550px) {
-    .contact {
-        height: 640px;
-    }
-    .contact-info {
-        height: 140px;
-    }
-    .contact-profile-picture-container {
-        width: 100px;
-    }
-    .contact-profile-picture-inner-container {
-        top: -10%; 
-        left: 0;
-        height: 110%;
-    }
-    .contact-left, .contact-right {
-        padding: 0 1.5rem;
-    }
-    .contact-right {
-        height: 130px;
-    }
-    .contact-city {
-        margin-bottom: 0.25rem;
-    }
-}
-@media (max-width: 550px) { .contact { height: 600px; } }
-@media (max-width: 450px) { .contact { height: 580px; } }
-@media (max-width: 400px) { 
-    .contact { 
-        height: 520px; 
-    } 
-    .contact-right {
-        height: 110px;
-    }
-    .contact-form-message {
-        height: 130px;
-    }
-    .contact-profile-picture-inner-container {
-        top: -5%; 
-        left: 7%;
-        height: 100%;
     }
 }
