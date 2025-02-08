@@ -5,7 +5,6 @@
 
 // Libraries & Files
 import useInView from '../../hooks/useInView';      // Import custom hook to check if an element is in the viewport
-import ReactRotatingText from './RotatingText';     // Import rotating text component
 import React, { useRef, useState, useEffect } from 'react';    // Import React features
 import classNames from 'classnames';                // Import classnames for dynamic className assignment
 import { useDarkMode } from '../../shared/DarkModeToggle/DarkModeContext'; // Import custom hook for dark mode state
