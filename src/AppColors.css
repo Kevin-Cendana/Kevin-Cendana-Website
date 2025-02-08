@@ -119,4 +119,4 @@ a.dark-mode {color: rgb(1, 98, 210);}
 .popup-background { background-color: rgba(0, 0, 0, 0.5); }
 
 /* Footer */
-footer { color: white !important; background-color: black; }
+footer { color: black !important; background-color: rgb(255, 255, 255); }
