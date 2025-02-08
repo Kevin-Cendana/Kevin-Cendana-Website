@@ -100,7 +100,7 @@ return (
                 <h3>Message</h3>
                 <textarea id="message" name="message" className="contact-form-message" placeholder="" required></textarea>
                 <div className="h-captcha" data-captcha="true"></div>
-                <button className="contact-submit-button" type="submit">SEND MESSAGE</button>
+                <button className="contact-submit-button" type="submit">SEND MESSAGE<img class = "send-arrow" src={arrowIcon} alt='send-icon'></img></button>
                 </form>
                 <script src="https://web3forms.com/client/script.js" async defer></script>
             </div>
