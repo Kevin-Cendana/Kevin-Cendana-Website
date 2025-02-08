@@ -5,26 +5,26 @@
 // Libraries & Files
 import React, { useRef, useEffect, useState } from 'react'; // Import React and the useRef hook
 import classNames from 'classnames';   // Import classNames for conditional class naming
-import TypingDots from './TypingDots'; // Import TypingDots component for typing animation
 import useInView from '../../hooks/useInView'; // Custom hook to check if an element is in view
 import { useDarkMode } from '../../shared/DarkModeToggle/DarkModeContext'; // Context hook for dark mode
 import './About.css';         // Import CSS for this About component
 import '../../App.css';       // Import general App CSS
-import './TypingDots.css';    // Import CSS for TypingDots component
+import '../../AppColors.css';
 import '../../normalize.css'; // Import CSS to normalize styles across browsers
-import AboutPolaroidImageWebP from '../../images/about_images/kevin-smiling.webp'; // Import polaroid image
-import AboutPolaroidImagePNG from '../../images/about_images/kevin-smiling.png'; // Import polaroid image
+import AboutPolaroidImageWebP from '../../images/about_images/kevin-art.webp'; // Import polaroid image
+import AboutPolaroidImagePNG from '../../images/about_images/kevin-art.png'; // Import polaroid image
+import ContactMeButton from '../../shared/ContactMeButton';
+import ViewResumeButton from '../../shared/ViewResumeButton';
 
 // About Section Component
 function About() {
     const { isDarkMode } = useDarkMode();       // Retrieve dark mode state
     const aboutRef = useRef(null);              // Reference for the about section
-    const aboutSpeechBubblesRef = useRef(null); // Reference for speech bubbles section
     const [supportsWebP, setSupportsWebP] = useState(false); // Check if browser supports WebP
     const [imageLoaded, setImageLoaded] = useState(false);   // Check if image is loaded
 
     // Check if different parts of the about section are in view
-    const startAnimationAbout = useInView(aboutRef, {threshold: [0.31], sectionName: 'about'}) && imageLoaded;
+    const startAnimationAbout = useInView(aboutRef, {threshold: [0.25], sectionName: 'about'}) && imageLoaded;
 
     // CSS Class Names for the About section
     const headerClass = classNames({
@@ -34,15 +34,19 @@ function About() {
         'dark-mode': isDarkMode              // Apply dark mode styling if enabled
     });
     const subheaderClass = classNames({
-        'about__subheader': true,            // Base class for the header
-        'animate-header': startAnimationAbout,     // Add animation if about section is in view
-        'section-subheader': true,           // Base class for the section header
+        'about__subheader': true,             // Base class for the subheader
+        'animate-subheader': startAnimationAbout,  // Add animation if about section is in view
         'dark-mode': isDarkMode              // Apply dark mode styling if enabled
     });
     const aboutLeftClass = classNames({
         'about__left': true,               // Base class for the polaroid wrapper
         'animate-about__left': startAnimationAbout,  // Add animation if polaroid is in view
         'dark-mode': isDarkMode                        // Apply dark mode styling if enabled
+    });
+    const aboutRightClass = classNames({
+        'about__right': true,              // Base class for the text wrapper
+        'animate-about__right': startAnimationAbout, // Add animation if text is in view
+        'dark-mode': isDarkMode             // Apply dark mode styling if enabled
     });
     
     // On mount: Detect WebP support
@@ -78,28 +82,24 @@ function About() {
     // Render the About section
     return (
         <section className="about" id = "about" ref={aboutRef}>
-            {/* Header */}
-            <h1 className={headerClass}>About Me</h1>
-            <h2 className={subheaderClass}>
-                "There are no strangers here; only friends you haven't yet met."
-                <span className="quote-author"> - William Butler</span>
-            </h2>
+            
             {/* About Content */}
-            <div className="about__wrapper">
                 {/* Left Side with polaroid image */}
-                <div className={aboutLeftClass} ref={aboutSpeechBubblesRef}>
+                <div className={aboutLeftClass}>
                     <div className="about__image-container">
                         <img src={supportsWebP ? AboutPolaroidImageWebP : AboutPolaroidImagePNG} alt="Kevin" draggable="false"/>
                     </div>
                 </div>
                 {/* Right Side with Typing Dots Animation */}
-                <div className="about__right">
-                    <div className="about__typing-dots-wrapper" ref={aboutSpeechBubblesRef}>
-                        {/* TypingDots component: Animates speech bubbles popping up in sequence */}
-                        <TypingDots startAnimation={startAnimationAbout}/>
+                <div className={aboutRightClass}>
+                    <h1 className={headerClass}>ABOUT ME</h1>
+                    <h2 className={subheaderClass}>Hello! My name is Kevin.</h2>
+                    <p>I'm a software engineer that graduated from California State University, Sacramento. I'm currently working as a front-end developer, as I love the visual aspect of seeing projects come to life. In my free time, I still love to code projects for fun, as well as play games and grab boba with friends. Thank you for visiting my website!</p>
+                    <div class="button-wrapper">
+                        <ContactMeButton />
+                        <ViewResumeButton />
                     </div>
                 </div>
-            </div>
         </section>
     );
 }

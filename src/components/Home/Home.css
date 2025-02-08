@@ -5,46 +5,85 @@
 /* Home - Main container */
 .home {
     position: relative;
-    margin-top: var(--navbar-height);
-    height: clamp(240px, 60.5vw, 810px);
+    /* margin-top: var(--navbar-height); */
+    height: clamp(230px, 74vw, 700px);
     overflow: hidden;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-end;
+}
+.home__top {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     flex-direction: row;
+    overflow: hidden;   
+}
+
+.home__bottom {
+    bottom: 0px;
+    height: 15%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    background: black;
 }
 
 /* Home Image - Image of the user */
 .home-image {
     display: flex;
     position: absolute;
-    bottom: 0;
-    left: 59%;
-    height: clamp(210px, 53vw, 690px);
-    filter: brightness(100%) drop-shadow(12px 12px 5px rgba(0, 0, 0, 0.5));
+    z-index: 1000;
+    bottom: -70px;
+    left: 56%;
+    height: clamp(284px, 64vw, 570px);
+    filter: brightness(100%);
     opacity: 0; /* Hide image until animation */
 }
 .home-image.dark-mode {
     filter: brightness(88%) drop-shadow(12px 12px 5px rgba(0, 0, 0, 0.5));
 }
-
 /* Animate Home Image - Animation for home image */
 .animate-home-image {
     animation: baseFadeInSlideLeft .85s ease-out forwards;
     opacity: 1; /* Hide image until animation */
 }
 
+.hero-background {
+    position: absolute;
+    width: clamp(148px, 48vw, 460px);
+    bottom: 0;
+    left: 54%;
+    filter: brightness(93%) hue-rotate(330deg);
+    opacity: 0;
+}
+.animate-hero-background {
+    animation: baseFadeInSlideLeft .85s ease-out forwards;
+    opacity: 1; /* Hide image until animation */
+}
+
+
 /* Home Left - Left side of the home page */
 .home__left {
-    position: absolute;
     display: flex;
+    align-self: flex-start;
+    justify-content: flex-start;
     height: 100%;
-    width: 65%;
+    width: 100%;
+    margin-top: 1rem;
+    margin-left: 9vw;
 }
 
 /* Text Container - Container for text */
 .home__text-container {
     display: flex;
-    width: 100%;
+    width: 62%;
     justify-content: center;
-    align-items: center;
     flex-direction: column;
     white-space: nowrap; /* Prevent words from stacking */
     opacity: 0;
@@ -65,17 +104,81 @@
 .home__text-name {
     position: relative;
     margin: 0 0 .4rem 0;
-    font-family: 'SF Pro Display', sans-serif;
-    font-weight: 800;
-    font-size: clamp(1.3rem, 5.5vw, 3.7rem); 
+    font-family: 'Gilroy', sans-serif;
+    font-weight: bold;
+    font-size: clamp(1rem, 4.7vw, 3.3rem); 
+    letter-spacing: -1px;
+    line-height: clamp(1rem, 5vw, 3.3rem);
 }
 
 /* Text Alias - User's alias or title */
 .home__text-alias {
     display: flex;
+    flex-direction: column;
     align-items: flex-start;
+    text-wrap: wrap;
     margin-left: 1.5px;
-    font-family: 'SF Pro Display', sans-serif;
-    font-weight: 300;
-    font-size: clamp(1rem, 3.4vw, 2.05rem);
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 500;
+}
+
+.home__text-alias p {
+    margin-top: 0.5rem;
+    line-height: 1;
+    font-size: clamp(0.4rem, 1.6vw, 1rem);
+}
+
+.home__button-wrapper {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding-top: clamp(10px, 3.5vw, 30px);
+    gap: clamp(10px, 2vw, 20px);
+}
+
+@media (max-width: 412px) {
+    .home {
+        flex-direction: column;
+        justify-content: center;
+        height: 608px;
+    }
+    .home__top {
+        height: 100%;
+    }
+    .home__bottom {
+        
+    }
+    .home__left {
+        height: 100%;
+        width: 100%;
+        margin-top: 1.7em;
+        margin-left: 0;
+        align-items: flex-start;
+    }
+    .home-image {
+        left: 25%;
+        height:320px;
+    }
+    .hero-background {
+        left: 21%;
+        width: 260px;
+    }
+    .home__text-container {
+        height: 100%;
+        width: 100%;
+        margin-top: 2.2rem;
+        align-items: center;
+        justify-content: flex-start;
+    }
+    .home__text-name {
+        letter-spacing: 0;
+        font-size: clamp(1.5rem, 8vw, 3rem);
+        line-height: 1;
+    }
+    .home__text-alias p {
+        width: 100%;
+        text-wrap: wrap;
+        margin-left: 0;
+        font-size: clamp(0.5rem, 2.7vw, 1rem);
+    }
 }

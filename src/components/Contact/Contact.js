@@ -14,6 +14,11 @@ import './Contact.css';
 import kevinIconPng from '../../images/contact_images/kevin-smiling.png';
 import kevinIconWebp from '../../images/contact_images/kevin-smiling.webp';
 
+import phoneIcon from '../../images/contact_images/phone_icon.png';
+import globeIcon from '../../images/contact_images/globe_icon.png';
+import mailIcon from '../../images/contact_images/mail_icon.png';
+import arrowIcon from '../../images/contact_images/arrow_icon.png';
+
 function Contact() {
 const { isDarkMode } = useDarkMode(); // Get the global state for dark mode 
 const contactRef = useRef(null); // Ref for contact section
@@ -30,12 +35,6 @@ const contactLeftClass = classNames({
     'contact-left': true,
     'animate-contact-left': isContactInView,
     'dark-mode': isDarkMode 
-});
-const contactRightClassSmall = classNames({
-    'small-screens-only': true,
-    'contact-right': true,
-    'animate-contact-right': isContactInView,
-    'dark-mode': isDarkMode
 });
 const contactRightClassBig = classNames({
     'big-screens-only': true,
@@ -60,66 +59,51 @@ const contactSubHeaderClass = classNames({
 // Render the Contact Section
 return (
     <section className='contact' id = "contact" ref = {contactRef}>
-        <h1 className = {contactHeaderClass}>Contact Me</h1>
-        <h2 className = {contactSubHeaderClass}>Feel free to say hello! I'll get back to you as soon as possible. </h2>
-        <div className="contact-main-content-wrapper">
-            {/* Contact Right (Copy Pasted from Below): Move Contact Right to the top on small screens. */}
-            <div className={contactRightClassSmall}>
-                <div className = "contact-info">
-                    <div className ="contact-profile-picture-container">
-                        <div className="contact-profile-picture-inner-container">
-                            <img
-                                src={imageSrc}
-                                onError={handleError}
-                                className="contact-profile-picture"
-                                alt="Kevin Contact Icon"
-                            />
-                        </div>
-                    </div>
-                    <div className="contact-info-text">
-                        <p className = "contact-name">Kevin Cendana </p>
-                        <p className = "contact-city">Sacramento, CA</p>
-                        <a className = "contact-email" href="mailto:KevinCendana@outlook.com">KevinCendana@outlook.com</a>
+
+            {/* Contact Left Side - Contact Info */}
+            <div className={contactLeftClass}> 
+                <h1 className = {contactHeaderClass}>Get In Touch</h1>
+                <h2 className = {contactSubHeaderClass}>Feel free to say hello! I'll get back to you as soon as possible. </h2>
+                <div className = "contact-info-container">
+                    <img src={phoneIcon} alt="phone icon" className="contact-icon"/>
+                    <div class="contact-info-text">
+                        <h3>Contact Me</h3>
+                        <h3>(209) 855 - 1597</h3>
                     </div>
                 </div>
-            </div>            
+                <div className = "contact-info-container">
+                    <img src={globeIcon} alt="globe icon" className="contact-icon"/>
+                    <div class="contact-info-text">
+                        <h3>Kevin Cendana</h3>
+                        <h3>Rancho Cordova, CA</h3>
+                    </div>
+                </div>
+                <div className = "contact-info-container">
+                    <img src={mailIcon} alt="mail icon" className="contact-icon"/>
+                    <div class="contact-info-text">
+                        <h3>E-Mail</h3>
+                        <h3>kevincendana@outlook.com</h3>
+                    </div>
+                </div>
+            </div>
 
-            {/* Contact Left Side - Contains Email Form */}
-            <div className={contactLeftClass}>
-                <form className="contact-form" name="contact" method="POST" action="https://api.web3forms.com/submit">
+            {/* Contact Right Side - Form */}
+            <div className={contactRightClassBig}>
+            <form className="contact-form" name="contact" method="POST" action="https://api.web3forms.com/submit">
                 <input type="hidden" name="access_key" value="dbd50966-efb7-4221-8a8a-0349a0714f37" />
                 <div className="contact-name-and-email">
-                    <input type="text" id="name" name="name" placeholder="Name" autoComplete="name" className="contact-form-name" required/>
-                    <input type="email" id="email" name="email" placeholder="Email" autoComplete="email" className="contact-form-email" required/>
+                    <label htmlFor="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="" autoComplete="name" className="contact-form-name" required/>
+                    <label htmlFor="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="" autoComplete="email" className="contact-form-email" required/>
                 </div>
-                <textarea id="message" name="message" className="contact-form-message" placeholder="Message" required></textarea>
+                <label htmlFor="message">Message</label>
+                <textarea id="message" name="message" className="contact-form-message" placeholder="" required></textarea>
                 <div className="h-captcha" data-captcha="true"></div>
-                <button className="contact-submit-button" type="submit">Send</button>
+                <button className="contact-submit-button" type="submit">SEND MESSAGE<img class = "send-arrow" src={arrowIcon} alt='send-icon'></img></button>
                 </form>
                 <script src="https://web3forms.com/client/script.js" async defer></script>
             </div>
-
-            {/* Contact Right Side - Contains Contact Info */}
-            <div className={contactRightClassBig}>
-                <div className = "contact-info">
-                    <div className ="contact-profile-picture-container">
-                        <div class="contact-profile-picture-inner-container">
-                            <img
-                                src={imageSrc}
-                                onError={handleError}
-                                className="contact-profile-picture"
-                                alt="Kevin Contact Icon"
-                            />
-                        </div>
-                    </div>
-                    <div className="contact-info-text">
-                        <p className = "contact-name">Kevin Cendana </p>
-                        <p className = "contact-city">Sacramento, CA</p>
-                        <a className = "contact-email" href="mailto:KevinCendana@outlook.com">KevinCendana@outlook.com</a>
-                    </div>
-                </div>
-            </div>
-        </div>
     </section>
 );
 

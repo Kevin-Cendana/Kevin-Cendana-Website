@@ -9,6 +9,7 @@
 :root {
   --app-light-mode-color: rgb(245, 245, 245); 
   --app-dark-mode-color: rgb(30, 30, 30);
+  --app-theme-color: rgb(8, 94, 254);
 }
 
 /* All HTML tags */
@@ -34,8 +35,9 @@ a {color: rgb(0, 112, 241);}
 a.dark-mode {color: rgb(1, 98, 210);}
 
 /* Navigation Bar */
-.navbar { background-color: var(--app-dark-mode-color); }
-.navbar__list li { color: white; }
+.navbar { background-color: white;}
+.navbar__list li { color: black; }
+.navbar .nav-contact { background-color: var(--app-theme-color); color: white; }
 
 .navbar__list li:active { background-color: rgb(189, 189, 189); }
 .navbar .slider { background-color: #ccc; }
@@ -63,7 +65,7 @@ a.dark-mode {color: rgb(1, 98, 210);}
 .about .speechBubble p {color: black;}
 
 /* Skills */
-.skills { border-bottom: clamp(1px, 0.5vw, 3.5px) solid rgb(239, 239, 239); }
+.skills { background-color: var(--app-light-mode-color); border-bottom: clamp(1px, 0.5vw, 3.5px) solid rgb(239, 239, 239); }
 .skills.dark-mode {border-bottom: clamp(1px, 0.5vw, 3.5px) solid rgb(45, 45, 45); }
 
 
@@ -117,4 +119,4 @@ a.dark-mode {color: rgb(1, 98, 210);}
 .popup-background { background-color: rgba(0, 0, 0, 0.5); }
 
 /* Footer */
-footer { color: white !important; background-color: black; }
+footer { color: black !important; background-color: rgb(255, 255, 255); }

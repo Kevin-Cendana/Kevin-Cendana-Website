@@ -16,6 +16,9 @@ import '../../normalize.css';                       // Import normalize.css for 
 // Images
 import lightModeHomeImagePng from '../../images/home_images/kc-no-bg.png';         // Import normal mode image of me
 import lightModeHomeImageWebp from '../../images/home_images/kc-no-bg.webp';        // Import normal mode image of me in webp format
+import heroBackground from '../../images/home_images/kc-hero-bg.png';                     // Import hero background image
+import ContactMeButton from '../../shared/ContactMeButton';
+import ViewResumeButton from '../../shared/ViewResumeButton';
 
 function Home() {
     // States: Dark mode, check if Home in view, img based on dark mode, & webp support
@@ -71,28 +74,45 @@ function Home() {
     return (
         <section className = "home" id = "home" ref={homeRef}>
             {/* Left side of the Home section w/ my name & rotating titles */}
-            <div className="home__left">
-                <div className={textContainerClass}>
-                    <div className="block-wrapper">
-                        {/* Text w/ my name & rotating titles */}
-                        <h1 className="home__text-name">Kevin Cendana</h1>
-                        <p className="home__text-alias">
-                            <ReactRotatingText items={[
-                                'Software Engineer',
-                                'Web Developer',
-                                'Computer Science Student',
-                                ]} />
-                        </p>
+            <div className="home__top">
+                <div className="home__left">
+                    <div className={textContainerClass}>
+                        <div className ="text-wrapper">
+                            {/* <h1 className="home__text-name">Hi, my name is</h1>
+                            <h1 className="home__text-name">Kevin Cendana.</h1>
+                            <h1 className="home__text-name">I'm a programmer.</h1> */}
+                            <h1 className="home__text-name">Kevin Cendana.</h1>
+                            <h1 className="home__text-name">Software Engineer.</h1>
+                            <h1 className="home__text-name">Web Developer.</h1>
+                            <div className="home__text-alias">
+                                <p>Passionate about creating seamless user experiences, </p>
+                                <p>I take pride in myself for writing clean and efficient code.</p>
+                                <p>I strive to make projects functional and visually appealing.</p>
+                            </div>
+                            <div class="home__button-wrapper">
+                            <ContactMeButton />
+                            <ViewResumeButton />
+                        </div>
+                        </div>
+
                     </div>
                 </div>
+                {/* Right side of the Home section w/ drawing of me, darkens on dark mode*/}
+                <img src={imageSrc}
+                    onError={handleError}
+                    alt='Kevin Cendana Drawing'
+                    className={`home-image ${isHomeInView ? 'animate-home-image' : ''}`}
+                    draggable="false">
+                </img>
+                {/* Hero background image */}
+                <img src={heroBackground}
+                    alt='Hero Background'
+                    className={`hero-background ${isHomeInView ? 'animate-hero-background' : ''}`}
+                    draggable="false">
+                </img>
             </div>
-            {/* Right side of the Home section w/ drawing of me, darkens on dark mode*/}
-            <img src={imageSrc} 
-                onError={handleError} 
-                alt='Kevin Cendana Drawing' 
-                className={`home-image ${isHomeInView ? 'animate-home-image' : ''}`} 
-                draggable="false">
-            </img>
+            <div className="home__bottom">
+            </div>
         </section>
     );
 }

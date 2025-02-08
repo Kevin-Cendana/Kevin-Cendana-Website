@@ -3,12 +3,13 @@
 //--------------------------------------------------------------------------------------//
 
 // Libraries & Files
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import useInView from '../../hooks/useInView'; 
-import Carousel  from './Carousel.tsx'; // Credit: React Round Carousel by scriptex: https://github.com/scriptex/react-round-carousel
 import { useDarkMode } from '../../shared/DarkModeToggle/DarkModeContext';
 import classNames from 'classnames';
 import './Projects.css';
+import githubIcon from '../../images/navigation_bar_images/github_icon.png';
+import GitHubButton from '../../shared/GitHubButton';
 
 // Slideshow images & video in webp format - Optimized for faster loading
 import attempowherWebp from '../../images/projects_images/slideshow_images/att_empowher.webp';
@@ -27,21 +28,14 @@ import datafestPng from '../../images/projects_images/slideshow_images/datafest.
 import bullseyePng from '../../images/projects_images/slideshow_images/bullseye.png';
 import sgkcPng from '../../images/projects_images/slideshow_images/sgkc.png';
 
-// Gradient colors for each slide's captions
-const rainbowGradient = 'linear-gradient(45deg, #fcb0a9, #a3c9f8, #a6fcb3, #fff2cc)';
-const blueGradient = 'linear-gradient(45deg, #e6f9ff, #b3ecff, #80dfff, #4dd2ff, #1ac6ff, #0077be, #004f8c)';
-const lightGreenGradient = 'linear-gradient(45deg, #f1f8e9, #dcedc8, #c5e1a5, #aed581, #9ccc65, #8bc34a, #7cb342)';
-const greenGradient = 'linear-gradient(45deg, #00cc00, #77dd77, #b3ffb3)';
-const orangeGradient = 'linear-gradient(45deg, #ffa500, #ffcc80, #ffdbb5)';
-const violetGradient = 'linear-gradient(45deg, #800080, #9400d3, #a020f0)'
-const targetGradient = 'radial-gradient(circle at center, #fde4e4 0%, #fde4e4 20%, #ffffff 20%, #ffffff 40%, #fde4e4 40%, #fde4e4 60%, #ffffff 60%, #ffffff 80%, #fde4e4 80%, #fde4e4 100%)';
-
 // Array of slides to use for slideshow pictures
 const project_data = [
     { 
         // videoWebp: lyriclinkWebp,
-        videoMp4: lyriclinkMp4,
+        mainMedia: lyriclinkMp4,
         title: "Lyric Link",
+        subtitle: "App Demo",
+        githubLink: "https://github.com/Kevin-Cendana/Hackathon-SacHacks-2023",
         description: (
             <span> 
                 <a href="https://sachacks.io" target="_blank" rel="noopener noreferrer">SacHacks 2023:</a>{" "}
@@ -49,15 +43,14 @@ const project_data = [
                 where people could discuss songs in the current Top 100.
             </span>
         ),
-        captions: [
-            { text: 'Hackathon', style: { background: rainbowGradient}},
-        ]
     },
 
     { 
-        image: attempowherPng,
-        imageWebp: attempowherWebp,
-        title: "AT&T Site", 
+        backupMedia: attempowherPng,
+        mainMedia: attempowherWebp,
+        title: "AT&T 5G", 
+        subtitle: "Website",
+        githubLink: "https://github.com/Kevin-Cendana/Hackathon-ATT-EmpowHer",
         description: (
             <span> 
             <a href="https://inside.att.jobs/empowherhackathon#subpage/welcome.io" target="_blank" rel="noopener noreferrer">AT&T EmpowHer:</a>{" "}
@@ -66,16 +59,47 @@ const project_data = [
                 
         </span>
         ),
-        captions: [
-            { text: 'Hackathon', style: { background: blueGradient, }},
-        ]
 
+    },
+    {
+        backupMedia: sgkcPng,
+        mainMedia: sgkcWebp,
+        title: "SGK Church",
+        subtitle: "Website",
+        githubLink: "https://github.com/Kevin-Cendana/Sacramento-Glory-Korean-Church-Website",
+        description: (
+            <span>
+            <a href="https://sacglorychurch.org" target="_blank" rel="noopener noreferrer">Sacramento Glory Korean Church:</a>{" "}<br></br>
+            For my capstone project, I worked with a team of 8 to create a full stack Church website for a local pastor. 
+            </span>
+        ),
+    },
+
+
+
+    { 
+        // videoWebp: maplestoryWebp,
+        mainMedia: maplestoryMp4,
+        title: "Maplestory",
+        subtitle: "App Demo",
+        githubLink: "https://github.com/Kevin-Cendana/Byte-Sized-Projects",
+        description: "To practice Flutter and its widgets, states, and frame animations, I replicated the core gameplay loop of one of my favorite childhood games, Maplestory.",
     },
 
     { 
-        image: datafestPng, 
-        imageWebp: datafestWebp,
-        title: "Word Cloud",
+        // videoWebp: invadedspaceWebp,
+        mainMedia: invadedspaceMp4,
+        title: "Invaded Space",
+        subtitle: "Game Jam",
+        githubLink: "https://github.com/Kevin-Cendana/Byte-Sized-Projects",
+        description: "My contribution to a Game Jam session in Video Game Development Club! Our goal was to create a tower defense game, where I was in charge of programming player & enemy units as well as projectile logic.", 
+    },
+    { 
+        backupMedia: datafestPng, 
+        mainMedia: datafestWebp,
+        title: "DataFest",
+        subtitle: "Big Data",
+        githubLink: "https://github.com/Kevin-Cendana/Hackathon-DataFest-2023",
         description: (
             <span> 
             <a href="https://ww2.amstat.org/education/datafest/" target="_blank" rel="noopener noreferrer">DataFest 2023:</a>{" "}
@@ -83,100 +107,30 @@ const project_data = [
             200,000+ questions from clients for their lawyers.
         </span>
         ),
-        captions: [
-            { text: 'Hackathon', style: { background: lightGreenGradient}},
-        ]
-    },
-
-    { 
-        // videoWebp: maplestoryWebp,
-        videoMp4: maplestoryMp4,
-        title: "Maplestory",
-        description: "To practice Flutter and its widgets, states, and frame animations, I replicated the core gameplay loop of one of my favorite childhood games, Maplestory.",
-        captions: [
-            { text: 'Flutter', style: { background: orangeGradient } },
-        ] 
-    },
-
-    { 
-        // videoWebp: invadedspaceWebp,
-        videoMp4: invadedspaceMp4,
-        title: "Invaded Space",
-        description: "My contribution to a Game Jam session in Video Game Development Club! Our goal was to create a tower defense game, where I was in charge of programming player & enemy units as well as projectile logic.",
-        captions: [
-            { text: 'Unity', style: { color: 'white', background: violetGradient} },
-        ]  
     },
     { 
-        image: bullseyePng, 
-        imageWebp: bullseyeWebp,
+        backupMedia: bullseyePng, 
+        mainMedia: bullseyeWebp,
         title: "Bullseye",
+        subtitle: "Mini Apps",
+        githubLink: "https://github.com/Kevin-Cendana/Byte-Sized-Projects",
         description: "To learn SwiftUI and try mobile app development for the first time, I made a series of apps using Swift UI including a sleep tracker, time converter, tip calculator, Word Scrabble, Guess the Flag, and this Bullseye game.",
-        captions: [
-            { text: 'SwiftUI', style: { background: targetGradient} },
-        ]    
     },
-    {
-        image: sgkcPng,
-        imageWebp: sgkcWebp,
-        // title: (
-        // <>Sacramento Glory<br></br>Korean Church</>
-        // ),
-        title: "SGKC",
-        description: (
-            <span>
-            <a href="https://sacglorychurch.org" target="_blank" rel="noopener noreferrer">Sacramento Glory Korean Church:</a>{" "}<br></br>
-            For my capstone project, I worked with a team of 8 to create a full stack Church website for a local pastor. 
-            </span>
-        ),
-        captions: [
-            { text: 'Capstone', style: { background: greenGradient} },
-        ]
-    }
 ];
 
-// Function to add padding to each caption
-const addPaddingToCaptions = (projects) => {
-    return projects.map(project => ({
-        ...project,
-        captions: project.captions.map(caption => ({
-            ...caption,
-            style: { ...caption.style, borderRadius: '.5rem', margin: '0px 0px', padding: '3.5px 10px' }
-        }))
-    }));
-};
-
-// New project data w/ all the styles above like padding. Pass this arg in instead.
-const updatedProjectData = addPaddingToCaptions(project_data);
-
 function Projects() {
-    const [currentDescription, setCurrentDescription] = useState('');
-    const [currentTitle, setCurrentTitle] = useState('');
-    const [currentCaptions, setCurrentCaptions] = useState([]);
     const { isDarkMode } = useDarkMode();
-    const carouselRef = useRef(null);
     const projectsRef = useRef(null);           // Ref to play animations when Projects section is in view
-    const isProjectsInView = useInView(projectsRef, { threshold:[0.2], sectionName: "projects"});    //
-    const projectsHeader = classNames({
-        'projects__header': true,
+    const isProjectsInView = useInView(projectsRef, { threshold:[0.18], sectionName: "projects"});    //
+    const projectsTop = classNames({
+        'projects__top': true,
         'section-header': true,
-        'animate-projects-header': isProjectsInView,
+        'animate-projects-top': isProjectsInView,
         'dark-mode': isDarkMode,
     });
-    const projectsSubHeader = classNames({
-        'projects__subheader': true,
-        'section-subheader': true,
-        'animate-projects-subheader': isProjectsInView,
-        'dark-mode': isDarkMode,
-    });
-    const projectsLeft = classNames({
-        'projects__left': true,
-        'animate-projects-left': isProjectsInView,
-        'dark-mode': isDarkMode,
-    });
-    const projectsRight = classNames({
-        'projects__right': true,
-        'animate-projects-right': isProjectsInView,
+    const projectsCarousel = classNames({
+        'projects-carousel': true,
+        'animate-projects-carousel': isProjectsInView,
         'dark-mode': isDarkMode,
     });
 
@@ -209,126 +163,82 @@ function Projects() {
             document.head.appendChild(link);
         });
     }, []); // Empty dependency array means this runs once on component mount
+    
+    const carouselRef = useRef(null);
 
-
-    // On mount, update the description and title of the current slide
     useEffect(() => {
-        // Function: Update the description and title of the current slide
-        const descriptionUpdater = () => {
-            const currentIndex = carouselRef.current?.getSelectedIndex();
-            if (currentIndex !== undefined) {
-                const project = updatedProjectData[currentIndex];
-                setCurrentDescription(project.description);
-                setCurrentTitle(project.title);
-                setCurrentCaptions(Array.isArray(project.captions) ? project.captions : []);
-            }
+        const carousel = carouselRef.current;
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        const handleMouseDown = (e) => {
+            isDown = true;
+            startX = e.pageX - carousel.offsetLeft;
+            scrollLeft = carousel.scrollLeft;
         };
-    
-        // Update description initially and on slide change
-        descriptionUpdater();
-        const interval = setInterval(descriptionUpdater, 1000);
-    
-        // Set a timeout to hide the tooltip text after 4 seconds
-        let tooltipTimeout;
-        if (isProjectsInView) {
-            tooltipTimeout = setTimeout(() => {
-                const tooltipElement = document.querySelector('.projects__carousel__tooltip');
-                if (tooltipElement) tooltipElement.classList.add('tooltip-hide');
-            }, 5000);
-        } else {
-            const tooltipElement = document.querySelector('.projects__carousel__tooltip');
-            if (tooltipElement) tooltipElement.classList.remove('tooltip-hide');
-        }
-    
-        // Cleanup function to clear interval and timeout when the component unmounts
+
+        const handleMouseLeave = () => {
+            isDown = false;
+        };
+
+        const handleMouseUp = () => {
+            isDown = false;
+        };
+
+        const handleMouseMove = (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - carousel.offsetLeft;
+            const walk = (x - startX) * 3; // Scroll-fast
+            carousel.scrollLeft = scrollLeft - walk;
+        };
+
+        carousel.addEventListener('mousedown', handleMouseDown);
+        carousel.addEventListener('mouseleave', handleMouseLeave);
+        carousel.addEventListener('mouseup', handleMouseUp);
+        carousel.addEventListener('mousemove', handleMouseMove);
+
         return () => {
-            clearInterval(interval);
-            if (tooltipTimeout) clearTimeout(tooltipTimeout);
+            carousel.removeEventListener('mousedown', handleMouseDown);
+            carousel.removeEventListener('mouseleave', handleMouseLeave);
+            carousel.removeEventListener('mouseup', handleMouseUp);
+            carousel.removeEventListener('mousemove', handleMouseMove);
         };
-    }, [isProjectsInView, currentDescription]); // Dependencies: isProjectsInView and currentDescription
-    
-    
-    // Mapping data to carousel items for Carousel.tsx.
-    // Note: Carousel.tsx shows a video if it exists, otherwise it shows a webp, and finally a png if webp is not supported.
-    const carouselItems = updatedProjectData.map((project, index) => ({
-        image: project.image,           // Fall back to png/mp4 if webp is not supported
-        imageWebp: project.imageWebp,
-        videoWebp: project.videoWebp,
-        videoMp4: project.videoMp4,
-    }));
-
-    // Function: Animate the clicked arrow button
-    document.querySelectorAll('.arrow__button').forEach(arrowButton => {
-        arrowButton.addEventListener('click', function() {
-            // Force restart of the animation
-            this.classList.remove('animation');
-            void this.offsetWidth; // Trigger a reflow to restart the animation
-            this.classList.add('animation');
-
-            // Set a timeout to remove the animation class after 1.4 seconds
-            setTimeout(() => {
-                this.classList.remove('animation');
-            }, 1400); // 1.4 seconds
-        });
-    });
-
-    // Function: Click right arrow button to go to the next slide
-    const goToNextSlide = () => {
-        carouselRef.current?.next(); // Calls the 'next' method of Carousel
-    };
-
-    // Function: Click left arrow button to go to the previous slide
-    const goToPrevSlide = () => {
-        carouselRef.current?.prev(); // Calls the 'prev' method of Carousel
-    };
+    }, []);
 
     // Render the Projects section
     return (
         <section className="projects" id="projects" ref = {projectsRef}>
-            {/* Header title */}
-            <h1 className = {projectsHeader}> Project Showcase </h1>
-            <h2 className = {projectsSubHeader}>
-            "The absolute best way to learn is by doing." - Aristotle
-            </h2>
-            <div className = "projects__section">
-                {/* Left side w/ Carousel slideshow  */}
-                <div className = {projectsLeft}>
-                    <div className="projects__carousel-wrapper">
-                        <Carousel ref={carouselRef} items={carouselItems}/>
-                    </div>
+            <div className={projectsTop}>
+                <div class="col-wrapper">
+                    <h1 className = "projects__header"> MY PORTFOLIO </h1>
+                    <h2 className = "projects__subheader"> Check out my latest work</h2>
                 </div>
-                {/* Right side w/ dynamic project description */}
-                <div className = {projectsRight}>
-                    <div className="projects__text-container">
-                        <div className="row-wrapper">
-                            {/* Title & Captions */}
-                            <h2 className="projects__title">{currentTitle}</h2>
-                            <div className="projects__captions ">
-                            {currentCaptions.map((caption, index) => (
-                                <span key={index} style={caption.style}>
-                                    {caption.text}
-                                </span>
-                            ))}
-                            </div>
-                            {/* Arrow buttons */}
-                            <div className="arrow__buttons__container">
-                                <button className="arrow__button left" onClick={goToPrevSlide} aria-label = "Previous Slide Button"></button>
-                                <button className="arrow__button right" onClick={goToNextSlide} aria-label = "Previous Slide Button"></button>
+                <GitHubButton />
+            </div>
+            <div className={projectsCarousel}ref={carouselRef}>
+                {project_data.map((project, index) => (
+                    <div key={index} className="project-item">
+                        {project.mainMedia.endsWith('.mp4') ? (
+                            <video aria-label="This video has no audio." autoPlay muted loop className="project-media">
+                                <source src={project.mainMedia} type="video/mp4" />
+                                Your browser does not support the video tag.
+                            </video>
+                        ) : (
+                            <img src={project.mainMedia} alt={project.title} className="project-media" draggable='false' />
+                        )}
+                        <div className="project-item-bottom">
+                            <a href={project.githubLink} target="_blank" rel="noopener noreferrer">
+                                <img src={githubIcon} alt="GitHub" className="github-icon" />
+                            </a>
+                            <div className="project-text">
+                                <h3 className="project-title">{project.title}</h3>
+                                <p className="project-subtitle">{project.subtitle}</p>
                             </div>
                         </div>
-                        {/* Description */}
-                        <p className="projects__description">{currentDescription}</p>
                     </div>
-                    {/* Instructions on how to move the Carousel, dissapears after a few sec. */}
-                    <div className='projects__carousel__tooltip'>
-                        <p><i>Scroll with buttons, arrow keys, or swipe.</i></p>
-                        <div className="tooltip__gifs-container">
-                            <div className="tooltip__gif tap-animation"></div>
-                            <div className="tooltip__gif key-animation"></div>
-                            <div className="tooltip__gif swipe-animation"></div>
-                        </div>
-                    </div>
-                </div>
+                ))}
             </div>
         </section>
     );

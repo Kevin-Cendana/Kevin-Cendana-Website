@@ -203,10 +203,10 @@ ReactRotatingText.defaultProps = {
     emptyPause: 600,     // Default pause time between words (when no word is visible)
     eraseMode: 'erase',   // Default erase mode
     items: ['first', 'second', 'third', 'fourth', 'fifth'], // Default text items
-    pause: 3500,          // Default pause time after typing a word (when a word is visible)
+    pause: 2500,          // Default pause time after typing a word (when a word is visible)
     typingInterval: 52,   // Default time between typing characters
     random: false,         // Default setting for randomizing text items
-    initialdelay: 2950,      // Default time to wait before typing starts
+    initialdelay: 1450,      // Default time to wait before typing starts
 };
 
 

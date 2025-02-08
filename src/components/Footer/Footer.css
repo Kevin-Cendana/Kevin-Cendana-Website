@@ -7,8 +7,9 @@ footer {
     display: flex;
     flex-direction: row;
     bottom: 0;
-    height: 3rem;
+    height: 3.2rem;
     width: 100vw;
+    padding: 0 9vw;
 }
 
 /* Footer - Left & Right Side*/
@@ -21,9 +22,11 @@ footer {
 }
 .footer-left {
     align-items: flex-start;
-    padding-left: 1rem;
 }
 .footer-right {
     align-items: flex-end;
-    padding-right: 1rem;
+}
+.footer-left p {
+    font-family: "Gilroy", sans-serif !important;
+    font-weight: 500;
 }
