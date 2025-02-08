@@ -92,12 +92,12 @@ return (
             <form className="contact-form" name="contact" method="POST" action="https://api.web3forms.com/submit">
                 <input type="hidden" name="access_key" value="dbd50966-efb7-4221-8a8a-0349a0714f37" />
                 <div className="contact-name-and-email">
-                    <h3>Name</h3>
+                    <label htmlFor="name">Name</label>
                     <input type="text" id="name" name="name" placeholder="" autoComplete="name" className="contact-form-name" required/>
-                    <h3>Email</h3>
+                    <label htmlFor="email">Email</label>
                     <input type="email" id="email" name="email" placeholder="" autoComplete="email" className="contact-form-email" required/>
                 </div>
-                <h3>Message</h3>
+                <label htmlFor="message">Message</label>
                 <textarea id="message" name="message" className="contact-form-message" placeholder="" required></textarea>
                 <div className="h-captcha" data-captcha="true"></div>
                 <button className="contact-submit-button" type="submit">SEND MESSAGE<img class = "send-arrow" src={arrowIcon} alt='send-icon'></img></button>

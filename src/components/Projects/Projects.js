@@ -221,7 +221,7 @@ function Projects() {
                 {project_data.map((project, index) => (
                     <div key={index} className="project-item">
                         {project.mainMedia.endsWith('.mp4') ? (
-                            <video autoPlay muted loop className="project-media">
+                            <video aria-label="This video has no audio." autoPlay muted loop className="project-media">
                                 <source src={project.mainMedia} type="video/mp4" />
                                 Your browser does not support the video tag.
                             </video>
