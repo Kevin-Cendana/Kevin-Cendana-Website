@@ -17,7 +17,7 @@ footer {
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width: 50%;
+
     height: 100%;
 }
 .footer-left {
@@ -29,4 +29,5 @@ footer {
 .footer-left p {
     font-family: "Gilroy", sans-serif !important;
     font-weight: 500;
+    font-size: clamp(0.7rem, 2.4vw, 1rem) !important;
 }
