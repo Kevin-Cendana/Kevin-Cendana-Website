@@ -121,16 +121,16 @@ const project_data = [
 function Projects() {
     const { isDarkMode } = useDarkMode();
     const projectsRef = useRef(null);           // Ref to play animations when Projects section is in view
-    const isProjectsInView = useInView(projectsRef, { threshold:[0.2], sectionName: "projects"});    //
-    const projectsHeader = classNames({
-        'projects__header': true,
+    const isProjectsInView = useInView(projectsRef, { threshold:[0.18], sectionName: "projects"});    //
+    const projectsTop = classNames({
+        'projects__top': true,
         'section-header': true,
-        'animate-projects-header': isProjectsInView,
+        'animate-projects-top': isProjectsInView,
         'dark-mode': isDarkMode,
     });
-    const projectsSubheader = classNames({
-        'projects__subheader': true,
-        'animate-projects-subheader': isProjectsInView,
+    const projectsCarousel = classNames({
+        'projects-carousel': true,
+        'animate-projects-carousel': isProjectsInView,
         'dark-mode': isDarkMode,
     });
 
@@ -210,14 +210,14 @@ function Projects() {
     // Render the Projects section
     return (
         <section className="projects" id="projects" ref = {projectsRef}>
-            <div class="projects__top">
+            <div className={projectsTop}>
                 <div class="col-wrapper">
-                    <h1 className = {projectsHeader}> MY PORTFOLIO </h1>
-                    <h2 className = {projectsSubheader}> Check out my latest work</h2>
+                    <h1 className = "projects__header"> MY PORTFOLIO </h1>
+                    <h2 className = "projects__subheader"> Check out my latest work</h2>
                 </div>
                 <GitHubButton />
             </div>
-            <div className="projects-carousel" ref={carouselRef}>
+            <div className={projectsCarousel}ref={carouselRef}>
                 {project_data.map((project, index) => (
                     <div key={index} className="project-item">
                         {project.mainMedia.endsWith('.mp4') ? (

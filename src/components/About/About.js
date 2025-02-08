@@ -5,17 +5,14 @@
 // Libraries & Files
 import React, { useRef, useEffect, useState } from 'react'; // Import React and the useRef hook
 import classNames from 'classnames';   // Import classNames for conditional class naming
-import TypingDots from './TypingDots'; // Import TypingDots component for typing animation
 import useInView from '../../hooks/useInView'; // Custom hook to check if an element is in view
 import { useDarkMode } from '../../shared/DarkModeToggle/DarkModeContext'; // Context hook for dark mode
 import './About.css';         // Import CSS for this About component
 import '../../App.css';       // Import general App CSS
 import '../../AppColors.css';
-import './TypingDots.css';    // Import CSS for TypingDots component
 import '../../normalize.css'; // Import CSS to normalize styles across browsers
 import AboutPolaroidImageWebP from '../../images/about_images/kevin-art.webp'; // Import polaroid image
 import AboutPolaroidImagePNG from '../../images/about_images/kevin-art.png'; // Import polaroid image
-import Contact from '../Contact/Contact';
 import ContactMeButton from '../../shared/ContactMeButton';
 import ViewResumeButton from '../../shared/ViewResumeButton';
 
@@ -27,7 +24,7 @@ function About() {
     const [imageLoaded, setImageLoaded] = useState(false);   // Check if image is loaded
 
     // Check if different parts of the about section are in view
-    const startAnimationAbout = useInView(aboutRef, {threshold: [0.31], sectionName: 'about'}) && imageLoaded;
+    const startAnimationAbout = useInView(aboutRef, {threshold: [0.25], sectionName: 'about'}) && imageLoaded;
 
     // CSS Class Names for the About section
     const headerClass = classNames({

@@ -40,7 +40,6 @@
     margin-left: 9vw;
     width: 40%;
     height: 100%;
-    animation: baseFadeInSlideRight .7s ease-in-out;
     opacity: 0;
 }
 
@@ -90,8 +89,12 @@
     margin-right: 9vw;
     font-size: clamp(0.6rem, 2vw, 1.45rem);
     z-index: 0;
+    opacity: 0;
 }
-
+.animate-about__right {
+    animation: baseFadeInSlideLeft .7s ease-in-out;
+    opacity: 1;
+}
 .about .button-wrapper {
     display: flex;
     align-items: center;

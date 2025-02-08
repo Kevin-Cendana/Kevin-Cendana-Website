@@ -22,7 +22,12 @@
     font-weight: 600;
     color: var(--app-theme-color);
     font-size: clamp(0.6rem, 2vw, 1rem);
+    margin-bottom: 0;
 }
+    .animate-projects-top {
+        animation: baseFadeInSlideDown 0.75s ease forwards;
+        opacity: 1;
+    }
 
 .projects__subheader {
     font-family: 'Gilroy', sans-serif;
@@ -33,6 +38,7 @@
     font-size: clamp(1.3rem, 4vw, 2.6rem);
 }
 
+
 .projects-carousel {
     display: flex;
     align-items: center;
@@ -42,8 +48,9 @@
     -webkit-overflow-scrolling: touch;
     scroll-behavior: smooth;
     scrollbar-width:auto;
-    
+    opacity: 1; /* No animation for carousel, it's buggy*/
 }
+
 /* Scrollbar styles for WebKit browsers (Chrome, Safari) */
 .projects-carousel::-webkit-scrollbar {
     height: 12px; /* Adjust the height of the scrollbar */
@@ -104,6 +111,8 @@
 }
 
 .projects .github-button {
+    display: flex;;
+    align-items: center;
     margin-top: 15px;
 }
 @media (max-width: 800px) {

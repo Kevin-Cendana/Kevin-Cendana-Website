@@ -255,10 +255,18 @@ input, textarea{
 }
 @media (max-width: 400px) {
     .contact {
-        height: 840px;
+        height: 810px;
     }
     .contact-left {
         width: 100%;
         height: 320px;
+    }
+    .contact-right {
+        height: 400px;
+    }
+}
+@media (max-width: 360px) {
+    .contact-right {
+        height: 370px;
     }
 }
