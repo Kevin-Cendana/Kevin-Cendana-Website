@@ -2,18 +2,12 @@
 //                                   Contact.js                                         //
 //--------------------------------------------------------------------------------------//
 
-import React, { useRef, useState } from 'react';
+import React, { useRef } from 'react';
 
 import { useDarkMode } from '../../shared/DarkModeToggle/DarkModeContext';
 import useInView from '../../hooks/useInView';
 import classNames from 'classnames';
 import './Contact.css';
-
-// import kevinIconPng from '../../images/contact_images/kevin_smiling.png';
-// import kevinIconWebp from '../../images/contact_images/kevin_smiling.webp';
-import kevinIconPng from '../../images/contact_images/kevin-smiling.png';
-import kevinIconWebp from '../../images/contact_images/kevin-smiling.webp';
-
 import phoneIcon from '../../images/contact_images/phone_icon.png';
 import globeIcon from '../../images/contact_images/globe_icon.png';
 import mailIcon from '../../images/contact_images/mail_icon.png';
@@ -23,13 +17,6 @@ function Contact() {
 const { isDarkMode } = useDarkMode(); // Get the global state for dark mode 
 const contactRef = useRef(null); // Ref for contact section
 const isContactInView = useInView(contactRef, { threshold: [0.2], sectionName: 'resume-contact' } );
-const [imageSrc, setImageSrc] = useState(kevinIconWebp);
-
-// Function to handle the case when the image fails to load
-const handleError = () => {
-  setImageSrc(kevinIconPng); // Fallback to PNG if WebP fails
-};
-
 
 const contactLeftClass = classNames({
     'contact-left': true,

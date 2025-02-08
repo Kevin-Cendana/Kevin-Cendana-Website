@@ -7,7 +7,6 @@ import React, { useState } from 'react';   // Import useState hook from React
 // Removed react-scroll Link import since we are replacing it with <a> tags and manual handling
 import classNames from 'classnames';       // Import classNames to dynamically set class names
 import './NavigationBar.css';              // Import CSS for the navigation bar
-import DarkModeToggle from '../../shared/DarkModeToggle/DarkModeToggle'; // Import the DarkModeToggle component
 
 // Assuming you have a navigation array or similar structure
 const navigation = [
