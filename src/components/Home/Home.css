@@ -6,7 +6,7 @@
 .home {
     position: relative;
     /* margin-top: var(--navbar-height); */
-    height: clamp(230px, 74vw, 700px);
+    height: clamp(230px, 79vw, 920px);
     overflow: hidden;
     flex-direction: column;
     align-items: flex-end;
@@ -41,7 +41,7 @@
     z-index: 1000;
     bottom: -70px;
     left: 56%;
-    height: clamp(284px, 64vw, 570px);
+    height: clamp(284px, 63vw, 720px);
     filter: brightness(100%);
     opacity: 0; /* Hide image until animation */
 }
@@ -56,9 +56,9 @@
 
 .hero-background {
     position: absolute;
-    width: clamp(148px, 48vw, 460px);
+    width: clamp(148px, 45vw, 555px);
     bottom: 0;
-    left: 54%;
+    left: 55.5%;
     filter: brightness(93%) hue-rotate(330deg);
     opacity: 0;
 }
@@ -82,7 +82,7 @@
 /* Text Container - Container for text */
 .home__text-container {
     display: flex;
-    width: 62%;
+    width: 61%;
     justify-content: center;
     flex-direction: column;
     white-space: nowrap; /* Prevent words from stacking */
@@ -106,7 +106,7 @@
     margin: 0 0 .4rem 0;
     font-family: 'Gilroy', sans-serif;
     font-weight: bold;
-    font-size: clamp(1rem, 4.7vw, 3.3rem); 
+    font-size: clamp(1rem, 4.5vw, 3.3rem); 
     letter-spacing: -1px;
     line-height: clamp(1rem, 5vw, 3.3rem);
 }
@@ -118,6 +118,7 @@
     align-items: flex-start;
     text-wrap: wrap;
     margin-left: 1.5px;
+    padding-top: clamp(0px, 1vw, 30px);
     font-family: 'Gilroy', sans-serif;
     font-weight: 500;
 }

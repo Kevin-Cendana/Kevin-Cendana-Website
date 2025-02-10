@@ -21,3 +21,4 @@ yarn.lock
 
 # Ignore huge amount of node modules
 node_modules/
+node_modules
