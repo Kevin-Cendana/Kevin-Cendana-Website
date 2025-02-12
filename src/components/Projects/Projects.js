@@ -16,6 +16,7 @@ import attempowherWebp from '../../images/projects_images/slideshow_images/att_e
 import datafestWebp from '../../images/projects_images/slideshow_images/datafest.webp';
 import bullseyeWebp from '../../images/projects_images/slideshow_images/bullseye.webp';
 import sgkcWebp from '../../images/projects_images/slideshow_images/sgkc.webp';
+import dreamarcadesWebp from '../../images/projects_images/slideshow_images/da-am.webp';
 
 // Slideshow videos in mp4 format - Optimized for faster loading
 import lyriclinkMp4 from '../../images/projects_images/slideshow_images/lyric_link.mp4';
@@ -27,6 +28,7 @@ import attempowherPng from '../../images/projects_images/slideshow_images/att_em
 import datafestPng from '../../images/projects_images/slideshow_images/datafest.png';
 import bullseyePng from '../../images/projects_images/slideshow_images/bullseye.png';
 import sgkcPng from '../../images/projects_images/slideshow_images/sgkc.png';
+import dreamarcadesPng from '../../images/projects_images/slideshow_images/da-am.png';
 
 // Array of slides to use for slideshow pictures
 const project_data = [
@@ -116,6 +118,18 @@ const project_data = [
         githubLink: "https://github.com/Kevin-Cendana/Byte-Sized-Projects",
         description: "To learn SwiftUI and try mobile app development for the first time, I made a series of apps using Swift UI including a sleep tracker, time converter, tip calculator, Word Scrabble, Guess the Flag, and this Bullseye game.",
     },
+    { 
+        backupMedia: dreamarcadesPng,
+        mainMedia: dreamarcadesWebp,
+        title: "DreamArcades", 
+        subtitle: "Work Website",
+        githubLink: "https://github.com/Kevin-Cendana/DreamArcades-Affiliate-Marketing",
+        description: (
+            <span> 
+            </span>
+        ),
+
+    },
 ];
 
 function Projects() {
@@ -150,6 +164,8 @@ function Projects() {
             webpSupported ? attempowherWebp : attempowherPng,
             webpSupported ? datafestWebp : datafestPng,
             webpSupported ? bullseyeWebp : bullseyePng,
+            webpSupported ? sgkcWebp : sgkcPng,
+            webpSupported ? dreamarcadesWebp : dreamarcadesPng,
             lyriclinkMp4,
             maplestoryMp4,
             invadedspaceMp4
