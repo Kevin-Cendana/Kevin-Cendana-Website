@@ -137,7 +137,7 @@
 }
 @media (max-width: 460px) {
     .projects {
-        height: 2330px;
+        height: 2600px;
     }
     .projects-carousel {
         flex-direction: column;
@@ -152,9 +152,14 @@
         display: none !important;
     }
 }
+@media (max-width: 360px) {
+    .projects {
+        height: 2510px;
+    }
+}
 @media (max-width: 300px) {
     .projects {
-        height: 2080px;
+        height: 2290px;
     }
     .project-media {
         width: 220px;
